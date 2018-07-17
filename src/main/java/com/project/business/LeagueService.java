@@ -12,8 +12,7 @@ import com.project.domain.MyPojo;
 
 public class LeagueService {
 
-	public List<LadderTableEntry> getLeagueDetails(String league) {
-		
+	public List<LadderTableEntry> getLeagueDetails(String league) {		
 		List<LadderTableEntry> tableEntries = new ArrayList<>();
 		String url = "http://api.pathofexile.com/ladders/"+league+"?offset=1&limit=10";
 		RestTemplate restTemplate = new RestTemplate();
@@ -26,8 +25,7 @@ public class LeagueService {
 			entry.setChallenges(anEntry.getAccount().getChallenges().getTotal());
 			entry.setExperience(anEntry.getCharacter().getExperience());
 			tableEntries.add(entry);
-		}
-		
+		}		
 		return tableEntries;
 	}
 
