@@ -2,7 +2,7 @@ package com.project.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class MyPojo {
+public class Ladder {
 	@JsonProperty("total")
 	private String total;
 

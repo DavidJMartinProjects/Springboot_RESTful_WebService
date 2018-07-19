@@ -13,63 +13,42 @@
 
 	<div class="container">
 		<div id="dropdown_menu" class="input-group mb-3">
-			<select class="custom-select" id="inputGroupSelect02">
+			<select class="custom-select" id="selectLeagueInputGroup">
 				<option selected>Select a league or race...</option>
-				<option value="1">Incursion</option>
-				<option value="2">Hardcore Incursion</option>
-				<option value="3">SSF Incursion</option>
-				<option value="4">SSF Incursion HC</option>
+				<option value="Incursion">Incursion</option>
+				<option value="Hardcore Incursion">Hardcore Incursion</option>
+				<option value="SSF Incursion">SSF Incursion</option>
+				<option value="SSF Incursion HC">SSF Incursion HC</option>
 			</select>
 		</div>
 		<br>
+		</div>
 
-		<table id="example" class="table table-striped table-bordered">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Position</th>
-					<th>Office</th>
-					<th>Age</th>
-					<th>Start date</th>
-					<th>Salary</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Tiger Nixon</td>
-					<td>System Architect</td>
-					<td>Edinburgh</td>
-					<td>61</td>
-					<td>2011/04/25</td>
-					<td>$320,800</td>
-				</tr>
-				<tr>
-					<td>Garrett Winters</td>
-					<td>Accountant</td>
-					<td>Tokyo</td>
-					<td>63</td>
-					<td>2011/07/25</td>
-					<td>$170,750</td>
-				</tr>
-				<tr>
-					<td>Ashton Cox</td>
-					<td>Junior Technical Author</td>
-					<td>San Francisco</td>
-					<td>66</td>
-					<td>2009/01/12</td>
-					<td>$86,000</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+		<div id="leagueInfoTableContainer" class="container" style="display: none">
+			<table id="leagueInfoTable"
+				class="table table-striped table-bordered table-responsive-md">
+				<thead>
+					<tr>
+						<th>Rank</th>
+						<th>Character</th>
+						<th>Account</th>
+						<th>Level</th>
+						<th>Class</th>
+						<th>Challenges</th>
+						<th>Experience</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
 
 
 
-	<script src="javascript/jquery-3.3.1.js"></script>
-	<script src="/javascript/jquery.dataTables.min.js"></script>
+		<script src="javascript/jquery-3.3.1.js"></script>
+		<script src="/javascript/jquery.dataTables.min.js"></script>
 
-	<script src="javascript/dataTables.bootstrap4.min.js"></script>
+		<script src="javascript/dataTables.bootstrap4.min.js"></script>
 
-	<script src="/javascript/main.js"></script>
+		<script src="/javascript/main.js"></script>
 </body>
 </html>

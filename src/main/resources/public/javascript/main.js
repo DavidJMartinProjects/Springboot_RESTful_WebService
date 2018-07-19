@@ -1,5 +1,59 @@
+theUrl = 'https://localhost:8080/ladders';
 
 $(document).ready(function() {
 	console.log("index.html loaded.")
-    $('#example').DataTable();
-} );
+});
+
+$("#selectLeagueInputGroup").change(function(){
+    var selected = $('#selectLeagueInputGroup option:selected').val();
+    console.log("Selected League : " + selected);      
+    getLeagueData(selected);
+});
+
+var getLeagueData = function(selectedLeague) {
+    $.ajax({
+        url: 'http://localhost:8080/ladders',
+        type: 'GET',
+        dataType: "json",
+        data : {
+        	league : selectedLeague
+        },
+        success: function(results) {
+        	console.log(results)
+            populateLeagueTable(results);
+        },
+        error: function(error) {
+            showToastr("getLeagueData error : " + error, "error");
+        }
+    });
+};
+
+var populateLeagueTable = function(results) {
+    $('#leagueInfoTable').dataTable().fnDestroy();
+    $("#leagueInfoTable tbody").empty();
+    $("#leagueInfoTableContainer").css({
+        "display": "block"
+    });
+    
+    results.forEach(function(data) {
+	    $('#leagueInfoTable tbody').append(
+	            '<tr>' +
+		    		'<td>' + data.rank + '</td>' +
+		    		'<td>' + data.character + '</td>' +
+		    		'<td>' + data.account + '</td>' +
+		    		'<td>' + data.level + '</td>' +
+		    		'<td>' + data.theClass + '</td>' +
+		    		'<td>' + data.challenges + '</td>' +
+		    		'<td>' + data.experience + '</td>' +
+	    		'</tr>'
+	     );
+    });
+    
+    $('#leagueInfoTable').DataTable({        
+//        searching: true,
+//        deferRender: true,
+//        scrollY: 310,
+//        scrollCollapse: true,
+//        scroller: true
+    });
+};

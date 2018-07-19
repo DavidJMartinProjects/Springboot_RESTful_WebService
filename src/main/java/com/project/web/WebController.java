@@ -15,7 +15,7 @@ import com.project.domain.LadderTableEntry;
 public class WebController {	
 
 	@RequestMapping(method = RequestMethod.GET, produces = { "application/json" })	
-    public List<LadderTableEntry> greeting(@RequestParam(value="league", defaultValue="Standard") String league) {
+    public List<LadderTableEntry> greeting(@RequestParam(value="league") String league) {
         return new LeagueService().getLeagueDetails(league);
     }
 

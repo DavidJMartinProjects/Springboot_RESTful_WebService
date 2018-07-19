@@ -8,20 +8,23 @@ import org.springframework.web.client.RestTemplate;
 
 import com.project.domain.Entries;
 import com.project.domain.LadderTableEntry;
-import com.project.domain.MyPojo;
+import com.project.domain.Ladder;
 
 public class LeagueService {
 
 	public List<LadderTableEntry> getLeagueDetails(String league) {		
 		List<LadderTableEntry> tableEntries = new ArrayList<>();
-		String url = "http://api.pathofexile.com/ladders/"+league+"?offset=1&limit=10";
+		String url = "http://api.pathofexile.com/ladders/"+league+"?limit=100";
 		RestTemplate restTemplate = new RestTemplate();
-		ResponseEntity<MyPojo> response = restTemplate.getForEntity(url, MyPojo.class);
+		ResponseEntity<Ladder> response = restTemplate.getForEntity(url, Ladder.class);
 		
 		for (Entries anEntry : response.getBody().getEntries()) {
 			LadderTableEntry entry = new LadderTableEntry();
-			entry.setName(anEntry.getCharacter().getName());
+			entry.setRank(anEntry.getRank());
+			entry.setCharacter(anEntry.getCharacter().getName());
+			entry.setAccount(anEntry.getAccount().getName());
 			entry.setLevel(anEntry.getCharacter().getLevel());
+			entry.setTheClass(anEntry.getCharacter().getTheClass());			
 			entry.setChallenges(anEntry.getAccount().getChallenges().getTotal());
 			entry.setExperience(anEntry.getCharacter().getExperience());
 			tableEntries.add(entry);

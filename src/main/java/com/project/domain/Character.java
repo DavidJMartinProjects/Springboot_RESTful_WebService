@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Character {
 	@JsonProperty("id")
 	private String id;
+	
+	@JsonProperty("class")
+	private String theClass;
 
 	@JsonProperty("level")
 	private String level;
@@ -19,10 +22,20 @@ public class Character {
 	public String getId() {
 		return id;
 	}
-
+	
 	@JsonProperty("id")
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	@JsonProperty("class")
+	public String getTheClass() {
+		return theClass;
+	}
+	
+	@JsonProperty("class")
+	public void setTheClass(String theClass) {
+		this.theClass = theClass;
 	}
 
 	@JsonProperty("level")
@@ -57,7 +70,8 @@ public class Character {
 
 	@Override
 	public String toString() {
-		return "ClassPojo [id = " + id + ", level = " + level + ", name = " + name + ", experience = " + experience
-				+ "]";
+		return "Character [id=" + id + ", class=" + theClass + ", level=" + level + ", name=" + name
+				+ ", experience=" + experience + "]";
 	}
+
 }
