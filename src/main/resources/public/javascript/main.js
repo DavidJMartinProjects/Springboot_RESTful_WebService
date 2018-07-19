@@ -1,4 +1,5 @@
-theUrl = 'https://localhost:8080/ladders';
+theLocalhostUrl = 'https://localhost:8080/ladders';
+theHostedSiteUrl = 'https://immense-headland-50105.herokuapp.com/'
 
 $(document).ready(function() {
 	console.log("index.html loaded.")
@@ -12,7 +13,7 @@ $("#selectLeagueInputGroup").change(function(){
 
 var getLeagueData = function(selectedLeague) {
     $.ajax({
-        url: 'http://localhost:8080/ladders',
+        url: theHostedSiteUrl,
         type: 'GET',
         dataType: "json",
         data : {
@@ -55,5 +56,6 @@ var populateLeagueTable = function(results) {
 //        scrollY: 310,
 //        scrollCollapse: true,
 //        scroller: true
+    	"iDisplayLength": 50
     });
 };
