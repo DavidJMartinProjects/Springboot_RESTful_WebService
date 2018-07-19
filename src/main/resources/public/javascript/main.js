@@ -24,7 +24,7 @@ var getLeagueData = function(selectedLeague) {
             populateLeagueTable(results);
         },
         error: function(error) {
-            console.log("getLeagueData error : " + error.responseText, "error");
+            console.log("getLeagueData error : " + error.responseJSON.message, "error");
         }
     });
 };
