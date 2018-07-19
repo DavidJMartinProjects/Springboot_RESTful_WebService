@@ -1,5 +1,5 @@
 theLocalhostUrl = 'http://localhost:8080/ladders';
-theHostedSiteUrl = 'http://immense-headland-50105.herokuapp.com/ladders';
+theHostedSiteUrl = 'https://immense-headland-50105.herokuapp.com/ladders';
 
 $(document).ready(function() {
 	console.log("index.html loaded.")
