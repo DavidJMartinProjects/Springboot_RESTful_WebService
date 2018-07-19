@@ -2,6 +2,7 @@ package com.project.web;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,7 @@ import com.project.domain.LadderTableEntry;
 @RequestMapping(value = "/ladders")
 public class WebController {	
 
+	@CrossOrigin
 	@RequestMapping(method = RequestMethod.GET, produces = { "application/json" })	
     public List<LadderTableEntry> greeting(@RequestParam(value="league") String league) {
         return new LeagueService().getLeagueDetails(league);
