@@ -41,6 +41,7 @@ var populateLeagueTable = function(results) {
 	            '<tr>' +
 		    		'<td>' + data.rank + '</td>' +
 		    		'<td>' + data.character + '</td>' +
+		    		'<td>' + data.dead + '</td>' +
 		    		'<td>' + data.account + '</td>' +
 		    		'<td>' + data.level + '</td>' +
 		    		'<td>' + data.theClass + '</td>' +
