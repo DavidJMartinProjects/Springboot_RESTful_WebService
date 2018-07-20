@@ -37,7 +37,7 @@ var populateLeagueTable = function(results) {
     });
     
     results.forEach(function(data) {
-    	var character = data.character;
+    	var character = "<b>" +data.character + "</b>";
     	if(data.dead == "true") {
     		character += " <i id='deadStatus'>(dead)</i>";
     	}
