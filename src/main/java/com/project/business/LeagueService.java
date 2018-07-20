@@ -21,6 +21,7 @@ public class LeagueService {
 		for (Entries anEntry : response.getBody().getEntries()) {
 			LadderTableEntry entry = new LadderTableEntry();
 			entry.setRank(anEntry.getRank());
+			entry.setOnline(anEntry.getOnline());
 			entry.setCharacter(anEntry.getCharacter().getName());
 			entry.setDead(anEntry.getDead());
 			entry.setAccount(anEntry.getAccount().getName());

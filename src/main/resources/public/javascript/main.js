@@ -37,17 +37,23 @@ var populateLeagueTable = function(results) {
     });
     
     results.forEach(function(data) {
-    	var character = "<b>" +data.character + "</b>";
+    	var character = data.character;
     	if(data.dead == "true") {
     		character += " <i id='deadStatus'>(dead)</i>";
+    	}
+    	
+    	var account = "";
+    	if(data.online == "true") {
+    		account = "<img class='img-valign' src='/images/green-icon.png' title='online' />   " + data.account;
+    	} else {
+    		account = "<img class='img-valign' src='/images/red-icon.png' title='offline' />   " + data.account;
     	}
     	
 	    $('#leagueInfoTable tbody').append(
 	            '<tr>' +
 		    		'<td>' + data.rank + '</td>' +
+		    		'<td>' + account + '</td>' +
 		    		'<td>' + character + '</td>' +
-		    		'<td>' + data.dead + '</td>' +
-		    		'<td>' + data.account + '</td>' +
 		    		'<td>' + data.level + '</td>' +
 		    		'<td>' + data.theClass + '</td>' +
 		    		'<td>' + data.challenges + '</td>' +
