@@ -13,7 +13,7 @@ $("#selectLeagueInputGroup").change(function(){
 
 var getLeagueData = function(selectedLeague) {
     $.ajax({
-        url: theLocalhostUrl,
+        url: theHostedSiteUrl,
         type: 'GET',
         dataType: "json",
         data : {
