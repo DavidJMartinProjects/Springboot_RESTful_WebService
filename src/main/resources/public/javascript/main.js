@@ -68,6 +68,8 @@ var populateLeagueTable = function(results) {
 //        scrollY: 310,
 //        scrollCollapse: true,
 //        scroller: true
-    	"iDisplayLength": 50
+    	"iDisplayLength": 50,
+    	fixedHeader: true
     });
+ 
 };
