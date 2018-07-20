@@ -13,7 +13,7 @@ $("#selectLeagueInputGroup").change(function(){
 
 var getLeagueData = function(selectedLeague) {
     $.ajax({
-        url: theHostedSiteUrl,
+        url: theLocalhostUrl,
         type: 'GET',
         dataType: "json",
         data : {
@@ -37,10 +37,15 @@ var populateLeagueTable = function(results) {
     });
     
     results.forEach(function(data) {
+    	var character = data.character;
+    	if(data.dead == "true") {
+    		character += " <i id='deadStatus'>(dead)</i>";
+    	}
+    	
 	    $('#leagueInfoTable tbody').append(
 	            '<tr>' +
 		    		'<td>' + data.rank + '</td>' +
-		    		'<td>' + data.character + '</td>' +
+		    		'<td>' + character + '</td>' +
 		    		'<td>' + data.dead + '</td>' +
 		    		'<td>' + data.account + '</td>' +
 		    		'<td>' + data.level + '</td>' +
