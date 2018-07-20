@@ -1,5 +1,5 @@
 theLocalhostUrl = 'http://localhost:8080/ladders';
-theHostedSiteUrl = 'http://immense-headland-50105.herokuapp.com/ladders';
+theHostedSiteUrl = 'https://immense-headland-50105.herokuapp.com/ladders';
 
 $(document).ready(function() {
 	console.log("index.html loaded.")
@@ -13,7 +13,7 @@ $("#selectLeagueInputGroup").change(function(){
 
 var getLeagueData = function(selectedLeague) {
     $.ajax({
-        url: theLocalhostUrl,
+        url: theHostedSiteUrl,
         type: 'GET',
         dataType: "json",
         data : {
@@ -24,7 +24,7 @@ var getLeagueData = function(selectedLeague) {
             populateLeagueTable(results);
         },
         error: function(error) {
-            showToastr("getLeagueData error : " + error, "error");
+            console.log("getLeagueData error : " + error.responseJSON.message, "error");
         }
     });
 };
@@ -41,6 +41,7 @@ var populateLeagueTable = function(results) {
 	            '<tr>' +
 		    		'<td>' + data.rank + '</td>' +
 		    		'<td>' + data.character + '</td>' +
+		    		'<td>' + data.dead + '</td>' +
 		    		'<td>' + data.account + '</td>' +
 		    		'<td>' + data.level + '</td>' +
 		    		'<td>' + data.theClass + '</td>' +

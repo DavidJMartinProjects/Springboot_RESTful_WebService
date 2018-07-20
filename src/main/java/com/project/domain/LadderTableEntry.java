@@ -4,10 +4,10 @@ public class LadderTableEntry {
 	
 	private String rank;
 	private String character;
+	private String dead;
 	private String account;
 	private String level;
 	private String theClass;
-	private String skill;
 	private String experience;
 	private String challenges;
 	
@@ -51,14 +51,6 @@ public class LadderTableEntry {
 		this.theClass = theClass;
 	}
 	
-	public String getSkill() {
-		return skill;
-	}
-	
-	public void setSkill(String skill) {
-		this.skill = skill;
-	}
-	
 	public String getExperience() {
 		return experience;
 	}
@@ -75,11 +67,18 @@ public class LadderTableEntry {
 		this.challenges = challenges;
 	}
 	
+	public String getDead() {
+		return dead;
+	}
+
+	public void setDead(String dead) {
+		this.dead = dead;
+	}
+
 	@Override
 	public String toString() {
-		return "LadderTableEntry [rank=" + rank + ", character=" + character + ", account=" + account + ", level="
-				+ level + ", theClass=" + theClass + ", skill=" + skill + ", experience=" + experience + ", challenges="
-				+ challenges + "]";
+		return "LadderTableEntry [rank=" + rank + ", character=" + character + ", status=" + dead + ", account="
+				+ account + ", level=" + level + ", theClass=" + theClass + ", experience="	+ experience + ", challenges=" + challenges + "]";
 	}
 	
 }
