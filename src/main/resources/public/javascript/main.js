@@ -11,9 +11,17 @@ $("#selectLeagueInputGroup").change(function(){
     getLeagueData(selected);
 });
 
+$("#showStatsButton").click(function() {
+	console.log("loading drawLevelChart()");
+    var selected = $('#selectLeagueInputGroup option:selected').val();
+    console.log("Selected League : " + selected);      
+    getLeagueData(selected);
+	drawLevelChart(selected);
+});
+
 var getLeagueData = function(selectedLeague) {
     $.ajax({
-        url: theLocalhostUrl,
+        url: theHostedSiteUrl,
         type: 'GET',
         dataType: "json",
         data : {
@@ -63,17 +71,74 @@ var populateLeagueTable = function(results) {
     });
     
     $('#leagueInfoTable').DataTable({        
-//        searching: true,
-//        deferRender: true,
-//        scrollY: 310,
-//        scrollCollapse: true,
-//        scroller: true
     	"iDisplayLength": 50,
     	fixedHeader: true
     });
- 
-    $('#exampleModalCenter').on('click', function() {
-		$('#myInput').trigger('focus');
-		console.log("clicked!");
-	})
+
 };
+
+var drawLevelChart = function(selectedLeague) {
+    $.ajax({
+        url: theHostedSiteUrl +'/charts',
+        type: 'GET',
+        dataType: "json",
+        data : {
+        	league : selectedLeague 
+        },
+        success: function(results) {
+        	console.log("inside getLevelChartData() success : ");
+        	populateLevelChart(results);
+        },
+        error: function(error) {
+            console.log("getLeagueData error : " + error.responseJSON.message, "error");
+        }
+    });
+}
+
+var populateLevelChart = function(results) { 
+	console.log("inside populateLevelChart()");	
+	
+	var theDataPoints = [];
+	var addData = function(data) {
+		for (var i = 0; i < data.length; i++) {
+			console.log("level : " +data[i].frequency);
+			console.log("frequency : " +data[i].level);
+			theDataPoints.push({
+				x: "Level " + data[i].frequency,
+				y: parseInt(data[i].level)
+			});
+		}
+	}
+	addData(results);	
+	
+	var chart = new CanvasJS.Chart("chartContainer", {
+		theme: "light2",
+		exportFileName: "Doughnut Chart",
+		exportEnabled: false,
+		animationEnabled: true,
+		title:{
+			text: "Top 200 - Level Breakdown"
+		},
+		legend:{
+			cursor: "pointer",
+			itemclick: explodePie
+		},
+		data: [{
+			type: "doughnut",
+			toolTipContent: "<b>Level </b>: {y} <br> <b>Percentage {level}</b>: {level} - #percent%",
+			indexLabel: "Level {y} " + "{level} - #percent%",
+			dataPoints: theDataPoints
+		}]
+	});
+	chart.render();
+
+	function explodePie (e) {
+		if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+			e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+		} else {
+			e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+		}
+		e.chart.render();
+	}	
+
+}

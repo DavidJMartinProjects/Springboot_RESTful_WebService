@@ -25,7 +25,7 @@ var drawLevelChart = function(selectedLeague) {
 }
 
 var populateLevelChart = function(results) { 
-	console.log("inside populateLevelChart()");
+	console.log("inside populateLevelChart()");	
 	
 	var theDataPoints = [];
 	var addData = function(data) {
@@ -38,41 +38,7 @@ var populateLevelChart = function(results) {
 			});
 		}
 	}
-	
-	addData(results);
-	
-//	var theLabels = [];
-//	var theData = [];
-//	var i = 0;
-//		 
-//    results.forEach(function(data) {
-//		console.log("inside populateLevelChart() for loop");		
-//		console.log("frequency" + data.frequency);
-//		theLabels[i] = "Level " + data.level;
-//		theData[i] = data.frequency;
-//		i++;
-//	});
-	
-	console.log("outside populateLevelChart() for loop");
-	
-//	new Chart(document.getElementById("doughnut-chart"), {
-//		type : 'doughnut',
-//		data : {
-//			labels : theLabels,
-//			datasets : [ {
-//				label : "Population (millions)",
-//				backgroundColor : [ "#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9",
-//						"#c45850" ],
-//				data : theData
-//			} ]
-//		},
-//		options : {
-//			title : {
-//				display : true,
-//				text : 'Top 200 Characters Level Breakdown'
-//			}
-//		}
-//	});
+	addData(results);	
 	
 	var chart = new CanvasJS.Chart("chartContainer", {
 		theme: "dark2",
@@ -88,7 +54,6 @@ var populateLevelChart = function(results) {
 		},
 		data: [{
 			type: "doughnut",
-//			showInLegend: true,	
 			toolTipContent: "<b>Level </b>: {y} <br> <b>Percentage {level}</b>: {level} - #percent%",
 			indexLabel: "Level {y} " + "{level} - #percent%",
 			dataPoints: theDataPoints
@@ -104,4 +69,6 @@ var populateLevelChart = function(results) {
 		}
 		e.chart.render();
 	}
+	
+
 }
