@@ -16,7 +16,8 @@ $("#showStatsButton").click(function() {
 	console.log("loading drawLevelChart()");
     var selected = $('#selectLeagueInputGroup option:selected').val();
     console.log("Selected League : " + selected);  
-    loadingModalAnimation();
+    $('#exampleModalLongTitle').text(selected + " League Stats");
+    loadingModalAnimation(selected);
 	drawLevelChart(selected);
 });
 
@@ -147,7 +148,9 @@ var populateLevelChart = function(results) {
 
 function loadingTableAnimation() {
     var x = document.getElementById("loadingAnimation");
-    var y = document.getElementById("leagueInfoTableContainer");    
+    var y = document.getElementById("leagueInfoTableContainer");   
+
+    
     
     if (x.style.display === "none") {
         x.style.display = "block";
