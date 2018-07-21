@@ -87,8 +87,9 @@ var populateLevelChart = function(results) {
 			itemclick: explodePie
 		},
 		data: [{
-			type: "doughnut",			
-			toolTipContent: "<b>Level {level}</b>: ${y} (#percent%)",
+			type: "doughnut",
+//			showInLegend: true,	
+			toolTipContent: "<b>Level </b>: {y} <br> <b>Percentage {level}</b>: {level} - #percent%",
 			indexLabel: "Level {y} " + "{level} - #percent%",
 			dataPoints: theDataPoints
 		}]
