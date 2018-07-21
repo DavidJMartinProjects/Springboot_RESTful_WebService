@@ -72,4 +72,8 @@ var populateLeagueTable = function(results) {
     	fixedHeader: true
     });
  
+    $('#exampleModalCenter').on('click', function() {
+		$('#myInput').trigger('focus');
+		console.log("clicked!");
+	})
 };
