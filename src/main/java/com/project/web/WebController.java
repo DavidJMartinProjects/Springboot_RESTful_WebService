@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.business.ChartService;
 import com.project.business.LeagueService;
+import com.project.domain.chart.LevelChartData;
 import com.project.domain.datatable.LadderTableEntry;
 @CrossOrigin
 @RestController
@@ -23,7 +24,7 @@ public class WebController {
     }
 	
 	@RequestMapping(value = "/charts", method = RequestMethod.GET, produces = { "application/json" })	
-    public Map<String, String> getlevelChartData(@RequestParam(value="league") String league) {
+    public List<LevelChartData> getlevelChartData(@RequestParam(value="league") String league) {
         return new ChartService().getLevelChartData(league);
     }
 

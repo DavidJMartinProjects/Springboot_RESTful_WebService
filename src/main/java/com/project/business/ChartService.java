@@ -15,7 +15,7 @@ import com.project.domain.ladder.Ladder;
 
 public class ChartService {
 	
-	public Map<String, String> getLevelChartData(String league) {
+	public List<LevelChartData> getLevelChartData(String league) {
 		
 		List<LevelChartData> theDataList = new ArrayList<>();		
 		Map<String, String> levelCount = new TreeMap<>();	
@@ -26,9 +26,8 @@ public class ChartService {
 		
 		for (Entries anEntry : response.getBody().getEntries()) {					
 			if(levelCount.containsKey(anEntry.getCharacter().getLevel())) {
-				Integer theCount = Integer.parseInt(levelCount.get(anEntry.getCharacter().getLevel()));
-				theCount++;
-				levelCount.put(anEntry.getCharacter().getLevel(),Integer.toString(theCount));
+				Integer theCount = Integer.parseInt(levelCount.get(anEntry.getCharacter().getLevel()));				
+				levelCount.put(anEntry.getCharacter().getLevel(),Integer.toString(++theCount));
 			} else {
 				levelCount.put(anEntry.getCharacter().getLevel(), "1");
 			}
@@ -41,7 +40,7 @@ public class ChartService {
 			levelChartData.setFrequency((entry.getValue().toString()));
 			theDataList.add(levelChartData);
 		}
-		return levelCount;
+		return theDataList;
 	}	
 	
 }
