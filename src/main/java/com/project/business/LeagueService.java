@@ -6,9 +6,9 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import com.project.domain.Entries;
-import com.project.domain.LadderTableEntry;
-import com.project.domain.Ladder;
+import com.project.domain.datatable.LadderTableEntry;
+import com.project.domain.ladder.Entries;
+import com.project.domain.ladder.Ladder;
 
 public class LeagueService {
 

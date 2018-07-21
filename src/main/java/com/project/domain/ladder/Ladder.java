@@ -1,4 +1,4 @@
-package com.project.domain;
+package com.project.domain.ladder;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
