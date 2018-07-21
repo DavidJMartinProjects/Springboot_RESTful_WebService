@@ -7,21 +7,23 @@ $(document).ready(function() {
 
 $("#selectLeagueInputGroup").change(function(){
     var selected = $('#selectLeagueInputGroup option:selected').val();
-    console.log("Selected League : " + selected);      
+    console.log("Selected League : " + selected); 
+    loadingTableAnimation();
     getLeagueData(selected);
 });
 
 $("#showStatsButton").click(function() {
 	console.log("loading drawLevelChart()");
     var selected = $('#selectLeagueInputGroup option:selected').val();
-    console.log("Selected League : " + selected);      
-    getLeagueData(selected);
+    console.log("Selected League : " + selected);  
+    loadingModalAnimation();
 	drawLevelChart(selected);
 });
 
 var getLeagueData = function(selectedLeague) {
+    
     $.ajax({
-        url: theHostedSiteUrl,
+        url: theLocalhostUrl,
         type: 'GET',
         dataType: "json",
         data : {
@@ -29,6 +31,7 @@ var getLeagueData = function(selectedLeague) {
         },
         success: function(results) {
         	console.log(results)
+        	loadingTableAnimation();
             populateLeagueTable(results);
         },
         error: function(error) {
@@ -48,8 +51,7 @@ var populateLeagueTable = function(results) {
     	var character = data.character;
     	if(data.dead == "true") {
     		character += " <i id='deadStatus'>(dead)</i>";
-    	}
-    	
+    	}    	
     	var account = "";
     	if(data.online == "true") {
     		account = "<img class='img-valign' src='/images/green-icon.png' title='online' />   " + data.account;
@@ -58,28 +60,28 @@ var populateLeagueTable = function(results) {
     	}
     	
 	    $('#leagueInfoTable tbody').append(
-	            '<tr>' +
-		    		'<td>' + data.rank + '</td>' +
-		    		'<td>' + account + '</td>' +
-		    		'<td>' + character + '</td>' +
-		    		'<td>' + data.level + '</td>' +
-		    		'<td>' + data.theClass + '</td>' +
-		    		'<td>' + data.challenges + '</td>' +
-		    		'<td>' + data.experience + '</td>' +
-	    		'</tr>'
+            '<tr>' +
+	    		'<td>' + data.rank + '</td>' +
+	    		'<td>' + account + '</td>' +
+	    		'<td>' + character + '</td>' +
+	    		'<td>' + data.level + '</td>' +
+	    		'<td>' + data.theClass + '</td>' +
+	    		'<td>' + data.challenges + '</td>' +
+	    		'<td>' + data.experience + '</td>' +
+    		'</tr>'
 	     );
     });
     
     $('#leagueInfoTable').DataTable({        
     	"iDisplayLength": 50,
     	fixedHeader: true
-    });
-
+    });    
+    $("leagueInfoTableContainer").show();
 };
 
 var drawLevelChart = function(selectedLeague) {
     $.ajax({
-        url: theHostedSiteUrl +'/charts',
+        url: theLocalhostUrl +'/charts',
         type: 'GET',
         dataType: "json",
         data : {
@@ -87,7 +89,8 @@ var drawLevelChart = function(selectedLeague) {
         },
         success: function(results) {
         	console.log("inside getLevelChartData() success : ");
-        	populateLevelChart(results);
+        	loadingModalAnimation();
+        	populateLevelChart(results);        	
         },
         error: function(error) {
             console.log("getLeagueData error : " + error.responseJSON.message, "error");
@@ -96,7 +99,7 @@ var drawLevelChart = function(selectedLeague) {
 }
 
 var populateLevelChart = function(results) { 
-	console.log("inside populateLevelChart()");	
+	console.log("inside populateLevelChart()");
 	
 	var theDataPoints = [];
 	var addData = function(data) {
@@ -139,6 +142,31 @@ var populateLevelChart = function(results) {
 			e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
 		}
 		e.chart.render();
-	}	
+	}
+}
 
+function loadingTableAnimation() {
+    var x = document.getElementById("loadingAnimation");
+    var y = document.getElementById("leagueInfoTableContainer");    
+    
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        y.style.display = "none";
+    } else {
+        x.style.display = "none";
+        y.style.display = "block";
+    }
+}
+
+function loadingModalAnimation() {
+    var x = document.getElementById("loadingModalAnimation");
+    var y = document.getElementById("chartContainer");    
+    
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        y.style.display = "none";        
+    } else {
+        x.style.display = "none";
+        y.style.display = "block";
+    }
 }
