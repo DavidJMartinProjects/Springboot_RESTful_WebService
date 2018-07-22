@@ -3,6 +3,14 @@ var theHostedSiteUrl = 'https://immense-headland-50105.herokuapp.com/ladders';
 
 $(document).ready(function() {
 	console.log("index.html loaded.")
+	
+	var table = $('#leagueInfoTable').DataTable( {
+
+	});
+	
+	new $.fn.dataTable.FixedHeader( table );
+	
+  
 });
 
 $("#selectLeagueInputGroup").change(function(){
@@ -71,13 +79,13 @@ var populateLeagueTable = function(results) {
 	    		'<td>' + data.experience + '</td>' +
     		'</tr>'
 	     );
-    });
-    
-    $('#leagueInfoTable').DataTable({        
-    	"iDisplayLength": 50,
-    	fixedHeader: true
-    });    
-    $("leagueInfoTableContainer").show();
+    });  
+    		
+	var table = $('#leagueInfoTable').DataTable( {
+	    "iDisplayLength" : 50,
+		responsive : true
+	});	
+	new $.fn.dataTable.FixedHeader( table );
 };
 
 var drawLevelChart = function(selectedLeague) {
