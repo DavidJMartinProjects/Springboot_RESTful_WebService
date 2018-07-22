@@ -4,18 +4,57 @@ var theHostedSiteUrl = 'https://immense-headland-50105.herokuapp.com/ladders';
 $(document).ready(function() {
 	console.log("index.html loaded.")
 	
-	var table = $('#leagueInfoTable').DataTable( {
+	var table = $('#leagueInfoTable').DataTable({});	
+	new $.fn.dataTable.FixedHeader( table );  
 
+
+	toastr.success("<center><b>Please note : </b> <i>www.poe-racing.com</i> is currently in pre-Alpha testing.<br>  Not all intended features have been implemented to this version. </center>", 
+			null, {"iconClass": 'customer-info',
+		  "closeButton": false,
+		  "debug": false,
+		  "newestOnTop": true,
+		  "progressBar": true,
+		  "positionClass": "toast-bottom-center",
+		  "preventDuplicates": false,
+		  "onclick": null,
+		  "showDuration": "300",
+		  "hideDuration": "1000",
+		  "timeOut": "8000",
+		  "extendedTimeOut": "1000",
+		  "showEasing": "swing",
+		  "hideEasing": "linear",
+		  "showMethod": "fadeIn",
+		  "hideMethod": "fadeOut",	
+	})
 	});
-	
-	new $.fn.dataTable.FixedHeader( table );
-	
-  
-});
 
 $("#selectLeagueInputGroup").change(function(){
+	
     var selected = $('#selectLeagueInputGroup option:selected').val();
     console.log("Selected League : " + selected); 
+    toastr.remove();
+    if(selected == "Select a league or race...") {  
+
+    	toastr.success("<center>Select a league or race... </center>", 
+    			null, {"iconClass": 'customer-info',
+    		  "closeButton": false,
+    		  "debug": false,
+    		  "newestOnTop": true,
+    		  "positionClass": "toast-top-center",
+    		  "preventDuplicates": true,
+    		  "onclick": null,
+    		  "showDuration": "300",
+    		  "hideDuration": "1000",
+    		  "timeOut": "2000",
+    		  "extendedTimeOut": "1000",
+    		  "showEasing": "swing",
+    		  "hideEasing": "linear",
+    		  "showMethod": "fadeIn",
+    		  "hideMethod": "fadeOut",
+    	
+    	})  
+    	return false;
+    }
     loadingTableAnimation();
     getLeagueData(selected);
 });
@@ -23,7 +62,30 @@ $("#selectLeagueInputGroup").change(function(){
 $("#showStatsButton").click(function() {
 	console.log("loading drawLevelChart()");
     var selected = $('#selectLeagueInputGroup option:selected').val();
-    console.log("Selected League : " + selected);  
+    console.log("Selected League : " + selected); 
+    toastr.remove();
+    if(selected == "Select a league or race...") {    	
+        	toastr.success("<center>Select a league or race...</center>", 
+        			null, {"iconClass": 'customer-info',
+        		  "closeButton": false,
+        		  "debug": false,
+        		  "newestOnTop": true,
+        		  "positionClass": "toast-top-center",
+        		  "preventDuplicates": true,
+        		  "onclick": null,
+        		  "showDuration": "300",
+        		  "hideDuration": "1000",
+        		  "timeOut": "2000",
+        		  "extendedTimeOut": "1000",
+        		  "showEasing": "swing",
+        		  "hideEasing": "linear",
+        		  "showMethod": "fadeIn",
+        		  "hideMethod": "fadeOut",
+        		  
+        	
+        	})  
+    	return false;
+    }
     $('#exampleModalLongTitle').text(selected + " League Stats");
     loadingModalAnimation(selected);
 	drawLevelChart(selected);
@@ -32,7 +94,7 @@ $("#showStatsButton").click(function() {
 var getLeagueData = function(selectedLeague) {
     
     $.ajax({
-        url: theHostedSiteUrl,
+        url: theLocalhostUrl,
         type: 'GET',
         dataType: "json",
         data : {
@@ -90,7 +152,7 @@ var populateLeagueTable = function(results) {
 
 var drawLevelChart = function(selectedLeague) {
     $.ajax({
-        url: theHostedSiteUrl +'/charts',
+        url: theLocalhostUrl +'/charts',
         type: 'GET',
         dataType: "json",
         data : {
@@ -155,10 +217,9 @@ var populateLevelChart = function(results) {
 }
 
 function loadingTableAnimation() {
-    var x = document.getElementById("loadingAnimation");
-    var y = document.getElementById("leagueInfoTableContainer");   
-
-    
+	console.log("loadingTableAnimation");
+    var x = document.getElementById("tableLoadingAnimation");
+    var y = document.getElementById("leagueInfoTableContainer");      
     
     if (x.style.display === "none") {
         x.style.display = "block";
@@ -170,7 +231,7 @@ function loadingTableAnimation() {
 }
 
 function loadingModalAnimation() {
-    var x = document.getElementById("loadingModalAnimation");
+    var x = document.getElementById("modalLoadingAnimation");
     var y = document.getElementById("chartContainer");    
     
     if (x.style.display === "none") {

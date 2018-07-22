@@ -1,4 +1,4 @@
-package com.project.business;
+package com.project.controller;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
