@@ -80,8 +80,7 @@ $("#showStatsButton").click(function() {
         		  "showEasing": "swing",
         		  "hideEasing": "linear",
         		  "showMethod": "fadeIn",
-        		  "hideMethod": "fadeOut",
-        		  
+        		  "hideMethod": "fadeOut",  
         	
         	})  
     	return false;
@@ -94,7 +93,7 @@ $("#showStatsButton").click(function() {
 var getLeagueData = function(selectedLeague) {
     
     $.ajax({
-        url: theLocalhostUrl,
+        url: theHostedSiteUrl,
         type: 'GET',
         dataType: "json",
         data : {
@@ -152,7 +151,7 @@ var populateLeagueTable = function(results) {
 
 var drawLevelChart = function(selectedLeague) {
     $.ajax({
-        url: theLocalhostUrl +'/charts',
+        url: theHostedSiteUrl +'/charts',
         type: 'GET',
         dataType: "json",
         data : {
