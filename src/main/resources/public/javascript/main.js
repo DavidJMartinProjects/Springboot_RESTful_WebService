@@ -8,7 +8,7 @@ $(document).ready(function() {
 	new $.fn.dataTable.FixedHeader( table );  
 
 
-	toastr.success("<center><b>Please note : </b> <i>www.poe-racing.com</i> is currently in pre-Alpha testing.<br>  Not all intended features have been implemented to this version. </center>", 
+	toastr.success("<center><b>Please note : </b> <i>www.poe-ladder.com</i> is currently in pre-Alpha testing.<br>  Not all intended features have been implemented to this version. </center>", 
 			null, {"iconClass": 'customer-info',
 		  "closeButton": false,
 		  "debug": false,
