@@ -19,6 +19,7 @@
 }
 
 .img-valign {
+	height: 50%;
 }
 
 #loadingAnimation {
@@ -378,3 +379,8 @@ span.choose {
 	outline: 0;
 }
 /*End of Styling Selectbox*/
+
+.dataTables_wrapper {
+    font-size: 14px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
