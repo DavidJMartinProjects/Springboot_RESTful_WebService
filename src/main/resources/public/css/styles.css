@@ -270,12 +270,7 @@ table.dataTable tbody th, table.dataTable tbody td {
 }
 
 .toast .toast-message {
-
-
-
 }
-
-/* end of icon */
 
 /* start of dropdown */
 
@@ -301,7 +296,7 @@ span.choose {
   display: inline-block;
   background-color: #fff;
   border-radius: 5px;
-  box-shadow: 0 0 2px rgb(204, 204, 204);
+  box-shadow: 0 0 2px black;
   transition: all .5s ease;
   position: relative;
   font-size: 14px;
@@ -313,7 +308,7 @@ span.choose {
     cursor: pointer;
     display: block;
     padding: 10px;
-        color: #888;
+        color: #000000;
 }
 .dropdown .select > i {
     font-size: 13px;

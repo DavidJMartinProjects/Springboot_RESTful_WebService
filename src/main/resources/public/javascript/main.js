@@ -34,30 +34,6 @@ $("ul[id*=dropdownList] li").click(function () {
 });
 
 var getleagueTable = function(selectedleague){	
-    toastr.remove();
-    if(selectedleague == "Select a league or race...") {  
-
-    	toastr.success("<center>Select a league or race... </center>", 
-    			null, {"iconClass": 'customer-info',
-    		  "closeButton": true,
-    		  "debug": false,
-    		  "newestOnTop": true,
-    		  "positionClass": "toast-top-center",
-    		  "preventDuplicates": true,
-    		  "onclick": null,
-    		  "showDuration": "300",
-    		  "hideDuration": "1000",
-    		  "timeOut": "2000",
-    		  "extendedTimeOut": "1000",
-    		  "showEasing": "swing",
-    		  "hideEasing": "linear",
-    		  "showMethod": "fadeIn",
-    		  "hideMethod": "fadeOut",
-    		  "tapToDismiss": false,
-    	
-    	})  
-    	return false;
-    }
     loadingTableAnimation();
     getLeagueDataTable(selectedleague);
 }
@@ -73,7 +49,7 @@ $("#showStatsButton").click(function() {
         		  "debug": false,
         		  "newestOnTop": true,
         		  "positionClass": "toast-top-center",
-        		  "preventDuplicates": true,
+        		  "preventDuplicates": false,
         		  "onclick": null,
         		  "showDuration": "300",
         		  "hideDuration": "1000",
