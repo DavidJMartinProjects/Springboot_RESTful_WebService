@@ -7,16 +7,16 @@ $(document).ready(function() {
 	var table = $('#leagueInfoTable').DataTable({});	
 	new $.fn.dataTable.FixedHeader( table );  
 
-	toastr.success("<center><b>Please note : </b> <i>www.poe-ladder.com</i> is currently in pre-Alpha testing.<br>  Not all intended features have been implemented to this version. </center>", 
+	toastr.success("<b>Please note: </b> <i>www.poe-ladder.com</i> is currently in pre-Alpha testing.<br>  Not all intended features have been implemented to this version.", 
 			null, {"iconClass": 'customer-info',
 		  "closeButton": false,
 		  "debug": false,
 		  "newestOnTop": true,
-		  "progressBar": true,
+		  "progressBar": false,
 		  "positionClass": "toast-bottom-center",
 		  "preventDuplicates": false,
 		  "onclick": null,
-		  "showDuration": "300",
+		  "showDuration": "1000",
 		  "hideDuration": "1000",
 		  "timeOut": "8000",
 		  "extendedTimeOut": "1000",
@@ -39,7 +39,7 @@ var getleagueTable = function(selectedleague){
 
     	toastr.success("<center>Select a league or race... </center>", 
     			null, {"iconClass": 'customer-info',
-    		  "closeButton": false,
+    		  "closeButton": true,
     		  "debug": false,
     		  "newestOnTop": true,
     		  "positionClass": "toast-top-center",
@@ -53,6 +53,7 @@ var getleagueTable = function(selectedleague){
     		  "hideEasing": "linear",
     		  "showMethod": "fadeIn",
     		  "hideMethod": "fadeOut",
+    		  "tapToDismiss": false,
     	
     	})  
     	return false;
@@ -66,7 +67,7 @@ $("#showStatsButton").click(function() {
     console.log("Selected League : " + selectedLeague); 
     toastr.remove();
     if(selectedLeague == "") {    	
-        	toastr.success("<center>Select a league or race...</center>", 
+        	toastr.success("Select a league or race...", 
         			null, {"iconClass": 'customer-info',
         		  "closeButton": false,
         		  "debug": false,
@@ -76,13 +77,13 @@ $("#showStatsButton").click(function() {
         		  "onclick": null,
         		  "showDuration": "300",
         		  "hideDuration": "1000",
-        		  "timeOut": "2000",
+        		  "timeOut": "4000",
         		  "extendedTimeOut": "1000",
         		  "showEasing": "swing",
         		  "hideEasing": "linear",
         		  "showMethod": "fadeIn",
         		  "hideMethod": "fadeOut",  
-        	
+        		  "tapToDismiss": false,        	
         	})  
     	return false;
     }

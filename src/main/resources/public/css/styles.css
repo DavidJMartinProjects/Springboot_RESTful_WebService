@@ -252,14 +252,27 @@ table.dataTable tbody th, table.dataTable tbody td {
 }
 
 #toast-container.toast-top-center .toast,
-#toast-container.toast-top-right .toast {
-      margin-top: 6%;
-      width: 22%;
+#toast-container.toast-top-right .toast  {
+	margin-top: 6%;
+	  width: 12%;
+	padding: 5px;
+	font-size: .8em;
+	text-align: center;
 }
 
 #toast-container.toast-bottom-center .toast {
       margin-bottom: 6%;
       width: 30%;
+      	padding: 5px;
+	font-size: .8em;
+	text-align: center;
+
+}
+
+.toast .toast-message {
+
+
+
 }
 
 /* end of icon */
@@ -268,8 +281,8 @@ table.dataTable tbody th, table.dataTable tbody td {
 
 body {
     /*  background-color: #fafafa;*/ 
-
 }
+
 span.msg,
 span.choose {
   color: #555;
