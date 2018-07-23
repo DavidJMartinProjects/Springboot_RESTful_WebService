@@ -120,7 +120,7 @@ var populateLeagueTable = function(results) {
     });  
     		
 	var table = $('#leagueInfoTable').DataTable( {
-	    "iDisplayLength" : 50,
+	    "iDisplayLength" : 100,
 		responsive : true
 	});	
 	new $.fn.dataTable.FixedHeader( table );
