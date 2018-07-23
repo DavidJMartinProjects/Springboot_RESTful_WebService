@@ -1,6 +1,6 @@
 var theLocalhostUrl = 'http://localhost:8080/ladders';
 var theHostedSiteUrl = 'https://immense-headland-50105.herokuapp.com/ladders';
-var selectedLeague;
+var selectedLeague = "";
 
 $(document).ready(function() {
 	console.log("index.html loaded.")	
@@ -65,7 +65,7 @@ $("#showStatsButton").click(function() {
 	console.log("loading drawLevelChart() for : " + selectedLeague);
     console.log("Selected League : " + selectedLeague); 
     toastr.remove();
-    if(selectedLeague == "Select a league or race...") {    	
+    if(selectedLeague == "") {    	
         	toastr.success("<center>Select a league or race...</center>", 
         			null, {"iconClass": 'customer-info',
         		  "closeButton": false,
