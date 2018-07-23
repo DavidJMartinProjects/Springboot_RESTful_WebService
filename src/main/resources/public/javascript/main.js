@@ -1,12 +1,11 @@
 var theLocalhostUrl = 'http://localhost:8080/ladders';
 var theHostedSiteUrl = 'https://immense-headland-50105.herokuapp.com/ladders';
+var selectedLeague;
 
 $(document).ready(function() {
-	console.log("index.html loaded.")
-	
+	console.log("index.html loaded.")	
 	var table = $('#leagueInfoTable').DataTable({});	
 	new $.fn.dataTable.FixedHeader( table );  
-
 
 	toastr.success("<center><b>Please note : </b> <i>www.poe-ladder.com</i> is currently in pre-Alpha testing.<br>  Not all intended features have been implemented to this version. </center>", 
 			null, {"iconClass": 'customer-info',
@@ -26,14 +25,17 @@ $(document).ready(function() {
 		  "showMethod": "fadeIn",
 		  "hideMethod": "fadeOut",	
 	})
-	});
+});
 
-$("#selectLeagueInputGroup").change(function(){
-	
-    var selected = $('#selectLeagueInputGroup option:selected').val();
-    console.log("Selected League : " + selected); 
+$("ul[id*=dropdownList] li").click(function () {	
+	console.log($(this).text()); // gets text contents of clicked li
+	selectedLeague = $(this).text();
+	getleagueTable(selectedLeague);
+});
+
+var getleagueTable = function(selectedleague){	
     toastr.remove();
-    if(selected == "Select a league or race...") {  
+    if(selectedleague == "Select a league or race...") {  
 
     	toastr.success("<center>Select a league or race... </center>", 
     			null, {"iconClass": 'customer-info',
@@ -56,15 +58,14 @@ $("#selectLeagueInputGroup").change(function(){
     	return false;
     }
     loadingTableAnimation();
-    getLeagueData(selected);
-});
+    getLeagueDataTable(selectedleague);
+}
 
 $("#showStatsButton").click(function() {
-	console.log("loading drawLevelChart()");
-    var selected = $('#selectLeagueInputGroup option:selected').val();
-    console.log("Selected League : " + selected); 
+	console.log("loading drawLevelChart() for : " + selectedLeague);
+    console.log("Selected League : " + selectedLeague); 
     toastr.remove();
-    if(selected == "Select a league or race...") {    	
+    if(selectedLeague == "Select a league or race...") {    	
         	toastr.success("<center>Select a league or race...</center>", 
         			null, {"iconClass": 'customer-info',
         		  "closeButton": false,
@@ -85,15 +86,14 @@ $("#showStatsButton").click(function() {
         	})  
     	return false;
     }
-    $('#exampleModalLongTitle').text(selected + " League Stats");
-    loadingModalAnimation(selected);
-	drawLevelChart(selected);
+    $('#exampleModalLongTitle').text(selectedLeague + " League Stats");
+    loadingModalAnimation(selectedLeague);
+	drawLevelChart(selectedLeague);
 });
 
-var getLeagueData = function(selectedLeague) {
-    
+var getLeagueDataTable = function(selectedLeague) {    
     $.ajax({
-        url: theHostedSiteUrl,
+        url: theLocalhostUrl,
         type: 'GET',
         dataType: "json",
         data : {
@@ -151,7 +151,7 @@ var populateLeagueTable = function(results) {
 
 var drawLevelChart = function(selectedLeague) {
     $.ajax({
-        url: theHostedSiteUrl +'/charts',
+        url: theLocalhostUrl +'/charts',
         type: 'GET',
         dataType: "json",
         data : {
@@ -241,3 +241,22 @@ function loadingModalAnimation() {
         y.style.display = "block";
     }
 }
+
+/*Dropdown Menu*/
+$('.dropdown').click(function () {
+        $(this).attr('tabindex', 1).focus();
+        $(this).toggleClass('active');
+        $(this).find('.dropdown-menu').slideToggle(300);
+});
+
+$('.dropdown').focusout(function() {
+	$(this).removeClass('active');
+	$(this).find('.dropdown-menu').slideUp(300);
+});
+
+$('.dropdown .dropdown-menu li').click(
+		function() {
+			$(this).parents('.dropdown').find('span').text($(this).text());
+			$(this).parents('.dropdown').find('input').attr('value',
+			$(this).attr('id'));
+});

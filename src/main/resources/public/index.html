@@ -31,19 +31,27 @@
 	<!-- Dropdown -->
 	<div class="container" id="dropdown_menu">
 		<div class="input-group mb-3 ">
-			<select class="custom-select form-control" id="selectLeagueInputGroup">
-				<option selected>Select a league or race...</option>
-				<option value="Incursion">Incursion</option>
-				<option value="Hardcore Incursion">Hardcore Incursion</option>
-				<option value="SSF Incursion">SSF Incursion</option>
-				<option value="SSF Incursion HC">SSF Incursion HC</option>
-			</select>
+			<div class="dropdown">
+				<div class="select" id="selectLeagueInputGroup">
+					<span>Select a league or race...</span> <i class="fa fa-chevron-left"></i>
+				</div>
+				<input type="hidden" name="gender">
+				<ul class="dropdown-menu" id="dropdownList">
+					<li id="Incursion">Incursion</li>
+					<li id="Hardcore Incursion">Hardcore Incursion</li>
+					<li id="SSF Incursion">SSF Incursion</li>
+					<li id="SSF Incursion HC">SSF Incursion HC</li>
+				</ul>
+			</div>
+			
 			<div class="input-group-append">
-		<button type="button" class="btn btn-secondary" data-toggle="modal"
-			data-target="#exampleModalCenter" id="showStatsButton">League Stats</button>
+				<button type="button" class="btn btn-secondary" data-toggle="modal"
+					data-target="#exampleModalCenter" id="showStatsButton">League
+					Statistics</button>
 			</div>
 		</div>
-		<span id="tableLoadingAnimation" style='display:none;'>
+
+		<span id="tableLoadingAnimation" style='display: none;'>
 			<div id="fountainG">
 				<div id="fountainG_1" class="fountainG"></div>
 				<div id="fountainG_2" class="fountainG"></div>
@@ -56,7 +64,7 @@
 			</div>
 		</span>
 	</div>
-	
+
 	<!-- Modal -->
 	<div class="container-fluid">
 		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -96,7 +104,6 @@
 			</div>
 		</div>
 	</div>
-	<br>
 
 	<!-- DataTable -->	
 	<div id="leagueInfoTableContainer" class="container-fluid"
