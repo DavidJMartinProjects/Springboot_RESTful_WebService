@@ -208,11 +208,15 @@ function loadingTableAnimation() {
     var y = document.getElementById("leagueInfoTableContainer");      
     
     if (x.style.display === "none") {
+//    	$("x").toggle();
+//    	$("y").toggle();
         x.style.display = "block";
-        y.style.display = "none";
+//        y.style.display = "none";
     } else {
+//    	$("x").toggle();
+//    	$("y").toggle();
         x.style.display = "none";
-        y.style.display = "block";
+//        y.style.display = "block";
     }
 }
 
