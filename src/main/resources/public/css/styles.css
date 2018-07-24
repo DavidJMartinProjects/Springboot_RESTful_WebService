@@ -7,8 +7,8 @@
 
 #dropdown_menu {
 	margin-top: 3%;
-
 }
+
 
 #showStatsButton {
 	  border-radius: 5px;
@@ -61,12 +61,8 @@ table.dataTable tbody th, table.dataTable tbody td {
 	margin:auto;
 }
 
-/* .pagination > li > a, .pagination > li > span{background-color:red}
-.pagination > li.active > a, .pagination > li.active > span{background-color:green} */
-
-.btn-light {
-	border : 10%;
-}
+.pagination > li > a, .pagination > li > span{color:#686F75}
+.pagination > li.active > a, .pagination > li.active > span{color:black;} 
 
 .fountainG{
 	position:absolute;
@@ -396,3 +392,16 @@ span.choose {
     font-size: 14px;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+      background: none;
+      color: black!important; /*change the hover text color*/
+    }
+
+
+    /*below block of css for change style when active*/
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:active {
+      background: none;
+      color: black!important;
+    }

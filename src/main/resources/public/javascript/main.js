@@ -41,6 +41,7 @@ var getleagueTable = function(selectedleague){
     loadingTableAnimation();
     getLeagueDataTable(selectedleague);
     $.fn.dataTable.ext.classes.sPageButton = 'button primary_button';
+    
 }
 
 $("#showStatsButton").click(function() {
@@ -127,7 +128,8 @@ var populateLeagueTable = function(results) {
     		
 	var table = $('#leagueInfoTable').DataTable( {
 	    "iDisplayLength" : 100,
-		responsive : true
+		responsive : true,
+		 "pagingType": "full_numbers"
 	});	
 	new $.fn.dataTable.FixedHeader( table );
 };
