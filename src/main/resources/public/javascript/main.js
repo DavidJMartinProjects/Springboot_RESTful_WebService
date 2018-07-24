@@ -4,6 +4,7 @@ var selectedLeague = "";
 
 $(document).ready(function() {
 	console.log("index.html loaded.")	
+
 	var table = $('#leagueInfoTable').DataTable({});	
 	new $.fn.dataTable.FixedHeader( table );  
 
@@ -30,12 +31,15 @@ $(document).ready(function() {
 $("ul[id*=dropdownList] li").click(function () {	
 	console.log($(this).text()); // gets text contents of clicked li
 	selectedLeague = $(this).text();
+	$("#tableLoadingAnimation").css('visibility', 'visible');
 	getleagueTable(selectedLeague);
+
 });
 
 var showStatsBtn = function() {
 	document.getElementById("showStatsButton").className = "btn btn-secondary";
 	document.getElementById('showStatsButton').disabled=false;
+	 $("#tableLoadingAnimation").css('visibility', 'hidden');
 }
 
 var getleagueTable = function(selectedleague){	
@@ -85,8 +89,10 @@ var getLeagueDataTable = function(selectedLeague) {
         },
         success: function(results) {
         	console.log(results)
-        	loadingTableAnimation();
+//        	loadingTableAnimation();
+
             populateLeagueTable(results);
+           
             showStatsBtn();
         },
         error: function(error) {
@@ -145,6 +151,7 @@ var drawLevelChart = function(selectedLeague) {
         },
         success: function(results) {
         	console.log("inside getLevelChartData() success : ");
+        	
         	loadingModalAnimation();
         	populateLevelChart(results);        	
         },
@@ -208,14 +215,20 @@ function loadingTableAnimation() {
     var y = document.getElementById("leagueInfoTableContainer");      
     
     if (x.style.display === "none") {
+     	$(".tableLoadingAnimation").css('visibility', 'visible');
+//	    x.css('visibility', 'visible');
+	    
 //    	$("x").toggle();
 //    	$("y").toggle();
-        x.style.display = "block";
+//        x.style.display = "block";
 //        y.style.display = "none";
     } else {
+     	$(".tableLoadingAnimation").css('visibility', 'hidden');
+
+	    
 //    	$("x").toggle();
 //    	$("y").toggle();
-        x.style.display = "none";
+//        x.style.display = "none";
 //        y.style.display = "block";
     }
 }
@@ -225,9 +238,13 @@ function loadingModalAnimation() {
     var y = document.getElementById("chartContainer");    
     
     if (x.style.display === "none") {
+     	$(".modalLoadingAnimation").css('visibility', 'hidden');
+
         x.style.display = "block";
         y.style.display = "none";        
     } else {
+    	$(".modalLoadingAnimation").css('visibility', 'hidden');
+
         x.style.display = "none";
         y.style.display = "block";
     }

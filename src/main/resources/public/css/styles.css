@@ -318,6 +318,10 @@ span.choose {
     padding: 10px;
         color: #000000;
 }
+
+#tableLoadingAnimation {	
+	visibility :hidden;
+}
 .dropdown .select > i {
     font-size: 13px;
     color: #888;
@@ -384,6 +388,7 @@ span.choose {
 /* remove blue outline glow  */
 * {
 	outline: 0;
+		
 }
 /*End of Styling Selectbox*/
 
