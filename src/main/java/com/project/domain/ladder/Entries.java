@@ -17,6 +17,20 @@ public class Entries {
 
 	@JsonProperty("online")
 	private String online;
+	
+	@JsonProperty("twitch")
+	private String twitch;
+	
+	
+	@JsonProperty("twitch")
+	public String getTwitch() {
+		return twitch;
+	}
+
+	@JsonProperty("twitch")
+	public void setTwitch(String twitch) {
+		this.twitch = twitch;
+	}
 
 	@JsonProperty("rank")
 	public String getRank() {
@@ -70,7 +84,9 @@ public class Entries {
 
 	@Override
 	public String toString() {
-		return "ClassPojo [rank = " + rank + ", account = " + account + ", dead = " + dead + ", character = "
-				+ character + ", online = " + online + "]";
+		return "Entries [rank=" + rank + ", account=" + account + ", dead=" + dead + ", character=" + character
+				+ ", online=" + online + ", twitch=" + twitch + "]";
 	}
+
+
 }

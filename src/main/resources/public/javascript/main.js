@@ -81,7 +81,7 @@ $("#showStatsButton").click(function() {
 
 var getLeagueDataTable = function(selectedLeague) {    
     $.ajax({
-        url: theHostedSiteUrl,
+        url: theLocalhostUrl,
         type: 'GET',
         dataType: "json",
         data : {
@@ -89,10 +89,7 @@ var getLeagueDataTable = function(selectedLeague) {
         },
         success: function(results) {
         	console.log(results)
-//        	loadingTableAnimation();
-
-            populateLeagueTable(results);
-           
+            populateLeagueTable(results);           
             showStatsBtn();
         },
         error: function(error) {
@@ -110,6 +107,7 @@ var populateLeagueTable = function(results) {
     
     results.forEach(function(data) {
     	var character = data.character;
+
     	if(data.dead == "true") {
     		character += " <i id='deadStatus'>(dead)</i>";
     	}    	
@@ -129,6 +127,7 @@ var populateLeagueTable = function(results) {
 	    		'<td>' + data.theClass + '</td>' +
 	    		'<td>' + data.challenges + '</td>' +
 	    		'<td>' + data.experience + '</td>' +
+	    		'<td>' + data.twitch + '</td>' +
     		'</tr>'
 	     );
     });  
@@ -143,7 +142,7 @@ var populateLeagueTable = function(results) {
 
 var drawLevelChart = function(selectedLeague) {
     $.ajax({
-        url: theHostedSiteUrl +'/charts',
+        url: theLocalhostUrl +'/charts',
         type: 'GET',
         dataType: "json",
         data : {

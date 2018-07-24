@@ -11,6 +11,7 @@ public class LadderTableEntry {
 	private String experience;
 	private String challenges;
 	private String online;
+	private String twitch;
 	
 	public String getRank() {
 		return rank;
@@ -83,12 +84,20 @@ public class LadderTableEntry {
 	public void setOnline(String online) {
 		this.online = online;
 	}
+	
+	public String getTwitch() {
+		return twitch;
+	}
+
+	public void setTwitch(String twitch) {
+		this.twitch = twitch;
+	}
 
 	@Override
 	public String toString() {
 		return "LadderTableEntry [rank=" + rank + ", character=" + character + ", dead=" + dead + ", account=" + account
 				+ ", level=" + level + ", theClass=" + theClass + ", experience=" + experience + ", challenges="
-				+ challenges + ", online=" + online + "]";
+				+ challenges + ", online=" + online + ", twitch=" + twitch + "]";
 	}
 	
 }

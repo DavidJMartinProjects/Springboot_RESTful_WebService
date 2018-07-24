@@ -29,6 +29,11 @@ public class LeagueService {
 			entry.setTheClass(anEntry.getCharacter().getTheClass());			
 			entry.setChallenges(anEntry.getAccount().getChallenges().getTotal());
 			entry.setExperience(anEntry.getCharacter().getExperience());
+			if (anEntry.getAccount().getTwitch() != null) {
+				entry.setTwitch(anEntry.getAccount().getTwitch().getName());
+			} else {
+				entry.setTwitch("");
+			}
 			tableEntries.add(entry);
 		}		
 		return tableEntries;
