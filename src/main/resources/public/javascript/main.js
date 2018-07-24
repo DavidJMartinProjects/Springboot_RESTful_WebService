@@ -35,6 +35,7 @@ $("ul[id*=dropdownList] li").click(function () {
 
 var showStatsBtn = function() {
 	document.getElementById("showStatsButton").className = "btn btn-secondary";
+	document.getElementById('showStatsButton').disabled=false;
 }
 
 var getleagueTable = function(selectedleague){	
