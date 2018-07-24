@@ -163,7 +163,8 @@ var populateLevelChart = function(results) {
 			console.log("frequency : " +data[i].level);
 			theDataPoints.push({
 				x: "Level " + data[i].frequency,
-				y: parseInt(data[i].level)
+				y: parseInt(data[i].level),
+				exploded: true
 			});
 		}
 	}
