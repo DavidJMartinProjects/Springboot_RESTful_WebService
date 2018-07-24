@@ -33,13 +33,14 @@ $("ul[id*=dropdownList] li").click(function () {
 	getleagueTable(selectedLeague);
 });
 
-//var showStatsBtn = function() {
-//	document.getElementById("showStatsButton").className = "btn btn-secondary";
-//}
+var showStatsBtn = function() {
+	document.getElementById("showStatsButton").className = "btn btn-secondary";
+}
 
 var getleagueTable = function(selectedleague){	
     loadingTableAnimation();
     getLeagueDataTable(selectedleague);
+    $.fn.dataTable.ext.classes.sPageButton = 'button primary_button';
 }
 
 $("#showStatsButton").click(function() {
@@ -84,7 +85,7 @@ var getLeagueDataTable = function(selectedLeague) {
         	console.log(results)
         	loadingTableAnimation();
             populateLeagueTable(results);
-//            showStatsBtn();
+            showStatsBtn();
         },
         error: function(error) {
             console.log("getLeagueData error : " + error.responseJSON.message, "error");

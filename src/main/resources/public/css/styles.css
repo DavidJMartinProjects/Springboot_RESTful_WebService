@@ -61,6 +61,13 @@ table.dataTable tbody th, table.dataTable tbody td {
 	margin:auto;
 }
 
+/* .pagination > li > a, .pagination > li > span{background-color:red}
+.pagination > li.active > a, .pagination > li.active > span{background-color:green} */
+
+.btn-light {
+	border : 10%;
+}
+
 .fountainG{
 	position:absolute;
 	top:0;
