@@ -143,16 +143,16 @@ var populateLeagueTable = function(results) {
 };
 
 var getTwitch = function(title){
-	$.getJSON("https://api.twitch.tv/kraken/search/streams?q="+title+"&limit=20&type=top&callback=?", function (data) {
-	    var temp = "";
-
-	    $.each(data.streams.slice(0,5), function (index, item) {
-	        temp = temp + "<a target='frame1' href='http://www.twitch.tv/widgets/live_embed_player.swf?channel=" + item.channel.name + "'><button>"+item.channel.display_name+"</button></a><br />";
-	    });
-	    console.log(temp);
-	    $("#StreamList").html(temp);
-	});
-	}
+//	$.getJSON("https://api.twitch.tv/kraken/search/streams?q="+title+"&limit=20&type=top&callback=?", function (data) {
+//	    var temp = "";
+//
+//	    $.each(data.streams.slice(0,5), function (index, item) {
+//	        temp = temp + "<a target='frame1' href='http://www.twitch.tv/widgets/live_embed_player.swf?channel=" + item.channel.name + "'><button>"+item.channel.display_name+"</button></a><br />";
+//	    });
+//	    console.log(temp);
+//	    $("#StreamList").html(temp);
+//	});
+}
 
 var drawLevelChart = function(selectedLeague) {
     $.ajax({
