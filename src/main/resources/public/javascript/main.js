@@ -33,7 +33,6 @@ $("ul[id*=dropdownList] li").click(function () {
 	selectedLeague = $(this).text();
 	$("#tableLoadingAnimation").css('visibility', 'visible');
 	getleagueTable(selectedLeague);
-
 });
 
 var showStatsBtn = function() {
@@ -45,8 +44,7 @@ var showStatsBtn = function() {
 var getleagueTable = function(selectedleague){	
     loadingTableAnimation();
     getLeagueDataTable(selectedleague);
-    $.fn.dataTable.ext.classes.sPageButton = 'button primary_button';
-    
+    $.fn.dataTable.ext.classes.sPageButton = 'button primary_button';    
 }
 
 $("#showStatsButton").click(function() {
@@ -118,8 +116,15 @@ var populateLeagueTable = function(results) {
     		account = "<img class='img-valign' src='/images/red-icon.png' title='offline' />   " + data.account;
     	}
     	
-    	getTwitch(data.twitch);
-    	
+    	var twitchLink;
+    	var twitchUrl = "https://www.twitch.tv/";
+    	twitchUrl += data.twitch;
+    	if(data.twitch != "") {
+    		twitchLink = "<a href='"+twitchUrl+"' target='_blank'><img src='/images/twitch-logo.png' class='twitch-logo' title='"+data.twitch+"' style='width:18px;height:18px;border:0;'></a>";
+    	} else {
+    		twitchLink = "";
+    	} 
+    	    	
 	    $('#leagueInfoTable tbody').append(
             '<tr>' +
 	    		'<td>' + data.rank + '</td>' +
@@ -127,9 +132,9 @@ var populateLeagueTable = function(results) {
 	    		'<td>' + character + '</td>' +
 	    		'<td>' + data.level + '</td>' +
 	    		'<td>' + data.theClass + '</td>' +
-	    		'<td>' + data.challenges + '</td>' +
+	    		'<td>' + data.challenges + '</td>' +	    		
 	    		'<td>' + data.experience + '</td>' +
-	    		'<td>' + data.twitch + '</td>' +
+	    		'<td>' + twitchLink + '</td>' +
     		'</tr>'
 	     );
     });  
@@ -141,18 +146,6 @@ var populateLeagueTable = function(results) {
 	});	
 	new $.fn.dataTable.FixedHeader( table );
 };
-
-var getTwitch = function(title){
-//	$.getJSON("https://api.twitch.tv/kraken/search/streams?q="+title+"&limit=20&type=top&callback=?", function (data) {
-//	    var temp = "";
-//
-//	    $.each(data.streams.slice(0,5), function (index, item) {
-//	        temp = temp + "<a target='frame1' href='http://www.twitch.tv/widgets/live_embed_player.swf?channel=" + item.channel.name + "'><button>"+item.channel.display_name+"</button></a><br />";
-//	    });
-//	    console.log(temp);
-//	    $("#StreamList").html(temp);
-//	});
-}
 
 var drawLevelChart = function(selectedLeague) {
     $.ajax({
@@ -229,20 +222,8 @@ function loadingTableAnimation() {
     
     if (x.style.display === "none") {
      	$(".tableLoadingAnimation").css('visibility', 'visible');
-//	    x.css('visibility', 'visible');
-	    
-//    	$("x").toggle();
-//    	$("y").toggle();
-//        x.style.display = "block";
-//        y.style.display = "none";
     } else {
      	$(".tableLoadingAnimation").css('visibility', 'hidden');
-
-	    
-//    	$("x").toggle();
-//    	$("y").toggle();
-//        x.style.display = "none";
-//        y.style.display = "block";
     }
 }
 
@@ -265,9 +246,9 @@ function loadingModalAnimation() {
 
 /*Dropdown Menu*/
 $('.dropdown').click(function () {
-        $(this).attr('tabindex', 1).focus();
-        $(this).toggleClass('active');
-        $(this).find('.dropdown-menu').slideToggle(300);
+    $(this).attr('tabindex', 1).focus();
+    $(this).toggleClass('active');
+    $(this).find('.dropdown-menu').slideToggle(300);
 });
 
 $('.dropdown').focusout(function() {
@@ -276,8 +257,8 @@ $('.dropdown').focusout(function() {
 });
 
 $('.dropdown .dropdown-menu li').click(
-		function() {
-			$(this).parents('.dropdown').find('span').text($(this).text());
-			$(this).parents('.dropdown').find('input').attr('value',
-			$(this).attr('id'));
+	function() {
+		$(this).parents('.dropdown').find('span').text($(this).text());
+		$(this).parents('.dropdown').find('input').attr('value',
+		$(this).attr('id'));
 });
