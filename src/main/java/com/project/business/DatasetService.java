@@ -73,23 +73,24 @@ public class DatasetService {
 						// character match then calculate xph
 						// System.out.println("match found for : " +
 						// currentDataset.get(i).get(k).getCharacter());
-						Double newXPPH, oldXPPH;
+						Long newXPPH, oldXPPH;
 						String latest = latestDataset.get(i).get(j).getExperience();
 						String current = currentDataset.get(i).get(k).getExperience();
 						if (latest.equals("")) {
-							newXPPH = new Double(0);
+							newXPPH = new Long(0);
 						} else {
-							newXPPH = Double.parseDouble(latest);
+							newXPPH = Long.parseLong(latest);
 						}
 
 						if (current.equals("")) {
-							oldXPPH = new Double(0);
+							oldXPPH = new Long(0);
 						} else {
-							oldXPPH = Double.parseDouble(current);
+							oldXPPH = Long.parseLong(current);
 						}
 						String difference = String.valueOf(oldXPPH - newXPPH);
-						latestDataset.get(i).get(j).setXph("calculated xph");
-						latestDataset.get(i).get(j).setXphDifference("calculated difference");
+						String xpPerHour = String.valueOf((oldXPPH - newXPPH) * 12);
+						latestDataset.get(i).get(j).setXph(xpPerHour);
+						latestDataset.get(i).get(j).setXphDifference(difference);
 						// set polling timestamp for current time
 						String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 						latestDataset.get(i).get(j).setTimeStamp(timeStamp);

@@ -79,7 +79,7 @@ $("#showStatsButton").click(function() {
 
 var getLeagueDataTable = function(selectedLeague) {    
     $.ajax({
-        url: theLocalhostUrl,
+        url: theHostedSiteUrl,
         type: 'GET',
         dataType: "json",
         data : {
@@ -135,10 +135,10 @@ var populateLeagueTable = function(results) {
 	    		'<td>' + data.level + '</td>' +
 	    		'<td><font color="'+classColor+'">' + data.theClass + '</font></td>' +
 	    		'<td>' + data.challenges + '</td>' +
-	    		'<td>' + data.experience + '</td>' +
 	    		'<td>' + data.xph + '</td>' +
 	    		'<td>' + data.xphDifference + '</td>' +
 	    		'<td>' + data.timeStamp + '</td>' +
+	    		'<td>' + data.experience + '</td>' +
 	    		'<td>' + twitchLink + '</td>' +
     		'</tr>'
 	     );
@@ -154,7 +154,7 @@ var populateLeagueTable = function(results) {
 
 var drawLevelChart = function(selectedLeague) {
     $.ajax({
-        url: theLocalhostUrl +'/charts',
+        url: theHostedSiteUrl +'/charts',
         type: 'GET',
         dataType: "json",
         data : {
