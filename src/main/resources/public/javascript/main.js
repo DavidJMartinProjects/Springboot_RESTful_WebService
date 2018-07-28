@@ -126,10 +126,11 @@ var populateLeagueTable = function(results) {
     	} 
     	    	
     	var classColor = getColor(data.theClass);
+    	var accountLink = getPoeAccount(data.account)
 	    $('#leagueInfoTable tbody').append(
             '<tr>' +
 	    		'<td>' + data.rank + '</td>' +
-	    		'<td>' + account + '</td>' +
+	    		'<td><a href='+accountLink+' target="_blank">' + account + '</a></td>' +
 	    		'<td>' + character + '</td>' +
 	    		'<td>' + data.level + '</td>' +
 	    		'<td><font color="'+classColor+'">' + data.theClass + '</font></td>' +
@@ -325,3 +326,9 @@ var getColor = function(character) {
 		}
 	}
 } 
+
+var getPoeAccount = function(accountName) {
+	var address = "https://www.pathofexile.com/account/view-profile/";
+	address = address.concat(accountName);
+	return address;
+}
