@@ -25,7 +25,7 @@ public class DatasetService {
 
 	public static List<List<LadderTableEntry>> getLatestDataSet() throws InterruptedException {
 		leagues = currentLeagueService.getLeagues();
-		latestDataset.clear();
+		List<List<LadderTableEntry>> newDataset = new ArrayList<>();
 
 		for (int i = 0; i < leagues.size(); i++) {
 			List<LadderTableEntry> tableEntries = new ArrayList<>();
@@ -51,30 +51,29 @@ public class DatasetService {
 				}
 				tableEntries.add(entry);
 			}
-			latestDataset.add(tableEntries);
+			newDataset.add(tableEntries);
 			Thread.sleep(1000);
 		}
 		if (currentDataset.size() == 0) {
-			currentDataset = latestDataset;
+			currentDataset = newDataset;
+			latestDataset = newDataset;
 		}
-		return latestDataset;
+		return newDataset;
 	}
 
 	public static void calculateDataSet() throws InterruptedException {
 		// copy latest to current dataset
 		currentDataset = latestDataset;
 		// get the latest dataset
-		latestDataset = DatasetService.getLatestDataSet();
+		List<List<LadderTableEntry>> newDataset = DatasetService.getLatestDataSet();
 		// iterate
 		for (int i = 0; i < latestDataset.size(); i++) {
 			for (int j = 0; j < latestDataset.get(i).size(); j++) {
-				for (int k = 0; k < currentDataset.get(i).size(); k++) {
-					if (latestDataset.get(i).get(j).getCharacter().equals(currentDataset.get(i).get(k).getCharacter())) {
+				for (int k = 0; k < 200; k++) {
+					if (newDataset.get(i).get(j).getCharacter().equals(currentDataset.get(i).get(k).getCharacter())) {
 						// character match then calculate xph
-						// System.out.println("match found for : " +
-						// currentDataset.get(i).get(k).getCharacter());
 						Long newXPPH, oldXPPH;
-						String latest = latestDataset.get(i).get(j).getExperience();
+						String latest = newDataset.get(i).get(j).getExperience();
 						String current = currentDataset.get(i).get(k).getExperience();
 						if (latest.equals("")) {
 							newXPPH = new Long(0);
@@ -87,17 +86,18 @@ public class DatasetService {
 						} else {
 							oldXPPH = Long.parseLong(current);
 						}
-						String difference = String.valueOf(oldXPPH - newXPPH);
-						String xpPerHour = String.valueOf((oldXPPH - newXPPH) * 12);
-						latestDataset.get(i).get(j).setXph(xpPerHour);
-						latestDataset.get(i).get(j).setXphDifference(difference);
+						String difference = String.valueOf(newXPPH - oldXPPH);
+						String xpPerHour = String.valueOf((newXPPH - oldXPPH) * 12);
+						newDataset.get(i).get(j).setXph(xpPerHour);
+						newDataset.get(i).get(j).setXphDifference(difference);
 						// set polling timestamp for current time
 						String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-						latestDataset.get(i).get(j).setTimeStamp(timeStamp);
+						newDataset.get(i).get(j).setTimeStamp(timeStamp);
 					}
 				}
 			}
 		}
+		latestDataset = newDataset;
 	}
 
 	public static List<LadderTableEntry> getCalculatedDataset(String selectedLeague) {
