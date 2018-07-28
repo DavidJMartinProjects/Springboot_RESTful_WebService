@@ -279,13 +279,13 @@ var getColor = function(character) {
 			return "#b1ede8";		
 		}
 		case "Saboteur": {
-			return "#6d435a";		
+			return "#235789";		
 		}
 		case "Trickster": {
 			return "#5fad56";		
 		}
 		case "Juggernaut": {
-			return "#f2c14e";		
+			return "#ED1C24";		
 		}
 		case "Berserker": {
 			return "#f78154";		
