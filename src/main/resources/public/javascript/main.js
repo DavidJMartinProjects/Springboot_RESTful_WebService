@@ -125,13 +125,14 @@ var populateLeagueTable = function(results) {
     		twitchLink = "";
     	} 
     	    	
+    	var classColor = getColor(data.theClass);
 	    $('#leagueInfoTable tbody').append(
             '<tr>' +
 	    		'<td>' + data.rank + '</td>' +
 	    		'<td>' + account + '</td>' +
 	    		'<td>' + character + '</td>' +
 	    		'<td>' + data.level + '</td>' +
-	    		'<td>' + data.theClass + '</td>' +
+	    		'<td><font color="'+classColor+'">' + data.theClass + '</font></td>' +
 	    		'<td>' + data.challenges + '</td>' +	    		
 	    		'<td>' + data.experience + '</td>' +
 	    		'<td>' + twitchLink + '</td>' +
@@ -262,3 +263,65 @@ $('.dropdown .dropdown-menu li').click(
 		$(this).parents('.dropdown').find('input').attr('value',
 		$(this).attr('id'));
 });
+
+var getColor = function(character) {
+	switch(character) {
+		case "Slayer": {
+			return "#340068";
+		}
+		case "Gladiator": {
+			return "#ff6978";
+		}
+		case "Champion": {
+			return "#5c6f68";			
+		}
+		case "Assassin": {
+			return "#b1ede8";		
+		}
+		case "Saboteur": {
+			return "#6d435a";		
+		}
+		case "Trickster": {
+			return "#5fad56";		
+		}
+		case "Juggernaut": {
+			return "#f2c14e";		
+		}
+		case "Berserker": {
+			return "#f78154";		
+		}
+		case "Chieftain": {
+			return "#4d9078";		
+		}
+		case "Necromancer": {
+			return "#b4436c";		
+		}
+		case "Elementalist": {
+			return "#7D2E68";		
+		}
+		case "Occultist": {
+			return "#B49286";		
+		}
+		case "Deadeye": {
+			return "#744253 ";		
+		}
+		case "Raider": {
+			return "#371E30";		
+		}
+		case "Pathfinder": {
+			return "#A5B5BF";		
+		}
+		case "Inquisitor": {
+			return "#4B88A2";		
+		}
+		case "Hierophant": {
+			return "#FF8C42";		
+		}
+		case "Guardian": {
+			return "#FCAF58 ";		
+		}
+		case "Ascendant": {
+			return "#5D737E";		 
+		}
+	}
+} 
