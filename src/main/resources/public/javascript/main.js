@@ -1,6 +1,7 @@
 var theLocalhostUrl = 'http://localhost:8080/ladders';
 var theHostedSiteUrl = 'https://immense-headland-50105.herokuapp.com/ladders';
 var selectedLeague = "";
+var timeStamp = "";
 
 $(document).ready(function() {
 	console.log("index.html loaded.")	
@@ -79,7 +80,7 @@ $("#showStatsButton").click(function() {
 
 var getLeagueDataTable = function(selectedLeague) {    
     $.ajax({
-        url: theHostedSiteUrl,
+        url: theLocalhostUrl,
         type: 'GET',
         dataType: "json",
         data : {
@@ -142,19 +143,26 @@ var populateLeagueTable = function(results) {
 	    		'<td>' + twitchLink + '</td>' +
     		'</tr>'
 	     );
+    	timeStamp = data.timeStamp;
     });  
     		
+    $('#lastUpdatedMsg').text("ranks last updated : "+timeStamp+"");
+    console.log("timestamp : " +timeStamp);
 	var table = $('#leagueInfoTable').DataTable( {
 	    "iDisplayLength" : 100,
 		responsive : true,
-		 "pagingType": "full_numbers"
+		 "pagingType": "full_numbers",
+		 
 	});	
+	   setTimeout(function() {
+			getleagueTable(selectedLeague);
+		   }, 5 * 60 * 1000);
 	new $.fn.dataTable.FixedHeader( table );
 };
 
 var drawLevelChart = function(selectedLeague) {
     $.ajax({
-        url: theHostedSiteUrl +'/charts',
+        url: theLocalhostUrl +'/charts',
         type: 'GET',
         dataType: "json",
         data : {

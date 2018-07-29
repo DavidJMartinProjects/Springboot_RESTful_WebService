@@ -97,7 +97,8 @@ public class DatasetService {
 						newDataset.get(i).get(j).setXphDifference(difference);
 						newDataset.get(i).get(j).setExperience(theExperience);
 						// set polling timestamp for current time
-						String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+						String timeStamp = new SimpleDateFormat(" MMM d hh:mm a").format(new Date());
+//						System.out.println("timeStamp" +timeStamp);
 						newDataset.get(i).get(j).setTimeStamp(timeStamp);
 					}
 				}

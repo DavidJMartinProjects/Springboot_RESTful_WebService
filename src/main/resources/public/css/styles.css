@@ -6,7 +6,7 @@
 }
 
 #dropdown_menu {
-	margin-top: 3%;
+	margin-top: 0%;
 }
 
 #showStatsButton {
@@ -411,11 +411,37 @@ span.choose {
 }
 
 #topMenu {
+	padding-top : 0px;
+	border-top : 0px;
+	height :10px;
+	
+	font-size: .8em;
+   text-align: center;
+   color: #686F75;
+   width : 85%;
 
+   
 
 }
 
+.myRow {
+	padding-top : 2%;
 
+}
+
+#spacingDiv {
+	float : left;	
+}
+
+#feedbackMenu {
+	float : left;
+}
+
+#lastUpdatedMsg {
+	float : right;
+	
+
+}
 
 #footer {
 	
@@ -425,6 +451,13 @@ span.choose {
    text-align: center;
    color: #686F75;
 
+}
+
+#tableContainer {
+	border-top: 0%;
+		 	padding-top: .5%;
+ 	padding-bottom: 1%; 
+ 	height: 10px;
 }
 
 /* .modal-body {

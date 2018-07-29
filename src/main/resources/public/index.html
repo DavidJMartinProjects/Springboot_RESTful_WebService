@@ -31,8 +31,19 @@
 </head>
 <body>
 
+
+	<span id="websiteMenu" class="fluid-container">
+		<div class="row myRow">
+			<div id="topMenu">
+				<div id="lastUpdatedMsg"></div>
+
+			</div>
+		</div>
+	</span>
+	<br>
+
 	<!-- Dropdown -->
-	<div class="container" id="dropdown_menu">
+	<div class="container fluid-container" id="dropdown_menu">
 		<div class="input-group mb-3 ">
 			<div class="dropdown">
 				<div class="select" id="selectLeagueInputGroup">
@@ -48,13 +59,11 @@
 				</ul>
 			</div>
 
-
 			<button type="button" class="btn btn-light" data-toggle="modal"
 				data-target="#exampleModalCenter" id="showStatsButton" disabled>League
 				Statistics</button>
 
 		</div>
-
 
 		<span id="tableLoadingAnimation">
 			<div id="fountainG">
@@ -114,10 +123,11 @@
 
 	<!-- DataTable -->
 	<div id="leagueInfoTableContainer" class="container-fluid"
-		style="display: none; width: 75%;">
+		style="display: none; width: 85%;">
 		<table id="leagueInfoTable"
 			class="table table-striped table-bordered nowrap" cellspacing="0"
 			width="100%">
+			
 			<thead>
 				<tr>
 					<th>Rank</th>
@@ -128,7 +138,6 @@
 					<th>Challenges</th>
 					<th>XP/Hour</th>
 					<th>XPH (-/+)</th>
-<!-- 					<th>Timestamp</th> -->
 					<th>Experience</th>
 					<th>Info</th>
 				</tr>
@@ -136,29 +145,8 @@
 			<tbody></tbody>
 		</table>
 		<br>
-		<!-- 	</div> -->
-
-		<!-- 	<div> -->
-		<!-- 		<iframe frameborder="0" scrolling="no" id="chat_embed" -->
-		<!-- 			src="http://www.twitch.tv/embed/Mathil1/chat" height="500" -->
-		<!-- 			width="350"> </iframe> -->
-		<!-- 		<div> -->
-		<!-- 			<iframe src="http://player.twitch.tv/?channel=Mathil1&muted=true" -->
-		<!-- 				height="720" width="1280" frameborder="0" scrolling="no" -->
-		<!-- 				allowfullscreen="true"> </iframe> -->
-		<!-- 		</div> -->
 		
-
 	</div>
-	<div class="container-fluid"></div>
-					<div id="footer">
-			<div id="topMenu">feedback | changelog | contact us</div>
-		</div>
-
-
-
-
-
 
 	<script src="/javascript/jquery-3.3.1.js"></script>
 	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
