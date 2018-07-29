@@ -137,7 +137,7 @@ var populateLeagueTable = function(results) {
 	    		'<td>' + data.challenges + '</td>' +
 	    		'<td>' + data.xph + '</td>' +
 	    		'<td>' + data.xphDifference + '</td>' +
-	    		'<td>' + data.timeStamp + '</td>' +
+//	    		'<td>' + data.timeStamp + '</td>' +
 	    		'<td>' + data.experience + '</td>' +
 	    		'<td>' + twitchLink + '</td>' +
     		'</tr>'

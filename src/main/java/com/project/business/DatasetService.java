@@ -1,5 +1,6 @@
 package com.project.business;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -73,8 +74,8 @@ public class DatasetService {
 					if (newDataset.get(i).get(j).getCharacter().equals(currentDataset.get(i).get(k).getCharacter())) {
 						// character match then calculate xph
 						Long newXPPH, oldXPPH;
-						String latest = newDataset.get(i).get(j).getExperience();
-						String current = currentDataset.get(i).get(k).getExperience();
+						String latest = (newDataset.get(i).get(j).getExperience()).replaceAll(",", "");
+						String current = (currentDataset.get(i).get(k).getExperience()).replaceAll(",", "");
 						if (latest.equals("")) {
 							newXPPH = new Long(0);
 						} else {
@@ -88,8 +89,13 @@ public class DatasetService {
 						}
 						String difference = String.valueOf(newXPPH - oldXPPH);
 						String xpPerHour = String.valueOf((newXPPH - oldXPPH) * 12);
+						String theExperience = formatNumber(newDataset.get(i).get(k).getExperience());
+						difference = formatNumber(difference);
+						xpPerHour = formatNumber(xpPerHour);
+						
 						newDataset.get(i).get(j).setXph(xpPerHour);
 						newDataset.get(i).get(j).setXphDifference(difference);
+						newDataset.get(i).get(j).setExperience(theExperience);
 						// set polling timestamp for current time
 						String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 						newDataset.get(i).get(j).setTimeStamp(timeStamp);
@@ -122,6 +128,14 @@ public class DatasetService {
 				return latestDataset.get(0);
 			}
 		}
+	}
+	
+	public static String formatNumber(String theNumber) {	
+			String number = theNumber;
+			number = number.replaceAll(",", "");
+			double amount = Double.parseDouble(number);
+			DecimalFormat formatter = new DecimalFormat("#,###");
+			return formatter.format(amount);
 	}
 
 }
