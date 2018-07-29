@@ -143,7 +143,7 @@ var populateLeagueTable = function(results) {
 	    		'<td>' + twitchLink + '</td>' +
     		'</tr>'
 	     );
-    	if(!data.timeStamp.includes("null")) {
+    	if(!data.timeStamp === "null") {
         	timeStamp = data.timeStamp;
     	}
 
