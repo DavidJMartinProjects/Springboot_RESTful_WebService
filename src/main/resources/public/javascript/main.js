@@ -143,7 +143,10 @@ var populateLeagueTable = function(results) {
 	    		'<td>' + twitchLink + '</td>' +
     		'</tr>'
 	     );
-    	timeStamp = data.timeStamp;
+    	if(!data.timeStamp="null") {
+        	timeStamp = data.timeStamp;
+    	}
+
     });  
     		
     $('#lastUpdatedMsg').text("ranks last updated : "+timeStamp+"");
