@@ -29,6 +29,7 @@ box-shadow: 0 0 2px black;
 
 #loadingAnimation {
 	margin-top: 1%;
+	margin-bottom: 1%;
 }
 
 .modal-header{
@@ -443,7 +444,12 @@ box-shadow: 0 0 2px black;
 
 #lastUpdatedMsg {
 	float : right;
+	padding-bottom: 0%;
 }
+
+a {
+	color: black;
+	}
 
 #footer {
 	padding-top: .5%;
