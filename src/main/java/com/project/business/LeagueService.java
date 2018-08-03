@@ -15,6 +15,7 @@ public class LeagueService {
 	public List<LadderTableEntry> getLeagueDetails(String league) {
 		List<LadderTableEntry> tableEntries = new ArrayList<>();
 		String url = "http://api.pathofexile.com/ladders/" + league + "?limit=200";
+		System.out.println("URL : " +url);
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<Ladder> response = restTemplate.getForEntity(url, Ladder.class);
 

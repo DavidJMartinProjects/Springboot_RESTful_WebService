@@ -124,9 +124,26 @@ public class DatasetService {
 			case "SSF Incursion HC": {
 				System.out.println("getCalculatedDataset() : SSF Incursion HC");
 				return latestDataset.get(3);
+			}			
+			case "Incursion Event (IRE001)": {
+				System.out.println("getCalculatedDataset() : Incursion Event (IRE001)");
+				return latestDataset.get(4);
 			}
+			case "Incursion Event HC (IRE002)": {
+				System.out.println("getCalculatedDataset() : Incursion Event HC (IRE002)");
+				return latestDataset.get(5);
+			}
+			case "SSF Incursion Event (IRE003)": {
+				System.out.println("getCalculatedDataset() : SSF Incursion Event (IRE003)");
+				return latestDataset.get(6);
+			}
+			case "SSF%20Incursion%20Event%20HC%20(IRE004)": {
+				System.out.println("getCalculatedDataset() : SSF Incursion Event HC (IRE004)");
+				return latestDataset.get(7);
+			}
+			
 			default: {
-				return latestDataset.get(0);
+				return new ArrayList<LadderTableEntry>();
 			}
 		}
 	}

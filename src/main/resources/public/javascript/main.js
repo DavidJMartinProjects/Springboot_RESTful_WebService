@@ -33,6 +33,7 @@ $("ul[id*=dropdownList] li").click(function () {
 	console.log($(this).text()); // gets text contents of clicked li
 	selectedLeague = $(this).text();
 	$("#tableLoadingAnimation").css('visibility', 'visible');
+	console.log("selectedLeague" +selectedLeague);
 	getleagueTable(selectedLeague);
 });
 
