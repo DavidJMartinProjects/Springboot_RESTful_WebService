@@ -290,7 +290,7 @@ var getColor = function(character) {
 			return "#5c6f68";			
 		}
 		case "Assassin": {
-			return "#b1ede8";		
+			return "black";		
 		}
 		case "Saboteur": {
 			return "#235789";		
@@ -302,7 +302,7 @@ var getColor = function(character) {
 			return "#ED1C24";		
 		}
 		case "Berserker": {
-			return "#f78154";		
+			return "purple";		
 		}
 		case "Chieftain": {
 			return "#4d9078";		
@@ -323,16 +323,16 @@ var getColor = function(character) {
 			return "#371E30";		
 		}
 		case "Pathfinder": {
-			return "#A5B5BF";		
+			return "blue";		
 		}
 		case "Inquisitor": {
 			return "#4B88A2";		
 		}
 		case "Hierophant": {
-			return "#FF8C42";		
+			return "black";		
 		}
 		case "Guardian": {
-			return "#FCAF58 ";		
+			return "green ";		
 		}
 		case "Ascendant": {
 			return "#5D737E";		 
