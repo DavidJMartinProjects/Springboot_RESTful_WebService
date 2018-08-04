@@ -1,8 +1,10 @@
 var theLocalhostUrl = 'http://localhost:8080/ladders';
 var theHostedSiteUrl = 'https://immense-headland-50105.herokuapp.com/ladders';
+var url = theHostedSiteUrl;
+
 var selectedLeague = "";
 var timeStamp = "";
-var url = theHostedSiteUrl;
+
 $(document).ready(function() {
 	console.log("index.html loaded.")	
 
