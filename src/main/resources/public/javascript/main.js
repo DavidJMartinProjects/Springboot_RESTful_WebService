@@ -81,7 +81,7 @@ $("#showStatsButton").click(function() {
 
 var getLeagueDataTable = function(selectedLeague) {    
     $.ajax({
-        url: theLocalhostUrl,
+        url: theHostedSiteUrl,
         type: 'GET',
         dataType: "json",
         data : {
@@ -164,7 +164,7 @@ var populateLeagueTable = function(results) {
 
 var drawLevelChart = function(selectedLeague) {
     $.ajax({
-        url: theLocalhostUrl +'/charts',
+        url: theHostedSiteUrl +'/charts',
         type: 'GET',
         dataType: "json",
         data : {
