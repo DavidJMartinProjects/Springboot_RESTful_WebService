@@ -2,7 +2,7 @@ var theLocalhostUrl = 'http://localhost:8080/ladders';
 var theHostedSiteUrl = 'https://immense-headland-50105.herokuapp.com/ladders';
 var selectedLeague = "";
 var timeStamp = "";
-
+var url = theHostedSiteUrl;
 $(document).ready(function() {
 	console.log("index.html loaded.")	
 
@@ -81,7 +81,7 @@ $("#showStatsButton").click(function() {
 
 var getLeagueDataTable = function(selectedLeague) {    
     $.ajax({
-        url: theHostedSiteUrl,
+        url: url,
         type: 'GET',
         dataType: "json",
         data : {
@@ -126,6 +126,21 @@ var populateLeagueTable = function(results) {
     	} else {
     		twitchLink = "";
     	} 
+    	
+    	var xpDifference = "";
+    	if(data.xphDifference == 0 || data.xphDifference == null || data.xphDifference == "null") {
+    		xpDifference = "-";
+    	} else {
+    		xpDifference = data.xphDifference;
+    	}
+    	
+    	var exp = "";
+    	if(data.xph == 0 || data.xph == null || data.xph == "null") {
+    		exp = "-";
+    	} else {
+    		exp = data.xph;
+    	}
+    	
     	    	
     	var classColor = getColor(data.theClass);
     	var accountLink = getPoeAccount(data.account)
@@ -137,14 +152,16 @@ var populateLeagueTable = function(results) {
 	    		'<td>' + data.level + '</td>' +
 	    		'<td><font color="'+classColor+'">' + data.theClass + '</font></td>' +
 	    		'<td>' + data.challenges + '</td>' +
-	    		'<td>' + data.xph + '</td>' +
-	    		'<td>' + data.xphDifference + '</td>' +
-//	    		'<td>' + data.timeStamp + '</td>' +
+	    		'<td>' + exp + '</td>' +
+	    		'<td>' + xpDifference + '</td>' +
 	    		'<td>' + data.experience + '</td>' +
 	    		'<td>' + twitchLink + '</td>' +
     		'</tr>'
-	     );
-        	timeStamp = data.timeStamp;
+	     );  	
+				    	
+    	if (data.timeStamp != null || data.timeStamp != "null") {
+			timeStamp = data.timeStamp;
+		}
 
     });  
     		
@@ -164,7 +181,7 @@ var populateLeagueTable = function(results) {
 
 var drawLevelChart = function(selectedLeague) {
     $.ajax({
-        url: theHostedSiteUrl +'/charts',
+        url: url +'/charts',
         type: 'GET',
         dataType: "json",
         data : {
