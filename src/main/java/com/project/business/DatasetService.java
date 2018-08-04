@@ -137,7 +137,7 @@ public class DatasetService {
 				System.out.println("getCalculatedDataset() : SSF Incursion Event (IRE003)");
 				return latestDataset.get(6);
 			}
-			case "SSF%20Incursion%20Event%20HC%20(IRE004)": {
+			case "SSF Incursion Event HC (IRE004)": {
 				System.out.println("getCalculatedDataset() : SSF Incursion Event HC (IRE004)");
 				return latestDataset.get(7);
 			}
