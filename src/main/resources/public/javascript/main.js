@@ -310,10 +310,10 @@ var getColor = function(character) {
 			return "#5c6f68";			
 		}
 		case "Assassin": {
-			return "black";		
+			return "white";		
 		}
 		case "Saboteur": {
-			return "#235789";		
+			return "#7090bd";		
 		}
 		case "Trickster": {
 			return "#5fad56";		
@@ -331,7 +331,7 @@ var getColor = function(character) {
 			return "#b4436c";		
 		}
 		case "Elementalist": {
-			return "#7D2E68";		
+			return "#deb4e1";		
 		}
 		case "Occultist": {
 			return "#B49286";		
@@ -349,13 +349,13 @@ var getColor = function(character) {
 			return "#4B88A2";		
 		}
 		case "Hierophant": {
-			return "black";		
+			return "white";		
 		}
 		case "Guardian": {
-			return "green ";		
+			return "#2e6e82 ";		
 		}
 		case "Ascendant": {
-			return "#5D737E";		 
+			return "#b06831";		 
 		}
 	}
 } 
