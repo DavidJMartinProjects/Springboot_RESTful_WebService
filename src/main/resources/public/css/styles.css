@@ -287,9 +287,9 @@ table.dataTable tbody th, table.dataTable tbody td {
 
 /* start of dropdown */
 
-body {
-    /*  background-color: #fafafa;*/ 
-}
+/* body {
+     background-color: black;  
+} */
 
 span.msg,
 span.choose {
@@ -307,14 +307,14 @@ span.choose {
 .dropdown {
   width: 70%;
   display: inline-block;
-  background-color: #fff;
+  background-color: #272727;
   border-radius: 5px;
 box-shadow: 0 0 2px black;
 
   transition: all .5s ease;
   position: relative;
   font-size: 14px;
-  color: #474747;
+  color: black;
   height: 100%;
   text-align: left
 }
@@ -322,7 +322,7 @@ box-shadow: 0 0 2px black;
     cursor: pointer;
     display: block;
     padding: 10px;
-        color: #000000;
+        color: white;
 }
 
 #tableLoadingAnimation {	
@@ -448,7 +448,7 @@ box-shadow: 0 0 2px black;
 }
 
 a {
-	color: black;
+	color: white;
 	font-weight: 600;
 	}
 
@@ -487,16 +487,18 @@ a {
 
 
 body {
-		background-color:#fdfdfd;
+		background-color:#151619;
+		overflow-x: hidden;
 
 }
 thead {
-	background-color:white;
-	color : black;
+	background-color:#151619;
+	color : white;
 }
 
 table {
-		color:black;
+	background-color:#151619;
+		color:white;
 } 
 
 
@@ -506,7 +508,7 @@ table {
 	padding-right: 2%;
 	padding-left: 2%;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	background-color:#fafafa;
+	background-color:#151619;
 }
 
 .btn-secondary{
@@ -516,4 +518,12 @@ table {
 
 .btn-light{
 	background-color:#ebebeb;
+}
+
+.dataTables_length {
+color: white;
+}
+
+.dataTables_filter {
+color: white;
 }
