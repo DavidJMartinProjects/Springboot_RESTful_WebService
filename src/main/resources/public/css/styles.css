@@ -352,14 +352,14 @@ box-shadow: 0 0 2px black;
 .dropdown.active {
     box-shadow: 0 0 4px rgb(204, 204, 204);
     border-radius: 5px 5px 0 0;
-    background-color: #f8f8f8;
+    background-color: #272727;
 }
 .dropdown.active .select > i {
     transform: rotate(-90deg);
 }
 .dropdown .dropdown-menu {
     position: absolute;
-    background-color: #fff;
+    background-color: #272727;
     width: 100%;
     left: 0;
     margin-top: 1px;
@@ -371,6 +371,7 @@ box-shadow: 0 0 2px black;
     overflow-y: none;
     z-index: 9;
     font-size: 1em;
+    color: white;
 }
 .dropdown .dropdown-menu li {
     padding: 10px;
@@ -382,10 +383,10 @@ box-shadow: 0 0 2px black;
     list-style: none;
 }
 .dropdown .dropdown-menu li:hover {
-    background-color: #f2f2f2;
+    background-color: #2727;
 }
 .dropdown .dropdown-menu li:active {
-    background-color: #e2e2e2;
+    background-color: #272727;
 }
 /*End of Styling Selectbox*/
 
