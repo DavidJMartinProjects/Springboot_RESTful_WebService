@@ -263,10 +263,10 @@ table.dataTable tbody th, table.dataTable tbody td {
  
 /* icon */
 #toast-container > .customer-info {   
-  background-color: white;
+  background-color: #272727;
   width: 100%;
   margin-top: 20%;  
-  color: black;
+  color: white;
 }
 
 #toast-container.toast-top-center .toast,
