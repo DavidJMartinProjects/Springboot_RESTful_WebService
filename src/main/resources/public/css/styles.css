@@ -513,14 +513,18 @@ table {
 	    border: none;
 }
 
+.card {
+	border: none;
+}
 
 #tableCard {
 	border-top: 5%;
 	padding-top: 1%;
 	padding-right: 2%;
 	padding-left: 2%;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+/* 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
  	background-color:#151619; 
+ 	border-bottom-style: 0px solid black;
 /* background-color:white; */
 }
 
