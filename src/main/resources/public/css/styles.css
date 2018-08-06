@@ -240,6 +240,11 @@ table.dataTable tbody th, table.dataTable tbody td {
 
 /* End of loading animation */
 
+.form-control {
+	background-color: #272727;
+	color: white;
+}
+
 .form-control:focus {
     border-color: #686F75;
     outline: 0;
@@ -445,10 +450,11 @@ box-shadow: 0 0 2px black;
 #lastUpdatedMsg {
 	float : right;
 	padding-bottom: 0%;
+	color: #a98a56;
 }
 
 a {
-	color: white;
+	color: #999;
 	font-weight: 600;
 	}
 
@@ -489,6 +495,7 @@ a {
 body {
 		background-color:#151619;
 		overflow-x: hidden;
+		
 
 }
 thead {
@@ -498,8 +505,12 @@ thead {
 
 table {
 	background-color:#151619;
-		color:white;
+		color: #999;
+		border: none;
 } 
+.table-bordered td, .table-bordered th {
+	    border: none;
+}
 
 
 #tableCard {
