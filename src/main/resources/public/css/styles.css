@@ -520,7 +520,8 @@ table {
 	padding-right: 2%;
 	padding-left: 2%;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	background-color:#151619;
+ 	background-color:#151619; 
+/* background-color:white; */
 }
 
 .btn-secondary{
@@ -539,3 +540,13 @@ color: white;
 .dataTables_filter {
 color: white;
 }
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: hsla(0,0%,100%,.02);
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: hsla(0,0%,100%,0);
+}
+
+
