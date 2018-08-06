@@ -4,6 +4,7 @@ var url = theHostedSiteUrl;
 
 var selectedLeague = "";
 var timeStamp = "";
+var flag = true;
 
 $(document).ready(function() {
 	console.log("index.html loaded.")	
@@ -160,10 +161,12 @@ var populateLeagueTable = function(results) {
 	    		'<td>' + data.experience + '</td>' +
 	    		'<td>' + twitchLink + '</td>' +
     		'</tr>'
-	     );  	
-				    	
-    	if (data.timeStamp != null || data.timeStamp != "null" || data.timeStamp != "") {
+	     );  
+
+
+    	if (flag) {
 			timeStamp = data.timeStamp;
+			flag = false;
 		}
 
     });  
