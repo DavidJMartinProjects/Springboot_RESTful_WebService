@@ -553,4 +553,10 @@ color: white;
     background-color: hsla(0,0%,100%,0);
 }
 
+.table-bordered {
+
+    border: none;
+    	border-top : 1px solid #dee2e6;
+}
+
 

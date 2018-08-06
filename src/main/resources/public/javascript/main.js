@@ -162,7 +162,7 @@ var populateLeagueTable = function(results) {
     		'</tr>'
 	     );  	
 				    	
-    	if (data.timeStamp != null || data.timeStamp != "null") {
+    	if (data.timeStamp != null || data.timeStamp != "null" || data.timeStamp != "") {
 			timeStamp = data.timeStamp;
 		}
 
@@ -301,13 +301,13 @@ $('.dropdown .dropdown-menu li').click(
 var getColor = function(character) {
 	switch(character) {
 		case "Slayer": {
-			return "#340068";
+			return "#ffd79e";
 		}
 		case "Gladiator": {
 			return "#ff6978";
 		}
 		case "Champion": {
-			return "#5c6f68";			
+			return "#ffb1aa";			
 		}
 		case "Assassin": {
 			return "white";		
@@ -316,13 +316,13 @@ var getColor = function(character) {
 			return "#7090bd";		
 		}
 		case "Trickster": {
-			return "#5fad56";		
+			return "#9bd19f";		
 		}
 		case "Juggernaut": {
-			return "#ED1C24";		
+			return "#ffb1aa";		
 		}
 		case "Berserker": {
-			return "purple";		
+			return "#ffb1aa";		
 		}
 		case "Chieftain": {
 			return "#4d9078";		
@@ -337,13 +337,13 @@ var getColor = function(character) {
 			return "#B49286";		
 		}
 		case "Deadeye": {
-			return "#744253 ";		
+			return "#9bd19f ";		
 		}
 		case "Raider": {
-			return "#371E30";		
+			return "#9bd19f";		
 		}
 		case "Pathfinder": {
-			return "blue";		
+			return "#9bd19f";		
 		}
 		case "Inquisitor": {
 			return "#4B88A2";		
@@ -352,7 +352,7 @@ var getColor = function(character) {
 			return "white";		
 		}
 		case "Guardian": {
-			return "#2e6e82 ";		
+			return "#ffb1aa ";		
 		}
 		case "Ascendant": {
 			return "#b06831";		 
