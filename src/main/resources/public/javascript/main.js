@@ -108,6 +108,7 @@ var populateLeagueTable = function(results) {
     $("#leagueInfoTableContainer").css({
         "display": "block"
     });
+    flag = true;
     
     results.forEach(function(data) {
     	var character = data.character;
