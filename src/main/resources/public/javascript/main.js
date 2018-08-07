@@ -125,6 +125,8 @@ var populateLeagueTable = function(results) {
     		account = "<img class='img-valign' src='/images/red-icon.png' title='offline' />   " + data.account;
     	}
     	
+    	var challenge_icon = getChallengeIcon(data.challenges);
+    	
     	var twitchLink;
     	var twitchUrl = "https://www.twitch.tv/";
     	twitchUrl += data.twitch;
@@ -159,10 +161,9 @@ var populateLeagueTable = function(results) {
             '<tr>' +
 	    		'<td>' + data.rank + '</td>' +
 	    		'<td><a href='+accountLink+' target="_blank">' + account + '</a></td>' +
-	    		'<td>' + character + '</td>' +
+	    		'<td>' + challenge_icon + "  " + character + '</td>' +
 	    		'<td>' + data.level + '</td>' +
 	    		'<td><font color="'+classColor+'">' + data.theClass + '</font></td>' +
-	    		'<td>' + data.challenges + '</td>' +
 	    		'<td class="'+xphColor+'">' + exp + '</td>' +
 	    		'<td class="'+xphColor+'">' + xphDifference + '</td>' +
 	    		'<td>' + data.experience + '</td>' +
@@ -391,6 +392,10 @@ var formatXphDifference = function(theNumber) {
 	xphDifference = (parseInt(Math.round(theNumber) / 1000000).toFixed(2)) + "M";
 	console.log(xphDifference);
 	return xphDifference;
+}
+
+var getChallengeIcon = function(numberOfChallenges) {
+	return "<img class='icon' src='/challenge_images/"+numberOfChallenges+".png' title='"+numberOfChallenges+" challenges completed' />";
 }
 
 var getPoeAccount = function(accountName) {
