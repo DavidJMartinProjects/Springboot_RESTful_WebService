@@ -575,4 +575,8 @@ color: white;
 	height: 30%;	
 }
 
+.table > tbody > tr > td {
+     vertical-align: middle;
+}
+
 
