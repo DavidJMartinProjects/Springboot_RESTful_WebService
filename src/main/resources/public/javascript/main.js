@@ -142,6 +142,9 @@ var populateLeagueTable = function(results) {
     	} else {
     		xphDifference = data.xphDifference;
     		xphDifference = formatXphDifference(data.xphDifference);
+    		if(!xphDifference.startsWith("-")) {
+    			xphDifference = "+" + xphDifference;
+    		}
     		console.log(xphDifference);
     	}
     	
