@@ -67,7 +67,7 @@ table.dataTable tbody th, table.dataTable tbody td {
     margin-top: 8px;
 }
 
-.pagination > li > a, .pagination > li > span{color:#686F75}
+.pagination > li > a, .pagination > li > span{color:white}
 .pagination > li.active > a, .pagination > li.active > span{color:black;} 
 
 .fountainG{
@@ -579,4 +579,19 @@ color: white;
      vertical-align: middle;
 }
 
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #007bff;
+    background-color: #272727;
+    border: 1px solid #dee2e6;
+}
+
+.pagination > li.active > a, .pagination > li.active > span {
+    color: white;
+}
 
