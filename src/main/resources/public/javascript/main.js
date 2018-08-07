@@ -14,7 +14,7 @@ $(document).ready(function() {
 	var table = $('#leagueInfoTable').DataTable({});	
 	new $.fn.dataTable.FixedHeader( table );  
 
-	toastr.success("<b>Please note: </b> <i>www.poe-ladder.com</i> is currently in pre-Alpha testing.<br>  Not all intended features have been implemented to this version.", 
+	toastr.success("<b>Please note: </b> <i>www.poe-ladder.com</i> is currently in Alpha testing.<br>  Not all intended features have been implemented to this version.", 
 			null, {"iconClass": 'customer-info',
 		  "closeButton": false,
 		  "debug": false,
