@@ -89,7 +89,7 @@ public class DatasetService {
 						}
 						String difference = String.valueOf(newXPPH - oldXPPH);
 						String xpPerHour = String.valueOf((newXPPH - oldXPPH) * 12);
-						String theExperience = formatNumber(newDataset.get(i).get(k).getExperience());
+						String theExperience = formatXp(newDataset.get(i).get(k).getExperience());
 						difference = formatNumber(difference);
 						xpPerHour = formatNumber(xpPerHour);
 						
@@ -153,7 +153,15 @@ public class DatasetService {
 			number = number.replaceAll(",", "");
 			double amount = Double.parseDouble(number);
 			DecimalFormat formatter = new DecimalFormat("#,###");
-			return formatter.format(amount);
+			return formatter.format(amount).replaceAll(",", "");
 	}
+	
+	public static String formatXp(String theNumber) {	
+		String number = theNumber;
+		number = number.replaceAll(",", "");
+		double amount = Double.parseDouble(number);
+		DecimalFormat formatter = new DecimalFormat("#,###");
+		return formatter.format(amount);
+}
 
 }

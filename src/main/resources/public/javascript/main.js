@@ -5,6 +5,8 @@ var url = theLocalhostUrl;
 var selectedLeague = "";
 var timeStamp = "";
 var flag = true;
+var exp = "";
+var xphDifference = "";
 
 $(document).ready(function() {
 	console.log("index.html loaded.")	
@@ -132,23 +134,27 @@ var populateLeagueTable = function(results) {
     		twitchLink = "";
     	} 
     	
-    	var xpDifference = "";
+    	xphDifference = "";
     	if(data.xphDifference == 0 || data.xphDifference == null || data.xphDifference == "null") {
-    		xpDifference = "-";
+    		xphDifference = "-";
     	} else {
-    		xpDifference = data.xphDifference;
+    		xphDifference = data.xphDifference;
+    		xphDifference = formatXphDifference(data.xphDifference);
+    		console.log(xphDifference);
     	}
     	
-    	var exp = "";
+    	exp = "";
     	if(data.xph == 0 || data.xph == null || data.xph == "null") {
     		exp = "-";
     	} else {
     		exp = data.xph;
     	}
     	
-    	var xphColor = getXphColor(exp);;	
+    	var xphColor = getXphColor(exp);
     	var classColor = getColor(data.theClass);
-    	var accountLink = getPoeAccount(data.account)
+    	var accountLink = getPoeAccount(data.account)	
+    	
+    	
 	    $('#leagueInfoTable tbody').append(
             '<tr>' +
 	    		'<td>' + data.rank + '</td>' +
@@ -158,12 +164,11 @@ var populateLeagueTable = function(results) {
 	    		'<td><font color="'+classColor+'">' + data.theClass + '</font></td>' +
 	    		'<td>' + data.challenges + '</td>' +
 	    		'<td class="'+xphColor+'">' + exp + '</td>' +
-	    		'<td>' + xpDifference + '</td>' +
+	    		'<td class="'+xphColor+'">' + xphDifference + '</td>' +
 	    		'<td>' + data.experience + '</td>' +
 	    		'<td>' + twitchLink + '</td>' +
     		'</tr>'
 	     );  
-
 
     	if (flag) {
 			timeStamp = data.timeStamp;
@@ -367,12 +372,25 @@ var getColor = function(character) {
 var getXphColor = function(xph) {
 	var xpPerHour = xph;
 	if(xpPerHour < "0" && xpPerHour != "-") {
+		formatXph(xpPerHour);
 		return "xp-per-hour-red";
 	} else if (xpPerHour >= "0" ){
+		formatXph(xpPerHour);
 		return "xp-per-hour-green";
 	} else {
 		return "";
 	}
+}
+
+var formatXph = function(theNumber) {
+	exp = parseFloat(Math.round(theNumber) / 1000000).toFixed(2) + "M";
+}
+
+var formatXphDifference = function(theNumber) {
+	console.log(theNumber);
+	xphDifference = (parseInt(Math.round(theNumber) / 1000000).toFixed(2)) + "M";
+	console.log(xphDifference);
+	return xphDifference;
 }
 
 var getPoeAccount = function(accountName) {
