@@ -180,7 +180,7 @@ var populateLeagueTable = function(results) {
 			flag = false;
 		}
 
-    });  
+    });      
     		
     $('#lastUpdatedMsg').text("ranks last updated : "+timeStamp+"");
     console.log("timestamp : " +timeStamp);
