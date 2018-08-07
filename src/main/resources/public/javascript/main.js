@@ -158,6 +158,7 @@ var populateLeagueTable = function(results) {
     	var xphColor = getXphColor(exp);
     	var classColor = getColor(data.theClass);
     	var accountLink = getPoeAccount(data.account)	
+    	var ascendancyIcon = getAscendancyIcon(data.theClass);
     	
     	
 	    $('#leagueInfoTable tbody').append(
@@ -166,7 +167,7 @@ var populateLeagueTable = function(results) {
 	    		'<td><a href='+accountLink+' target="_blank">' + account + '</a></td>' +
 	    		'<td>' + challenge_icon + "  " + character + '</td>' +
 	    		'<td>' + data.level + '</td>' +
-	    		'<td><font color="'+classColor+'">' + data.theClass + '</font></td>' +
+	    		'<td><font color="'+classColor+'">' + ascendancyIcon +"  " +data.theClass + '</font></td>' +
 	    		'<td class="'+xphColor+'">' + exp + '</td>' +
 	    		'<td class="'+xphColor+'">' + xphDifference + '</td>' +
 	    		'<td>' + data.experience + '</td>' +
@@ -399,6 +400,10 @@ var formatXphDifference = function(theNumber) {
 
 var getChallengeIcon = function(numberOfChallenges) {
 	return "<img class='icon' src='/challenge_images/"+numberOfChallenges+".png' title='"+numberOfChallenges+" challenges completed' />";
+}
+
+var getAscendancyIcon = function(ascendancy) {
+	return "<img class='ascendancy-icon' src='/ascendancy_images/"+ascendancy+".png' title='"+ascendancy+"' />";
 }
 
 var getPoeAccount = function(accountName) {
