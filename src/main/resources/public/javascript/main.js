@@ -1,6 +1,6 @@
 var theLocalhostUrl = 'http://localhost:8080/ladders';
 var theHostedSiteUrl = 'https://immense-headland-50105.herokuapp.com/ladders';
-var url = theHostedSiteUrl;
+var url = theLocalhostUrl;
 
 var selectedLeague = "";
 var timeStamp = "";
@@ -146,7 +146,7 @@ var populateLeagueTable = function(results) {
     		exp = data.xph;
     	}
     	
-    	    	
+    	var xphColor = getXphColor(exp);;	
     	var classColor = getColor(data.theClass);
     	var accountLink = getPoeAccount(data.account)
 	    $('#leagueInfoTable tbody').append(
@@ -157,7 +157,7 @@ var populateLeagueTable = function(results) {
 	    		'<td>' + data.level + '</td>' +
 	    		'<td><font color="'+classColor+'">' + data.theClass + '</font></td>' +
 	    		'<td>' + data.challenges + '</td>' +
-	    		'<td>' + exp + '</td>' +
+	    		'<td class="'+xphColor+'">' + exp + '</td>' +
 	    		'<td>' + xpDifference + '</td>' +
 	    		'<td>' + data.experience + '</td>' +
 	    		'<td>' + twitchLink + '</td>' +
@@ -363,6 +363,17 @@ var getColor = function(character) {
 		}
 	}
 } 
+
+var getXphColor = function(xph) {
+	var xpPerHour = xph;
+	if(xpPerHour < "0" && xpPerHour != "-") {
+		return "xp-per-hour-red";
+	} else if (xpPerHour >= "0" ){
+		return "xp-per-hour-green";
+	} else {
+		return "";
+	}
+}
 
 var getPoeAccount = function(accountName) {
 	var address = "https://www.pathofexile.com/account/view-profile/";

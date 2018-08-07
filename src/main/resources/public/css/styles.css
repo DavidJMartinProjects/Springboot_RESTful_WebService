@@ -554,9 +554,17 @@ color: white;
 }
 
 .table-bordered {
-
     border: none;
-    	border-top : 1px solid #dee2e6;
+    border-top : 1px solid #dee2e6;
+}
+
+.xp-per-hour-green {
+    /*  color: #1de100!important; */
+   color : #90ee90!important
+}
+
+.xp-per-hour-red {
+    color: #ff4f53!important;
 }
 
 
