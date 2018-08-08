@@ -11,8 +11,8 @@ var xphDifference = "";
 $(document).ready(function() {
 	console.log("index.html loaded.")	
 
-	var table = $('#leagueInfoTable').DataTable({});	
-	new $.fn.dataTable.FixedHeader( table );  
+	var table = $('#leagueInfoTable').dataTable({});	
+	new $.fn.dataTable.FixedHeader( table );
 
 	toastr.success("<b>Please note: </b> <i>www.poe-ladder.com</i> is currently in Alpha testing.<br>  Not all intended features have been implemented to this version.", 
 			null, {"iconClass": 'customer-info',
@@ -187,16 +187,19 @@ var populateLeagueTable = function(results) {
     		
     $('#lastUpdatedMsg').text("ranks last updated : "+timeStamp+"");
     console.log("timestamp : " +timeStamp);
-	var table = $('#leagueInfoTable').DataTable( {
+	var table = $('#leagueInfoTable').dataTable( {
 	    "iDisplayLength" : 100,
 		responsive : true,
 		 "pagingType": "full_numbers",
+		 stateSave: true,
 		 
 	});	
-	   setTimeout(function() {
-			getleagueTable(selectedLeague);
-		   }, 5 * 60 * 1000);
-	new $.fn.dataTable.FixedHeader( table );
+
+   setTimeout(function() {
+		getleagueTable(selectedLeague);		
+   }, 5 * 60 * 1000);
+//	   }, 1 * 10 * 1000);		
+	new $.fn.dataTable.FixedHeader( table );	   
 };
 
 var drawLevelChart = function(selectedLeague) {
