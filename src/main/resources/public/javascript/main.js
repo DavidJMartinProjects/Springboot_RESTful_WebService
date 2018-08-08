@@ -37,13 +37,11 @@ $(document).ready(function() {
 $("ul[id*=dropdownList] li").click(function () {	
 	console.log($(this).text()); // gets text contents of clicked li
 	selectedLeague = $(this).text();
+	$("#footer").css('visibility', 'hidden');
 	$("#tableLoadingAnimation").css('visibility', 'visible');
 	console.log("selectedLeague" +selectedLeague);
 	getleagueTable(selectedLeague);
-	document.getElementById("footer").style.position = "static";
-//	document.getElementById("#body").style.padding-bottom = "3%";
-//	document.getElementById("footer").setAttribute("style", "padding-bottom: 3%;");
-	
+	document.getElementById("footer").style.position = "static";	
 });
 
 var showStatsBtn = function() {
@@ -101,6 +99,7 @@ var getLeagueDataTable = function(selectedLeague) {
             populateLeagueTable(results);           
 //            showStatsBtn();
         	 $("#tableLoadingAnimation").css('visibility', 'hidden');
+        	 $("#footer").css('visibility', 'visible');
         },
         error: function(error) {
             console.log("getLeagueData error : " + error.responseJSON.message, "error");
