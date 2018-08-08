@@ -63,10 +63,10 @@ table.dataTable tbody th, table.dataTable tbody td {
 #fountainG{
 	position:relative;
 	width:84px;
-/* 	height:13px; */
+ 	height:1px; 
 	margin:auto;
     margin-top: 8px;
-    margin-bottom: 0px;
+    margin-bottom: 8px;
 }
 
 .pagination > li > a, .pagination > li > span{color:white}
