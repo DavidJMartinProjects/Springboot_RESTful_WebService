@@ -606,6 +606,7 @@ color: white;
 }
 
 a:link {
+	pointer-events: none;
     color: #999;
 }
 
