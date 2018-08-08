@@ -424,7 +424,7 @@ box-shadow: 0 0 2px black;
 
 /*below block of css for change style when active*/
 .dataTables_wrapper .dataTables_paginate .paginate_button:active {
-	background: none;
+	background: black;
 	color: black !important;
 }
 
@@ -628,8 +628,26 @@ a:active {
     color: white;
 }
 
-element.style {
-    display: block;
-    width: 80%;
+.button primary_button active {
+	color: white;
 }
+
+a.paginate_button:active {
+   color: black;
+}
+a.paginate_button:hover {
+  color: black;
+}
+a.paginate_button.current {
+ color: black;
+}
+
+.pagination > li.active > a, .pagination > li.active > span {
+    color: black;
+}
+
+.pagination > li.hover > a, .pagination > li.hover > span {
+    color: black;
+}
+
 
