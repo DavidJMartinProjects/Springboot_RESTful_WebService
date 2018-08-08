@@ -596,3 +596,32 @@ color: white;
     color: white;
 }
 
+#footer {
+   position:fixed;
+   left:0px;
+   bottom:4%;
+   height:30px;
+   width:100%;  
+   padding-bottom: 3%; 
+}
+
+a:link {
+    color: #999;
+}
+
+/* visited link */
+a:visited {
+    color: #999;
+}
+
+/* mouse over link */
+a:hover {
+    color: white;
+    font-style: none;
+}
+
+/* selected link */
+a:active {
+    color: white;
+}
+
