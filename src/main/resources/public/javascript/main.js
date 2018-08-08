@@ -146,7 +146,7 @@ var populateLeagueTable = function(results) {
     		xphDifference = data.xphDifference;
     		xphDifference = formatXphDifference(data.xphDifference);
     		if(!xphDifference.startsWith("-")) {
-    			xphDifference = "+" + xphDifference;
+//    			xphDifference = "+" + xphDifference;
     		}
     		console.log(xphDifference);
     	}
@@ -394,7 +394,7 @@ var getXphColor = function(xph) {
 }
 
 var formatXph = function(theNumber) {
-	exp = parseFloat(Math.round(theNumber) / 1000000).toFixed(2) + "M";
+	exp = parseFloat(Math.round(theNumber) / 1000000).toFixed(2);
 }
 
 var formatXphDifference = function(theNumber) {
