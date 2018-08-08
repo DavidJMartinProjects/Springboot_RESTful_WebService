@@ -185,7 +185,7 @@ var populateLeagueTable = function(results) {
 
     });      
     		
-    $('#lastUpdatedMsg').text("ranks last updated : "+timeStamp+"");
+    $('#lastUpdatedMsg').text("last updated : "+timeStamp+"");
     console.log("timestamp : " +timeStamp);
 	var table = $('#leagueInfoTable').dataTable( {
 	    "iDisplayLength" : 100,
