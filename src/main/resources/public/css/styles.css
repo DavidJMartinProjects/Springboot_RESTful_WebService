@@ -460,7 +460,7 @@ box-shadow: 0 0 2px black;
 #lastUpdatedMsg {
 	float : right;
 	border-bottom: 1%;
-	color: #c0c0c0;
+	color: rgb(169, 138, 86);
 }
 
 a {
