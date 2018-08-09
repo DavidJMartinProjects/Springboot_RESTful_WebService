@@ -7,6 +7,7 @@ var timeStamp = "";
 var flag = true;
 var exp = "";
 var xphDifference = "";
+var isDead = "false";
 
 $(document).ready(function() {
 	console.log("index.html loaded.")	
@@ -115,11 +116,14 @@ var populateLeagueTable = function(results) {
     });
     flag = true;
     
+    
     results.forEach(function(data) {
     	var character = data.character;
+    	isDead = data.dead;
 
     	if(data.dead == "true") {
     		character += " <i id='deadStatus'>(dead)</i>";
+    		
     	}    	
     	var account = "";
     	if(data.online == "true") {
@@ -164,8 +168,9 @@ var populateLeagueTable = function(results) {
     	var ascendancyIcon = getAscendancyIcon(data.theClass);
     	
     	
-	    $('#leagueInfoTable tbody').append(
-            '<tr>' +
+
+    		if(data.dead == "true") {
+    			$('#leagueInfoTable tbody').append('<tr class = "deadChar">' +
 	    		'<td>' + data.rank + '</td>' +
 	    		'<td><a href='+accountLink+' target="_blank">' + account + '</a></td>' +
 	    		'<td>' + challenge_icon + "  " + character + '</td>' +
@@ -176,7 +181,24 @@ var populateLeagueTable = function(results) {
 	    		'<td>' + data.experience + '</td>' +
 	    		'<td>' + twitchLink + '</td>' +
     		'</tr>'
-	     );  
+	    		);
+    		} else {
+    			$('#leagueInfoTable tbody').append('<tr>' +
+	    		'<td>' + data.rank + '</td>' +
+	    		'<td><a href='+accountLink+' target="_blank">' + account + '</a></td>' +
+	    		'<td>' + challenge_icon + "  " + character + '</td>' +
+	    		'<td>' + data.level + '</td>' +
+	    		'<td><font color="'+classColor+'">' + ascendancyIcon +"  " +data.theClass + '</font></td>' +
+	    		'<td class="'+xphColor+'">' + exp + '</td>' +
+	    		'<td class="'+xphColor+'">' + xphDifference + '</td>' +
+	    		'<td>' + data.experience + '</td>' +
+	    		'<td>' + twitchLink + '</td>' +
+    		'</tr>'
+    			);
+
+    		}
+
+	      
 
     	if (flag) {
 			timeStamp = data.timeStamp;
@@ -192,14 +214,29 @@ var populateLeagueTable = function(results) {
 		responsive : true,
 		 "pagingType": "full_numbers",
 		 stateSave: true,
-		 
+
+//		    "createdRow": function( row, data, dataIndex ) {
+//		    	
+//	             if ( isDead == "true" ) { 
+//	            	 console.log("isDead is true");
+//	            	 $(this).css('background-color', 'Red');      	 	
+//	            	 	
+//	             }
+//	             $(this).css('background-color', 'Black');
+//	             
+//		    }
+	
+	
 	});	
+
 
    setTimeout(function() {
 		getleagueTable(selectedLeague);		
    }, 5 * 60 * 1000);
 //	   }, 1 * 10 * 1000);		
-	new $.fn.dataTable.FixedHeader( table );	   
+
+	isDead = "false";
+	
 };
 
 var drawLevelChart = function(selectedLeague) {

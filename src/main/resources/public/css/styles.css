@@ -650,4 +650,7 @@ a.paginate_button.current {
     color: black;
 }
 
+.deadChar {
+	color: #535353!important;
+}
 
