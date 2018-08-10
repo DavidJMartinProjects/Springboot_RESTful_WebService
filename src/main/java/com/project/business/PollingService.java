@@ -12,10 +12,7 @@ import com.project.domain.datatable.LadderTableEntry;
 @Service
 public class PollingService {
 
-	private static PollingService pollingService = new PollingService();
 	private Timer timer = new Timer();
-	
-	
 
 	PollingService() {
 		timer.scheduleAtFixedRate(new TimerTask() {
@@ -28,12 +25,8 @@ public class PollingService {
 		}, 2000, 5 * 60 * 1000);
 
 	}
-	
-	public static PollingService getPollingService() {
-		return pollingService;
-	}
 
-	public static void pollLatestDataset() {
+	public void pollLatestDataset() {
 		try {
 			DatasetService.calculateDataSet();
 		} catch (InterruptedException e) {

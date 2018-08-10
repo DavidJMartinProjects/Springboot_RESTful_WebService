@@ -21,7 +21,7 @@ public class WebController {
 	@RequestMapping(method = RequestMethod.GET, produces = { "application/json" })
 	public List<LadderTableEntry> getLadderRankings(@RequestParam(value = "league") String league) {
 		// return new LeagueService().getLeagueDetails(league);
-		return PollingService.getPollingService().getLeagueDataSet(league);
+		return PollingService.getLeagueDataSet(league);
 	}
 
 	@RequestMapping(value = "/charts", method = RequestMethod.GET, produces = { "application/json" })
