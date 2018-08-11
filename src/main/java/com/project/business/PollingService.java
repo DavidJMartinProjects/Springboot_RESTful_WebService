@@ -22,7 +22,7 @@ public class PollingService {
 				pollLatestDataset();
 				System.out.println("Poll Request Complete.");
 			}
-		}, 2000, 5 * 60 * 1000);
+		}, 2000, 1 * 120 * 1000);
 
 	}
 

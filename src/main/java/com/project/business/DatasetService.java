@@ -76,17 +76,23 @@ public class DatasetService {
 		String latest;
 		String current;
 		String difference;
+		String rankDifference;
 		String xpPerHour;
 		String theExperience;
 		String timeStamp;
+		String latestRank;
+		String currentRank;
+		Long newXPPH, oldXPPH;
+		Long newRank, oldRank;
 		for (int i = 0; i < latestDataset.size(); i++) {
 			for (int j = 0; j < latestDataset.get(i).size(); j++) {
 				for (int k = 0; k < 200; k++) {
 					if (newDataset.get(i).get(j).getCharacter().equals(currentDataset.get(i).get(k).getCharacter())) {
 						// character match then calculate xph
-						Long newXPPH, oldXPPH;
+						
 						latest = (newDataset.get(i).get(j).getExperience()).replaceAll(",", "");
 						current = (currentDataset.get(i).get(k).getExperience()).replaceAll(",", "");
+						
 						if (latest.equals("")) {
 							newXPPH = new Long(0);
 						} else {
@@ -98,7 +104,25 @@ public class DatasetService {
 						} else {
 							oldXPPH = Long.parseLong(current);
 						}
-						difference = String.valueOf(newXPPH - oldXPPH);
+						
+						latestRank = (newDataset.get(i).get(j).getRank()).replaceAll(",", "");
+						currentRank = (currentDataset.get(i).get(k).getRank()).replaceAll(",", "");
+						
+						
+						if (latestRank.equals("")) {
+							newRank = new Long(0);
+						} else {
+							newRank = Long.parseLong(latestRank);
+						}
+
+						if (currentRank.equals("")) {
+							oldRank = new Long(0);
+						} else {
+							oldRank = Long.parseLong(currentRank);
+						}
+						
+						difference = String.valueOf(newXPPH - oldXPPH);						
+						rankDifference = String.valueOf(newRank - oldRank);						
 						xpPerHour = String.valueOf((newXPPH - oldXPPH) * 12);
 						theExperience = formatXp(newDataset.get(i).get(k).getExperience());
 						difference = formatNumber(difference);
@@ -106,6 +130,7 @@ public class DatasetService {
 						
 						newDataset.get(i).get(j).setXph(xpPerHour);
 						newDataset.get(i).get(j).setXphDifference(difference);
+						newDataset.get(i).get(j).setRankDifference(rankDifference);
 						newDataset.get(i).get(j).setExperience(theExperience);
 						// set polling timestamp for current time
 						timeStamp = new SimpleDateFormat(" MMM d hh:mm a").format(new Date());

@@ -3,6 +3,7 @@ package com.project.domain.datatable;
 public class LadderTableEntry {
 
 	private String rank;
+	private String rankDifference;
 	private String character;
 	private String dead;
 	private String account;
@@ -29,6 +30,14 @@ public class LadderTableEntry {
 
 	public String getCharacter() {
 		return character;
+	}	
+
+	public String getRankDifference() {
+		return rankDifference;
+	}
+
+	public void setRankDifference(String rankDifference) {
+		this.rankDifference = rankDifference;
 	}
 
 	public void setCharacter(String character) {
@@ -125,8 +134,10 @@ public class LadderTableEntry {
 
 	@Override
 	public String toString() {
-		return "LadderTableEntry [rank=" + rank + ", character=" + character + ", dead=" + dead + ", account=" + account + ", level=" + level + ", theClass=" + theClass + ", experience=" + experience
-				+ ", challenges=" + challenges + ", online=" + online + ", twitch=" + twitch + ", xph=" + xph + ", xphDifference=" + xphDifference + "]";
+		return "LadderTableEntry [rank=" + rank + ", rankDifference=" + rankDifference + ", character=" + character
+				+ ", dead=" + dead + ", account=" + account + ", level=" + level + ", theClass=" + theClass
+				+ ", experience=" + experience + ", challenges=" + challenges + ", online=" + online + ", twitch="
+				+ twitch + ", xph=" + xph + ", xphDifference=" + xphDifference + ", timeStamp=" + timeStamp + "]";
 	}
-
+	
 }
