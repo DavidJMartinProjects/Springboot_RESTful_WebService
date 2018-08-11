@@ -122,7 +122,7 @@ public class DatasetService {
 						}
 						
 						difference = String.valueOf(newXPPH - oldXPPH);						
-						rankDifference = String.valueOf(newRank - oldRank);						
+						rankDifference = String.valueOf(oldRank - newRank);
 						xpPerHour = String.valueOf((newXPPH - oldXPPH) * 12);
 						theExperience = formatXp(newDataset.get(i).get(k).getExperience());
 						difference = formatNumber(difference);

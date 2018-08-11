@@ -1,6 +1,6 @@
 var theLocalhostUrl = 'http://localhost:8080/ladders';
 var theHostedSiteUrl = 'https://immense-headland-50105.herokuapp.com/ladders';
-var url = theHostedSiteUrl;
+var url = theLocalhostUrl;
 
 var selectedLeague = "";
 var timeStamp = "";
@@ -14,7 +14,12 @@ $(document)
 				function() {
 					console.log("index.html loaded.")
 
-					var table = $('#leagueInfoTable').dataTable({});
+					var table = $('#leagueInfoTable').dataTable({
+						"columnDefs": [ {
+							"targets": [0], // column or columns numbers
+							"orderable": false,  // set orderable for selected columns
+							}],
+					});
 					new $.fn.dataTable.FixedHeader(table);
 
 					toastr
@@ -235,6 +240,10 @@ var populateLeagueTable = function(results) {
 		responsive : true,
 		"pagingType" : "full_numbers",
 		stateSave : true,
+		"columnDefs": [ {
+			"targets": [0], // column or columns numbers
+			"orderable": false,  // set orderable for selected columns
+			}],
 	});
 
 	setTimeout(function() {
