@@ -19,14 +19,15 @@ public class DatasetService {
 	private static List<String> leagues = new ArrayList<>();
 	private static List<List<LadderTableEntry>> currentDataset = new ArrayList<>();
 	private static List<List<LadderTableEntry>> latestDataset = new ArrayList<>();
+	private static List<List<LadderTableEntry>> newDataset = new ArrayList<>();
 
 	public DatasetService() throws InterruptedException {
 		calculateDataSet();
 	}
 
 	public static List<List<LadderTableEntry>> getLatestDataSet() throws InterruptedException {
-		leagues = currentLeagueService.getLeagues();
-		List<List<LadderTableEntry>> newDataset = new ArrayList<>();
+		leagues = currentLeagueService.getLeagues();	
+		newDataset = new ArrayList<>();
 
 		for (int i = 0; i < leagues.size(); i++) {
 			List<LadderTableEntry> tableEntries = new ArrayList<>();
@@ -66,7 +67,7 @@ public class DatasetService {
 		// copy latest to current dataset
 		currentDataset = latestDataset;
 		// get the latest dataset
-		List<List<LadderTableEntry>> newDataset = DatasetService.getLatestDataSet();
+		newDataset = DatasetService.getLatestDataSet();
 		// iterate
 		for (int i = 0; i < latestDataset.size(); i++) {
 			for (int j = 0; j < latestDataset.get(i).size(); j++) {
