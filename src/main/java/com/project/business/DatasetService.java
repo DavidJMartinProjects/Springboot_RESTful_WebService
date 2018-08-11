@@ -145,37 +145,22 @@ public class DatasetService {
 
 	public static List<LadderTableEntry> getCalculatedDataset(String selectedLeague) {
 		switch (selectedLeague) {
-			case "Incursion": {
-				System.out.println("getCalculatedDataset() : Incursion");
-				return latestDataset.get(0);
-			}
-			case "Hardcore Incursion": {
-				System.out.println("getCalculatedDataset() : Hardcore Incursion");
-				return latestDataset.get(1);
-			}
-			case "SSF Incursion": {
-				System.out.println("getCalculatedDataset() : SSF Incursion");
-				return latestDataset.get(2);
-			}
-			case "SSF Incursion HC": {
-				System.out.println("getCalculatedDataset() : SSF Incursion HC");
-				return latestDataset.get(3);
-			}			
+		
 			case "Incursion Event (IRE001)": {
 				System.out.println("getCalculatedDataset() : Incursion Event (IRE001)");
-				return latestDataset.get(4);
+				return latestDataset.get(0);
 			}
 			case "Incursion Event HC (IRE002)": {
 				System.out.println("getCalculatedDataset() : Incursion Event HC (IRE002)");
-				return latestDataset.get(5);
+				return latestDataset.get(1);
 			}
 			case "SSF Incursion Event (IRE003)": {
 				System.out.println("getCalculatedDataset() : SSF Incursion Event (IRE003)");
-				return latestDataset.get(6);
+				return latestDataset.get(2);
 			}
 			case "SSF Incursion Event HC (IRE004)": {
 				System.out.println("getCalculatedDataset() : SSF Incursion Event HC (IRE004)");
-				return latestDataset.get(7);
+				return latestDataset.get(3);
 			}
 			
 			default: {
