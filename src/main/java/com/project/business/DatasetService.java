@@ -28,15 +28,17 @@ public class DatasetService {
 	public static List<List<LadderTableEntry>> getLatestDataSet() throws InterruptedException {
 		leagues = currentLeagueService.getLeagues();	
 		newDataset = new ArrayList<>();
+		ResponseEntity<Ladder> response;
+		LadderTableEntry entry;
 
 		for (int i = 0; i < leagues.size(); i++) {
 			List<LadderTableEntry> tableEntries = new ArrayList<>();
 			String url = "http://api.pathofexile.com/ladders/" + leagues.get(i) + "?limit=200";
 			RestTemplate restTemplate = new RestTemplate();
-			ResponseEntity<Ladder> response = restTemplate.getForEntity(url, Ladder.class);
+			response = restTemplate.getForEntity(url, Ladder.class);			
 
 			for (Entries anEntry : response.getBody().getEntries()) {
-				LadderTableEntry entry = new LadderTableEntry();
+				entry = new LadderTableEntry();
 				entry.setRank(anEntry.getRank());
 				entry.setOnline(anEntry.getOnline());
 				entry.setCharacter(anEntry.getCharacter().getName());
