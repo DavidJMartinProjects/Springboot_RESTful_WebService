@@ -1,6 +1,6 @@
 var theLocalhostUrl = 'http://localhost:8080/ladders';
 var theHostedSiteUrl = 'https://immense-headland-50105.herokuapp.com/ladders';
-var url = theHostedSiteUrl;
+var url = theLocalhostUrl;
 
 var selectedLeague = "";
 var timeStamp = "";
@@ -207,8 +207,17 @@ var populateLeagueTable = function(results) {
 									+ '</a></td>' + '<td>' + challenge_icon + "  " + character + '</td>' 
 									+ '<td>' + data.level + '</td>'
 									+ '<td><font color="' + classColor + '">' + ascendancyIcon + "  " + data.theClass + '</font></td>' + '<td class="' + xphColor
-									+ '">' + exp + '</td>' + '<td class="'
-									+ xphColor + '">' + xphDifference + '</td>'
+									+ '">' + exp 
+									+ '</td>'
+									+ '<td>' 
+									
+									+'<div class="progress">'
+									+  '<div class="progress-bar bg-dark" style="width:'+data.levelProgressBar+'%">'
+							/*		+	 +data.levelProgressBar+'%'*/
+									+ '</div>'
+									+'</div>'
+									
+									+ '</td>'
 									+ '<td>' + data.experience + '</td>'
 									+ '<td>' + twitchLink + '</td>' + '</tr>');
 				} else {
@@ -219,8 +228,16 @@ var populateLeagueTable = function(results) {
 							+ '</a></td>' + '<td>' + challenge_icon + "  " + character + '</td>' 
 							+ '<td>' + data.level + '</td>'
 							+ '<td><font color="' + classColor + '">' + ascendancyIcon + "  " + data.theClass + '</font></td>' + '<td class="' + xphColor
-							+ '">' + exp + '</td>' + '<td class="'
-							+ xphColor + '">' + xphDifference + '</td>'
+							+ '">' + exp + '</td>'
+							+ '<td>' 
+							
+							+'<div class="progress">'
+							+  '<div class="progress-bar bg-dark" style="width:'+data.levelProgressBar+'%">'
+				/*			+	 +data.levelProgressBar+'%'*/
+							+ '</div>'
+							+'</div>'
+							
+							+ '</td>'
 							+ '<td>' + data.experience + '</td>'
 							+ '<td>' + twitchLink + '</td>' + '</tr>');
 

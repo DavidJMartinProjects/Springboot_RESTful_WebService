@@ -16,7 +16,7 @@
 }
 
 #leagueInfoTableContainer {
-	width: 80%;
+	width: 75%;
 }
 
 #deadStatus {
@@ -676,28 +676,34 @@ a:active {
 
 .button primary_button active {
 	color: white;
+		outline: 0;
 }
 
 a.paginate_button:active {
 	color: black;
+		outline: 0;
 }
 
 a.paginate_button:hover {
 	color: black;
+		outline: 0;
 }
 
 a.paginate_button.current {
 	color: black;
 	background-color: white;
+		outline: 0;
 }
 
 .pagination>li.active>a, .pagination>li.active>span {
 	color: black;
 	background-color: #c0c0c0;
+		outline: 0;
 }
 
 .pagination>li.hover>a, .pagination>li.hover>span {
 	color: black;
+		outline: 0;
 }
 
 .deadChar {
@@ -707,6 +713,11 @@ a.paginate_button.current {
 div.dataTables_wrapper div.dataTables_info {
 	font-size: 85%;
 	color: #999;
+}
+
+.pagination>li.active>a, .pagination>li.active>span {
+    color: white;
+    		outline: 0;
 }
 
 .arrow-up {
@@ -729,4 +740,27 @@ div.dataTables_wrapper div.dataTables_info {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
 
+}
+
+
+.progress-bar {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #000000;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #008080;
+    transition: width .6s ease;
+
+}
+
+.progress .sr-only { position: absolute; }
+
+.progress {height: 8px;
+width : 95%;
+background-color: #999;
 }

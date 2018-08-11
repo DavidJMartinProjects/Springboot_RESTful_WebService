@@ -15,6 +15,7 @@ public class LadderTableEntry {
 	private String twitch;
 	private String xph;
 	private String xphDifference;
+	private String levelProgressBar;
 	private String timeStamp;
 
 	public LadderTableEntry() {
@@ -132,12 +133,21 @@ public class LadderTableEntry {
 		this.timeStamp = timeStamp;
 	}
 
+	public String getLevelProgressBar() {
+		return levelProgressBar;
+	}
+
+	public void setLevelProgressBar(String levelProgressBar) {
+		this.levelProgressBar = levelProgressBar;
+	}
+
 	@Override
 	public String toString() {
 		return "LadderTableEntry [rank=" + rank + ", rankDifference=" + rankDifference + ", character=" + character
 				+ ", dead=" + dead + ", account=" + account + ", level=" + level + ", theClass=" + theClass
 				+ ", experience=" + experience + ", challenges=" + challenges + ", online=" + online + ", twitch="
-				+ twitch + ", xph=" + xph + ", xphDifference=" + xphDifference + ", timeStamp=" + timeStamp + "]";
-	}
-	
+				+ twitch + ", xph=" + xph + ", xphDifference=" + xphDifference + ", levelProgressBar="
+				+ levelProgressBar + ", timeStamp=" + timeStamp + "]";
+	}	
+		
 }

@@ -84,6 +84,7 @@ public class DatasetService {
 		String currentRank;
 		Long newXPPH, oldXPPH;
 		Long newRank, oldRank;
+		String levelProgressBar;
 		for (int i = 0; i < latestDataset.size(); i++) {
 			for (int j = 0; j < latestDataset.get(i).size(); j++) {
 				for (int k = 0; k < 200; k++) {
@@ -120,16 +121,19 @@ public class DatasetService {
 						} else {
 							oldRank = Long.parseLong(currentRank);
 						}
-						
+												
 						difference = String.valueOf(newXPPH - oldXPPH);						
 						rankDifference = String.valueOf(oldRank - newRank);
 						xpPerHour = String.valueOf((newXPPH - oldXPPH) * 12);
 						theExperience = formatXp(newDataset.get(i).get(k).getExperience());
 						difference = formatNumber(difference);
 						xpPerHour = formatNumber(xpPerHour);
-						
+						levelProgressBar = ProgressBarService.getProgressPercentage(Integer.parseInt(newDataset.get(i).get(j).getLevel()), newDataset.get(i).get(j).getExperience());
 						newDataset.get(i).get(j).setXph(xpPerHour);
 						newDataset.get(i).get(j).setXphDifference(difference);
+						
+						newDataset.get(i).get(j).setLevelProgressBar(levelProgressBar);
+						
 						newDataset.get(i).get(j).setRankDifference(rankDifference);
 						newDataset.get(i).get(j).setExperience(theExperience);
 						// set polling timestamp for current time
