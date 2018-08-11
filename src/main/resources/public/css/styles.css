@@ -489,7 +489,7 @@ span.msg, span.choose {
 	height: 10px;
 	font-size: .8em;
 	text-align: center;
-	width: 99%;
+	width: 98.5%;
 }
 
 .myRow {
@@ -508,7 +508,10 @@ span.msg, span.choose {
 #lastUpdatedMsg {
 	float: right;
 	border-bottom: 1%;
-	color: rgb(169, 138, 86);
+/*  	color: rgb(169, 138, 86);  */
+	color: #999; 
+/* 	color: white; */
+font-size: 1em;
 }
 
 a {

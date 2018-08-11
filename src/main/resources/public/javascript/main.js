@@ -233,7 +233,7 @@ var populateLeagueTable = function(results) {
 
 			});
 
-	$('#lastUpdatedMsg').text("last updated : " + timeStamp + "");
+	$('#lastUpdatedMsg').text("updated : " + timeStamp + "");
 	console.log("timestamp : " + timeStamp);
 	var table = $('#leagueInfoTable').dataTable({
 		"iDisplayLength" : 100,
