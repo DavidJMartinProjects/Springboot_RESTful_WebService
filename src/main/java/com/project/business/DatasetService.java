@@ -30,11 +30,13 @@ public class DatasetService {
 		newDataset = new ArrayList<>();
 		ResponseEntity<Ladder> response;
 		LadderTableEntry entry;
+		RestTemplate restTemplate;
+		List<LadderTableEntry> tableEntries;
 
 		for (int i = 0; i < leagues.size(); i++) {
-			List<LadderTableEntry> tableEntries = new ArrayList<>();
+			tableEntries = new ArrayList<>();
 			String url = "http://api.pathofexile.com/ladders/" + leagues.get(i) + "?limit=200";
-			RestTemplate restTemplate = new RestTemplate();
+			restTemplate = new RestTemplate();
 			response = restTemplate.getForEntity(url, Ladder.class);			
 
 			for (Entries anEntry : response.getBody().getEntries()) {
@@ -71,14 +73,20 @@ public class DatasetService {
 		// get the latest dataset
 		newDataset = DatasetService.getLatestDataSet();
 		// iterate
+		String latest;
+		String current;
+		String difference;
+		String xpPerHour;
+		String theExperience;
+		String timeStamp;
 		for (int i = 0; i < latestDataset.size(); i++) {
 			for (int j = 0; j < latestDataset.get(i).size(); j++) {
 				for (int k = 0; k < 200; k++) {
 					if (newDataset.get(i).get(j).getCharacter().equals(currentDataset.get(i).get(k).getCharacter())) {
 						// character match then calculate xph
 						Long newXPPH, oldXPPH;
-						String latest = (newDataset.get(i).get(j).getExperience()).replaceAll(",", "");
-						String current = (currentDataset.get(i).get(k).getExperience()).replaceAll(",", "");
+						latest = (newDataset.get(i).get(j).getExperience()).replaceAll(",", "");
+						current = (currentDataset.get(i).get(k).getExperience()).replaceAll(",", "");
 						if (latest.equals("")) {
 							newXPPH = new Long(0);
 						} else {
@@ -90,9 +98,9 @@ public class DatasetService {
 						} else {
 							oldXPPH = Long.parseLong(current);
 						}
-						String difference = String.valueOf(newXPPH - oldXPPH);
-						String xpPerHour = String.valueOf((newXPPH - oldXPPH) * 12);
-						String theExperience = formatXp(newDataset.get(i).get(k).getExperience());
+						difference = String.valueOf(newXPPH - oldXPPH);
+						xpPerHour = String.valueOf((newXPPH - oldXPPH) * 12);
+						theExperience = formatXp(newDataset.get(i).get(k).getExperience());
 						difference = formatNumber(difference);
 						xpPerHour = formatNumber(xpPerHour);
 						
@@ -100,7 +108,7 @@ public class DatasetService {
 						newDataset.get(i).get(j).setXphDifference(difference);
 						newDataset.get(i).get(j).setExperience(theExperience);
 						// set polling timestamp for current time
-						String timeStamp = new SimpleDateFormat(" MMM d hh:mm a").format(new Date());
+						timeStamp = new SimpleDateFormat(" MMM d hh:mm a").format(new Date());
 //						System.out.println("timeStamp" +timeStamp);
 						newDataset.get(i).get(j).setTimeStamp(timeStamp);
 					}
