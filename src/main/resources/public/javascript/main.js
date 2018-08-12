@@ -265,6 +265,7 @@ var populateLeagueTable = function(results) {
 
 	setTimeout(function() {
 		getleagueTable(selectedLeague);
+		showUpdatedMessage();
 	}, 5 * 60 * 1000);
 	// }, 1 * 10 * 1000);
 
@@ -495,4 +496,25 @@ var getPoeAccount = function(accountName) {
 	var address = "https://www.pathofexile.com/account/view-profile/";
 	address = address.concat(accountName);
 	return address;
+}
+
+var showUpdatedMessage = function() {
+	toastr.success("ranks have been updated.", null, {
+		"iconClass" : 'customer-info',
+		"closeButton" : false,
+		"debug" : false,
+		"newestOnTop" : true,
+		"positionClass" : "toast-top-center",
+		"preventDuplicates" : false,
+		"onclick" : null,
+		"showDuration" : "300",
+		"hideDuration" : "1000",
+		"timeOut" : "4000",
+		"extendedTimeOut" : "1000",
+		"showEasing" : "swing",
+		"hideEasing" : "linear",
+		"showMethod" : "fadeIn",
+		"hideMethod" : "fadeOut",
+		"tapToDismiss" : false,
+	})
 }
