@@ -8,6 +8,18 @@ public class ProgressBarService {
 	
 	private static Map<Integer, String> levelBoundaries = new HashMap<>();
 	
+	private static int levelPlusOne;
+	private static String boundaryStrHigh;		
+	private static long boundaryIntLow;
+	private static long boundaryIntHigh;
+	private static long xpBoundaryDiff;		
+	private static long boundaryInt;
+	private static long currentXpInt;
+	private static long difference;
+	private static float percentage;
+	private static DecimalFormat df;
+	private static String boundaryStrLow;
+	
 	static {
 		levelBoundaries.put(1, "0");
 		levelBoundaries.put(2, "525");
@@ -116,31 +128,22 @@ public class ProgressBarService {
 	}
 	
 	public static String getProgressPercentage(int level, String currentXp) {
-		String boundaryStrLow = ProgressBarService.levelBoundaries.get(level);
+		boundaryStrLow = ProgressBarService.levelBoundaries.get(level);
 		if(level != 100) {
-			int levelPlusOne = level+1;
-			String boundaryStrHigh = ProgressBarService.levelBoundaries.get(levelPlusOne);
-			System.out.println(boundaryStrLow +" "+ boundaryStrHigh);
-			long boundaryIntLow = Long.parseLong(boundaryStrLow);
-			long boundaryIntHigh = Long.parseLong(boundaryStrHigh);
-			long xpBoundaryDiff = boundaryIntHigh - boundaryIntLow;		
-			
-			System.out.println("boundaryStr" +xpBoundaryDiff);
-			long boundaryInt = Long.parseLong(boundaryStrLow);
-			long currentXpInt = Long.parseLong(currentXp);
-			long difference = currentXpInt - boundaryInt;	
-			System.out.println("difference" +difference);
-			float percentage = ((difference*100)/xpBoundaryDiff);
-			System.out.println("percentage" +percentage);
-			DecimalFormat df = new DecimalFormat();
+			levelPlusOne = level+1;
+			boundaryStrHigh = ProgressBarService.levelBoundaries.get(levelPlusOne);			
+			boundaryIntLow = Long.parseLong(boundaryStrLow);
+			boundaryIntHigh = Long.parseLong(boundaryStrHigh);
+			xpBoundaryDiff = boundaryIntHigh - boundaryIntLow;					
+			boundaryInt = Long.parseLong(boundaryStrLow);
+			currentXpInt = Long.parseLong(currentXp);
+			difference = currentXpInt - boundaryInt;			
+			percentage = ((difference*100)/xpBoundaryDiff);
+			df = new DecimalFormat();
 			df.setMaximumFractionDigits(2);
 			return df.format(percentage).toString();	
 		}
 		return "100";
-	}
-	
-	public static void main(String[] args) {
-		System.out.println("Progress % : " +ProgressBarService.getProgressPercentage(90, "1949009687"));
 	}
 
 }
