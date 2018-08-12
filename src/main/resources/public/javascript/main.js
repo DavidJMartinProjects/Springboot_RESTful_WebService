@@ -144,9 +144,9 @@ var populateLeagueTable = function(results) {
 				
 				if (rankDifference < 0) {
 					theRankDifference = "<span class='arrow-down'></span>&ensp;("+data.rankDifference+ ")";
-				} else if (rankDifference > 0 && rankDifference < 1) {
+				} else if (rankDifference >= 0 && rankDifference < 1) {
 					theRankDifference = "";
-				} else if (rankDifference > 1){
+				} else if (rankDifference >= 1){
 					theRankDifference = "<span class='arrow-up'></span>&ensp;(+"+data.rankDifference+ ")";
 				}
 				 
