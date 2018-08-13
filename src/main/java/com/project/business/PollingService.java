@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import org.apache.tomcat.jni.Thread;
 import org.springframework.stereotype.Service;
 
 import com.project.domain.datatable.LadderTableEntry;
@@ -19,22 +20,23 @@ public class PollingService {
 			@Override
 			public void run() {
 				System.out.println("======== Poll Request Recieved. ========");
-				pollLatestDataset();
+				pollLatestDataset();				
 				System.out.println("======== Poll Request Complete. ========");
 			}
-		}, 2000, 5 * 60 * 1000);
+		}, 30000, 5 * 60 * 1000);
 
 	}
 
 	public void pollLatestDataset() {
 		try {
 			DatasetService.calculateDataSet();
+			
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static List<LadderTableEntry> getLeagueDataSet(String selectedLeague) {
+	public static List<LadderTableEntry> getLeagueDataSet(String selectedLeague) {		
 		return DatasetService.getCalculatedDataset(selectedLeague);
 	}
 
