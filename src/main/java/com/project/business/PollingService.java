@@ -16,24 +16,27 @@ public class PollingService {
 	private Timer timer = new Timer();
 
 	PollingService() {
-		timer.scheduleAtFixedRate(new TimerTask() {
-			@Override
-			public void run() {
-				System.out.println("======== Poll Request Recieved. ========");
-				pollLatestDataset();				
-				System.out.println("======== Poll Request Complete. ========");
-			}
-		}, 30000, 5 * 60 * 1000);
-
+		pollLatestDataset();	
 	}
 
 	public void pollLatestDataset() {
+		timer.scheduleAtFixedRate(new TimerTask() {
+			@Override
+			public void run() {
 		try {
+
+			System.out.println("======== Poll Request Recieved. ========");
 			DatasetService.calculateDataSet();
+			System.out.println("======== Poll Request Complete. ========");
+			System.out.println("Sleeping..");			
+			java.lang.Thread.sleep(10000);
+			System.out.println("Awake..");
 			
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+			}
+		}, 5000, 5 * 60 * 1000);
 	}
 
 	public static List<LadderTableEntry> getLeagueDataSet(String selectedLeague) {		
