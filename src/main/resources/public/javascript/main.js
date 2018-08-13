@@ -135,13 +135,11 @@ var populateLeagueTable = function(results) {
 
 				if (data.dead == "true") {
 					character += " <i id='deadStatus'>(dead)</i>";
-
 				}
 				
 				var theRankDifference= "";
 				var rankDifference = data.rankDifference;
-				console.log("ranks difference : "+rankDifference);
-				
+								
 				if (rankDifference < 0) {
 					theRankDifference = "<span class='arrow-down'></span>&ensp;("+data.rankDifference+ ")";
 				} else if (rankDifference >= 0 && rankDifference < 1) {
@@ -183,8 +181,7 @@ var populateLeagueTable = function(results) {
 					xphDifference = formatXphDifference(data.xphDifference);
 					if (!xphDifference.startsWith("-")) {
 						// xphDifference = "+" + xphDifference;
-					}
-					console.log(xphDifference);
+					}					
 				}
 
 				exp = "";
@@ -198,7 +195,7 @@ var populateLeagueTable = function(results) {
 				var classColor = getColor(data.theClass);
 				var accountLink = getPoeAccount(data.account)
 				var ascendancyIcon = getAscendancyIcon(data.theClass);
-
+				
 				if (data.dead == "true") {
 					$('#leagueInfoTable tbody').append(
 							'<tr class = "deadChar"><td>' + theRankDifference + '</td>' 
@@ -347,15 +344,15 @@ var populateLevelChart = function(results) {
 }
 
 function loadingTableAnimation() {
-	console.log("loadingTableAnimation");
-	var x = document.getElementById("tableLoadingAnimation");
-	var y = document.getElementById("leagueInfoTableContainer");
-
-	if (x.style.display === "none") {
-		$(".tableLoadingAnimation").css('visibility', 'visible');
-	} else {
-		$(".tableLoadingAnimation").css('visibility', 'hidden');
-	}
+//	console.log("loadingTableAnimation");
+//	var x = document.getElementById("tableLoadingAnimation");
+//	var y = document.getElementById("leagueInfoTableContainer");
+//
+//	if (x.style.display === "none") {
+//		$(".tableLoadingAnimation").css('visibility', 'visible');
+//	} else {
+//		$(".tableLoadingAnimation").css('visibility', 'hidden');
+//	}
 }
 
 function loadingModalAnimation() {

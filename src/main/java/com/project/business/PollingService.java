@@ -18,9 +18,9 @@ public class PollingService {
 		timer.scheduleAtFixedRate(new TimerTask() {
 			@Override
 			public void run() {
-				System.out.println("Poll Request Recieved.");
+				System.out.println("======== Poll Request Recieved. ========");
 				pollLatestDataset();
-				System.out.println("Poll Request Complete.");
+				System.out.println("======== Poll Request Complete. ========");
 			}
 		}, 2000, 5 * 60 * 1000);
 

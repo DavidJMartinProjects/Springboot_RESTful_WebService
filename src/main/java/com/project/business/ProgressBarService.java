@@ -130,7 +130,7 @@ public class ProgressBarService {
 	public static String getProgressPercentage(int level, String currentXp) {
 		boundaryStrLow = ProgressBarService.levelBoundaries.get(level);
 		if(level != 100) {
-			levelPlusOne = level+1;
+			levelPlusOne = level+1;			
 			boundaryStrHigh = ProgressBarService.levelBoundaries.get(levelPlusOne);			
 			boundaryIntLow = Long.parseLong(boundaryStrLow);
 			boundaryIntHigh = Long.parseLong(boundaryStrHigh);
@@ -138,11 +138,11 @@ public class ProgressBarService {
 			boundaryInt = Long.parseLong(boundaryStrLow);
 			currentXpInt = Long.parseLong(currentXp);
 			difference = currentXpInt - boundaryInt;			
-			percentage = ((difference*100)/xpBoundaryDiff);
+			percentage = ((difference*100)/xpBoundaryDiff);			
 			df = new DecimalFormat();
 			df.setMaximumFractionDigits(2);
 			return df.format(percentage).toString();	
-		}
+		}		
 		return "100";
 	}
 

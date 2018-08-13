@@ -20,6 +20,26 @@ public class DatasetService {
 	private static List<List<LadderTableEntry>> currentDataset = new ArrayList<>();
 	private static List<List<LadderTableEntry>> latestDataset = new ArrayList<>();
 	private static List<List<LadderTableEntry>> newDataset = new ArrayList<>();
+	private static DecimalFormat formatter = new DecimalFormat("#,###");
+	private static double amount;	
+	private static String number;
+	
+	private static String latest;
+	private static String current;
+	private static String difference;
+	private static String rankDifference;
+	private static String xpPerHour;
+	private static String theExperience;
+	private static String timeStamp;
+	private static String latestRank;
+	private static String currentRank;
+	private static Long newXPPH, oldXPPH;
+	private static Long newRank, oldRank;
+	private static String levelProgressBar;
+	private static ResponseEntity<Ladder> response;
+	private static LadderTableEntry entry;
+	private static RestTemplate restTemplate;
+	private static List<LadderTableEntry> tableEntries;
 
 	public DatasetService() throws InterruptedException {
 		calculateDataSet();
@@ -28,10 +48,6 @@ public class DatasetService {
 	public static List<List<LadderTableEntry>> getLatestDataSet() throws InterruptedException {
 		leagues = currentLeagueService.getLeagues();	
 		newDataset = new ArrayList<>();
-		ResponseEntity<Ladder> response;
-		LadderTableEntry entry;
-		RestTemplate restTemplate;
-		List<LadderTableEntry> tableEntries;
 
 		for (int i = 0; i < leagues.size(); i++) {
 			tableEntries = new ArrayList<>();
@@ -72,19 +88,7 @@ public class DatasetService {
 		currentDataset = latestDataset;
 		// get the latest dataset
 		newDataset = DatasetService.getLatestDataSet();
-		// iterate
-		String latest;
-		String current;
-		String difference;
-		String rankDifference;
-		String xpPerHour;
-		String theExperience;
-		String timeStamp;
-		String latestRank;
-		String currentRank;
-		Long newXPPH, oldXPPH;
-		Long newRank, oldRank;
-		String levelProgressBar;
+
 		for (int i = 0; i < latestDataset.size(); i++) {
 			for (int j = 0; j < latestDataset.get(i).size(); j++) {
 				for (int k = 0; k < 200; k++) {
@@ -128,17 +132,15 @@ public class DatasetService {
 						theExperience = formatXp(newDataset.get(i).get(k).getExperience());
 						difference = formatNumber(difference);
 						xpPerHour = formatNumber(xpPerHour);
-						levelProgressBar = ProgressBarService.getProgressPercentage(Integer.parseInt(newDataset.get(i).get(j).getLevel()), newDataset.get(i).get(j).getExperience());
+						levelProgressBar = ProgressBarService.getProgressPercentage(Integer.parseInt(newDataset.get(i).get(j).getLevel()), newDataset.get(i).get(j).getExperience().replaceAll(",", ""));
+						
 						newDataset.get(i).get(j).setXph(xpPerHour);
 						newDataset.get(i).get(j).setXphDifference(difference);
-						
 						newDataset.get(i).get(j).setLevelProgressBar(levelProgressBar);
-						
 						newDataset.get(i).get(j).setRankDifference(rankDifference);
 						newDataset.get(i).get(j).setExperience(theExperience);
 						// set polling timestamp for current time
-						timeStamp = new SimpleDateFormat(" MMM d hh:mm a").format(new Date());
-//						System.out.println("timeStamp" +timeStamp);
+						timeStamp = new SimpleDateFormat(" MMM d hh:mm a").format(new Date());						
 						newDataset.get(i).get(j).setTimeStamp(timeStamp);
 					}
 				}
@@ -174,18 +176,16 @@ public class DatasetService {
 	}
 	
 	public static String formatNumber(String theNumber) {	
-			String number = theNumber;
+			number = theNumber;
 			number = number.replaceAll(",", "");
-			double amount = Double.parseDouble(number);
-			DecimalFormat formatter = new DecimalFormat("#,###");
+			amount = Double.parseDouble(number);
 			return formatter.format(amount).replaceAll(",", "");
 	}
 	
 	public static String formatXp(String theNumber) {	
-		String number = theNumber;
+		number = theNumber;
 		number = number.replaceAll(",", "");
-		double amount = Double.parseDouble(number);
-		DecimalFormat formatter = new DecimalFormat("#,###");
+		amount = Double.parseDouble(number);	
 		return formatter.format(amount);
 }
 
