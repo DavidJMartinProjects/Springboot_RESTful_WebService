@@ -13,8 +13,7 @@ import com.project.domain.datatable.LadderTableEntry;
 @Service
 public class PollingService {
 
-	private static Timer timer = new Timer();
-	public static Runtime r;
+	private static Timer timer = new Timer();	
 	private static int counter = 9;
 
 	PollingService() {

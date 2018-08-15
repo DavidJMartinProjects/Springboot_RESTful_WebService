@@ -150,26 +150,26 @@ public class DatasetService {
 	}
 
 	public static List<LadderTableEntry> getCalculatedDataset(String selectedLeague) {
-		PollingService.r.gc();		
+		Runtime.getRuntime().gc();	
 		switch (selectedLeague) {		
 			case "Incursion Event (IRE001)": {
 				System.out.println("getCalculatedDataset() : Incursion Event (IRE001)");
-				PollingService.r.gc();	
+				Runtime.getRuntime().gc();
 				return latestDataset.get(0);
 			}
 			case "Incursion Event HC (IRE002)": {
 				System.out.println("getCalculatedDataset() : Incursion Event HC (IRE002)");
-				PollingService.r.gc();	
+				Runtime.getRuntime().gc();
 				return latestDataset.get(1);
 			}
 			case "SSF Incursion Event (IRE003)": {
 				System.out.println("getCalculatedDataset() : SSF Incursion Event (IRE003)");
-				PollingService.r.gc();	
+				Runtime.getRuntime().gc();
 				return latestDataset.get(2);
 			}
 			case "SSF Incursion Event HC (IRE004)": {
 				System.out.println("getCalculatedDataset() : SSF Incursion Event HC (IRE004)");
-				PollingService.r.gc();	
+				Runtime.getRuntime().gc();
 				return latestDataset.get(3);
 			}
 			
