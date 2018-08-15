@@ -107,7 +107,7 @@ var getLeagueDataTable = function(selectedLeague) {
 			league : selectedLeague
 		},
 		success : function(results) {
-			console.log(results)
+//			console.log(results)
 			populateLeagueTable(results);
 			// showStatsBtn();
 			$("#tableLoadingAnimation").css('visibility', 'hidden');
@@ -471,10 +471,10 @@ var formatXph = function(theNumber) {
 }
 
 var formatXphDifference = function(theNumber) {
-	console.log(theNumber);
+	
 	xphDifference = (parseInt(Math.round(theNumber) / 1000000).toFixed(2))
 			+ "M";
-	console.log(xphDifference);
+	
 	return xphDifference;
 }
 
