@@ -15,34 +15,37 @@ public class PollingService {
 
 	private static Timer timer = new Timer();
 	public static Runtime r;
+	private static int counter = 9;
 
 	PollingService() {
-		pollLatestDataset();	
+		pollLatestDataset();
 	}
 
 	public void pollLatestDataset() {
 		timer.scheduleAtFixedRate(new TimerTask() {
 			@Override
 			public void run() {
-		try {
-			r = Runtime.getRuntime();
-			r.gc();
-			System.out.println("======== Poll Request Recieved. ========");
-			DatasetService.calculateDataSet();
-			System.out.println("======== Poll Request Complete. ========");
-			System.out.println("Sleeping..");			
-			r.gc();
-			java.lang.Thread.sleep(10000);
-			System.out.println("Awake..");
-			
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+				try {
+					counter++;
+					Runtime.getRuntime().gc();					
+					if(counter == 10) {
+						System.out.println("======== Poll Request Recieved. ========");
+						DatasetService.calculateDataSet();
+						System.out.println("======== Poll Request Complete. ======== Counter : " +counter);
+						System.out.println("Sleeping..");
+						java.lang.Thread.sleep(10000);
+						System.out.println("Awake..");
+						counter = 0;
+					}
+					Runtime.getRuntime().gc();	
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
-		}, 5000, 5 * 60 * 1000);
+		}, 5000, 1 * 30 * 1000);
 	}
 
-	public static List<LadderTableEntry> getLeagueDataSet(String selectedLeague) {		
+	public static List<LadderTableEntry> getLeagueDataSet(String selectedLeague) {
 		return DatasetService.getCalculatedDataset(selectedLeague);
 	}
 

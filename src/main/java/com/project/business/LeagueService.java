@@ -11,29 +11,21 @@ import com.project.domain.ladder.Entries;
 import com.project.domain.ladder.Ladder;
 
 public class LeagueService {
+	private static List<LadderTableEntry> tableEntries = new ArrayList<>();
+	RestTemplate restTemplate = new RestTemplate();
+	LadderTableEntry entry = new LadderTableEntry();
 
 	public List<LadderTableEntry> getLeagueDetails(String league) {
-		List<LadderTableEntry> tableEntries = new ArrayList<>();
+		
 		String url = "http://api.pathofexile.com/ladders/" + league + "?limit=200";
-		System.out.println("URL : " +url);
-		RestTemplate restTemplate = new RestTemplate();
+		System.out.println("URL : " +url);		
 		ResponseEntity<Ladder> response = restTemplate.getForEntity(url, Ladder.class);
-
-		for (Entries anEntry : response.getBody().getEntries()) {
-			LadderTableEntry entry = new LadderTableEntry();
-			entry.setRank(anEntry.getRank());
-			entry.setOnline(anEntry.getOnline());
-			entry.setCharacter(anEntry.getCharacter().getName());
-			entry.setDead(anEntry.getDead());
-			entry.setAccount(anEntry.getAccount().getName());
-			entry.setLevel(anEntry.getCharacter().getLevel());
-			entry.setTheClass(anEntry.getCharacter().getTheClass());
-			entry.setChallenges(anEntry.getAccount().getChallenges().getTotal());
-			entry.setExperience(anEntry.getCharacter().getExperience());
+		
+		for (Entries anEntry : response.getBody().getEntries()) {			
 			if (anEntry.getAccount().getTwitch() != null) {
-				entry.setTwitch(anEntry.getAccount().getTwitch().getName());
+				anEntry.setTwitch(anEntry.getAccount().getTwitch().getName());
 			} else {
-				entry.setTwitch("");
+				anEntry.setTwitch("");
 			}
 			tableEntries.add(entry);
 		}

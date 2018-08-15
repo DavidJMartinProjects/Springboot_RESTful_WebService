@@ -486,7 +486,7 @@ var getChallengeIcon = function(numberOfChallenges) {
 
 var getAscendancyIcon = function(ascendancy) {
 	return "<img class='ascendancy-icon' src='/ascendancy_images/" + ascendancy
-			+ ".png' title='" + ascendancy + "' />";
+			+ ".jpg' title='" + ascendancy + "' />";
 }
 
 var getPoeAccount = function(accountName) {
