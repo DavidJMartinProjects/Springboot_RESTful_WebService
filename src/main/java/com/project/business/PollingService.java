@@ -13,7 +13,8 @@ import com.project.domain.datatable.LadderTableEntry;
 @Service
 public class PollingService {
 
-	private Timer timer = new Timer();
+	private static Timer timer = new Timer();
+	public static Runtime r;
 
 	PollingService() {
 		pollLatestDataset();	
@@ -24,11 +25,13 @@ public class PollingService {
 			@Override
 			public void run() {
 		try {
-
+			r = Runtime.getRuntime();
+			r.gc();
 			System.out.println("======== Poll Request Recieved. ========");
 			DatasetService.calculateDataSet();
 			System.out.println("======== Poll Request Complete. ========");
 			System.out.println("Sleeping..");			
+			r.gc();
 			java.lang.Thread.sleep(10000);
 			System.out.println("Awake..");
 			
