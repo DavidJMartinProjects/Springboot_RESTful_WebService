@@ -20,11 +20,7 @@ $(document)
 							"orderable" : false, // set orderable for
 						// selected columns
 						} ],
-						"columnDefs" : [ {
-							"targets" : [ 6 ], // column or columns numbers
-							"sType" : "numeric", // set orderable for
-						// selected columns
-						} ],
+						deferRender: true,
 						"columnDefs" : [ {
 							type : 'formatted-num',
 							targets : 6
@@ -323,6 +319,7 @@ var populateLeagueTable = function(results) {
 			"targets" : [ 0 ], // column or columns numbers
 			"orderable" : false, // set orderable for selected columns
 		} ],
+		deferRender: true,
 		"columnDefs" : [ {
 			type : 'formatted-num',
 			targets : [0, 6]

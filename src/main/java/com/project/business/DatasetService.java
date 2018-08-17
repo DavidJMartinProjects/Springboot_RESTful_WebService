@@ -74,6 +74,28 @@ public class DatasetService {
 				tableEntries.add(entry);
 			}
 			newDataset.add(tableEntries);
+			Thread.sleep(500);
+			url = "http://api.pathofexile.com/ladders/" + leagues.get(i) + "?limit=200&offset=200";			
+			response = restTemplate.getForEntity(url, Ladder.class);
+
+			for (Entries anEntry : response.getBody().getEntries()) {
+				LadderTableEntry entry = new LadderTableEntry();
+				entry.setRank(anEntry.getRank());
+				entry.setOnline(anEntry.getOnline());
+				entry.setCharacter(anEntry.getCharacter().getName());
+				entry.setDead(anEntry.getDead());
+				entry.setAccount(anEntry.getAccount().getName());
+				entry.setLevel(anEntry.getCharacter().getLevel());
+				entry.setTheClass(anEntry.getCharacter().getTheClass());
+				entry.setChallenges(anEntry.getAccount().getChallenges().getTotal());
+				entry.setExperience(anEntry.getCharacter().getExperience());
+				if (anEntry.getAccount().getTwitch() != null) {
+					entry.setTwitch(anEntry.getAccount().getTwitch().getName());
+				} else {
+					entry.setTwitch("");
+				}
+				tableEntries.add(entry);
+			}
 			Thread.sleep(1000);
 		}
 		if (currentDataset.size() == 0) {
@@ -90,8 +112,8 @@ public class DatasetService {
 		newDataset = DatasetService.getLatestDataSet();
 		
 		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 200; j++) {
-				for (int k = 0; k < 200; k++) {
+			for (int j = 0; j < 400; j++) {
+				for (int k = 0; k < 400; k++) {
 					if (newDataset.get(i).get(j).getCharacter().equals(currentDataset.get(i).get(k).getCharacter())) {
 						// character match then calculate xph
 						
