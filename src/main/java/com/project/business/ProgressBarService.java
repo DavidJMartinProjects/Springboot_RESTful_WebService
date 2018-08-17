@@ -128,7 +128,7 @@ public class ProgressBarService {
 	}
 	
 	public static String getProgressPercentage(int level, String currentXp) {
-		boundaryStrLow = ProgressBarService.levelBoundaries.get(level);
+		boundaryStrLow = ProgressBarService.levelBoundaries.get(level);		
 		if(level != 100) {
 			levelPlusOne = level+1;			
 			boundaryStrHigh = ProgressBarService.levelBoundaries.get(levelPlusOne);			

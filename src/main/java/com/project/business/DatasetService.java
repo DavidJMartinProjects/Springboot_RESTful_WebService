@@ -48,8 +48,8 @@ public class DatasetService {
 	public static List<List<LadderTableEntry>> getLatestDataSet() throws InterruptedException {
 		leagues = currentLeagueService.getLeagues();	
 		newDataset = new ArrayList<>();
-
-		for (int i = 0; i < leagues.size(); i++) {
+		int i = 0;
+		for ( ;i < 4; i++) {
 			tableEntries = new ArrayList<>();
 			String url = "http://api.pathofexile.com/ladders/" + leagues.get(i) + "?limit=200";
 			restTemplate = new RestTemplate();
@@ -88,9 +88,9 @@ public class DatasetService {
 		currentDataset = latestDataset;
 		// get the latest dataset
 		newDataset = DatasetService.getLatestDataSet();
-
-		for (int i = 0; i < latestDataset.size(); i++) {
-			for (int j = 0; j < latestDataset.get(i).size(); j++) {
+		
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 200; j++) {
 				for (int k = 0; k < 200; k++) {
 					if (newDataset.get(i).get(j).getCharacter().equals(currentDataset.get(i).get(k).getCharacter())) {
 						// character match then calculate xph

@@ -1,6 +1,6 @@
 var theLocalhostUrl = 'http://localhost:8080/ladders';
 var theHostedSiteUrl = 'https://immense-headland-50105.herokuapp.com/ladders';
-var url = theHostedSiteUrl;
+var url = theLocalhostUrl;
 
 var selectedLeague = "";
 var timeStamp = "";
@@ -15,10 +15,20 @@ $(document)
 					console.log("index.html loaded.")
 
 					var table = $('#leagueInfoTable').dataTable({
-						"columnDefs": [ {
-							"targets": [0], // column or columns numbers
-							"orderable": false,  // set orderable for selected columns
-							}],
+						"columnDefs" : [ {
+							"targets" : [ 0 ], // column or columns numbers
+							"orderable" : false, // set orderable for
+						// selected columns
+						} ],
+						"columnDefs" : [ {
+							"targets" : [ 6 ], // column or columns numbers
+							"sType" : "numeric", // set orderable for
+						// selected columns
+						} ],
+						"columnDefs" : [ {
+							type : 'formatted-num',
+							targets : 6
+						} ],
 					});
 					new $.fn.dataTable.FixedHeader(table);
 
@@ -47,11 +57,13 @@ $(document)
 				});
 
 $("ul[id*=dropdownList] li").click(function() {
-	console.log($(this).text()); // gets text contents of clicked li
+	// console.log($(this).text()); // gets text contents of clicked li
 	selectedLeague = $(this).text();
+
+	 $("#tableLoadingAnimation").css('visibility', 'visible');
+//	showLoadingLadderMessage();
+	// console.log("selectedLeague" + selectedLeague);
 	$("#footer").css('visibility', 'hidden');
-//	$("#tableLoadingAnimation").css('visibility', 'visible');
-	console.log("selectedLeague" + selectedLeague);
 	getleagueTable(selectedLeague);
 	document.getElementById("footer").style.position = "static";
 });
@@ -107,7 +119,7 @@ var getLeagueDataTable = function(selectedLeague) {
 			league : selectedLeague
 		},
 		success : function(results) {
-//			console.log(results)
+			// console.log(results)
 			populateLeagueTable(results);
 			// showStatsBtn();
 			$("#tableLoadingAnimation").css('visibility', 'hidden');
@@ -136,18 +148,20 @@ var populateLeagueTable = function(results) {
 				if (data.dead == "true") {
 					character += " <i id='deadStatus'>(dead)</i>";
 				}
-				
-				var theRankDifference= "";
+
+				var theRankDifference = "";
 				var rankDifference = data.rankDifference;
-								
+
 				if (rankDifference < 0) {
-					theRankDifference = "<span class='arrow-down'></span>&ensp;("+data.rankDifference+ ")";
+					theRankDifference = "<span class='arrow-down'></span>&ensp;("
+							+ data.rankDifference + ")";
 				} else if (rankDifference >= 0 && rankDifference < 1) {
 					theRankDifference = "";
-				} else if (rankDifference >= 1){
-					theRankDifference = "<span class='arrow-up'></span>&ensp;(+"+data.rankDifference+ ")";
+				} else if (rankDifference >= 1) {
+					theRankDifference = "<span class='arrow-up'></span>&ensp;(+"
+							+ data.rankDifference + ")";
 				}
-				 
+
 				var account = "";
 				if (data.online == "true") {
 					account = "<img class='img-valign' src='/images/green-icon.png' title='online' />   "
@@ -181,7 +195,7 @@ var populateLeagueTable = function(results) {
 					xphDifference = formatXphDifference(data.xphDifference);
 					if (!xphDifference.startsWith("-")) {
 						// xphDifference = "+" + xphDifference;
-					}					
+					}
 				}
 
 				exp = "";
@@ -195,48 +209,99 @@ var populateLeagueTable = function(results) {
 				var classColor = getColor(data.theClass);
 				var accountLink = getPoeAccount(data.account)
 				var ascendancyIcon = getAscendancyIcon(data.theClass);
-				
+
 				if (data.dead == "true") {
-					$('#leagueInfoTable tbody').append(
-							'<tr class = "deadChar"><td>' + theRankDifference + '</td>' 
-							+'<td>' + data.rank +'</td>'
-							+ '<td><a href=' + accountLink + ' target="_blank">' + account
-									+ '</a></td>' + '<td>' + challenge_icon + "  " + character + '</td>' 
-									+ '<td>' + data.level + '</td>'
-									+ '<td><font color="' + classColor + '">' + ascendancyIcon + "  " + data.theClass + '</font></td>' + '<td class="' + xphColor
-									+ '">' + exp 
-									+ '</td>'
-									+ '<td>' 
-									
-									+'<div class="progress">'
-									+  '<div class="progress-bar bg-dark" style="width:'+data.levelProgressBar+'%">'
-							/*		+	 +data.levelProgressBar+'%'*/
-									+ '</div>'
-									+'</div>'
-									
-									+ '</td>'
-									+ '<td>' + data.experience + '</td>'
-									+ '<td>' + twitchLink + '</td>' + '</tr>');
+					$('#leagueInfoTable tbody')
+							.append(
+									'<tr class = "deadChar"><td>'
+											+ theRankDifference
+											+ '</td>'
+											+ '<td>'
+											+ data.rank
+											+ '</td>'
+											+ '<td><a href='
+											+ accountLink
+											+ ' target="_blank">'
+											+ account
+											+ '</a></td>'
+											+ '<td>'
+											+ challenge_icon
+											+ "  "
+											+ character
+											+ '</td>'
+											+ '<td>'
+											+ data.level
+											+ '</td>'
+											+ '<td><font color="'
+											+ classColor
+											+ '">'
+											+ ascendancyIcon
+											+ "  "
+											+ data.theClass
+											+ '</font></td>'
+											+ '<td class="'
+											+ xphColor
+											+ '">'
+											+ exp
+											+ '</td>'
+											+ '<td>'
+
+											+ '<div class="progress">'
+											+ '<div class="progress-bar bg-dark" style="width:'
+											+ data.levelProgressBar + '%">'
+											/* + +data.levelProgressBar+'%' */
+											+ '</div>' + '</div>'
+
+											+ '</td>' + '<td>'
+											+ data.experience + '</td>'
+											+ '<td>' + twitchLink + '</td>'
+											+ '</tr>');
 				} else {
-					$('#leagueInfoTable tbody').append(
-							'<tr><td>' + theRankDifference + '</td>' 
-							+'<td>' + data.rank +'</td>'									
-							+ '<td><a href=' + accountLink + ' target="_blank">' + account
-							+ '</a></td>' + '<td>' + challenge_icon + "  " + character + '</td>' 
-							+ '<td>' + data.level + '</td>'
-							+ '<td><font color="' + classColor + '">' + ascendancyIcon + "  " + data.theClass + '</font></td>' + '<td class="' + xphColor
-							+ '">' + exp + '</td>'
-							+ '<td>' 
-							
-							+'<div class="progress">'
-							+  '<div class="progress-bar bg-dark" style="width:'+data.levelProgressBar+'%">'
-				/*			+	 +data.levelProgressBar+'%'*/
-							+ '</div>'
-							+'</div>'
-							
-							+ '</td>'
-							+ '<td>' + data.experience + '</td>'
-							+ '<td>' + twitchLink + '</td>' + '</tr>');
+					$('#leagueInfoTable tbody')
+							.append(
+									'<tr><td>'
+											+ theRankDifference
+											+ '</td>'
+											+ '<td>'
+											+ data.rank
+											+ '</td>'
+											+ '<td><a href='
+											+ accountLink
+											+ ' target="_blank">'
+											+ account
+											+ '</a></td>'
+											+ '<td>'
+											+ challenge_icon
+											+ "  "
+											+ character
+											+ '</td>'
+											+ '<td>'
+											+ data.level
+											+ '</td>'
+											+ '<td><font color="'
+											+ classColor
+											+ '">'
+											+ ascendancyIcon
+											+ "  "
+											+ data.theClass
+											+ '</font></td>'
+											+ '<td class="'
+											+ xphColor
+											+ '">'
+											+ exp
+											+ '</td>'
+											+ '<td>'
+
+											+ '<div class="progress">'
+											+ '<div class="progress-bar bg-dark" style="width:'
+											+ data.levelProgressBar + '%">'
+											/* + +data.levelProgressBar+'%' */
+											+ '</div>' + '</div>'
+
+											+ '</td>' + '<td>'
+											+ data.experience + '</td>'
+											+ '<td>' + twitchLink + '</td>'
+											+ '</tr>');
 
 				}
 
@@ -254,10 +319,14 @@ var populateLeagueTable = function(results) {
 		responsive : true,
 		"pagingType" : "full_numbers",
 		stateSave : true,
-		"columnDefs": [ {
-			"targets": [0], // column or columns numbers
-			"orderable": false,  // set orderable for selected columns
-			}],
+		"columnDefs" : [ {
+			"targets" : [ 0 ], // column or columns numbers
+			"orderable" : false, // set orderable for selected columns
+		} ],
+		"columnDefs" : [ {
+			type : 'formatted-num',
+			targets : [0, 6]
+		} ],
 	});
 
 	setTimeout(function() {
@@ -350,8 +419,12 @@ function loadingTableAnimation() {
 //
 //	if (x.style.display === "none") {
 //		$(".tableLoadingAnimation").css('visibility', 'visible');
+//		x.style.display = "block";
+//		y.style.display = "none";
 //	} else {
 //		$(".tableLoadingAnimation").css('visibility', 'hidden');
+//		x.style.display = "none";
+//		y.style.display = "block";
 //	}
 }
 
@@ -360,7 +433,7 @@ function loadingModalAnimation() {
 	var y = document.getElementById("chartContainer");
 
 	if (x.style.display === "none") {
-		$(".modalLoadingAnimation").css('visibility', 'hidden');
+		$(".modalLoadingAnimation").css('visibility', 'visible');
 
 		x.style.display = "block";
 		y.style.display = "none";
@@ -467,14 +540,14 @@ var getXphColor = function(xph) {
 }
 
 var formatXph = function(theNumber) {
-	exp = parseFloat(Math.round(theNumber) / 1000000).toFixed(2);
+	exp = parseFloat(Math.round(theNumber) / 1000000).toFixed(2) + "M";
 }
 
 var formatXphDifference = function(theNumber) {
-	
+
 	xphDifference = (parseInt(Math.round(theNumber) / 1000000).toFixed(2))
 			+ "M";
-	
+
 	return xphDifference;
 }
 
@@ -515,3 +588,39 @@ var showUpdatedMessage = function() {
 		"tapToDismiss" : false,
 	})
 }
+
+var showLoadingLadderMessage = function() {
+	toastr.success("Loading Ranks.", null, {
+		"iconClass" : 'customer-info',
+		"closeButton" : false,
+		"debug" : false,
+		"newestOnTop" : true,
+		"positionClass" : "toast-top-center",
+		"preventDuplicates" : false,
+		"onclick" : null,
+		"showDuration" : "300",
+		"hideDuration" : "1000",
+		"timeOut" : "4000",
+		"extendedTimeOut" : "1000",
+		"showEasing" : "swing",
+		"hideEasing" : "linear",
+		"showMethod" : "fadeIn",
+		"hideMethod" : "fadeOut",
+		"tapToDismiss" : false,
+	})
+}
+
+jQuery.extend(jQuery.fn.dataTableExt.oSort, {
+	"formatted-num-pre" : function(a) {
+		a = (a === "-" || a === "") ? 0 : a.replace(/[^\d\-\.]/g, "").replace("+ ", "+").replace("- ", "-");
+		return parseFloat(a);
+	},
+
+	"formatted-num-asc" : function(a, b) {
+		return a - b;
+	},
+
+	"formatted-num-desc" : function(a, b) {
+		return b - a;
+	}
+});
