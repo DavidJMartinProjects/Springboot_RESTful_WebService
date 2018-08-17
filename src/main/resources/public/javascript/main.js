@@ -1,6 +1,6 @@
 var theLocalhostUrl = 'http://localhost:8080/ladders';
 var theHostedSiteUrl = 'https://immense-headland-50105.herokuapp.com/ladders';
-var url = theHostedSiteUrl;
+var url = theLocalhostUrl;
 
 var selectedLeague = "";
 var timeStamp = "";
@@ -21,9 +21,10 @@ $(document)
 						// selected columns
 						} ],
 						deferRender: true,
+						"deferLoading": 400,
 						"columnDefs" : [ {
 							type : 'formatted-num',
-							targets : 6
+							targets : [0, 6]
 						} ],
 					});
 					new $.fn.dataTable.FixedHeader(table);
@@ -320,9 +321,10 @@ var populateLeagueTable = function(results) {
 			"orderable" : false, // set orderable for selected columns
 		} ],
 		deferRender: true,
+		"deferLoading": 400,
 		"columnDefs" : [ {
 			type : 'formatted-num',
-			targets : [6]
+			targets : [0, 6]
 		} ],
 	});
 
