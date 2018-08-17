@@ -51,7 +51,7 @@ public class PollingService {
 					e.printStackTrace();
 				}
 			}
-		}, 5000, 1 * 2 * 1000);
+		}, 5000, 1 * 30 * 1000);
 	}
 
 	public static List<LadderTableEntry> getLeagueDataSet(String selectedLeague) {
