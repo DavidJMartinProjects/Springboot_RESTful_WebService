@@ -322,7 +322,7 @@ var populateLeagueTable = function(results) {
 		deferRender: true,
 		"columnDefs" : [ {
 			type : 'formatted-num',
-			targets : [0, 6]
+			targets : [6]
 		} ],
 	});
 

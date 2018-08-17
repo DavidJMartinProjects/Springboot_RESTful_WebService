@@ -53,21 +53,22 @@ public class DatasetService {
 			tableEntries = new ArrayList<>();
 			String url = "http://api.pathofexile.com/ladders/" + leagues.get(i) + "?limit=200";
 			restTemplate = new RestTemplate();
-			response = restTemplate.getForEntity(url, Ladder.class);			
-
-			for (Entries anEntry : response.getBody().getEntries()) {
+			response = restTemplate.getForEntity(url, Ladder.class);
+			
+			int j=0; int length = 200;//response.getBody().getEntries().length;
+			for (; j < length; j++) {
 				entry = new LadderTableEntry();
-				entry.setRank(anEntry.getRank());
-				entry.setOnline(anEntry.getOnline());
-				entry.setCharacter(anEntry.getCharacter().getName());
-				entry.setDead(anEntry.getDead());
-				entry.setAccount(anEntry.getAccount().getName());
-				entry.setLevel(anEntry.getCharacter().getLevel());
-				entry.setTheClass(anEntry.getCharacter().getTheClass());
-				entry.setChallenges(anEntry.getAccount().getChallenges().getTotal());
-				entry.setExperience(anEntry.getCharacter().getExperience());
-				if (anEntry.getAccount().getTwitch() != null) {
-					entry.setTwitch(anEntry.getAccount().getTwitch().getName());
+				entry.setRank(response.getBody().getEntries()[j].getRank());
+				entry.setOnline(response.getBody().getEntries()[j].getOnline());
+				entry.setCharacter(response.getBody().getEntries()[j].getCharacter().getName());
+				entry.setDead(response.getBody().getEntries()[j].getDead());
+				entry.setAccount(response.getBody().getEntries()[j].getAccount().getName());
+				entry.setLevel(response.getBody().getEntries()[j].getCharacter().getLevel());
+				entry.setTheClass(response.getBody().getEntries()[j].getCharacter().getTheClass());
+				entry.setChallenges(response.getBody().getEntries()[j].getAccount().getChallenges().getTotal());
+				entry.setExperience(response.getBody().getEntries()[j].getCharacter().getExperience());
+				if (response.getBody().getEntries()[j].getAccount().getTwitch() != null) {
+					entry.setTwitch(response.getBody().getEntries()[j].getAccount().getTwitch().getName());
 				} else {
 					entry.setTwitch("");
 				}
@@ -78,25 +79,26 @@ public class DatasetService {
 			url = "http://api.pathofexile.com/ladders/" + leagues.get(i) + "?limit=200&offset=200";			
 			response = restTemplate.getForEntity(url, Ladder.class);
 
-			for (Entries anEntry : response.getBody().getEntries()) {
-				LadderTableEntry entry = new LadderTableEntry();
-				entry.setRank(anEntry.getRank());
-				entry.setOnline(anEntry.getOnline());
-				entry.setCharacter(anEntry.getCharacter().getName());
-				entry.setDead(anEntry.getDead());
-				entry.setAccount(anEntry.getAccount().getName());
-				entry.setLevel(anEntry.getCharacter().getLevel());
-				entry.setTheClass(anEntry.getCharacter().getTheClass());
-				entry.setChallenges(anEntry.getAccount().getChallenges().getTotal());
-				entry.setExperience(anEntry.getCharacter().getExperience());
-				if (anEntry.getAccount().getTwitch() != null) {
-					entry.setTwitch(anEntry.getAccount().getTwitch().getName());
-				} else {
-					entry.setTwitch("");
-				}
+			j=0; length = 200; //response.getBody().getEntries().length;
+			for (; j < length; j++) {
+			entry = new LadderTableEntry();
+			entry.setRank(response.getBody().getEntries()[j].getRank());
+			entry.setOnline(response.getBody().getEntries()[j].getOnline());
+			entry.setCharacter(response.getBody().getEntries()[j].getCharacter().getName());
+			entry.setDead(response.getBody().getEntries()[j].getDead());
+			entry.setAccount(response.getBody().getEntries()[j].getAccount().getName());
+			entry.setLevel(response.getBody().getEntries()[j].getCharacter().getLevel());
+			entry.setTheClass(response.getBody().getEntries()[j].getCharacter().getTheClass());
+			entry.setChallenges(response.getBody().getEntries()[j].getAccount().getChallenges().getTotal());
+			entry.setExperience(response.getBody().getEntries()[j].getCharacter().getExperience());
+			if (response.getBody().getEntries()[j].getAccount().getTwitch() != null) {
+				entry.setTwitch(response.getBody().getEntries()[j].getAccount().getTwitch().getName());
+			} else {
+				entry.setTwitch("");
+			}
 				tableEntries.add(entry);
 			}
-			Thread.sleep(1000);
+			Thread.sleep(500);
 		}
 		if (currentDataset.size() == 0) {
 			currentDataset = newDataset;
