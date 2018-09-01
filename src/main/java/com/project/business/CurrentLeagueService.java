@@ -11,11 +11,11 @@ public class CurrentLeagueService {
 	}
 
 	public List getLeagues() {
-		leagues.add("Incursion Event (IRE001)");
-		leagues.add("Incursion Event HC (IRE002)");
-		leagues.add("SSF Incursion Event (IRE003)");
-		leagues.add("SSF Incursion Event HC (IRE004)");		
+		leagues.add("Delve");
+		leagues.add("Hardcore Delve");
+		leagues.add("SSF Delve");
+		leagues.add("SSF Delve HC");		
 		return leagues;
 	}
-
+ 
 }

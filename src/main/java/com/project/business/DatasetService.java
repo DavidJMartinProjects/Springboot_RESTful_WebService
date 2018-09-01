@@ -76,7 +76,8 @@ public class DatasetService {
 			}
 			newDataset.add(tableEntries);
 			Thread.sleep(500);
-			url = "http://api.pathofexile.com/ladders/" + leagues.get(i) + "?limit=200&offset=200";			
+			url = "http://api.pathofexile.com/ladders/" + leagues.get(i) + "?limit=200&offset=200";		
+			System.out.println("url : " +url);
 			response = restTemplate.getForEntity(url, Ladder.class);
 
 			j=0; length = 200; //response.getBody().getEntries().length;
@@ -176,23 +177,23 @@ public class DatasetService {
 	public static List<LadderTableEntry> getCalculatedDataset(String selectedLeague) {
 		Runtime.getRuntime().gc();	
 		switch (selectedLeague) {		
-			case "Incursion Event (IRE001)": {
-				System.out.println("getCalculatedDataset() : Incursion Event (IRE001)");
+			case "Delve": {
+				System.out.println("getCalculatedDataset() : " +selectedLeague);
 				Runtime.getRuntime().gc();
 				return latestDataset.get(0);
 			}
-			case "Incursion Event HC (IRE002)": {
-				System.out.println("getCalculatedDataset() : Incursion Event HC (IRE002)");
+			case "Hardcore Delve": {
+				System.out.println("getCalculatedDataset() : " +selectedLeague);
 				Runtime.getRuntime().gc();
 				return latestDataset.get(1);
 			}
-			case "SSF Incursion Event (IRE003)": {
-				System.out.println("getCalculatedDataset() : SSF Incursion Event (IRE003)");
+			case "SSF Delve": {
+				System.out.println("getCalculatedDataset() : " +selectedLeague);
 				Runtime.getRuntime().gc();
 				return latestDataset.get(2);
 			}
-			case "SSF Incursion Event HC (IRE004)": {
-				System.out.println("getCalculatedDataset() : SSF Incursion Event HC (IRE004)");
+			case "SSF Delve HC": {
+				System.out.println("getCalculatedDataset() : " +selectedLeague);
 				Runtime.getRuntime().gc();
 				return latestDataset.get(3);
 			}
