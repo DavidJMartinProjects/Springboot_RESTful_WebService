@@ -90,6 +90,7 @@ public class DatasetService {
 			}
 			newDataset.add(tableEntries);
 			Thread.sleep(500);
+			url = "http://api.pathofexile.com/ladders/" + leagues.get(i) + "?limit=200&offset=200";
 	        response = rt.exchange(url, HttpMethod.GET, entity, Ladder.class);
 	        System.out.println("response" + response.getBody().getEntries().toString());
 
