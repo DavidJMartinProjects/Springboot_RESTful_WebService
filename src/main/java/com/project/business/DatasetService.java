@@ -1,6 +1,7 @@
 package com.project.business;
 
 import static com.project.business.Constants.HTTP_API_PATHOFEXILE_COM_LADDERS;
+import static com.project.business.Constants.*;
 import static com.project.business.Constants.LIMIT_200;
 import static com.project.business.Constants.LIMIT_200_OFFSET_200;
 import static com.project.business.Constants.amount;
@@ -53,13 +54,21 @@ public class DatasetService {
 	}
 
 	public static List<List<LadderTableEntry>> getLatestDataSet() throws InterruptedException {
+		return requestLatestDataFromApi();
+	}
+
+	private static List<List<LadderTableEntry>> requestLatestDataFromApi() throws InterruptedException {
 		prepareForApiRequest();
+		makeApiRequests();
+		isCurrentDatasetEmpty();
+		return newDataset;
+	}
+
+	private static void makeApiRequests() throws InterruptedException {
 		int numberOfLeagues = 0;
 		for ( ;numberOfLeagues < 4; numberOfLeagues++) {
 			getLeagueDataFromApiByLeagueName(numberOfLeagues);
 		}
-		isCurrentDatasetEmpty();
-		return newDataset;
 	}
 
 	private static void prepareForApiRequest() {
@@ -96,7 +105,7 @@ public class DatasetService {
 
 	private static void setupHttpEntityHeaders() {
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
+        headers.add(USER_AGENT, USER_AGENT_PARAM);
         entity = new HttpEntity<String>("parameters", headers);		
 	}
 
