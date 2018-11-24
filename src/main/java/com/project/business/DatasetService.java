@@ -21,6 +21,9 @@ import com.project.domain.ladder.Ladder;
 
 public class DatasetService {
 
+	private static final String LIMIT_200_OFFSET_200 = "?limit=200&offset=200";
+	private static final String LIMIT_200 = "?limit=200";
+	private static final String HTTP_API_PATHOFEXILE_COM_LADDERS = "http://api.pathofexile.com/ladders/";
 	private static CurrentLeagueService currentLeagueService = new CurrentLeagueService();
 	private static List<String> leagues = new ArrayList<>();
 	private static List<List<LadderTableEntry>> currentDataset = new ArrayList<>();
@@ -54,39 +57,45 @@ public class DatasetService {
 	}
 
 	public static List<List<LadderTableEntry>> getLatestDataSet() throws InterruptedException {
-		leagues = currentLeagueService.getLeagues();	
-		newDataset = new ArrayList<>();
-        setupHttpEntityHeaders();
+		prepareForApiRequest();
 		int i = 0;
 		for ( ;i < 4; i++) {
-			tableEntries = new ArrayList<>();	
-			String url = "http://api.pathofexile.com/ladders/" + leagues.get(i) + "?limit=200";
-	        ResponseEntity<Ladder> response = restTemplate.exchange(url, HttpMethod.GET, entity, Ladder.class);
-	        System.out.println("response" + response.getBody().getEntries().toString());
-	       
-	        Ladder ladders =  response.getBody();
-	        List<Entries> entires = Arrays.asList(ladders.getEntries());
-	        entires.stream()
-	        	.forEach(e -> mapResponseToEntity(e));
-
-			Thread.sleep(500);
-			url = "http://api.pathofexile.com/ladders/" + leagues.get(i) + "?limit=200&offset=200";
-	        response = restTemplate.exchange(url, HttpMethod.GET, entity, Ladder.class);
-	        System.out.println("response" + response.getBody().getEntries().toString());
-	        
-	        Ladder ladders1 =  response.getBody();
-	        List<Entries> entires1 = Arrays.asList(ladders1.getEntries());
-	        entires1.stream()
-	        	.forEach(e -> mapResponseToEntity(e));
-
-			newDataset.add(tableEntries);
-			Thread.sleep(500);
+			getLeagueDataFromApiByLeagueName(i);
 		}
+		isCurrentDatasetEmpty();
+		return newDataset;
+	}
+
+	private static void isCurrentDatasetEmpty() {
 		if (currentDataset.size() == 0) {
 			currentDataset = newDataset;
 			latestDataset = newDataset;
 		}
-		return newDataset;
+	}
+
+	private static void prepareForApiRequest() {
+		leagues = currentLeagueService.getLeagues();
+		newDataset = new ArrayList<>();
+        setupHttpEntityHeaders();
+	}
+
+	private static void getLeagueDataFromApiByLeagueName(int i) throws InterruptedException {
+		tableEntries = new ArrayList<>();
+		String url = HTTP_API_PATHOFEXILE_COM_LADDERS + leagues.get(i) + LIMIT_200;
+		getLeagueApiResponse(url);
+		url = HTTP_API_PATHOFEXILE_COM_LADDERS + leagues.get(i) + LIMIT_200_OFFSET_200;
+		getLeagueApiResponse(url);
+		newDataset.add(tableEntries);
+	}
+
+	private static void getLeagueApiResponse(String url) throws InterruptedException {
+		response = restTemplate.exchange(url, HttpMethod.GET, entity, Ladder.class);
+		System.out.println("response" + response.getBody().getEntries().toString());
+		Ladder ladders =  response.getBody();
+		List<Entries> entires = Arrays.asList(ladders.getEntries());
+		entires.stream()
+			.forEach(e -> mapResponseToEntity(e));
+		Thread.sleep(500);
 	}
 
 	private static void setupHttpEntityHeaders() {
@@ -106,15 +115,17 @@ public class DatasetService {
 		entry.setTheClass(responseEntry.getCharacter().getTheClass());
 		entry.setChallenges(responseEntry.getAccount().getChallenges().getTotal());
 		entry.setExperience(responseEntry.getCharacter().getExperience());
+		formatTwitchInfo(responseEntry);
+		tableEntries.add(entry);
+	}
+
+	private static void formatTwitchInfo(Entries responseEntry) {
 		if (responseEntry.getAccount().getTwitch() != null) {
 			entry.setTwitch(responseEntry.getAccount().getTwitch().getName());
 		} else {
 			entry.setTwitch("");
 		}
-		tableEntries.add(entry);
 	}
-	
-	
 
 	public static void calculateDataSet() throws InterruptedException {
 		// copy latest to current dataset
