@@ -1,76 +1,65 @@
 package com.project.business;
 
-import java.text.DecimalFormat;
+import static com.project.business.Constants.HTTP_API_PATHOFEXILE_COM_LADDERS;
+import static com.project.business.Constants.LIMIT_200;
+import static com.project.business.Constants.LIMIT_200_OFFSET_200;
+import static com.project.business.Constants.amount;
+import static com.project.business.Constants.current;
+import static com.project.business.Constants.currentDataset;
+import static com.project.business.Constants.currentLeagueService;
+import static com.project.business.Constants.currentRank;
+import static com.project.business.Constants.difference;
+import static com.project.business.Constants.entity;
+import static com.project.business.Constants.entry;
+import static com.project.business.Constants.formatter;
+import static com.project.business.Constants.headers;
+import static com.project.business.Constants.latest;
+import static com.project.business.Constants.latestDataset;
+import static com.project.business.Constants.latestRank;
+import static com.project.business.Constants.leagues;
+import static com.project.business.Constants.levelProgressBar;
+import static com.project.business.Constants.newDataset;
+import static com.project.business.Constants.newRank;
+import static com.project.business.Constants.newXPPH;
+import static com.project.business.Constants.number;
+import static com.project.business.Constants.oldRank;
+import static com.project.business.Constants.oldXPPH;
+import static com.project.business.Constants.rankDifference;
+import static com.project.business.Constants.response;
+import static com.project.business.Constants.restTemplate;
+import static com.project.business.Constants.tableEntries;
+import static com.project.business.Constants.theExperience;
+import static com.project.business.Constants.timeStamp;
+import static com.project.business.Constants.xpPerHour;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
 
 import com.project.domain.datatable.LadderTableEntry;
 import com.project.domain.ladder.Entries;
 import com.project.domain.ladder.Ladder;
 
 public class DatasetService {
-
-	private static final String LIMIT_200_OFFSET_200 = "?limit=200&offset=200";
-	private static final String LIMIT_200 = "?limit=200";
-	private static final String HTTP_API_PATHOFEXILE_COM_LADDERS = "http://api.pathofexile.com/ladders/";
-	private static CurrentLeagueService currentLeagueService = new CurrentLeagueService();
-	private static List<String> leagues = new ArrayList<>();
-	private static List<List<LadderTableEntry>> currentDataset = new ArrayList<>();
-	private static List<List<LadderTableEntry>> latestDataset = new ArrayList<>();
-	private static List<List<LadderTableEntry>> newDataset = new ArrayList<>();
-	private static DecimalFormat formatter = new DecimalFormat("#,###");
-	private static double amount;	
-	private static String number;
 	
-	private static String latest;
-	private static String current;
-	private static String difference;
-	private static String rankDifference;
-	private static String xpPerHour;
-	private static String theExperience;
-	private static String timeStamp;
-	private static String latestRank;
-	private static String currentRank;
-	private static Long newXPPH, oldXPPH;
-	private static Long newRank, oldRank;
-	private static String levelProgressBar;
-	private static ResponseEntity<Ladder> response;
-	private static LadderTableEntry entry;
-	private static RestTemplate restTemplate = new RestTemplate();;
-	private static HttpHeaders headers = new HttpHeaders();;
-	private static List<LadderTableEntry> tableEntries;
-	private static HttpEntity<String> entity;
-
 	public DatasetService() throws InterruptedException {
 		calculateDataSet();
 	}
 
 	public static List<List<LadderTableEntry>> getLatestDataSet() throws InterruptedException {
 		prepareForApiRequest();
-		int i = 0;
-		for ( ;i < 4; i++) {
-			getLeagueDataFromApiByLeagueName(i);
+		int numberOfLeagues = 0;
+		for ( ;numberOfLeagues < 4; numberOfLeagues++) {
+			getLeagueDataFromApiByLeagueName(numberOfLeagues);
 		}
 		isCurrentDatasetEmpty();
 		return newDataset;
-	}
-
-	private static void isCurrentDatasetEmpty() {
-		if (currentDataset.size() == 0) {
-			currentDataset = newDataset;
-			latestDataset = newDataset;
-		}
 	}
 
 	private static void prepareForApiRequest() {
@@ -87,13 +76,20 @@ public class DatasetService {
 		getLeagueApiResponse(url);
 		newDataset.add(tableEntries);
 	}
+	
+	private static void isCurrentDatasetEmpty() {
+		if (currentDataset.size() == 0) {
+			currentDataset = newDataset;
+			latestDataset = newDataset;
+		}
+	}
 
 	private static void getLeagueApiResponse(String url) throws InterruptedException {
 		response = restTemplate.exchange(url, HttpMethod.GET, entity, Ladder.class);
 		System.out.println("response" + response.getBody().getEntries().toString());
 		Ladder ladders =  response.getBody();
 		List<Entries> entires = Arrays.asList(ladders.getEntries());
-		entires.stream()
+		entires.stream()		
 			.forEach(e -> mapResponseToEntity(e));
 		Thread.sleep(500);
 	}
