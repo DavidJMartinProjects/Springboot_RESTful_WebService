@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -15,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import com.project.domain.datatable.LadderTableEntry;
+import com.project.domain.ladder.Entries;
 import com.project.domain.ladder.Ladder;
 
 public class DatasetService {
@@ -42,8 +44,10 @@ public class DatasetService {
 	private static String levelProgressBar;
 	private static ResponseEntity<Ladder> response;
 	private static LadderTableEntry entry;
-	private static RestTemplate restTemplate;
+	private static RestTemplate restTemplate = new RestTemplate();;
+	private static HttpHeaders headers = new HttpHeaders();;
 	private static List<LadderTableEntry> tableEntries;
+	private static HttpEntity<String> entity;
 
 	public DatasetService() throws InterruptedException {
 		calculateDataSet();
@@ -52,67 +56,30 @@ public class DatasetService {
 	public static List<List<LadderTableEntry>> getLatestDataSet() throws InterruptedException {
 		leagues = currentLeagueService.getLeagues();	
 		newDataset = new ArrayList<>();
+        setupHttpEntityHeaders();
 		int i = 0;
 		for ( ;i < 4; i++) {
-			tableEntries = new ArrayList<>();
-//			String url = "http://api.pathofexile.com/ladders/" + leagues.get(i) + "?limit=200";
-//			System.out.println("url : " +url);
-//			restTemplate = new RestTemplate();
-//			response = restTemplate.getForEntity(url, Ladder.class);
-			
-	        RestTemplate rt = new RestTemplate();
-	        HttpHeaders headers = new HttpHeaders();
-	        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-	        headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
-	        HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
-	        String url = "http://api.pathofexile.com/ladders/" + leagues.get(i) + "?limit=200";
-	        ResponseEntity<Ladder> response = rt.exchange(url, HttpMethod.GET, entity, Ladder.class);
+			tableEntries = new ArrayList<>();	
+			String url = "http://api.pathofexile.com/ladders/" + leagues.get(i) + "?limit=200";
+	        ResponseEntity<Ladder> response = restTemplate.exchange(url, HttpMethod.GET, entity, Ladder.class);
 	        System.out.println("response" + response.getBody().getEntries().toString());
-			
-			int j=0; int length = 200;//response.getBody().getEntries().length;
-			for (; j < length; j++) {
-				entry = new LadderTableEntry();
-				entry.setRank(response.getBody().getEntries()[j].getRank());
-				entry.setOnline(response.getBody().getEntries()[j].getOnline());
-				entry.setCharacter(response.getBody().getEntries()[j].getCharacter().getName());
-				entry.setDead(response.getBody().getEntries()[j].getDead());
-				entry.setAccount(response.getBody().getEntries()[j].getAccount().getName());
-				entry.setLevel(response.getBody().getEntries()[j].getCharacter().getLevel());
-				entry.setTheClass(response.getBody().getEntries()[j].getCharacter().getTheClass());
-				entry.setChallenges(response.getBody().getEntries()[j].getAccount().getChallenges().getTotal());
-				entry.setExperience(response.getBody().getEntries()[j].getCharacter().getExperience());
-				if (response.getBody().getEntries()[j].getAccount().getTwitch() != null) {
-					entry.setTwitch(response.getBody().getEntries()[j].getAccount().getTwitch().getName());
-				} else {
-					entry.setTwitch("");
-				}
-				tableEntries.add(entry);
-			}
-			newDataset.add(tableEntries);
+	       
+	        Ladder ladders =  response.getBody();
+	        List<Entries> entires = Arrays.asList(ladders.getEntries());
+	        entires.stream()
+	        	.forEach(e -> mapResponseToEntity(e));
+
 			Thread.sleep(500);
 			url = "http://api.pathofexile.com/ladders/" + leagues.get(i) + "?limit=200&offset=200";
-	        response = rt.exchange(url, HttpMethod.GET, entity, Ladder.class);
+	        response = restTemplate.exchange(url, HttpMethod.GET, entity, Ladder.class);
 	        System.out.println("response" + response.getBody().getEntries().toString());
+	        
+	        Ladder ladders1 =  response.getBody();
+	        List<Entries> entires1 = Arrays.asList(ladders1.getEntries());
+	        entires1.stream()
+	        	.forEach(e -> mapResponseToEntity(e));
 
-			j=0; length = 200; //response.getBody().getEntries().length;
-			for (; j < length; j++) {
-			entry = new LadderTableEntry();
-			entry.setRank(response.getBody().getEntries()[j].getRank());
-			entry.setOnline(response.getBody().getEntries()[j].getOnline());
-			entry.setCharacter(response.getBody().getEntries()[j].getCharacter().getName());
-			entry.setDead(response.getBody().getEntries()[j].getDead());
-			entry.setAccount(response.getBody().getEntries()[j].getAccount().getName());
-			entry.setLevel(response.getBody().getEntries()[j].getCharacter().getLevel());
-			entry.setTheClass(response.getBody().getEntries()[j].getCharacter().getTheClass());
-			entry.setChallenges(response.getBody().getEntries()[j].getAccount().getChallenges().getTotal());
-			entry.setExperience(response.getBody().getEntries()[j].getCharacter().getExperience());
-			if (response.getBody().getEntries()[j].getAccount().getTwitch() != null) {
-				entry.setTwitch(response.getBody().getEntries()[j].getAccount().getTwitch().getName());
-			} else {
-				entry.setTwitch("");
-			}
-				tableEntries.add(entry);
-			}
+			newDataset.add(tableEntries);
 			Thread.sleep(500);
 		}
 		if (currentDataset.size() == 0) {
@@ -121,6 +88,33 @@ public class DatasetService {
 		}
 		return newDataset;
 	}
+
+	private static void setupHttpEntityHeaders() {
+		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
+        entity = new HttpEntity<String>("parameters", headers);		
+	}
+
+	private static void mapResponseToEntity(Entries responseEntry) {
+		entry = new LadderTableEntry();
+		entry.setRank(responseEntry.getRank());
+		entry.setOnline(responseEntry.getOnline());
+		entry.setCharacter(responseEntry.getCharacter().getName());
+		entry.setDead(responseEntry.getDead());
+		entry.setAccount(responseEntry.getAccount().getName());
+		entry.setLevel(responseEntry.getCharacter().getLevel());
+		entry.setTheClass(responseEntry.getCharacter().getTheClass());
+		entry.setChallenges(responseEntry.getAccount().getChallenges().getTotal());
+		entry.setExperience(responseEntry.getCharacter().getExperience());
+		if (responseEntry.getAccount().getTwitch() != null) {
+			entry.setTwitch(responseEntry.getAccount().getTwitch().getName());
+		} else {
+			entry.setTwitch("");
+		}
+		tableEntries.add(entry);
+	}
+	
+	
 
 	public static void calculateDataSet() throws InterruptedException {
 		// copy latest to current dataset
