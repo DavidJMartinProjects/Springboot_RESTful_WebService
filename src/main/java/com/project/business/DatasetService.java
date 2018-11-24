@@ -3,14 +3,18 @@ package com.project.business;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import com.project.domain.datatable.LadderTableEntry;
-import com.project.domain.ladder.Entries;
 import com.project.domain.ladder.Ladder;
 
 public class DatasetService {
@@ -51,9 +55,19 @@ public class DatasetService {
 		int i = 0;
 		for ( ;i < 4; i++) {
 			tableEntries = new ArrayList<>();
-			String url = "http://api.pathofexile.com/ladders/" + leagues.get(i) + "?limit=200";
-			restTemplate = new RestTemplate();
-			response = restTemplate.getForEntity(url, Ladder.class);
+//			String url = "http://api.pathofexile.com/ladders/" + leagues.get(i) + "?limit=200";
+//			System.out.println("url : " +url);
+//			restTemplate = new RestTemplate();
+//			response = restTemplate.getForEntity(url, Ladder.class);
+			
+	        RestTemplate rt = new RestTemplate();
+	        HttpHeaders headers = new HttpHeaders();
+	        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+	        headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
+	        HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
+	        String url = "http://api.pathofexile.com/ladders/" + leagues.get(i) + "?limit=200";
+	        ResponseEntity<Ladder> response = rt.exchange(url, HttpMethod.GET, entity, Ladder.class);
+	        System.out.println("response" + response.getBody().getEntries().toString());
 			
 			int j=0; int length = 200;//response.getBody().getEntries().length;
 			for (; j < length; j++) {
@@ -76,9 +90,8 @@ public class DatasetService {
 			}
 			newDataset.add(tableEntries);
 			Thread.sleep(500);
-			url = "http://api.pathofexile.com/ladders/" + leagues.get(i) + "?limit=200&offset=200";		
-			System.out.println("url : " +url);
-			response = restTemplate.getForEntity(url, Ladder.class);
+	        response = rt.exchange(url, HttpMethod.GET, entity, Ladder.class);
+	        System.out.println("response" + response.getBody().getEntries().toString());
 
 			j=0; length = 200; //response.getBody().getEntries().length;
 			for (; j < length; j++) {
