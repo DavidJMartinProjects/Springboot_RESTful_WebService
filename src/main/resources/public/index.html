@@ -16,23 +16,31 @@
   <script src="js/navbar-ontop.js"></script>
   <!-- Script: Animated entrance -->
   <script src="js/animate-in.js"></script>
+
+<link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="css/fixedHeader.dataTables.min.css">
+<link rel="stylesheet" href="css/responsive.bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/toastr.min.css">
+<link rel="stylesheet" href="/css/style_2.css">
 </head>
 
 <body style="	background-image: url(assets/styleguide/poe.jpg);	background-position: top left;	background-size: 107%;	background-repeat: no-repeat; height:100%; width:100%;">
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark border-bottom border-info">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark border-bottom border-info">
     <div class="container">
       <a class="navbar-brand" href="#"><i class="fa fa-user fa-fw"></i>poe-ladder.com</a>
       <div class="row">
         <div class="col-md-12">
           <div class="col-md-12 d-flex justify-content-center align-items-center">
-            <div class="btn-group m-0" style="">
+          
+            <div class="btn-group m-0" id="group2" style="">
               <button class="btn dropdown-toggle text-body btn-info" data-toggle="dropdown" aria-expanded="false"> Select League&nbsp; &nbsp;&nbsp;</button>
-              <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);"> <a class="dropdown-item" href="#">Betrayal</a>
+              <div class="dropdown-menu" id="dropdownList" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);"> <a class="dropdown-item" href="#">Betrayal</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Betrayal HC</a>
-                <div class="dropdown-divider"></div><a class="dropdown-item" href="#">Betrayal SFF</a>
-                <div class="dropdown-divider"></div><a class="dropdown-item" href="#">Betrayal SFF HC</a>
+                <a class="dropdown-item" href="#">Hardcore Betrayal</a>
+                <div class="dropdown-divider"></div><a class="dropdown-item" href="#">SSF Betrayal</a>
+                <div class="dropdown-divider"></div><a class="dropdown-item" href="#">SSF Betrayal HC</a>
               </div>
             </div>
           </div>
@@ -42,10 +50,13 @@
       <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item m-0 mx-2 mt-0">
-            <a class="nav-link" href="#features">Features</a>
+            <a class="nav-link" href="#features">changelog</a>
           </li>
           <li class="nav-item mx-2">
-            <a class="nav-link" href="#reviews">About<br></a>
+            <a class="nav-link" href="#reviews">feedback<br></a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="#reviews">about<br></a>
           </li>
         </ul>
         <a class="btn navbar-btn mx-2 shadowed btn-info" href="#download">Contact Us<br></a>
@@ -60,17 +71,57 @@
   <!-- Call to action -->
   <!-- Footer -->
   <!-- JavaScript dependencies -->
-  <div class="py-5">
-    <div class="container">
-      <div class="row">
+
+
+       <div class="py-2 " style="display: none;" id="leagueInfoTableContainer">
+
+      <div class="row border-0 d-flex justify-content-center border border-dark" id="tableSize">
+   
+          <div class="table-responsive" >
+
+<table id="leagueInfoTable"
+				class="table table-striped table-bordered nowrap" cellspacing="0"
+				>
+
+				<thead>
+					<tr>
+						<th></th>
+						<th>Rank</th>						
+						<th>Account</th>
+						<th>Character</th>
+						<th>Level</th>
+						<th>Ascendancy</th>
+						<th>XP/Hour</th>
+						<th>Progress</th>
+						<th>Experience</th>
+						<th>Info</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+			
+
+
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+
+    
+
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   <!-- Script: Smooth scrolling between anchors in the same page -->
   <script src="js/smooth-scroll.js"></script>
+
+	<script src="/javascript/jquery.dataTables.min.js"></script>
+	<script src="javascript/dataTables.fixedHeader.min.js"></script>
+	<script src="javascript/dataTables.bootstrap4.min.js"></script>
+	<script src="javascript/dataTables.responsive.min.js"></script>
+	<script src="javascript/toastr.min.js"></script>
+	<script src="javascript/dataTable-filtering.js"></script>	
+	<script src="/javascript/main.js"></script>
   
 </body>
 
