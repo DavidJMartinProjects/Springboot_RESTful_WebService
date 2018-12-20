@@ -6,7 +6,7 @@
 
 /* icon */
 #toast-container>.customer-info {
-	background-color: #272727;
+	background-color: rgba(31,49,59, 0.9) !important;
 	width: 100%;
 	margin-top: 20%;
 	color: white;
