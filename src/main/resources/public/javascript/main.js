@@ -15,17 +15,18 @@ $(document)
 					console.log("index.html loaded.")
 
 					var table = $('#leagueInfoTable').dataTable({
-						"columnDefs" : [ {
-							"targets" : [ 0 ], // column or columns numbers
-							"orderable" : false, // set orderable for
-						// selected columns
-						} ],
+						"order": [[ 1, "asc" ]],
+//						"columnDefs" : [ {
+//							"targets" : [ 0 ], // column or columns numbers
+//							"orderable" : false, // set orderable for
+//						// selected columns
+//						} ],
 						deferRender: true,
 						"deferLoading": 400,
-						"columnDefs" : [ {
-							type : 'formatted-num',
-							targets : [0, 6]
-						} ],
+//						"columnDefs" : [ {
+//							type : 'formatted-num',
+//						targets : [1]
+//						} ],
 					});
 					new $.fn.dataTable.FixedHeader(table);
 
@@ -316,17 +317,18 @@ var populateLeagueTable = function(results) {
 		"iDisplayLength" : 100,
 		responsive : true,
 		"pagingType" : "full_numbers",
+		"order": [[ 1, "asc" ]],
 		stateSave : true,
-		"columnDefs" : [ {
-			"targets" : [ 0 ], // column or columns numbers
-			"orderable" : false, // set orderable for selected columns
-		} ],
+//		"columnDefs" : [ {
+//			"targets" : [ 0 ], // column or columns numbers
+//			"orderable" : false, // set orderable for
+//		} ],
 		deferRender: true,
 		"deferLoading": 400,
-		"columnDefs" : [ {
-			type : 'formatted-num',
-			targets : [0, 6]
-		} ],
+//		"columnDefs" : [ {
+//			type : 'formatted-num',
+//		targets : [1]
+//		} ],
 	});
 
 	setTimeout(function() {
