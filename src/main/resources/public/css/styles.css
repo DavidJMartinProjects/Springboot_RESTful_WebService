@@ -5,6 +5,35 @@
 	
 }
 
+.table-container {
+
+	width:80%;
+	margin:auto;
+	
+}
+
+
+body, html {
+  height: 100%;
+  
+    /* The image used */
+  background-image: url("../images/starting-zone.jpg");
+
+  /* Full height */
+  height: 100%; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax { 
+
+}
+
+
 #dropdown_menu {
 	padding-top: 0%;
 	padding-bottom: 0%;
@@ -16,7 +45,8 @@
 }
 
 #leagueInfoTableContainer {
-	width: 75%;
+
+	width:100%;
 }
 
 #deadStatus {
@@ -355,11 +385,12 @@ span.msg, span.choose {
 	display: inherit
 }
 
-.container {
+.top-container {
 	width: 500px;
 	margin-top: 40px;
 	margin-bottom: 0px;
-	text-align: center
+	text-align: center;
+
 }
 
 /*Start of Styling Selectbox*/
@@ -374,7 +405,7 @@ span.msg, span.choose {
 	font-size: 14px;
 	color: black;
 	height: 100%;
-	text-align: left
+	text-align: left;
 }
 
 .dropdown .select {
@@ -573,7 +604,8 @@ table {
 }
 
 .card {
-	border: none;
+
+	width:100%;
 }
 
 #tableCard {
