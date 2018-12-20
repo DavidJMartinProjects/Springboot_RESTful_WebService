@@ -42,6 +42,10 @@ thead {
 	color: white;
 }
 
+body {
+		overflow-x: hidden;
+}
+
 
 
 
