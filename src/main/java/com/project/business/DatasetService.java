@@ -81,6 +81,7 @@ public class DatasetService {
 		tableEntries = new ArrayList<>();
 		String url = HTTP_API_PATHOFEXILE_COM_LADDERS + leagues.get(i) + LIMIT_200;
 		getLeagueApiResponse(url);
+//		System.out.println("url : " +url);
 		url = HTTP_API_PATHOFEXILE_COM_LADDERS + leagues.get(i) + LIMIT_200_OFFSET_200;
 		getLeagueApiResponse(url);
 		newDataset.add(tableEntries);
@@ -201,22 +202,22 @@ public class DatasetService {
 	public static List<LadderTableEntry> getCalculatedDataset(String selectedLeague) {
 		Runtime.getRuntime().gc();	
 		switch (selectedLeague) {		
-			case "Delve": {
+			case "Betrayal": {
 				System.out.println("getCalculatedDataset() : " +selectedLeague);
 				Runtime.getRuntime().gc();
 				return latestDataset.get(0);
 			}
-			case "Hardcore Delve": {
+			case "Hardcore Betrayal": {
 				System.out.println("getCalculatedDataset() : " +selectedLeague);
 				Runtime.getRuntime().gc();
 				return latestDataset.get(1);
 			}
-			case "SSF Delve": {
+			case "SSF Betrayal": {
 				System.out.println("getCalculatedDataset() : " +selectedLeague);
 				Runtime.getRuntime().gc();
 				return latestDataset.get(2);
 			}
-			case "SSF Delve HC": {
+			case "SSF Betrayal HC": {
 				System.out.println("getCalculatedDataset() : " +selectedLeague);
 				Runtime.getRuntime().gc();
 				return latestDataset.get(3);

@@ -11,10 +11,10 @@ public class CurrentLeagueService {
 	}
 
 	public List getLeagues() {
-		leagues.add("Delve");
-		leagues.add("Hardcore Delve");
-		leagues.add("SSF Delve");
-		leagues.add("SSF Delve HC");		
+		leagues.add("Betrayal");
+		leagues.add("Hardcore Betrayal");
+		leagues.add("SSF Betrayal");
+		leagues.add("SSF Betrayal HC");		
 		return leagues;
 	}
  

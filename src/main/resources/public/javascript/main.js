@@ -108,6 +108,7 @@ $("#showStatsButton").click(function() {
 });
 
 var getLeagueDataTable = function(selectedLeague) {
+	console.log("Selected League url : " +url+ " selectedLeague :" +selectedLeague);
 	$.ajax({
 		url : url,
 		type : 'GET',
@@ -116,7 +117,7 @@ var getLeagueDataTable = function(selectedLeague) {
 			league : selectedLeague
 		},
 		success : function(results) {
-			// console.log(results)
+//			 console.log(results)
 			populateLeagueTable(results);
 			// showStatsBtn();
 			$("#tableLoadingAnimation").css('visibility', 'hidden');
