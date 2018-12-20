@@ -1,4 +1,6 @@
-
+#tableSize {
+	 width:95%; margin:auto;
+}
 
 /* icon */
 #toast-container>.customer-info {
@@ -31,4 +33,8 @@
 .toast .toast-message {
 	
 }
+
+
+
+
 
