@@ -47,6 +47,21 @@ body {
 		 background-attachment: fixed;
 }
 
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
+
+.dropdown-item {
+	color: black;
+}
+
+a {
+    color: #f1cd31;
+}
+
+#mainDropdownBtn {
+	
+}
 
 
 

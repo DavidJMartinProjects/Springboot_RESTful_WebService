@@ -74,6 +74,11 @@ $("#group2").on("click","a",function(event){
 //		showLoadingLadderMessage();
 		// console.log("selectedLeague" + selectedLeague);
 		$("#footer").css('visibility', 'hidden');
+//		$("mainDropdownBtn").firstChild.text(document.createTextNode('test value'));
+
+	     $(".btn:first-child").text($(this).text());
+	      $(".btn:first-child").val($(this).text());
+//		document.getElementById("mainDropdownBtn").append(document.createTextNode('test value'));
 		getleagueTable(selectedLeague);
 //		document.getElementById("footer").style.position = "static";
 	});
