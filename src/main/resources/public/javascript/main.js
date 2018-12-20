@@ -66,6 +66,32 @@ $("ul[id*=dropdownList] li").click(function() {
 	document.getElementById("footer").style.position = "static";
 });
 
+$("#group2").on("click","a",function(event){
+	 console.log($(this).text()); // gets text contents of clicked li
+		selectedLeague = $(this).text();
+
+		 $("#tableLoadingAnimation").css('visibility', 'visible');
+//		showLoadingLadderMessage();
+		// console.log("selectedLeague" + selectedLeague);
+		$("#footer").css('visibility', 'hidden');
+		getleagueTable(selectedLeague);
+//		document.getElementById("footer").style.position = "static";
+	});
+
+
+
+$("btn-group[id*=dropdownList] a").click(function() {
+	 console.log($(this).text()); // gets text contents of clicked li
+	selectedLeague = $(this).text();
+
+	 $("#tableLoadingAnimation").css('visibility', 'visible');
+//	showLoadingLadderMessage();
+	// console.log("selectedLeague" + selectedLeague);
+	$("#footer").css('visibility', 'hidden');
+	getleagueTable(selectedLeague);
+	document.getElementById("footer").style.position = "static";
+});
+
 var showStatsBtn = function() {
 	document.getElementById("showStatsButton").className = "btn btn-secondary";
 	// document.getElementById('showStatsButton').disabled=false;
