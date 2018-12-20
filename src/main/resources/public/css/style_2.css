@@ -1,6 +1,6 @@
 #tableSize {
 	 width:95%; margin:auto;
-	  background-color: rgba(31,49,59, 0.8) !important;
+	  background-color: rgba(31,49,59, .96) !important;
 	  
 }
 
@@ -35,6 +35,11 @@
 
 .toast .toast-message {
 	
+}
+
+thead {
+	background-color: #1C2F35;
+	color: white;
 }
 
 
