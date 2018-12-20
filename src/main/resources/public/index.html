@@ -1,168 +1,77 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="ISO-8859-1">
-<title>poe.ladder</title>
-<!-- https://immense-headland-50105.herokuapp.com/ -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="css/fixedHeader.dataTables.min.css">
-<link rel="stylesheet" href="css/responsive.bootstrap.min.css">
-<link rel="stylesheet" href="css/font-awesome.min.css">
-<link rel="stylesheet" href="css/toastr.min.css">
-<link rel="stylesheet" href="/css/styles.css">
-<link rel="icon" type="image/png" href="images/favicon.ico">
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async
-	src="https://www.googletagmanager.com/gtag/js?id=UA-122669740-1"></script>
-<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag() {
-		dataLayer.push(arguments);
-	}
-	gtag('js', new Date());
-
-	gtag('config', 'UA-122669740-1');
-</script>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- PAGE settings -->
+  <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
+  <title>App Neon - Pingendo template</title>
+  <meta name="description" content="Free Bootstrap 4 Pingendo Neon template made for app and softwares.">
+  <meta name="keywords" content="Pingendo app neon free template bootstrap 4">
+  <!-- CSS dependencies -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="neon.css">
+  <!-- Script: Make my navbar transparent when the document is scrolled to top -->
+  <script src="js/navbar-ontop.js"></script>
+  <!-- Script: Animated entrance -->
+  <script src="js/animate-in.js"></script>
 </head>
-<body>
 
-
-
-	<!-- Dropdown -->
-	<div class="container fluid-container" id="dropdown_menu">
-
-		<div class="dropdown">
-			<div class="select" id="selectLeagueInputGroup">
-				<span>Select a league or race...</span> <i
-					class="fa fa-chevron-left"></i>
-			</div>
-			<input type="hidden" name="gender">
-			<ul class="dropdown-menu" id="dropdownList">
-				<li id="Betrayal">Betrayal</li>
-				<li id="Hardcore Betrayal">Hardcore Betrayal</li>
-				<li id="SSF Betrayal">SSF Betrayal</li>
-				<li id="SSF Betrayal HC">SSF Betrayal HC</li>
-			</ul>
-		</div>
-
-		<!-- 			<button type="button" class="btn btn-light" data-toggle="modal"
-				data-target="#exampleModalCenter" id="showStatsButton" disabled>League
-				Statistics</button> -->
-
-<!-- 		<span id="tableLoadingAnimation"> -->
-<!-- 			<div id="fountainG"> -->
-<!-- 				<div id="fountainG_1" class="fountainG"></div> -->
-<!-- 				<div id="fountainG_2" class="fountainG"></div> -->
-<!-- 				<div id="fountainG_3" class="fountainG"></div> -->
-<!-- 				<div id="fountainG_4" class="fountainG"></div> -->
-<!-- 				<div id="fountainG_5" class="fountainG"></div> -->
-<!-- 				<div id="fountainG_6" class="fountainG"></div> -->
-<!-- 				<div id="fountainG_7" class="fountainG"></div> -->
-<!-- 				<div id="fountainG_8" class="fountainG"></div> -->
-<!-- 			</div> -->
-<!-- 		</span> -->
-	</div>
-
-	<!-- Modal -->
-	<div class="container-fluid">
-		<div class="modal fade" id="exampleModalCenter" tabindex="-1"
-			role="dialog" aria-labelledby="exampleModalCenterTitle"
-			aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLongTitle"></h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<div class="container-fluid">
-							<span id="modalLoadingAnimation" style='display: none;'>
-								<div id="fountainG">
-									<div id="fountainG_1" class="fountainG"></div>
-									<div id="fountainG_2" class="fountainG"></div>
-									<div id="fountainG_3" class="fountainG"></div>
-									<div id="fountainG_4" class="fountainG"></div>
-									<div id="fountainG_5" class="fountainG"></div>
-									<div id="fountainG_6" class="fountainG"></div>
-									<div id="fountainG_7" class="fountainG"></div>
-									<div id="fountainG_8" class="fountainG"></div>
-								</div>
-							</span>
-							<div id="modalContainer" style="height: 370px; width: 100%;">
-								<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-
-	
-
-	<!-- DataTable -->
-	<div id="leagueInfoTableContainer" class="container-fluid"
-		style="display: none; width: 80%;">
-		<div class="card" id="tableCard">
-				<span id="websiteMenu" class="fluid-container">
-		<div class="row myRow">
-			<div id="topMenu">
-				<div id="lastUpdatedMsg"></div>
-			</div>
-		</div>
-	</span>
-
-			<table id="leagueInfoTable"
-				class="table table-striped table-bordered nowrap" cellspacing="0"
-				width="100%">
-
-				<thead>
-					<tr>
-						<th></th>
-						<th>Rank</th>						
-						<th>Account</th>
-						<th>Character</th>
-						<th>Level</th>
-						<th>Ascendancy</th>
-						<th>XP/Hour</th>
-						<th>Progress</th>
-						<th>Experience</th>
-						<th>Info</th>
-					</tr>
-				</thead>
-				<tbody></tbody>
-			</table>
-			<br>
-		</div>
-	</div>
-
-	<div id="footer">
-		<a href="" class="footer-menu">changelog</a> |
-		<a href="" class="footer-menu">feedback</a> | 
-		<a href="" class="footer-menu">contact us</a> |
-		<a href="" class="footer-menu">about</a> 
-	</div>
-
-	<script src="/javascript/jquery-3.3.1.js"></script>	
-	<script src="/javascript/bootstrap.min.js"></script>
-	<script src="/javascript/popper.min.js"></script>
-	<script src="/javascript/jquery.dataTables.min.js"></script>
-	<script src="javascript/dataTables.fixedHeader.min.js"></script>
-	<script src="javascript/dataTables.bootstrap4.min.js"></script>
-	<script src="javascript/dataTables.responsive.min.js"></script>
-	<script src="javascript/toastr.min.js"></script>
-	<script src="javascript/dataTable-filtering.js"></script>	
-	<script src="/javascript/main.js"></script>
-		
+<body style="	background-image: url(&quot;assets/styleguide/poe.jpg&quot;);	background-position: top left;	background-size: 107%;	background-repeat: no-repeat;	max-width: 100%;	min-width: 100%;	min-height: 100%;	max-height: 100%;	width: 100%;	height: 100%;">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark border-bottom border-info">
+    <div class="container">
+      <a class="navbar-brand" href="#"><i class="fa fa-user fa-fw"></i>poe-ladder.com</a>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="col-md-12 d-flex justify-content-center align-items-center">
+            <div class="btn-group m-0" style="">
+              <button class="btn dropdown-toggle text-body btn-info" data-toggle="dropdown" aria-expanded="false"> Select League&nbsp; &nbsp;&nbsp;</button>
+              <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);"> <a class="dropdown-item" href="#">Betrayal</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Betrayal HC</a>
+                <div class="dropdown-divider"></div><a class="dropdown-item" href="#">Betrayal SFF</a>
+                <div class="dropdown-divider"></div><a class="dropdown-item" href="#">Betrayal SFF HC</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+      <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item m-0 mx-2 mt-0">
+            <a class="nav-link" href="#features">Features</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="#reviews">About<br></a>
+          </li>
+        </ul>
+        <a class="btn navbar-btn mx-2 shadowed btn-info" href="#download">Contact Us<br></a>
+      </div>
+    </div>
+  </nav>
+  <!-- Cover -->
+  <!-- Article style section -->
+  <!-- Features -->
+  <!-- Features -->
+  <!-- Carousel reviews -->
+  <!-- Call to action -->
+  <!-- Footer -->
+  <!-- JavaScript dependencies -->
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <!-- Script: Smooth scrolling between anchors in the same page -->
+  <script src="js/smooth-scroll.js"></script>
+  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
 </body>
+
 </html>
