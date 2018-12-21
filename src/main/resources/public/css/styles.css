@@ -368,7 +368,6 @@ span.msg, span.choose {
 	display: inline-block;
 	background-color: #272727;
 	border-radius: 5px;
-	box-shadow: 0 0 2px black;
 	transition: all .5s ease;
 	position: relative;
 	font-size: 14px;
