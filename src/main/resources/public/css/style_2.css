@@ -198,7 +198,9 @@ table.dataTable tbody th, table.dataTable tbody td {
 	
 /* } */
 
-
+.dropdown-toggle {
+	width:180px;
+}
 
 
 
