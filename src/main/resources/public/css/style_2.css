@@ -235,6 +235,17 @@ background: #fff;
     color: white;
 }
 
+hr {
+    border-top: 1px solid white;
+}
+
+.modal-header {
+	text-align: center;
+
+}
+
+.close {display: none;}
+
 
 
 
