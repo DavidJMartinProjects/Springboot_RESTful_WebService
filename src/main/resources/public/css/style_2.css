@@ -132,6 +132,17 @@ a {
 	vertical-align: middle;
 }
 
+/* Start of DataTable Row Styling */
+table.dataTable thead th, table.dataTable thead td {
+	padding: 8px 12px;
+	border-bottom: 1px solid #111;
+}
+
+table.dataTable tbody th, table.dataTable tbody td {
+	padding: 3px 12px;
+	border-bottom: 1px solid #111;
+}
+
 
 
 
