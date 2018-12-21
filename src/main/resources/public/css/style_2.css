@@ -151,19 +151,8 @@ table.dataTable tbody th, table.dataTable tbody td {
 
 .dataTables_length label {
  font-weight: normal;
-}
-
-.custom-select {
-	color:black;
-	font-size:100%;
-
-	    border-radius: .4rem;
-}
-
-.custom-select {
-	color: black;
-	font-weight: bold;
-	font-size: 90%;
+display:none;
+ 
 }
 
 .modal-dialog {
@@ -184,7 +173,7 @@ table.dataTable tbody th, table.dataTable tbody td {
 
 .modal-backdrop
 {
-    opacity:0.45 !important;
+    opacity:0.2 !important;
 }
 
 .modal-content {
@@ -208,6 +197,14 @@ table.dataTable tbody th, table.dataTable tbody td {
 vertical > .btn {
     position: fixed;
 }
+
+.custom-select {
+background: #fff;
+}
+
+
+	
+
 
 .dropdown-toggle {
 	width:180px;
