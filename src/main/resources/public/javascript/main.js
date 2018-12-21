@@ -88,10 +88,10 @@ $("#group2").on("click","a",function(event){
 //	      $("#frameModalBottom").modal("show");
 
 	      
-	      
+	      $("#frameModalBottom").modal("hide");
 		getleagueTable(selectedLeague);
 //		document.getElementById("footer").style.position = "static";
-		$("#frameModalBottom").modal("hide");
+		
 	});
 
 

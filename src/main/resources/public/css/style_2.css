@@ -183,12 +183,13 @@ table.dataTable tbody th, table.dataTable tbody td {
 
 .modal-backdrop
 {
-    opacity:0.2 !important;
+    opacity:0.45 !important;
 }
 
 .modal-content {
 	background-color: #1C2F35;
 	color: white;
+/* 	 opacity:0.91 !important; */
     overflow:hidden;
 }
 
