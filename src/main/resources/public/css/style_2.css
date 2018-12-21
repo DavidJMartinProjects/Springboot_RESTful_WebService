@@ -158,9 +158,9 @@ display:none;
 .modal-dialog {
   position: absolute;
   top: 78%;
-  right: 4%;
+  right: 0%;
   bottom: 0%;
-  left: 0%;
+  left: 4%;
   z-index: 10040;
   overflow: auto;
   overflow-y: auto;
@@ -173,7 +173,7 @@ display:none;
 
 .modal-backdrop
 {
-    opacity:0.2 !important;
+    opacity:0.0 !important;
 }
 
 .modal-content {
