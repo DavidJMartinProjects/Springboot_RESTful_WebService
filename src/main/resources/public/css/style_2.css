@@ -188,11 +188,9 @@ display:none;
 
 .modal-body {
     position: relative;
-/*     flex: 1 1 auto; */
     padding: .6rem;
     padding-bottom: 0px;
 }
-
 
 vertical > .btn {
     position: fixed;
@@ -202,10 +200,6 @@ vertical > .btn {
 background: #fff;
 }
 
-
-	
-
-
 .dropdown-toggle {
 	width:180px;
 }
@@ -214,12 +208,14 @@ background: #fff;
     color: #1C2F35;
     background-color: #1C2F35;
     border-color: black;
-    
 }
 
 .border-info {
     border-color: #1C2F35 !important;
+}
 
+.page-link {
+    color: white;
 }
 
 
