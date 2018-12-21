@@ -177,8 +177,6 @@ table.dataTable tbody th, table.dataTable tbody td {
   overflow-y: auto;
   color: black;
   width: 23%;
-
-
 }
 
 .modal-backdrop
@@ -202,6 +200,17 @@ vertical > .btn {
 	width:180px;
 }
 
+.btn-info {
+    color: #1C2F35;
+    background-color: #1C2F35;
+    border-color: black;
+    
+}
+
+.border-info {
+    border-color: #1C2F35 !important;
+
+}
 
 
 
