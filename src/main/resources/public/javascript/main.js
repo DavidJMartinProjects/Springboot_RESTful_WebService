@@ -275,15 +275,16 @@ var populateLeagueTable = function(results) {
 											+ exp
 											+ '</td>'
 											+ '<td>'
-
 											+ '<div class="progress">'
 											+ '<div class="progress-bar bg-dark" style="width:'
 											+ data.levelProgressBar + '%">'
 											/* + +data.levelProgressBar+'%' */
 											+ '</div>' + '</div>'
-
 											+ '</td>' + '<td>'
 											+ data.experience + '</td>'
+											
+											+ '<td>' +"<b>20/30</d>" + '</td>'
+											
 											+ '<td>' + twitchLink + '</td>'
 											+ '</tr>');
 				} else {
@@ -330,6 +331,7 @@ var populateLeagueTable = function(results) {
 
 											+ '</td>' + '<td>'
 											+ data.experience + '</td>'
+											+ '<td>' +"<b>20/30</d>" + '</td>'
 											+ '<td>' + twitchLink + '</td>'
 											+ '</tr>');
 
