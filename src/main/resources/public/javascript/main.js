@@ -32,7 +32,7 @@ $(document)
 
 					toastr
 							.success(
-									"<b>Please note: </b> <i>www.poe-ladder.com</i> is currently in Alpha testing.<br>  Not all intended features have been implemented to this version.",
+									"<h6><b>Please note: <i>www.poe-ladder.com</i> is currently in Alpha testing.<br>  Not all intended features have been implemented to this version.</h6></b>",
 									null,
 									{
 										"iconClass" : 'customer-info',
