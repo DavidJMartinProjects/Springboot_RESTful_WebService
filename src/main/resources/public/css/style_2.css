@@ -177,7 +177,10 @@ table.dataTable tbody th, table.dataTable tbody td {
   overflow-y: auto;
   color: black;
   width: 23%;
+
 }
+
+
 
 .modal-backdrop
 {
@@ -189,6 +192,16 @@ table.dataTable tbody th, table.dataTable tbody td {
 	color: white;
 /* 	 opacity:0.91 !important; */
     overflow:hidden;
+    margin:0 !important;
+    padding:0 !important;
+    border:0 !important;
+}
+
+.modal-body {
+    position: relative;
+/*     flex: 1 1 auto; */
+    padding: .6rem;
+    padding-bottom: 0px;
 }
 
 
@@ -211,6 +224,8 @@ vertical > .btn {
     border-color: #1C2F35 !important;
 
 }
+
+
 
 
 
