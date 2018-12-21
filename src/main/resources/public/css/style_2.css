@@ -7,7 +7,7 @@
 /* icon */
 #toast-container>.customer-info {
 /* 	background-color: rgba(31,49,59, 0.9) !important; */
-	background-color: rgba(28,47,53, 0.91) !important;
+	background-color: rgba(28,47,53, 0.9) !important;
 
 	width: 100%;
 	margin-top: 20%;
@@ -114,10 +114,10 @@ a {
     flex-direction: column;
     -ms-flex-pack: center;
     justify-content: center;
-    color: #000000;
+    color: #00ff40;
     text-align: center;
     white-space: nowrap;
-    background-color: #008080;
+    background-color: #ffff00;
     transition: width .6s ease;
 
 }
@@ -143,6 +143,64 @@ table.dataTable tbody th, table.dataTable tbody td {
 	padding: 3px 12px;
 	border-bottom: 1px solid #111;
 }
+
+
+.dataTables_filter label {
+    color:white;
+}
+
+.dataTables_length label {
+ font-weight: normal;
+}
+
+.custom-select {
+	color:black;
+	font-size:100%;
+
+	    border-radius: .4rem;
+}
+
+.custom-select {
+	color: black;
+	font-weight: bold;
+	font-size: 90%;
+}
+
+.modal-dialog {
+  position: absolute;
+  top: 78%;
+  right: 0%;
+  bottom: 0%;
+  left: 0%;
+  z-index: 10040;
+  overflow: auto;
+  overflow-y: auto;
+  color: black;
+  width: 23%;
+
+
+}
+
+.modal-backdrop
+{
+    opacity:0.2 !important;
+}
+
+
+.modal {
+  color:black;
+ 
+}
+
+.modal-header{
+}
+.modal-content {
+	background-color: #1C2F35;
+	color: white;
+    overflow:hidden;
+}
+
+
 
 
 

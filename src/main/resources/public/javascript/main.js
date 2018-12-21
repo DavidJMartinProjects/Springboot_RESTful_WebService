@@ -43,9 +43,9 @@ $(document)
 										"positionClass" : "toast-bottom-center",
 										"preventDuplicates" : false,
 										"onclick" : null,
-										"showDuration" : "1000",
+										"showDuration" : "500",
 										"hideDuration" : "1000",
-										"timeOut" : "8000",
+										"timeOut" : "2000",
 										"extendedTimeOut" : "1000",
 										"showEasing" : "swing",
 										"hideEasing" : "linear",
@@ -79,8 +79,19 @@ $("#group2").on("click","a",function(event){
 	     $(".btn:first-child").text($(this).text());
 	      $(".btn:first-child").val($(this).text());
 //		document.getElementById("mainDropdownBtn").append(document.createTextNode('test value'));
+//	      $("#frameModalBottom").body.text("test")
+	      
+	      var mymodal = $('#frameModalBottom');
+	      mymodal.find('.modal-body').text('loading '+selectedLeague+' data...');
+	      mymodal.modal('show');
+	      
+//	      $("#frameModalBottom").modal("show");
+
+	      
+	      
 		getleagueTable(selectedLeague);
 //		document.getElementById("footer").style.position = "static";
+		$("#frameModalBottom").modal("hide");
 	});
 
 
@@ -93,6 +104,7 @@ $("btn-group[id*=dropdownList] a").click(function() {
 //	showLoadingLadderMessage();
 	// console.log("selectedLeague" + selectedLeague);
 	$("#footer").css('visibility', 'hidden');
+	  $("#frameModalBottom").show();
 	getleagueTable(selectedLeague);
 	document.getElementById("footer").style.position = "static";
 });
@@ -372,6 +384,7 @@ var populateLeagueTable = function(results) {
 
 	isDead = "false";
 	new $.fn.dataTable.FixedHeader(table);
+	$("#frameModalBottom").modal("hide");
 
 };
 
