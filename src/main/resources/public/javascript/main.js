@@ -14,6 +14,8 @@ $(document)
 				function() {
 					console.log("index.html loaded.")
 
+					
+					
 					var table = $('#leagueInfoTable').dataTable({
 						"order": [[ 1, "asc" ]],
 //						"columnDefs" : [ {
@@ -76,8 +78,8 @@ $("#group2").on("click","a",function(event){
 		$("#footer").css('visibility', 'hidden');
 //		$("mainDropdownBtn").firstChild.text(document.createTextNode('test value'));
 
-	     $(".btn:first-child").text($(this).text());
-	      $(".btn:first-child").val($(this).text());
+	     $(".dropdown-toggle:first-child").text($(this).text());
+	      $(".dropdown-toggle:first-child").val($(this).text());
 //		document.getElementById("mainDropdownBtn").append(document.createTextNode('test value'));
 //	      $("#frameModalBottom").body.text("test")
 	      
@@ -671,4 +673,9 @@ jQuery.extend(jQuery.fn.dataTableExt.oSort, {
 	"formatted-num-desc" : function(a, b) {
 		return b - a;
 	}
+});
+
+$("#feedback").click(function() {
+    var mymodal1 = $('#modalPoll-1');
+    mymodal1.modal('show');
 });

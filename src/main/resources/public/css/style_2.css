@@ -155,8 +155,8 @@ display:none;
  
 }
 
-.modal-dialog {
-  position: absolute;
+.loadingModal {
+/*   position: absolute; */
   top: 78%;
   right: 0%;
   bottom: 0%;
@@ -169,11 +169,28 @@ display:none;
 
 }
 
+.feedbackModal {
+  top: 0%;
+  right: 0%;
+  bottom: 0%;
+  left: 38%;
+  z-index: 10040;
+  overflow-x: hidden;
+  overflow-y: hidden;
+overflow:hidden;
 
+  width: 30%;
+  height:100%;
+
+}
+
+body.modal-open {
+    overflow: hidden;
+}
 
 .modal-backdrop
 {
-    opacity:0.0 !important;
+    opacity:0.3 !important;
 }
 
 .modal-content {
