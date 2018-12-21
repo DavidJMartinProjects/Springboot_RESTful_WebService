@@ -30,28 +30,28 @@ $(document)
 					});
 					new $.fn.dataTable.FixedHeader(table);
 
-					toastr
-							.success(
-									"<h6><b>Please note: <i>www.poe-ladder.com</i> is currently in Alpha testing.<br>  Not all intended features have been implemented to this version.</h6></b>",
-									null,
-									{
-										"iconClass" : 'customer-info',
-										"closeButton" : false,
-										"debug" : false,
-										"newestOnTop" : true,
-										"progressBar" : false,
-										"positionClass" : "toast-bottom-center",
-										"preventDuplicates" : false,
-										"onclick" : null,
-										"showDuration" : "500",
-										"hideDuration" : "1000",
-										"timeOut" : "2000",
-										"extendedTimeOut" : "1000",
-										"showEasing" : "swing",
-										"hideEasing" : "linear",
-										"showMethod" : "fadeIn",
-										"hideMethod" : "fadeOut",
-									})
+//					toastr
+//							.success(
+//									"<h6><b>Please note: <i>www.poe-ladder.com</i> is currently in Alpha testing.<br>  Not all intended features have been implemented to this version.</h6></b>",
+//									null,
+//									{
+//										"iconClass" : 'customer-info',
+//										"closeButton" : false,
+//										"debug" : false,
+//										"newestOnTop" : true,
+//										"progressBar" : false,
+//										"positionClass" : "toast-bottom-center",
+//										"preventDuplicates" : false,
+//										"onclick" : null,
+//										"showDuration" : "500",
+//										"hideDuration" : "1000",
+//										"timeOut" : "2000",
+//										"extendedTimeOut" : "1000",
+//										"showEasing" : "swing",
+//										"hideEasing" : "linear",
+//										"showMethod" : "fadeIn",
+//										"hideMethod" : "fadeOut",
+//									})
 				});
 
 $("ul[id*=dropdownList] li").click(function() {
