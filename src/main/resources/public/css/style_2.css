@@ -186,14 +186,6 @@ table.dataTable tbody th, table.dataTable tbody td {
     opacity:0.2 !important;
 }
 
-
-.modal {
-  color:black;
- 
-}
-
-.modal-header{
-}
 .modal-content {
 	background-color: #1C2F35;
 	color: white;
