@@ -1,14 +1,13 @@
 #tableSize {
-	 width:95%; margin:auto;
-	  background-color: rgba(0,5,1, .91) !important;
-	  
+	width: 95%;
+	margin: auto;
+	background-color: rgba(0, 5, 1, .91) !important;
 }
 
 /* icon */
 #toast-container>.customer-info {
-/* 	background-color: rgba(31,49,59, 0.9) !important; */
-	background-color: rgba(28,47,53, 0.9) !important;
-
+	/* 	background-color: rgba(31,49,59, 0.9) !important; */
+	background-color: rgba(28, 47, 53, 0.9) !important;
 	width: 100%;
 	margin-top: 20%;
 	color: white;
@@ -29,6 +28,7 @@
 	font-size: 1em;
 	text-align: center;
 }
+
 #leagueInfoTableContainer {
 	width: 100%;
 	border: 0px;
@@ -44,12 +44,12 @@ thead {
 }
 
 body {
-		overflow-x: hidden;
-		 background-attachment: fixed;
+	overflow-x: hidden;
+	background-attachment: fixed;
 }
 
 .navbar-dark .navbar-nav .nav-link {
-    color: white;
+	color: white;
 }
 
 .dropdown-item {
@@ -57,33 +57,33 @@ body {
 }
 
 a {
-    color: #f1cd31;
+	color: #f1cd31;
 }
 
 .btn-info {
-	font-weight:bold;
+	font-weight: bold;
 }
 
 .navbar-brand {
-		font-weight:bold;
+	font-weight: bold;
 }
 
 .arrow-up {
-    border: solid green;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 4px;
-    transform: rotate(-135deg);
-    -webkit-transform: rotate(-135deg);
+	border: solid green;
+	border-width: 0 3px 3px 0;
+	display: inline-block;
+	padding: 4px;
+	transform: rotate(-135deg);
+	-webkit-transform: rotate(-135deg);
 }
 
 .arrow-down {
-    border: solid red;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 4px;
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
+	border: solid red;
+	border-width: 0 3px 3px 0;
+	display: inline-block;
+	padding: 4px;
+	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
 }
 
 .img-valign {
@@ -108,24 +108,26 @@ a {
 }
 
 .progress-bar {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -ms-flex-pack: center;
-    justify-content: center;
-    color: #00ff40;
-    text-align: center;
-    white-space: nowrap;
-    background-color: #ffff00;
-    transition: width .6s ease;
-
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-ms-flex-pack: center;
+	justify-content: center;
+	color: #00ff40;
+	text-align: center;
+	white-space: nowrap;
+	background-color: #ffff00;
+	transition: width .6s ease;
 }
 
-.progress .sr-only { position: absolute; }
+.progress .sr-only {
+	position: absolute;
+}
 
-.progress {height: 8px;
-	width : 95%;
+.progress {
+	height: 8px;
+	width: 95%;
 	background-color: #999;
 }
 
@@ -144,136 +146,127 @@ table.dataTable tbody th, table.dataTable tbody td {
 	border-bottom: 1px solid #111;
 }
 
-
 .dataTables_filter label {
-    color:white;
+	color: white;
 }
 
 .dataTables_length label {
- font-weight: normal;
-display:none;
- 
+	font-weight: normal;
+	display: none;
 }
 
 .loadingModal {
-/*   position: absolute; */
-  top: 78%;
-  right: 0%;
-  bottom: 0%;
-  left: 0%;
-  z-index: 10040;
-  overflow: auto;
-  overflow-y: auto;
-  color: black;
-  width: 23%;
-
+	/*   position: absolute; */
+	top: 78%;
+	right: 0%;
+	bottom: 0%;
+	left: 0%;
+	z-index: 10040;
+	overflow: auto;
+	overflow-y: auto;
+	color: black;
+	width: 23%;
 }
 
 .feedbackModal {
-  top: 0%;
-  right: 0%;
-  bottom: 0%;
-  left: 36%;
-  z-index: 10040;
-  overflow-x: hidden;
-  overflow-y: hidden;
-overflow:hidden;
-
-  width: 30%;
-  height:100%;
-
+	top: 0%;
+	right: 0%;
+	bottom: 0%;
+	left: 36%;
+	z-index: 10040;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	overflow: hidden; width : 30%;
+	height: 100%;
+	width: 30%;
 }
 
 body.modal-open {
-    overflow: hidden;
+	overflow: hidden;
 }
 
-.modal-backdrop
-{
-    opacity:0.3 !important;
+.modal-backdrop {
+	opacity: 0.3 !important;
 }
 
 .modal-content {
 	background-color: #1C2F35;
 	color: white;
-/* 	 opacity:0.91 !important; */
-    overflow:hidden;
-    margin:0 !important;
-    padding:0 !important;
-    border:0 !important;
+	/* 	 opacity:0.91 !important; */
+	overflow: hidden;
+	margin: 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
 }
 
 .modal-body {
-    position: relative;
-    padding: .6rem;
-    padding-bottom: 0px;
+	position: relative;
+	padding: .6rem;
+	padding-bottom: 0px;
 }
 
-vertical > .btn {
-    position: fixed;
+vertical>.btn {
+	position: fixed;
 }
 
 .custom-select {
-background: #fff;
+	background: #fff;
 }
 
 .dropdown-toggle {
-	width:180px;
+	width: 180px;
 }
 
 .btn-info {
-    color: #1C2F35;
-    background-color: #1C2F35;
-    border-color: black;
+	color: #1C2F35;
+	background-color: #1C2F35;
+	border-color: black;
 }
 
 .border-info {
-    border-color: #1C2F35 !important;
+	border-color: #1C2F35 !important;
 }
 
 .page-link {
-    color: white;
+	color: white;
 }
 
 hr {
-    border-top: 1px solid white;
+	border-top: 1px solid white;
 }
 
 .modal-header {
 	text-align: center;
-
 }
 
-.close {display: none;}
+.close {
+	display: none;
+}
 
 .changeLogModal {
-  top: 0%;
-  right: 0%;
-  bottom: 0%;
-  left: 36%;
-  z-index: 10040;
-  overflow-x: hidden;
-  overflow-y: hidden;
-overflow:hidden;
-
-  width: 30%;
-  height:100%;
-
-
-
+	top: 0%;
+	right: 0%;
+	bottom: 0%;
+	left: 36%;
+	z-index: 10040;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	overflow: hidden;
+	width: 30%;
+	height: 100%;
 }
 
 .alignChangelogModalText {
-	padding-left:10%;
+	padding-left: 10%;
 }
 
 .innerLogs {
-	padding-left:5%;
+	padding-left: 5%;
 	font-size: 85%;
-	
 }
 
-
-
-
+textarea {
+	color: black;
+	font-weight: bolder !important;
+}
 
