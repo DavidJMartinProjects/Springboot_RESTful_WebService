@@ -383,12 +383,16 @@ var populateLeagueTable = function(results) {
 
 	setTimeout(function() {
 		getleagueTable(selectedLeague);
+		$('#lastUpdatedMsg').text("ranks last updated : " + timeStamp + ".");
 		showUpdatedMessage();
 	}, 5 * 60 * 1000);
-	// }, 1 * 10 * 1000);
+//	 }, 1 * 10 * 1000);
+	
 
 	isDead = "false";
 	new $.fn.dataTable.FixedHeader(table);
+	$("#leagueInfoTable_wrapper").prepend('<span id="lastUpdatedMsg"></span>');
+	$('#lastUpdatedMsg').text("ranks last updated : " + timeStamp + ".");
 	$("#frameModalBottom").modal("hide");
 
 };
@@ -614,9 +618,9 @@ var showUpdatedMessage = function() {
 		"positionClass" : "toast-top-center",
 		"preventDuplicates" : false,
 		"onclick" : null,
-		"showDuration" : "300",
+		"showDuration" : "100",
 		"hideDuration" : "1000",
-		"timeOut" : "4000",
+		"timeOut" : "6000",
 		"extendedTimeOut" : "1000",
 		"showEasing" : "swing",
 		"hideEasing" : "linear",

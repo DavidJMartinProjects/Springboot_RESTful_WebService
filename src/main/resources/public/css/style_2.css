@@ -10,16 +10,19 @@
 	background-color: rgba(28, 47, 53, 0.9) !important;
 	width: 100%;
 	margin-top: 20%;
-	color: white;
+
 }
 
 #toast-container.toast-top-center .toast, #toast-container.toast-top-right .toast
 	{
-	margin-top: 5%;
+	margin-top: 4%;
 	width: 12%;
 	padding: 5px;
-	font-size: .8em;
+	font-size: 1em;
 	text-align: center;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: bold;
 }
 
 #toast-container.toast-bottom-center .toast {
@@ -271,13 +274,10 @@ textarea {
     display: none;
 }
 
-.col {
-
-
-
-
+#lastUpdatedMsg {
+	color: white;
+	float:left;
 }
-
 
 
 
