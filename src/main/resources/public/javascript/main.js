@@ -115,7 +115,6 @@ var showStatsBtn = function() {
 }
 
 var getleagueTable = function(selectedleague) {
-	loadingTableAnimation();
 	getLeagueDataTable(selectedleague);
 	$.fn.dataTable.ext.classes.sPageButton = 'button primary_button';
 }
