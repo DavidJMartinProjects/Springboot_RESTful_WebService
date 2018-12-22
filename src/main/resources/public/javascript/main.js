@@ -294,7 +294,7 @@ var populateLeagueTable = function(results) {
 											+ '<td>' + data.experience
 											+ '</td>'
 
-											+ '<td>' + "<b>20/30</d>" + '</td>'
+//											+ '<td>' + "<b>20/30</b>" + '</td>'
 
 											+ '<td>' + twitchLink + '</td>'
 											+ '</tr>');
@@ -342,7 +342,7 @@ var populateLeagueTable = function(results) {
 
 											+ '</td>' + '<td>'
 											+ data.experience + '</td>'
-											+ '<td>' + "<b>20/30</d>" + '</td>'
+//											+ '<td>' + "<b>20/30</d>" + '</td>'
 											+ '<td>' + twitchLink + '</td>'
 											+ '</tr>');
 
