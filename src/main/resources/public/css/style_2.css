@@ -169,7 +169,7 @@ table.dataTable tbody th, table.dataTable tbody td {
 }
 
 .feedbackModal {
-	top: 0%;
+	top: 10%;
 	right: 0%;
 	bottom: 0%;
 	left: 36%;
@@ -269,4 +269,20 @@ textarea {
 	color: black;
 	font-weight: bolder !important;
 }
+
+.g-recaptcha {
+	padding-left: 35%;
+}
+
+.disable {
+	cursor: not-allowed;
+	pointer-events: none;
+	opacity: 0.5 !important;
+}
+
+.grecaptcha-badge {
+    display: none;
+}
+
+
 

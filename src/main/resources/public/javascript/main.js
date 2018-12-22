@@ -9,104 +9,101 @@ var exp = "";
 var xphDifference = "";
 var isDead = "false";
 
-$(document)
-		.ready(
-				function() {
-					console.log("index.html loaded.")
+$(document).ready(function() {
+	console.log("index.html loaded.")
 
-					
-					
-					var table = $('#leagueInfoTable').dataTable({
-						"order": [[ 1, "asc" ]],
-//						"columnDefs" : [ {
-//							"targets" : [ 0 ], // column or columns numbers
-//							"orderable" : false, // set orderable for
-//						// selected columns
-//						} ],
-						deferRender: true,
-						"deferLoading": 400,
-//						"columnDefs" : [ {
-//							type : 'formatted-num',
-//						targets : [1]
-//						} ],
-					});
-					new $.fn.dataTable.FixedHeader(table);
+	var table = $('#leagueInfoTable').dataTable({
+		"order" : [ [ 1, "asc" ] ],
+		// "columnDefs" : [ {
+		// "targets" : [ 0 ], // column or columns numbers
+		// "orderable" : false, // set orderable for
+		// // selected columns
+		// } ],
+		deferRender : true,
+		"deferLoading" : 400,
+	// "columnDefs" : [ {
+	// type : 'formatted-num',
+	// targets : [1]
+	// } ],
+	});
+	new $.fn.dataTable.FixedHeader(table);
 
-//					toastr
-//							.success(
-//									"<h6><b>Please note: <i>www.poe-ladder.com</i> is currently in Alpha testing.<br>  Not all intended features have been implemented to this version.</h6></b>",
-//									null,
-//									{
-//										"iconClass" : 'customer-info',
-//										"closeButton" : false,
-//										"debug" : false,
-//										"newestOnTop" : true,
-//										"progressBar" : false,
-//										"positionClass" : "toast-bottom-center",
-//										"preventDuplicates" : false,
-//										"onclick" : null,
-//										"showDuration" : "500",
-//										"hideDuration" : "1000",
-//										"timeOut" : "2000",
-//										"extendedTimeOut" : "1000",
-//										"showEasing" : "swing",
-//										"hideEasing" : "linear",
-//										"showMethod" : "fadeIn",
-//										"hideMethod" : "fadeOut",
-//									})
-				});
+	// toastr
+	// .success(
+	// "<h6><b>Please note: <i>www.poe-ladder.com</i> is currently in Alpha
+	// testing.<br> Not all intended features have been implemented to this
+	// version.</h6></b>",
+	// null,
+	// {
+	// "iconClass" : 'customer-info',
+	// "closeButton" : false,
+	// "debug" : false,
+	// "newestOnTop" : true,
+	// "progressBar" : false,
+	// "positionClass" : "toast-bottom-center",
+	// "preventDuplicates" : false,
+	// "onclick" : null,
+	// "showDuration" : "500",
+	// "hideDuration" : "1000",
+	// "timeOut" : "2000",
+	// "extendedTimeOut" : "1000",
+	// "showEasing" : "swing",
+	// "hideEasing" : "linear",
+	// "showMethod" : "fadeIn",
+	// "hideMethod" : "fadeOut",
+	// })
+});
 
 $("ul[id*=dropdownList] li").click(function() {
-	 console.log($(this).text()); // gets text contents of clicked li
+	console.log($(this).text()); // gets text contents of clicked li
 	selectedLeague = $(this).text();
 
-	 $("#tableLoadingAnimation").css('visibility', 'visible');
-//	showLoadingLadderMessage();
+	$("#tableLoadingAnimation").css('visibility', 'visible');
+	// showLoadingLadderMessage();
 	// console.log("selectedLeague" + selectedLeague);
 	$("#footer").css('visibility', 'hidden');
 	getleagueTable(selectedLeague);
 	document.getElementById("footer").style.position = "static";
 });
 
-$("#group2").on("click","a",function(event){
-	 console.log($(this).text()); // gets text contents of clicked li
-		selectedLeague = $(this).text();
-
-		 $("#tableLoadingAnimation").css('visibility', 'visible');
-//		showLoadingLadderMessage();
-		// console.log("selectedLeague" + selectedLeague);
-		$("#footer").css('visibility', 'hidden');
-//		$("mainDropdownBtn").firstChild.text(document.createTextNode('test value'));
-
-	     $(".dropdown-toggle:first-child").text($(this).text());
-	      $(".dropdown-toggle:first-child").val($(this).text());
-//		document.getElementById("mainDropdownBtn").append(document.createTextNode('test value'));
-//	      $("#frameModalBottom").body.text("test")
-	      
-	      var mymodal = $('#frameModalBottom');
-	      mymodal.find('.modal-body').text('loading '+selectedLeague+' data...');
-	      mymodal.modal('show');
-	      
-//	      $("#frameModalBottom").modal("show");
-
-	      
-	      $("#frameModalBottom").modal("hide");
-		getleagueTable(selectedLeague);
-//		document.getElementById("footer").style.position = "static";
-		
-	});
-
-
-
-$("btn-group[id*=dropdownList] a").click(function() {
-	 console.log($(this).text()); // gets text contents of clicked li
+$("#group2").on("click", "a", function(event) {
+	console.log($(this).text()); // gets text contents of clicked li
 	selectedLeague = $(this).text();
 
-	 $("#tableLoadingAnimation").css('visibility', 'visible');
-//	showLoadingLadderMessage();
+	$("#tableLoadingAnimation").css('visibility', 'visible');
+	// showLoadingLadderMessage();
 	// console.log("selectedLeague" + selectedLeague);
 	$("#footer").css('visibility', 'hidden');
-	  $("#frameModalBottom").show();
+	// $("mainDropdownBtn").firstChild.text(document.createTextNode('test
+	// value'));
+
+	$(".dropdown-toggle:first-child").text($(this).text());
+	$(".dropdown-toggle:first-child").val($(this).text());
+	// document.getElementById("mainDropdownBtn").append(document.createTextNode('test
+	// value'));
+	// $("#frameModalBottom").body.text("test")
+
+	var mymodal = $('#frameModalBottom');
+	mymodal.find('.modal-body').text('loading ' + selectedLeague + ' data...');
+	mymodal.modal('show');
+
+	// $("#frameModalBottom").modal("show");
+
+	$("#frameModalBottom").modal("hide");
+	getleagueTable(selectedLeague);
+	// document.getElementById("footer").style.position = "static";
+
+});
+
+$("btn-group[id*=dropdownList] a").click(function() {
+	console.log($(this).text()); // gets text contents of clicked li
+	selectedLeague = $(this).text();
+
+	$("#tableLoadingAnimation").css('visibility', 'visible');
+	// showLoadingLadderMessage();
+	// console.log("selectedLeague" + selectedLeague);
+	$("#footer").css('visibility', 'hidden');
+	$("#frameModalBottom").show();
 	getleagueTable(selectedLeague);
 	document.getElementById("footer").style.position = "static";
 });
@@ -154,7 +151,8 @@ $("#showStatsButton").click(function() {
 });
 
 var getLeagueDataTable = function(selectedLeague) {
-	console.log("Selected League url : " +url+ " selectedLeague :" +selectedLeague);
+	console.log("Selected League url : " + url + " selectedLeague :"
+			+ selectedLeague);
 	$.ajax({
 		url : url,
 		type : 'GET',
@@ -163,7 +161,7 @@ var getLeagueDataTable = function(selectedLeague) {
 			league : selectedLeague
 		},
 		success : function(results) {
-//			 console.log(results)
+			// console.log(results)
 			populateLeagueTable(results);
 			// showStatsBtn();
 			$("#tableLoadingAnimation").css('visibility', 'hidden');
@@ -293,12 +291,12 @@ var populateLeagueTable = function(results) {
 											+ '<div class="progress-bar bg-dark" style="width:'
 											+ data.levelProgressBar + '%">'
 											/* + +data.levelProgressBar+'%' */
-											+ '</div>' + '</div>'
-											+ '</td>' + '<td>'
-											+ data.experience + '</td>'
-											
-											+ '<td>' +"<b>20/30</d>" + '</td>'
-											
+											+ '</div>' + '</div>' + '</td>'
+											+ '<td>' + data.experience
+											+ '</td>'
+
+											+ '<td>' + "<b>20/30</d>" + '</td>'
+
 											+ '<td>' + twitchLink + '</td>'
 											+ '</tr>');
 				} else {
@@ -345,7 +343,7 @@ var populateLeagueTable = function(results) {
 
 											+ '</td>' + '<td>'
 											+ data.experience + '</td>'
-											+ '<td>' +"<b>20/30</d>" + '</td>'
+											+ '<td>' + "<b>20/30</d>" + '</td>'
 											+ '<td>' + twitchLink + '</td>'
 											+ '</tr>');
 
@@ -364,18 +362,18 @@ var populateLeagueTable = function(results) {
 		"iDisplayLength" : 100,
 		responsive : true,
 		"pagingType" : "full_numbers",
-		"order": [[ 1, "asc" ]],
+		"order" : [ [ 1, "asc" ] ],
 		stateSave : true,
-//		"columnDefs" : [ {
-//			"targets" : [ 0 ], // column or columns numbers
-//			"orderable" : false, // set orderable for
-//		} ],
-		deferRender: true,
-		"deferLoading": 400,
-//		"columnDefs" : [ {
-//			type : 'formatted-num',
-//		targets : [1]
-//		} ],
+		// "columnDefs" : [ {
+		// "targets" : [ 0 ], // column or columns numbers
+		// "orderable" : false, // set orderable for
+		// } ],
+		deferRender : true,
+		"deferLoading" : 400,
+	// "columnDefs" : [ {
+	// type : 'formatted-num',
+	// targets : [1]
+	// } ],
 	});
 
 	setTimeout(function() {
@@ -460,22 +458,6 @@ var populateLevelChart = function(results) {
 		}
 		e.chart.render();
 	}
-}
-
-function loadingTableAnimation() {
-//	console.log("loadingTableAnimation");
-//	var x = document.getElementById("tableLoadingAnimation");
-//	var y = document.getElementById("leagueInfoTableContainer");
-//
-//	if (x.style.display === "none") {
-//		$(".tableLoadingAnimation").css('visibility', 'visible');
-//		x.style.display = "block";
-//		y.style.display = "none";
-//	} else {
-//		$(".tableLoadingAnimation").css('visibility', 'hidden');
-//		x.style.display = "none";
-//		y.style.display = "block";
-//	}
 }
 
 function loadingModalAnimation() {
@@ -662,7 +644,8 @@ var showLoadingLadderMessage = function() {
 
 jQuery.extend(jQuery.fn.dataTableExt.oSort, {
 	"formatted-num-pre" : function(a) {
-		a = (a === "-" || a === "") ? 0 : a.replace(/[^\d\-\.]/g, "").replace("+ ", "+").replace("- ", "-");
+		a = (a === "-" || a === "") ? 0 : a.replace(/[^\d\-\.]/g, "").replace(
+				"+ ", "+").replace("- ", "-");
 		return parseFloat(a);
 	},
 
@@ -676,12 +659,51 @@ jQuery.extend(jQuery.fn.dataTableExt.oSort, {
 });
 
 $("#feedback").click(function() {
-    var mymodal1 = $('#modalPoll-1');
-    mymodal1.modal('show');
+	var mymodal1 = $('#modalPoll-1');
+	$('#btn-send').toggleClass('disable', true);
+	mymodal1.modal('show');
 });
 
 $("#changelog").click(function() {
-    var mymodal1 = $('#modalChangeLog');
-    mymodal1.modal('show');
+	var mymodal1 = $('#modalChangeLog');
+	mymodal1.modal('show');
 });
 
+grecaptcha.ready(function() {
+	grecaptcha.execute('6LePPoQUAAAAALMHr7-ZxEcgCBq4-atgP4hAXYB_', {
+		action : 'homepage'
+	}).then(function(token) {
+		console.log("validated!");
+	});
+});
+
+	
+ function enableBtn(){
+	console.log("enableBtn()");
+	$('#btn-send').toggleClass('disable', false);
+
+  }
+ 
+$("#btn-send").click(function() {
+    grecaptcha.reset(); // on lock of sed button
+	console.log("message sent!");
+	var textAreaContent = $('#form79textarea').val();
+	
+	$.ajax({
+		url : 'http://localhost:8080/' + 'mail/send',
+		type : 'POST',
+		dataType : "json",
+		data : {
+			userName : "Feedback Message : \n\n",
+			message : textAreaContent
+		},
+		success : function(msg) {
+			console.log("message sent successfully  : " + msg);
+		},
+		error : function(xhr, status, error) {
+		}		
+	});
+	
+	var mymodal1 = $('#modalPoll-1');
+		mymodal1.modal('hide');
+});
