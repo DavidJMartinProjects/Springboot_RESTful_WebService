@@ -705,5 +705,6 @@ $("#btn-send").click(function() {
 	});
 	
 	var mymodal1 = $('#modalPoll-1');
-		mymodal1.modal('hide');
+	$('#form79textarea').val("");
+	mymodal1.modal('hide');
 });
