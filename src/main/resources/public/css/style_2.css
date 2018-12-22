@@ -173,7 +173,7 @@ display:none;
   top: 0%;
   right: 0%;
   bottom: 0%;
-  left: 38%;
+  left: 36%;
   z-index: 10040;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -245,6 +245,33 @@ hr {
 }
 
 .close {display: none;}
+
+.changeLogModal {
+  top: 0%;
+  right: 0%;
+  bottom: 0%;
+  left: 36%;
+  z-index: 10040;
+  overflow-x: hidden;
+  overflow-y: hidden;
+overflow:hidden;
+
+  width: 30%;
+  height:100%;
+
+
+
+}
+
+.alignChangelogModalText {
+	padding-left:10%;
+}
+
+.innerLogs {
+	padding-left:5%;
+	font-size: 85%;
+	
+}
 
 
 

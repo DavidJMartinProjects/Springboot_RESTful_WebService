@@ -679,3 +679,9 @@ $("#feedback").click(function() {
     var mymodal1 = $('#modalPoll-1');
     mymodal1.modal('show');
 });
+
+$("#changelog").click(function() {
+    var mymodal1 = $('#modalChangeLog');
+    mymodal1.modal('show');
+});
+
