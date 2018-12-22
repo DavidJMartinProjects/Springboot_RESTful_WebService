@@ -690,7 +690,7 @@ $("#btn-send").click(function() {
 	var textAreaContent = $('#form79textarea').val();
 	
 	$.ajax({
-		url : 'http://localhost:8080/' + 'mail/send',
+		url : 'https://immense-headland-50105.herokuapp.com/' + 'mail/send',
 		type : 'POST',
 		dataType : "json",
 		data : {
