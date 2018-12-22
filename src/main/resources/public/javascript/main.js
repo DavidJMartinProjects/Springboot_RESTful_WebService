@@ -12,9 +12,9 @@ var isDead = "false";
 $(document).ready(function() {
 	console.log("index.html loaded.")
 	
-		var mymodal1 = $('#modalPoll-1');
-	$('#btn-send').toggleClass('disable', true);
-	mymodal1.modal('show');
+//		var mymodal1 = $('#modalPoll-1');
+//	$('#btn-send').toggleClass('disable', true);
+//	mymodal1.modal('show');
 	
 	
 

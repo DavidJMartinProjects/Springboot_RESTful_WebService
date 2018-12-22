@@ -200,6 +200,10 @@ vertical>.btn {
 	position: fixed;
 }
 
+#logo {
+	style=padding-left: 22%;
+}
+
 .custom-select {
 	background: #fff;
 }
