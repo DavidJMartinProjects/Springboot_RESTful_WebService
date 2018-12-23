@@ -394,6 +394,7 @@ var populateLeagueTable = function(results) {
 	$("#leagueInfoTable_wrapper").prepend('<span id="lastUpdatedMsg"></span>');
 	$('#lastUpdatedMsg').text("ranks last updated : " + timeStamp + ".");
 	$("#frameModalBottom").modal("hide");
+	$("#ranksUpdatedModal").modal("hide");
 
 };
 
@@ -610,24 +611,14 @@ var getPoeAccount = function(accountName) {
 }
 
 var showUpdatedMessage = function() {
-	toastr.success("ranks have been updated.", null, {
-		"iconClass" : 'customer-info',
-		"closeButton" : false,
-		"debug" : false,
-		"newestOnTop" : true,
-		"positionClass" : "toast-top-center",
-		"preventDuplicates" : false,
-		"onclick" : null,
-		"showDuration" : "100",
-		"hideDuration" : "1000",
-		"timeOut" : "6000",
-		"extendedTimeOut" : "1000",
-		"showEasing" : "swing",
-		"hideEasing" : "linear",
-		"showMethod" : "fadeIn",
-		"hideMethod" : "fadeOut",
-		"tapToDismiss" : false,
-	})
+	var mymodal = $('#ranksUpdatedModal');
+	mymodal.find('.modal-body').text('ranks have been updated.');
+	mymodal.modal('show');
+
+
+	 // $("#frameModalBottom").modal("show");
+
+
 }
 
 var showLoadingLadderMessage = function() {
