@@ -279,6 +279,18 @@ textarea {
 	float:left;
 }
 
+#leagueInfoTable_filter {
+
+
+}
+
+
+.dataTables_wrapper div.dataTables_filter label {
+    font-size: 1em;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: bold !important;
+}
 
 
 
