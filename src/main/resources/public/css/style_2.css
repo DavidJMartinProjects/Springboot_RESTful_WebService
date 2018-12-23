@@ -290,7 +290,14 @@ textarea {
 	font-family: Montserrat;
 	font-style: normal;
 	font-weight: bold !important;
+	
 }
+
+#ranksUpdatedModal {
+
+		 	 overflow: hidden;
+}
+
 
 
 

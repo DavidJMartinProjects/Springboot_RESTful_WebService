@@ -614,11 +614,6 @@ var showUpdatedMessage = function() {
 	var mymodal = $('#ranksUpdatedModal');
 	mymodal.find('.modal-body').text('ranks have been updated.');
 	mymodal.modal('show');
-
-
-	 // $("#frameModalBottom").modal("show");
-
-
 }
 
 var showLoadingLadderMessage = function() {
