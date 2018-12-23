@@ -12,6 +12,8 @@ var isDead = "false";
 $(document).ready(function() {
 	console.log("index.html loaded.")
 	
+
+	
 //		var mymodal1 = $('#modalPoll-1');
 //	$('#btn-send').toggleClass('disable', true);
 //	mymodal1.modal('show');
@@ -369,16 +371,16 @@ var populateLeagueTable = function(results) {
 		"pagingType" : "full_numbers",
 		"order" : [ [ 1, "asc" ] ],
 		stateSave : true,
-		// "columnDefs" : [ {
-		// "targets" : [ 0 ], // column or columns numbers
-		// "orderable" : false, // set orderable for
-		// } ],
+		 "columnDefs" : [ {
+		 "targets" : [ 0 ], // column or columns numbers
+		 type : 'formatted-num',
+		 } ],
 		deferRender : true,
 		"deferLoading" : 400,
-	// "columnDefs" : [ {
-	// type : 'formatted-num',
-	// targets : [1]
-	// } ],
+	 "columnDefs" : [ {
+	 type : 'formatted-num',
+	 targets : [6]
+	 } ],
 	});
 
 	setTimeout(function() {

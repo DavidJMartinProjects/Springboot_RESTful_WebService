@@ -4,41 +4,9 @@
 	background-color: rgba(0, 5, 1, .91) !important;
 }
 
-/* icon */
-#toast-container>.customer-info {
-	/* 	background-color: rgba(31,49,59, 0.9) !important; */
-	background-color: rgba(28, 47, 53, 0.9) !important;
-	width: 100%;
-	margin-top: 20%;
-
-}
-
-#toast-container.toast-top-center .toast, #toast-container.toast-top-right .toast
-	{
-	margin-top: 4%;
-	width: 12%;
-	padding: 5px;
-	font-size: 1em;
-	text-align: center;
-	font-family: Montserrat;
-	font-style: normal;
-	font-weight: bold;
-}
-
-#toast-container.toast-bottom-center .toast {
-	margin-bottom: 6%;
-	width: 36%;
-	font-size: 1em;
-	text-align: center;
-}
-
 #leagueInfoTableContainer {
 	width: 100%;
 	border: 0px;
-}
-
-.toast .toast-message {
-	
 }
 
 thead {
@@ -279,12 +247,6 @@ textarea {
 	float:left;
 }
 
-#leagueInfoTable_filter {
-
-
-}
-
-
 .dataTables_wrapper div.dataTables_filter label {
     font-size: 1em;
 	font-family: Montserrat;
@@ -293,10 +255,8 @@ textarea {
 	
 }
 
-#ranksUpdatedModal {
 
-		 	 overflow: hidden;
-}
+
 
 
 
