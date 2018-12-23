@@ -28,10 +28,10 @@
 
 <body class="img-responsive" style="	background-image: url(assets/styleguide/poe2.jpg);	background-position: top left;	background-size: 107%;	background-repeat: no-repeat; height:100%; width:100%;">
 
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark border-bottom border-info" >
-			<div class="col col-md-4 text-center">
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark border-bottom border-info " >
+			<div class="col col-md-4 text-center" style="padding-left: 22%;">
 			      <a class="navbar-brand"  	href="/"  >
-				<img src="../images/logo2.png"></img></i><b>poe-ladder.com</b></a>
+				<img src="../images/logo2.png"></img><b>poe-ladder.com</b></a>
 			</div>
 			
 			<div class="col col-md-4 text-center">
@@ -46,16 +46,19 @@
 	              </div>
 	            </div>
 			</div>
-
+  
+       
+<div class="col">
  			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> 
-			 <div class="collapse navbar-collapse text-center"  >
+			  <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent" style="padding-right:25%;">
 		        <ul class="navbar-nav">
 		
-		          <li class="nav-item m-0 mx-1 mt-0">
-		            <a class="nav-link" href="#" id="changelog">changelog </a> 
+		          <li class="nav-item m-0  mt-0">
+		             <a class="nav-link" href="#" id="feedback" >feedback <br></a> 
+		             
 		          </li>
                    <li class="nav-item mx-1">
-		            <a class="nav-link" href="#" id="feedback" >feedback <br></a> 
+		         <a class="nav-link" href="#" id="changelog">changelog </a>
 		          </li>
 		          <li class="nav-item mx-1">
 		            <a class="nav-link" href="#reviews">about <br></a> 
@@ -66,11 +69,12 @@
 		        </ul>
 		      </div>
      	 </nav>
-
+</div>
    <div class="py-2 " style="display: none;" id="leagueInfoTableContainer">
       <div class="row border-0 d-flex justify-content-center border border-dark" id="tableSize">  
           <div class="table-responsive" >
 				<table id="leagueInfoTable"	class="table table-striped table-bordered nowrap" cellspacing="0" style="width:100% !important; ">
+				
 				<thead>
 					<tr>
 						<th></th>
@@ -102,7 +106,7 @@
 	    </div>
  	 </div>
   <!-- Frame Modal Bottom -->
-
+  <div class="container-fluid">
 <!-- Modal: Feedback Modal -->
 <div class="modal fade right feedbackModal" id="modalPoll-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true" data-backdrop="true">
@@ -179,9 +183,11 @@
     </div>
   </div>
 </div>
+</div>
 <!-- Modal: feedbackModal -->
 
 <!-- Modal: changeLogModal  -->
+  <div class="container-fluid">
 <div class="modal fade right changeLogModal" id="modalChangeLog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true" data-backdrop="true">
   <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
@@ -210,7 +216,6 @@
           <span class="innerLogs"> - Added xp per hour stat </span><br>
           <span class="innerLogs"> - Added completed challenges stat </span><br>
           	 </p>
-         
 
 		  </div>
 		      </div>
@@ -223,7 +228,235 @@
 		    </div>
 		  </div>
 		</div>
+		</div>
 		<!-- Modal: changeLogModal -->
+	
+	<!-- Modal: ranks updated modal -->	
+	<div class="modal fade bottom" id="ranksUpdatedModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <!-- Add class .modal-frame and then add class .modal-bottom (or other classes from list above) to set a position to the modal -->
+	    <div class="modal-dialog loadingModal " role="document" >
+	      <div class="modal-content">
+	        <center><h6><b><div class="modal-body"></div></b></h6></center>
+	      </div>
+	    </div>
+ 	 </div>
+ 	 <br><br>
+
+
+ 	 <div class="card" id="homePageTables" style="margin:auto; width:60%;">
+  <div class="card-body">
+     	 <div class="row ">
+ 	 	<div class="col text-center"><div class="card" id="topTenRankingsCard"><p id="topTenRankings">Top #10 leaderboards</p></div></div>
+ 	 </div>
+    <div class="container" >
+
+      <div class="row shadow-lg">
+        <div class="col-md-4">
+        <h5 class="card-title">Ascendancies Betrayal HC</h5>
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered nowrap" cellspacing="0" id="table1" cellspacing="0" >
+              <thead class="tableHead">
+                <tr>
+                  <th>#</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-4">
+         <h5 class="card-title">Fastest Betrayal HC UberLab</h5>
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered nowrap" cellspacing="0" id="table2">
+              <thead class="tableHead">
+                <tr>
+                  <th>#</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-4">
+         <h5 class="card-title">Solo Delve Dept Betrayal HC SSF</h5>
+          <div class="table-responsive" >
+            <table class="table table-striped table-bordered nowrap" cellspacing="0" id="table3">
+              <thead class="tableHead">
+                <tr>
+                  <th>#</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                   <td>Mark</td>
+                  <td>Otto</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  </div>
+</div>
+	
 
   	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src='https://www.google.com/recaptcha/api.js'></script>

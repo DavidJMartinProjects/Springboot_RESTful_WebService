@@ -12,29 +12,57 @@ var isDead = "false";
 $(document).ready(function() {
 	console.log("index.html loaded.")
 	
-
+table
 	
 //		var mymodal1 = $('#modalPoll-1');
 //	$('#btn-send').toggleClass('disable', true);
 //	mymodal1.modal('show');
 	
-	
+var table = $('#leagueInfoTable').dataTable({
+	"iDisplayLength" : 100,
+	responsive : true,
+	"pagingType" : "full_numbers",
+	"order" : [ [ 1, "asc" ] ],
+	stateSave : true,
+	 "columnDefs" : [ {
+	 "targets" : [ 0 ], // column or columns numbers
+	 type : 'formatted-num',
+	 } ],
+	deferRender : true,
+	"deferLoading" : 400,
+ "columnDefs" : [ {
+ type : 'formatted-num',
+ targets : [6]
+ } ],
+});
+	// load landing page tables
+	var table1 = $('#table1').dataTable({
+		"order" : [ [ 0, "asc" ] ],
+        "paging":   false,
+        "ordering": true,
+        "info":     false,
+        "searching": false
 
-	var table = $('#leagueInfoTable').dataTable({
-		"order" : [ [ 1, "asc" ] ],
-		// "columnDefs" : [ {
-		// "targets" : [ 0 ], // column or columns numbers
-		// "orderable" : false, // set orderable for
-		// // selected columns
-		// } ],
-		deferRender : true,
-		"deferLoading" : 400,
-	// "columnDefs" : [ {
-	// type : 'formatted-num',
-	// targets : [1]
-	// } ],
 	});
-	new $.fn.dataTable.FixedHeader(table);
+	
+	var table2 = $('#table2').dataTable({
+		"order" : [ [ 0, "asc" ] ],
+        "paging":   false,
+        "ordering": true,
+        "info":     false,
+        "searching": false
+
+	});
+
+	var table3 = $('#table3').dataTable({
+		"order" : [ [ 0, "asc" ] ],
+		paging : false,
+        "paging":   false,
+        "ordering": true,
+        "info":     false,
+        "searching": false
+	});
+
 
 	// toastr
 	// .success(
@@ -75,6 +103,10 @@ $("ul[id*=dropdownList] li").click(function() {
 });
 
 $("#group2").on("click", "a", function(event) {
+	
+
+	
+	
 	console.log($(this).text()); // gets text contents of clicked li
 	selectedLeague = $(this).text();
 

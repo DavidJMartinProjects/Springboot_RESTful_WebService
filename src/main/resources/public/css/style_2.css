@@ -110,6 +110,8 @@ a {
 table.dataTable thead th, table.dataTable thead td {
 	padding: 8px 12px;
 	border-bottom: 1px solid #111;
+
+	
 }
 
 table.dataTable tbody th, table.dataTable tbody td {
@@ -159,6 +161,7 @@ body.modal-open {
 	margin: 0 !important;
 	padding: 0 !important;
 	border: 0 !important;
+	opacity: 0.9 !important;
 }
 
 .modal-body {
@@ -254,6 +257,83 @@ textarea {
 	font-weight: bold !important;
 	
 }
+
+.card-title{
+	text-align: center;
+	border : white 1px solid;
+	background-color: black;
+	height: 10%;
+	vertical-align: middle;
+	padding-top: 3%;
+	margin: 0px;
+
+	
+	    font-size: .9em;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: bold !important;
+}
+
+#homePageTables {
+
+}
+
+.card {
+    background-color: rgba(28, 47, 53, 0.5) !important;
+    border: 1px white solid;
+}
+.tableHead {
+		background-color: #1C2F35;
+	color: white;
+	opacity: .9 !important;
+}
+
+ 
+#table1 {
+	background-color: black;
+	opacity: .9 !important;
+	font-size: .9em;
+}
+
+#table2 {
+	background-color: black;
+	opacity: .9 !important;
+	font-size: .9em;
+}
+
+#table3 {
+	background-color: black;
+	opacity: .9 !important;
+	font-size: .9em;
+}
+
+#topTenRankings {
+	font-size: .9em;
+}
+
+#topTenRankingsCard {
+
+	background-color: rgba(28, 47, 53, 0.8) !important;
+	margin: auto;
+	width: 20%;
+	  border: 1px white solid;
+
+		
+			text-align: center;
+
+	background-color: black;
+	padding-top : .6%;
+	vertical-align: middle;
+	margin-bottom: 2%;
+
+
+}
+
+#mainDropdownButton {
+	border : 1px #f1cd31 solid;
+}
+
+
 
 
 
