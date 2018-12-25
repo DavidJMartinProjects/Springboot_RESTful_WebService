@@ -443,16 +443,16 @@ var populateToptenTable = function(results) {
 		toonName = data.charName;
 		var accountLink = getPoeAccount(data.account)
 		var ascendancyIcon = getAscendancyIcon(data.ascendancy);
-
+		var classColor = getColor(data.ascendancy);
 		if (data.dead == true) {
 			$('#table1 tbody')
 			.append(
 				'<tr class = "deadChar">' +
 				'<td>' + data.rank + '</td>' +
 				'<td>' + toonName + "'<i id='deadStatus'>(dead)</i>'"+'</td>' +
-				'<td>' + ascendancyIcon + data.ascendancy +'</td>' +
+				'<td><font color="'+ classColor+ '">'+ ascendancyIcon+ "  "+ data.ascendancy+ '</font></td>' + 
 				'<td>' + data.dept + '</td>' +
-				+ '</tr>'
+				'</tr>'
 			);
 		} else {
 			$('#table1 tbody')
@@ -460,12 +460,20 @@ var populateToptenTable = function(results) {
 				'<tr>' +
 				'<td>' + data.rank + '</td>' +
 				'<td>' + toonName + '</td>' +
-				'<td>' + ascendancyIcon + data.ascendancy +'</td>' +
+				'<td><font color="'+ classColor+ '">'+ ascendancyIcon+ "  "+ data.ascendancy+ '</font></td>' + 
 				'<td>' + data.dept + '</td>' +
-				+ '</tr>'
+				'</tr>'
 			);
 		}
 	});
+	
+//	+ '<td><font color="'
+//	+ classColor
+//	+ '">'
+//	+ ascendancyIcon
+//	+ "  "
+//	+ data.theClass
+//	+ '</font></td>'
 	
 	// load landing page tables
 	console.log("loading top-ten results table. \n")
