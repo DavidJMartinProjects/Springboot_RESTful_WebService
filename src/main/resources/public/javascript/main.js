@@ -4,7 +4,7 @@ var url = theHostedSiteUrl;
 
 var topTenLocalUrl = 'http://localhost:8080/top-ten/delve';
 var topTenHostedUrl = 'https://immense-headland-50105.herokuapp.com/top-ten/delve';
-var topTenUrl = topTenHostedUrl;
+var topTenUrl = topTenLocalUrl;
 
 
 var selectedLeague = "";

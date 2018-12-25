@@ -70,10 +70,6 @@ a {
 	color: #ff4f53 !important;
 }
 
-.deadChar {
-	color: #535353 !important;
-}
-
 #deadStatus {
 	color: red;
 }
@@ -337,7 +333,7 @@ textarea {
 }
 
 .deadChar {
-	color: #535353 !important;
+	color: #808080!important;
 }
 
 
