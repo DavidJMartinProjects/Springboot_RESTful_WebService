@@ -2,6 +2,11 @@ var theLocalhostUrl = 'http://localhost:8080/ladders';
 var theHostedSiteUrl = 'https://immense-headland-50105.herokuapp.com/ladders';
 var url = theHostedSiteUrl;
 
+var topTenLocalUrl = 'http://localhost:8080/top-ten/delve';
+var topTenHostedUrl = 'https://immense-headland-50105.herokuapp.com/top-ten/delve';
+var topTenUrl = topTenHostedUrl;
+
+
 var selectedLeague = "";
 var timeStamp = "";
 var flag = true;
@@ -12,40 +17,12 @@ var isDead = "false";
 $(document).ready(function() {
 	console.log("index.html loaded.")
 	
-table
 	
 //		var mymodal1 = $('#modalPoll-1');
 //	$('#btn-send').toggleClass('disable', true);
 //	mymodal1.modal('show');
-	
-var table = $('#leagueInfoTable').dataTable({
-	"iDisplayLength" : 100,
-	responsive : true,
-	"pagingType" : "full_numbers",
-	"order" : [ [ 1, "asc" ] ],
-	stateSave : true,
-	 "columnDefs" : [ {
-	 "targets" : [ 0 ], // column or columns numbers
-	 type : 'formatted-num',
-	 } ],
-	deferRender : true,
-	"deferLoading" : 400,
- "columnDefs" : [ {
- type : 'formatted-num',
- targets : [6]
- } ],
-});
-	// load landing page tables
-	var table1 = $('#table1').dataTable({
-		"iDisplayLength" : 100,
-		responsive : true,
-		"order" : [ [ 0, "asc" ] ],
-        "paging":   false,
-        "ordering": true,
-        "info":     false,
-        "searching": false
-
-	});
+	$("#topTenCardDeck").css('visibility', 'hidden');
+	getTopTenDataTables();
 	
 	var table2 = $('#table2').dataTable({
 		"iDisplayLength" : 100,
@@ -138,6 +115,8 @@ $("#group2").on("click", "a", function(event) {
 	$("#frameModalBottom").modal("hide");
 	getleagueTable(selectedLeague);
 	// document.getElementById("footer").style.position = "static";
+	
+	$("#topTenCardDeck").css('visibility', 'hidden');
 
 });
 
@@ -437,6 +416,76 @@ var populateLeagueTable = function(results) {
 	$("#ranksUpdatedModal").modal("hide");
 
 };
+
+var getTopTenDataTables = function(selectedLeague) {
+	console.log("requesting top-ten league data.");
+	$.ajax({
+		url : topTenUrl,
+		type : 'GET',
+		dataType : "json",
+		success : function(results) {
+			console.log("top-ten results : \n" +results)
+			populateToptenTable(results);
+			console.log("top-ten table loaded");
+		},
+		error : function(error) {
+			console.log("getLeagueData error : " + error.responseJSON.message,
+					"error");
+		}
+	});
+};
+
+var populateToptenTable = function(results) {
+	var toonName = "";
+	results
+	.forEach(function(data) {
+
+		toonName = data.charName;
+		var accountLink = getPoeAccount(data.account)
+		var ascendancyIcon = getAscendancyIcon(data.ascendancy);
+
+		if (data.dead == true) {
+			$('#table1 tbody')
+			.append(
+				'<tr class = "deadChar">' +
+				'<td>' + data.rank + '</td>' +
+				'<td>' + toonName + "'<i id='deadStatus'>(dead)</i>'"+'</td>' +
+				'<td>' + ascendancyIcon + data.ascendancy +'</td>' +
+				'<td>' + data.dept + '</td>' +
+				+ '</tr>'
+			);
+		} else {
+			$('#table1 tbody')
+			.append(
+				'<tr>' +
+				'<td>' + data.rank + '</td>' +
+				'<td>' + toonName + '</td>' +
+				'<td>' + ascendancyIcon + data.ascendancy +'</td>' +
+				'<td>' + data.dept + '</td>' +
+				+ '</tr>'
+			);
+		}
+	});
+	
+	// load landing page tables
+	console.log("loading top-ten results table. \n")
+	var table1 = $('#table1').dataTable({
+		responsive : true,
+		"order" : [ [ 0, "asc" ] ],
+        "paging":   false,
+        "ordering": true,
+        "info":     false,
+        "searching": false
+
+	});
+	new $.fn.dataTable.FixedHeader(table1);
+
+	$("#topTenCardDeck").css('visibility', 'visible');
+	
+//	#topTenCardDeck
+}
+
+
 
 var drawLevelChart = function(selectedLeague) {
 	$.ajax({

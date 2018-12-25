@@ -316,25 +316,29 @@ textarea {
 	background-color: rgba(28, 47, 53, 0.8) !important;
 	margin: auto;
 	width: 20%;
-	  border: 1px white solid;
-
-		
-			text-align: center;
-
+	border: 1px white solid;
+	text-align: center;
 	background-color: black;
 	padding-top : .6%;
 	vertical-align: middle;
 	margin-bottom: 2%;
-
-
 }
 
 #mainDropdownButton {
 	border : 1px #f1cd31 solid;
 }
 
+.table-striped tbody tr:nth-of-type(odd) {
+	background-color: hsla(0, 0%, 100%, .02);
+}
 
+.table-striped tbody tr:nth-of-type(even) {
+	background-color: hsla(0, 0%, 100%, 0);
+}
 
+.deadChar {
+	color: #535353 !important;
+}
 
 
 
