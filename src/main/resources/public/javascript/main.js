@@ -37,6 +37,8 @@ var table = $('#leagueInfoTable').dataTable({
 });
 	// load landing page tables
 	var table1 = $('#table1').dataTable({
+		"iDisplayLength" : 100,
+		responsive : true,
 		"order" : [ [ 0, "asc" ] ],
         "paging":   false,
         "ordering": true,
@@ -46,6 +48,8 @@ var table = $('#leagueInfoTable').dataTable({
 	});
 	
 	var table2 = $('#table2').dataTable({
+		"iDisplayLength" : 100,
+		responsive : true,
 		"order" : [ [ 0, "asc" ] ],
         "paging":   false,
         "ordering": true,
@@ -55,6 +59,8 @@ var table = $('#leagueInfoTable').dataTable({
 	});
 
 	var table3 = $('#table3').dataTable({
+		"iDisplayLength" : 100,
+		responsive : true,
 		"order" : [ [ 0, "asc" ] ],
 		paging : false,
         "paging":   false,
