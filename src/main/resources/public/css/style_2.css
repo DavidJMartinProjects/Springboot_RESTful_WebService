@@ -260,15 +260,14 @@ textarea {
 
 .card-title{
 	text-align: center;
-	border : white 1px solid;
-	background-color: black;
-	height: 10%;
 	vertical-align: middle;
-	padding-top: 3%;
+	height: 200%;
+
+
 	margin: 0px;
 
 	
-	    font-size: .9em;
+	    font-size: 1.1em;
 	font-family: Montserrat;
 	font-style: normal;
 	font-weight: bold !important;
@@ -279,8 +278,9 @@ textarea {
 }
 
 .card {
-    background-color: rgba(28, 47, 53, 0.5) !important;
+
     border: 1px white solid;
+
 }
 .tableHead {
 		background-color: #1C2F35;
