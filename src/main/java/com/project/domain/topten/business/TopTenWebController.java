@@ -18,7 +18,7 @@ public class TopTenWebController {
 	@Autowired
 	TopTenLaddersService topTenLaddersService;
 	
-	private String urlTopTepDelve = "http://www.pathofexile.com/api/ladders?offset=0&limit=10&id=SSF+Delve+HC&type=league&sort=depthsolo";
+	private String urlTopTepDelve = "http://www.pathofexile.com/api/ladders?offset=0&limit=10&id=SSF+Betrayal+HC&type=league&sort=depthsolo";
 	
 	@RequestMapping(value = "/delve", method = RequestMethod.GET, produces = { "application/json" })
 	public List<DelveTopTenTableData> getDelveLadderData() throws InterruptedException {
