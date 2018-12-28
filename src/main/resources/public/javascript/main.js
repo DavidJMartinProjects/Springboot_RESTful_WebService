@@ -21,7 +21,8 @@ $(document).ready(function() {
 //		var mymodal1 = $('#modalPoll-1');
 //	$('#btn-send').toggleClass('disable', true);
 //	mymodal1.modal('show');
-	$("#topTenCardDeck").css('visibility', 'hidden');
+//	$("#topTenCardDeck").css('visibility', 'hidden');
+		$("#topTenCardDeck").css('visibility', 'visible');
 	getTopTenDataTables();
 	
 	var table2 = $('#table2').dataTable({
