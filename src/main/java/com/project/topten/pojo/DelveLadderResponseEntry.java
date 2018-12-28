@@ -1,4 +1,4 @@
-package com.project.domain.topten.pojo;
+package com.project.topten.pojo;
 
 import java.util.HashMap;
 import java.util.Map;

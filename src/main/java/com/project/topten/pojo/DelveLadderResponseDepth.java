@@ -1,4 +1,4 @@
-package com.project.domain.topten.pojo;
+package com.project.topten.pojo;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "default", "solo" })
-public class Depth {
+public class DelveLadderResponseDepth {
 
 	@JsonProperty("default")
 	private Integer _default;

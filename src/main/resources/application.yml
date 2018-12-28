@@ -1,0 +1,10 @@
+# Current League Names
+employee-service:
+   filter:
+     resource:
+       properties:
+         LEAGUE1: Betrayal
+         LEAGUE2: Hardcore Betrayal
+         LEAGUE3: SSF Betrayal
+         LEAGUE4: SSF Betrayal HC
+        

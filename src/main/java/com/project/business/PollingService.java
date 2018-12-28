@@ -11,15 +11,20 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.domain.datatable.LadderTableEntry;
+import com.project.domain.topten.business.TopTenApiRequestService;
 
 // this will be a singleton class
 @Service
 public class PollingService {
 
-	private static Timer timer = new Timer();	
+	@Autowired
+	TopTenApiRequestService topTenApiRequestService;
+	
+	private static Timer timer = new Timer();		
 	private static int counter = 9;
 
 	PollingService() {
@@ -38,6 +43,7 @@ public class PollingService {
 						System.out.println("****************************************");
 						System.out.println("======== Poll Request Recieved. ========");
 						DatasetService.calculateDataSet();
+						topTenApiRequestService.getTopTenLadderData();
 						Date date2 = new Date();
 						computeDiff(date1, date2);						
 						System.out.println("======== Poll Request Complete. ========");						

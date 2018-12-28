@@ -1,4 +1,4 @@
-package com.project.domain.topten.pojo;
+package com.project.topten.pojo;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,7 +30,7 @@ public class CharacterWithDelveDepth {
 	@JsonProperty("id")
 	private String id;
 	@JsonProperty("depth")
-	private Depth depth;
+	private DelveLadderResponseDepth depth;
 	@JsonIgnore
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -65,7 +65,7 @@ public class CharacterWithDelveDepth {
 	}
 
 	@JsonProperty("depth")
-	public Depth getDepth() {
+	public DelveLadderResponseDepth getDepth() {
 	return depth;
 	}
 	@JsonProperty("class")
@@ -83,7 +83,7 @@ public class CharacterWithDelveDepth {
 	}
 
 	@JsonProperty("depth")
-	public void setDepth(Depth depth) {
+	public void setDepth(DelveLadderResponseDepth depth) {
 	this.depth = depth;
 	}
 

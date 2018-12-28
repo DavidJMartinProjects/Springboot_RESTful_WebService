@@ -1,19 +1,15 @@
-package com.project.domain.topten.pojo;
+package com.project.topten.tabledata;
 
-public class DelveTopTenTableData {
+import com.project.topten.pojo.LadderResponse;
+
+public class TableDataDelveTopTen extends LadderResponse {
 	
-	String rank;
+
 	String charName;
 	String ascendancy;
 	String dept;
 	boolean dead;
 	
-	public String getRank() {
-		return rank;
-	}
-	public void setRank(String rank) {
-		this.rank = rank;
-	}
 	public String getCharName() {
 		return charName;
 	}
@@ -38,11 +34,10 @@ public class DelveTopTenTableData {
 	public void setDead(boolean dead) {
 		this.dead = dead;
 	}
-	
 	@Override
 	public String toString() {
-		return "DelveTopTenTableData [rank=" + rank + ", charName=" + charName + ", ascendancy=" + ascendancy
-				+ ", dept=" + dept + ", dead=" + dead + "]";
+		return "TableDataDelveTopTen [charName=" + charName + ", ascendancy=" + ascendancy + ", dept=" + dept
+				+ ", dead=" + dead + ", league=" + league + ", rank=" + rank + "]";
 	}
 	
 }
