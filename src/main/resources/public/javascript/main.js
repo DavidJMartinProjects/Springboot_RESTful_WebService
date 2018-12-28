@@ -18,13 +18,7 @@ $(document).ready(function() {
 	console.log("index.html loaded.")
 
 
-	
-//	var carousel = $('.carousel');
-	$('.carousel').on('slide', function (e) {
-		console.log("carouselExampleCaptions slide");
-		$('#table5').resize()
-});
-	
+
 	$('#carouselExampleCaptions').on('slid.bs.carousel', function (event) {
 
 		console.log("carouselExampleCaptions slide");
@@ -77,7 +71,7 @@ $(document).ready(function() {
 //	$('#btn-send').toggleClass('disable', true);
 //	mymodal1.modal('show');
 //	$("#topTenCardDeck").css('visibility', 'hidden');
-		$("#topTenCardDeck").css('visibility', 'visible');
+
 	getTopTenDataTables();
 	
 //	var table2 = $('#table2').dataTable({
@@ -877,7 +871,7 @@ var populateToptenTable = function(results) {
 //	
 	
 
-	$("#topTenCardDeck").css('visibility', 'visible');
+	$("#carouselContainer").css('visibility', 'visible');
 
 //	#topTenCardDeck
 }

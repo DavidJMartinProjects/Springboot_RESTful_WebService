@@ -334,6 +334,16 @@ textarea {
     overflow-x: hidden !important;
 }
 
+@media (max-width:800px) {
+    #carouselContainer {
+        display:none !important;
+    }
+}
+
+#carouselContainer {
+	visibility:hidden;
+}
+
 
 
 
