@@ -16,7 +16,62 @@ var isDead = "false";
 
 $(document).ready(function() {
 	console.log("index.html loaded.")
+
+
 	
+//	var carousel = $('.carousel');
+	$('.carousel').on('slide', function (e) {
+		console.log("carouselExampleCaptions slide");
+		$('#table5').resize()
+});
+	
+	$('#carouselExampleCaptions').on('slid.bs.carousel', function (event) {
+
+		console.log("carouselExampleCaptions slide");
+//		 $("#carouselExampleCaptions").css('display', 'none');
+//        $("#topTenCardDeck").style.display = "none";
+//        $("#topTenCardDeck").style.display = "none";
+//        var table2= $('#table5').DataTable();
+////        //recalculate the dimensions
+////        table2.columns.adjust().responsive.recalc();
+//		
+//        table2.clear().draw();
+//      table2.columns.adjust().responsive.recalc();
+//        table2.columns.adjust().draw(); // Redraw the DataTable
+
+//		$('.tableStyling').DataTable().destroy();
+//		$('.tableStyling').dataTable({
+//			responsive : true,
+//			"order" : [ [ 0, "asc" ] ],
+//	        "paging":   false,
+//	        "ordering": true,
+//	        "info":     false,
+//	        "searching": false
+//		});
+//		$('#table_id').empty();
+//        
+//
+//        $("#carouselExampleCaptions").css('display', 'block');
+//	      $("#topTenCardDeck").hide(1000);
+
+//	      $('#table5').DataTable().columns.adjust();
+	        $($.fn.dataTable.tables( true ) ).css('width', '100%');
+	        $($.fn.dataTable.tables( true ) ).DataTable().columns.adjust().draw();
+//		      $("#topTenCardDeck").show(1000);
+
+//        table2.responsive.rebuild();
+//        table2.responsive.recalc();
+//      table2.columns.adjust().draw(); // Redraw the DataTable
+//      $('#table5').resize()
+        
+	});
+	
+//	var $carousel = $('.carousel');
+//	$carousel.carousel();
+//
+//	$carousel.bind('slide', function(e) {
+//		console.log("carouselExampleCaptions slide");
+//	});
 	
 //		var mymodal1 = $('#modalPoll-1');
 //	$('#btn-send').toggleClass('disable', true);
@@ -73,6 +128,16 @@ $(document).ready(function() {
 	// "hideMethod" : "fadeOut",
 	// })
 });
+
+//$(window).onresize = function() {
+//		$($.fn.dataTable.tables(true)).DataTable()
+//		.columns.adjust()
+//		.responsive.recalc();
+		
+//        $($.fn.dataTable.tables( true ) ).css('width', '100%');
+//        $($.fn.dataTable.tables( true ) ).DataTable().responsive.recalc() .columns.adjust(); 
+//	}
+		
 
 $("ul[id*=dropdownList] li").click(function() {
 	console.log($(this).text()); // gets text contents of clicked li
@@ -438,13 +503,17 @@ var getTopTenDataTables = function(selectedLeague) {
 
 var populateToptenTable = function(results) {
 	var toonName = "";
-	results
+	var tableOneCardTitle = results.leagueStd.tableDataDelve[0].league;
+//	 $("#tableOneCardTitle").text(tableOneCardTitle); set name of league
+
+	results.leagueStd.tableDataDelve
 	.forEach(function(data) {
 
 		toonName = data.charName;
 		var accountLink = getPoeAccount(data.account)
 		var ascendancyIcon = getAscendancyIcon(data.ascendancy);
 		var classColor = getColor(data.ascendancy);
+		
 		if (data.dead == true) {
 			$('#table1 tbody')
 			.append(
@@ -468,6 +537,254 @@ var populateToptenTable = function(results) {
 		}
 	});
 	
+	results.leagueStd.tableDataRaceTo100
+	.forEach(function(data) {
+		toonName = data.charName;
+		var accountLink = getPoeAccount(data.account)
+		var ascendancyIcon = getAscendancyIcon(data.ascendancy);
+		var classColor = getColor(data.ascendancy);
+		
+		// set card-title to league ladder name 
+		if (data.dead == true) {
+			$('#table2 tbody')
+			.append(
+				'<tr class = "deadChar">' +
+				'<td>' + data.rank + '</td>' +
+				'<td>' + toonName + "'<i id='deadStatus'>(dead)</i>'"+'</td>' +
+				'<td><font color="'+ classColor+ '">'+ ascendancyIcon+ "  "+ data.ascendancy+ '</font></td>' + 
+				'<td>' + data.level + '</td>' +
+				'</tr>'
+			);
+		} else {
+			$('#table2 tbody')
+			.append(
+				'<tr>' +
+				'<td>' + data.rank + '</td>' +
+				'<td>' + toonName + '</td>' +
+				'<td><font color="'+ classColor+ '">'+ ascendancyIcon+ "  "+ data.ascendancy+ '</font></td>' + 
+				'<td>' + data.level + '</td>' +
+				'</tr>'
+			);
+		}
+	});
+	
+	results.leagueStd.tableDataUberLabTopTen
+	.forEach(function(data) {
+		toonName = data.charName;
+		var accountLink = getPoeAccount(data.account)
+		var ascendancyIcon = getAscendancyIcon(data.ascendancy);
+		var classColor = getColor(data.ascendancy);
+		
+		// set card-title to league ladder name 
+		if (data.dead == true) {
+			$('#table3 tbody')
+			.append(
+				'<tr class = "deadChar">' +
+				'<td>' + data.rank + '</td>' +
+				'<td>' + toonName + "'<i id='deadStatus'>(dead)</i>'"+'</td>' +
+				'<td><font color="'+ classColor+ '">'+ ascendancyIcon+ "  "+ data.ascendancy + '</font></td>' + 
+				'<td>' + data.time + '</td>' +
+				'</tr>'
+			);
+		} else {
+			$('#table3 tbody')
+			.append(
+				'<tr>' +
+				'<td>' + data.rank + '</td>' +
+				'<td>' + toonName + '</td>' +
+				'<td><font color="'+ classColor+ '">'+ ascendancyIcon+ "  " + data.ascendancy + '</font></td>' + 
+				'<td>' + data.time + '</td>' +
+				'</tr>'
+			);
+		}
+	});
+	
+	results.leagueHC.tableDataDelve
+	.forEach(function(data) {
+
+		toonName = data.charName;
+		var accountLink = getPoeAccount(data.account)
+		var ascendancyIcon = getAscendancyIcon(data.ascendancy);
+		var classColor = getColor(data.ascendancy);
+		
+		if (data.dead == true) {
+			$('#table4 tbody')
+			.append(
+				'<tr class = "deadChar">' +
+				'<td>' + data.rank + '</td>' +
+				'<td>' + toonName + "'<i id='deadStatus'>(dead)</i>'"+'</td>' +
+				'<td><font color="'+ classColor+ '">'+ ascendancyIcon+ "  "+ data.ascendancy+ '</font></td>' + 
+				'<td>' + data.dept + '</td>' +
+				'</tr>'
+			);
+		} else {
+			$('#table4 tbody')
+			.append(
+				'<tr>' +
+				'<td>' + data.rank + '</td>' +
+				'<td>' + toonName + '</td>' +
+				'<td><font color="'+ classColor+ '">'+ ascendancyIcon+ "  "+ data.ascendancy+ '</font></td>' + 
+				'<td>' + data.dept + '</td>' +
+				'</tr>'
+			);
+		}
+	});
+	
+	results.leagueHC.tableDataRaceTo100
+	.forEach(function(data) {
+		toonName = data.charName;
+		var accountLink = getPoeAccount(data.account)
+		var ascendancyIcon = getAscendancyIcon(data.ascendancy);
+		var classColor = getColor(data.ascendancy);
+		
+		// set card-title to league ladder name 
+		if (data.dead == true) {
+			$('#table5 tbody')
+			.append(
+				'<tr class = "deadChar">' +
+				'<td>' + data.rank + '</td>' +
+				'<td>' + toonName + "'<i id='deadStatus'>(dead)</i>'"+'</td>' +
+				'<td><font color="'+ classColor+ '">'+ ascendancyIcon+ "  "+ data.ascendancy+ '</font></td>' + 
+				'<td>' + data.level + '</td>' +
+				'</tr>'
+			);
+		} else {
+			$('#table5 tbody')
+			.append(
+				'<tr>' +
+				'<td>' + data.rank + '</td>' +
+				'<td>' + toonName + '</td>' +
+				'<td><font color="'+ classColor+ '">'+ ascendancyIcon+ "  "+ data.ascendancy+ '</font></td>' + 
+				'<td>' + data.level + '</td>' +
+				'</tr>'
+			);
+		}
+	});
+	
+	results.leagueHC.tableDataUberLabTopTen
+	.forEach(function(data) {
+		toonName = data.charName;
+		var accountLink = getPoeAccount(data.account)
+		var ascendancyIcon = getAscendancyIcon(data.ascendancy);
+		var classColor = getColor(data.ascendancy);
+		
+		// set card-title to league ladder name 
+		if (data.dead == true) {
+			$('#table6 tbody')
+			.append(
+				'<tr class = "deadChar">' +
+				'<td>' + data.rank + '</td>' +
+				'<td>' + toonName + "'<i id='deadStatus'>(dead)</i>'"+'</td>' +
+				'<td><font color="'+ classColor+ '">'+ ascendancyIcon+ "  "+ data.ascendancy + '</font></td>' + 
+				'<td>' + data.time + '</td>' +
+				'</tr>'
+			);
+		} else {
+			$('#table6 tbody')
+			.append(
+				'<tr>' +
+				'<td>' + data.rank + '</td>' +
+				'<td>' + toonName + '</td>' +
+				'<td><font color="'+ classColor+ '">'+ ascendancyIcon+ "  " + data.ascendancy + '</font></td>' + 
+				'<td>' + data.time + '</td>' +
+				'</tr>'
+			);
+		}
+	});
+	
+	results.leagueSFF.tableDataDelve
+	.forEach(function(data) {
+
+		toonName = data.charName;
+		var accountLink = getPoeAccount(data.account)
+		var ascendancyIcon = getAscendancyIcon(data.ascendancy);
+		var classColor = getColor(data.ascendancy);
+		
+		if (data.dead == true) {
+			$('#table7 tbody')
+			.append(
+				'<tr class = "deadChar">' +
+				'<td>' + data.rank + '</td>' +
+				'<td>' + toonName + "'<i id='deadStatus'>(dead)</i>'"+'</td>' +
+				'<td><font color="'+ classColor+ '">'+ ascendancyIcon+ "  "+ data.ascendancy+ '</font></td>' + 
+				'<td>' + data.dept + '</td>' +
+				'</tr>'
+			);
+		} else {
+			$('#table7 tbody')
+			.append(
+				'<tr>' +
+				'<td>' + data.rank + '</td>' +
+				'<td>' + toonName + '</td>' +
+				'<td><font color="'+ classColor+ '">'+ ascendancyIcon+ "  "+ data.ascendancy+ '</font></td>' + 
+				'<td>' + data.dept + '</td>' +
+				'</tr>'
+			);
+		}
+	});
+	
+	results.leagueSFF.tableDataRaceTo100
+	.forEach(function(data) {
+		toonName = data.charName;
+		var accountLink = getPoeAccount(data.account)
+		var ascendancyIcon = getAscendancyIcon(data.ascendancy);
+		var classColor = getColor(data.ascendancy);
+		
+		// set card-title to league ladder name 
+		if (data.dead == true) {
+			$('#table8 tbody')
+			.append(
+				'<tr class = "deadChar">' +
+				'<td>' + data.rank + '</td>' +
+				'<td>' + toonName + "'<i id='deadStatus'>(dead)</i>'"+'</td>' +
+				'<td><font color="'+ classColor+ '">'+ ascendancyIcon+ "  "+ data.ascendancy+ '</font></td>' + 
+				'<td>' + data.level + '</td>' +
+				'</tr>'
+			);
+		} else {
+			$('#table8 tbody')
+			.append(
+				'<tr>' +
+				'<td>' + data.rank + '</td>' +
+				'<td>' + toonName + '</td>' +
+				'<td><font color="'+ classColor+ '">'+ ascendancyIcon+ "  "+ data.ascendancy+ '</font></td>' + 
+				'<td>' + data.level + '</td>' +
+				'</tr>'
+			);
+		}
+	});
+	
+	results.leagueSFF.tableDataUberLabTopTen
+	.forEach(function(data) {
+		toonName = data.charName;
+		var accountLink = getPoeAccount(data.account)
+		var ascendancyIcon = getAscendancyIcon(data.ascendancy);
+		var classColor = getColor(data.ascendancy);
+		
+		// set card-title to league ladder name 
+		if (data.dead == true) {
+			$('#table9 tbody')
+			.append(
+				'<tr class = "deadChar">' +
+				'<td>' + data.rank + '</td>' +
+				'<td>' + toonName + "'<i id='deadStatus'>(dead)</i>'"+'</td>' +
+				'<td><font color="'+ classColor+ '">'+ ascendancyIcon+ "  "+ data.ascendancy + '</font></td>' + 
+				'<td>' + data.time + '</td>' +
+				'</tr>'
+			);
+		} else {
+			$('#table9 tbody')
+			.append(
+				'<tr>' +
+				'<td>' + data.rank + '</td>' +
+				'<td>' + toonName + '</td>' +
+				'<td><font color="'+ classColor+ '">'+ ascendancyIcon+ "  " + data.ascendancy + '</font></td>' + 
+				'<td>' + data.time + '</td>' +
+				'</tr>'
+			);
+		}
+	});
+	
 //	+ '<td><font color="'
 //	+ classColor
 //	+ '">'
@@ -478,19 +795,90 @@ var populateToptenTable = function(results) {
 	
 	// load landing page tables
 	console.log("loading top-ten results table. \n")
-	var table1 = $('#table1').dataTable({
-		responsive : true,
-		"order" : [ [ 0, "asc" ] ],
-        "paging":   false,
-        "ordering": true,
-        "info":     false,
-        "searching": false
+	
+//			$('.tableStyling').DataTable().destroy();
+		$('.tableStyling').dataTable({
+			responsive : true,
+			"order" : [ [ 0, "asc" ] ],
+	        "paging":   false,
+	        "ordering": true,
+	        "info":     false,
+	        "searching": false
+		});
+	
 
-	});
-	new $.fn.dataTable.FixedHeader(table1);
+//	var table1 = $('#table1').dataTable({
+//		responsive : true,
+//		"order" : [ [ 0, "asc" ] ],
+//        "paging":   false,
+//        "ordering": true,
+//        "info":     false,
+//        "searching": false
+//
+//	});
+//	new $.fn.dataTable.FixedHeader(table1);
+	
+//	var table2 = $('#table2').dataTable({
+//		responsive : true,
+//		"order" : [ [ 0, "asc" ] ],
+//        "paging":   false,
+//        "ordering": true,
+//        "info":     false,
+//        "searching": false
+//
+//	});
+//	new $.fn.dataTable.FixedHeader(table2);
+	
+//	var table3 = $('#table3').dataTable({
+//		responsive : true,
+//		"order" : [ [ 0, "asc" ] ],
+//        "paging":   false,
+//        "ordering": true,
+//        "info":     false,
+//        "searching": false
+//
+//	});
+////	new $.fn.dataTable.FixedHeader(table3);
+//	
+//	var table4 = $('#table4').dataTable({
+//		responsive : true,
+//		"order" : [ [ 0, "asc" ] ],
+//        "paging":   false,
+//        "ordering": true,
+//        "info":     false,
+//        "searching": false
+//
+//	});
+////	new $.fn.dataTable.FixedHeader(table4);
+//	
+//	var table5 = $('#table5').dataTable({
+//		responsive : true,
+//		"order" : [ [ 0, "asc" ] ],
+//        "paging":   false,
+//        "ordering": true,
+//        "info":     false,
+//        "searching": false
+//	});
+//    $($.fn.dataTable.tables( true ) ).css('width', '100%');
+//    $($.fn.dataTable.tables( true ) ).DataTable().columns.adjust().draw();
+	
+////	new $.fn.dataTable.FixedHeader(table5);
+//	
+//	var table6 = $('.tableStyling').dataTable({
+//		responsive : true,
+//		"order" : [ [ 0, "asc" ] ],
+//        "paging":   false,
+//        "ordering": true,
+//        "info":     false,
+//        "searching": false
+//
+//	});
+////	new $.fn.dataTable.FixedHeader(table6);
+//	
+	
 
 	$("#topTenCardDeck").css('visibility', 'visible');
-	
+
 //	#topTenCardDeck
 }
 
