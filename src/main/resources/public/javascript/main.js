@@ -25,27 +25,27 @@ $(document).ready(function() {
 		$("#topTenCardDeck").css('visibility', 'visible');
 	getTopTenDataTables();
 	
-	var table2 = $('#table2').dataTable({
-		"iDisplayLength" : 100,
-		responsive : true,
-		"order" : [ [ 0, "asc" ] ],
-        "paging":   false,
-        "ordering": true,
-        "info":     false,
-        "searching": false
-
-	});
-
-	var table3 = $('#table3').dataTable({
-		"iDisplayLength" : 100,
-		responsive : true,
-		"order" : [ [ 0, "asc" ] ],
-		paging : false,
-        "paging":   false,
-        "ordering": true,
-        "info":     false,
-        "searching": false
-	});
+//	var table2 = $('#table2').dataTable({
+//		"iDisplayLength" : 100,
+//		responsive : true,
+//		"order" : [ [ 0, "asc" ] ],
+//        "paging":   false,
+//        "ordering": true,
+//        "info":     false,
+//        "searching": false
+//
+//	});
+//
+//	var table3 = $('#table3').dataTable({
+//		"iDisplayLength" : 100,
+//		responsive : true,
+//		"order" : [ [ 0, "asc" ] ],
+//		paging : false,
+//        "paging":   false,
+//        "ordering": true,
+//        "info":     false,
+//        "searching": false
+//	});
 
 
 	// toastr
