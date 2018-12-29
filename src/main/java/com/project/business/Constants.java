@@ -39,7 +39,7 @@ public class Constants {
 	public static ResponseEntity<Ladder> response;
 	public static LadderTableEntry entry;
 	public static RestTemplate restTemplate = new RestTemplate();;
-	public static HttpHeaders headers = new HttpHeaders();;
+	public static HttpHeaders headers = new HttpHeaders();
 	public static List<LadderTableEntry> tableEntries;
 	public static HttpEntity<String> entity;
 	public static final String USER_AGENT_PARAM = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36";

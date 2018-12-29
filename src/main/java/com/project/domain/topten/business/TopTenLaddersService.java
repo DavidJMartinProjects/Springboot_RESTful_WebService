@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -37,6 +38,9 @@ public class TopTenLaddersService {
 	private static List<Object> topTenDelveTableEntries;
 	private static List<Object> topTenRaceTo100Entries;
 	private static List<Object> topTenUberLabEntries;
+	
+	public HttpEntity<String> entity;
+	public HttpHeaders headers = new HttpHeaders();
 
 	public TopTenLeague getLeagueTopTenData(String leagueName) throws InterruptedException {
 		setupHttpEntityHeaders();
@@ -119,7 +123,7 @@ public class TopTenLaddersService {
 		return (time / 60) + "min " + (time % 60) + "sec";
 	}
 
-	private static void setupHttpEntityHeaders() {
+	private void setupHttpEntityHeaders() {
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 		headers.add(USER_AGENT, USER_AGENT_PARAM);
 		entity = new HttpEntity<String>("parameters", headers);
