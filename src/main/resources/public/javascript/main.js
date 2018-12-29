@@ -50,6 +50,8 @@ $("#group2").on("click", "a", function (event) {
     $("#frameModalBottom").modal("hide");
     getleagueTable(selectedLeague);
     $("#topTenCardDeck").css('visibility', 'hidden');
+//    $("	#topTenCardDeck").css('visibility', 'hidden');
+
 });
 
 $("btn-group[id*=dropdownList] a").click(function () {
@@ -340,6 +342,7 @@ var populateLeagueTable = function (results) {
     $('#lastUpdatedMsg').text("ranks last updated : " + timeStamp + ".");
     $("#frameModalBottom").modal("hide");
     $("#ranksUpdatedModal").modal("hide");
+    $("#carouselContainer").css('display', 'none');
 
 };
 
@@ -681,7 +684,7 @@ var populateToptenTable = function (results) {
 	$("#table9CardTitle").append(" : " + leagueName);
 
 
-    $("#carouselContainer").css('visibility', 'visible');
+    $("#carouselContainer").css('display', 'block');
 }
 
 var drawLevelChart = function (selectedLeague) {
@@ -697,6 +700,7 @@ var drawLevelChart = function (selectedLeague) {
 
             loadingModalAnimation();
             populateLevelChart(results);
+            $("#carouselContainer").css('display', 'none');
         },
         error: function (error) {
             console.log("getLeagueData error : " + error.responseJSON.message,

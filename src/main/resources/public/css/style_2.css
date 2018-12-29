@@ -357,7 +357,7 @@ background-color: ingerit;
 }
 
 #carouselContainer {
-	visibility:hidden;
+	display:none;
 }
 
 .carousel-fade .carousel-inner .item {
