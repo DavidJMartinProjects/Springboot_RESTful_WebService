@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.business.ChartService;
-import com.project.business.PollingService;
+import com.project.business.DatasetService;
 import com.project.domain.chart.LevelChartData;
 import com.project.domain.datatable.LadderTableEntry;
 
@@ -21,7 +21,8 @@ public class WebController {
 	@RequestMapping(method = RequestMethod.GET, produces = { "application/json" })
 	public List<LadderTableEntry> getLadderRankings(@RequestParam(value = "league") String league) {
 		// return new LeagueService().getLeagueDetails(league);
-		return PollingService.getLeagueDataSet(league);
+//		return PollingService.getLeagueDataSet(league);
+		return DatasetService.getCalculatedDataset(league);
 	}
 
 	@RequestMapping(value = "/charts", method = RequestMethod.GET, produces = { "application/json" })

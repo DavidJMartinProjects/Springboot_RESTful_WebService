@@ -21,7 +21,7 @@ $(document).ready(function() {
 
 	$('#carouselExampleCaptions').on('slid.bs.carousel', function (event) {
 
-		console.log("carouselExampleCaptions slide");
+
 //		 $("#carouselExampleCaptions").css('display', 'none');
 //        $("#topTenCardDeck").style.display = "none";
 //        $("#topTenCardDeck").style.display = "none";
