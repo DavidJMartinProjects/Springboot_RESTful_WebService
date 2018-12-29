@@ -16,7 +16,17 @@ thead {
 
 body {
 	overflow-x: hidden;
-	background-attachment: fixed;
+
+	
+	background-image: url(../assets/styleguide/poe2.jpg);	
+	       background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        height:100%;
+
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -372,6 +382,10 @@ background-color: ingerit;
 }
 .carousel-fade .carousel-control {
   z-index: 2;
+}
+
+#body-tag {
+	
 }
 
 

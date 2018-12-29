@@ -26,15 +26,15 @@ class PollingScheduler {
 	@Autowired
 	TopTenApiRequestService topTenApiRequestService;
 
-	@Scheduled(initialDelay=8000, fixedRate=300000)
+	@Scheduled(initialDelay = 8000, fixedRate = 300000)
 	public void pollDataFromApi() {
 		try {
 			Runtime.getRuntime().gc();
 			Date date1 = new Date();
 			System.out.println("****************************************");
 			System.out.println("======== Poll Request Recieved. ========");
-			 DatasetService.calculateDataSet();
-			 topTenApiRequestService.getTopTenLadderData();
+			DatasetService.calculateDataSet();
+			topTenApiRequestService.getTopTenLadderData();
 			Date date2 = new Date();
 			computeDiff(date1, date2);
 			System.out.println("======== Poll Request Complete. ========");
@@ -44,7 +44,7 @@ class PollingScheduler {
 			Runtime.getRuntime().gc();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		}		
+		}
 	}
 
 	public static Map<TimeUnit, Long> computeDiff(Date date1, Date date2) {
