@@ -16,6 +16,10 @@ var isDead = "false";
 
 $(document).ready(function () {
     console.log("index.html loaded.")
+    $('#carouselExampleCaptions').carousel({
+    	interval: 10000
+    });
+    
     $('#carouselExampleCaptions').on('slid.bs.carousel', function (event) {
         $($.fn.dataTable.tables(true)).css('width', '100%');
         $($.fn.dataTable.tables(true)).DataTable().columns.adjust().draw();
