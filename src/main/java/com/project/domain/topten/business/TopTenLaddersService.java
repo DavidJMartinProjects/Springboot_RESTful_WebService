@@ -60,7 +60,7 @@ public class TopTenLaddersService {
 			mapDelveResponseToEntity(delveLadderResponseLadder, delveCounter.getAndIncrement(), leagueName);
 		}
 		Thread.sleep(1000);
-		url = new String("http://www.pathofexile.com/api/ladders?offset=0&limit=10&id=" + leagueName + "&type=labyrinth&difficulty=1");
+		url = new String("http://www.pathofexile.com/api/ladders?offset=0&limit=10&id=" + leagueName + "&type=labyrinth&difficulty=4");
 		ResponseEntity<UberLabLadderResponseLadder> uberLabResponse = restTemplate.exchange(url, HttpMethod.GET, entity,
 				UberLabLadderResponseLadder.class);
 		UberLabLadderResponseLadder uberLabLadders = uberLabResponse.getBody();
