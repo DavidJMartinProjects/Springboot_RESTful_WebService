@@ -89,7 +89,7 @@ public class TopTenLaddersService {
 
 	private void mapDelveResponseToEntity(DelveLadderResponseEntry delveLadderResponseEntry, int rankNumber, String league) {
 		TableDataDelveTopTen entry = new TableDataDelveTopTen();
-		entry.setLeague(league + " Delve");
+		entry.setLeague(league);
 		entry.setRank(String.valueOf(rankNumber));
 		entry.setCharName(delveLadderResponseEntry.getCharacter().getName());
 		entry.setAscendancy(delveLadderResponseEntry.getCharacter().getAscendancy());
@@ -100,7 +100,7 @@ public class TopTenLaddersService {
 
 	private void mapRaceTo100ResponseToEntity(Entries response, int rankNumber, String league) {
 		TableDataRaceTo100 ladderEntry = new TableDataRaceTo100();
-		ladderEntry.setLeague(league + " Race To 100");
+		ladderEntry.setLeague(league);
 		ladderEntry.setRank(String.valueOf(rankNumber));
 		ladderEntry.setCharName(response.getCharacter().getName());
 		ladderEntry.setAscendancy(response.getCharacter().getTheClass());
@@ -111,7 +111,7 @@ public class TopTenLaddersService {
 
 	private void mapUberLabResponseToEntity(UberLabResponseEntry response, int rankNumber, String league) {
 		TableDataUberLabTopTen ladderEntry = new TableDataUberLabTopTen();
-		ladderEntry.setLeague(league + " UberLab");
+		ladderEntry.setLeague(league);
 		ladderEntry.setRank(String.valueOf(rankNumber));
 		ladderEntry.setCharName(response.getCharacter().getName());
 		ladderEntry.setAscendancy(response.getCharacter().getTheClass());

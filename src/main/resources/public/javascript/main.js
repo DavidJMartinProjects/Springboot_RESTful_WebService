@@ -4,7 +4,7 @@ var url = theHostedSiteUrl;
 
 var topTenLocalUrl = 'http://localhost:8080/top-ten/delve';
 var topTenHostedUrl = 'https://immense-headland-50105.herokuapp.com/top-ten/delve';
-var topTenUrl = topTenHostedUrl;
+var topTenUrl = topTenLocalUrl;
 
 
 var selectedLeague = "";
@@ -359,11 +359,12 @@ var getTopTenDataTables = function (selectedLeague) {
 
 var populateToptenTable = function (results) {
     var toonName = "";
-    var tableOneCardTitle = results.leagueStd.tableDataDelve[0].league;
+//    var leagueName = results.leagueStd.tableDataDelve[0].league;
+//	var tableTitle = document.createTextNode(" : " + leagueName);
+	console.log("content : "+leagueName);
 
     results.leagueStd.tableDataDelve
         .forEach(function (data) {
-
             toonName = data.charName;
             var accountLink = getPoeAccount(data.account)
             var ascendancyIcon = getAscendancyIcon(data.ascendancy);
@@ -653,6 +654,28 @@ var populateToptenTable = function (results) {
         "info": false,
         "searching": false
     });
+    
+    var leagueName = results.leagueStd.tableDataDelve[0].league;
+	var tableTitle = document.createTextNode(" : " + leagueName);
+    
+	$("#table1CardTitle").append(" : " + leagueName);
+	$("#table2CardTitle").append(" : " + leagueName);
+	$("#table3CardTitle").append(" : " + leagueName);
+	
+    leagueName = results.leagueHC.tableDataDelve[0].league;
+	tableTitle = document.createTextNode(" : " + leagueName);
+	
+	$("#table4CardTitle").append(" : " + leagueName);
+	$("#table5CardTitle").append(" : " + leagueName);
+	$("#table6CardTitle").append(" : " + leagueName);
+	
+    leagueName = results.leagueSFF.tableDataDelve[0].league;
+	tableTitle = document.createTextNode(" : " + leagueName);
+	
+	$("#table7CardTitle").append(" : " + leagueName);
+	$("#table8CardTitle").append(" : " + leagueName);
+	$("#table9CardTitle").append(" : " + leagueName);
+
 
     $("#carouselContainer").css('visibility', 'visible');
 }
