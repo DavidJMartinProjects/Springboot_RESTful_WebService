@@ -126,8 +126,8 @@ public class TopTenLaddersService {
 	private void setupHttpEntityHeaders() {
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 		headers.add(USER_AGENT, USER_AGENT_PARAM);
-		headers.add("Accept-Encoding",  "gzip, deflate");
-		headers.add("Accept-Language",  "en-US,en;q=0.9");
+		headers.add("Accept-Encoding",  "gzip deflate");
+		headers.add("Accept-Language",  "en-US en");
 		headers.add("Upgrade-Insecure-Requests",  "1");
 		entity = new HttpEntity<String>("parameters", headers);
 	}
