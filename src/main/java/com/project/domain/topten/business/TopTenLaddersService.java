@@ -49,7 +49,7 @@ public class TopTenLaddersService {
 		topTenUberLabEntries = new ArrayList<>();
 
 		Thread.sleep(1000);
-		String url = "http://www.pathofexile.com/api/ladders?offset=0&limit=10&id=" + leagueName + "&type=league&sort=depthsolo";
+		String url = "http://www.pathofexile.com/api/ladders?offset=0&limit=10&id=" + leagueName + "&type=league&sort=depthsolo&_=1546137921952";
 		ResponseEntity<DelveLadderResponseLadder> delveLadderResponse = restTemplate.exchange(url, HttpMethod.GET,
 				entity, DelveLadderResponseLadder.class);
 		DelveLadderResponseLadder delveLadders = delveLadderResponse.getBody();
