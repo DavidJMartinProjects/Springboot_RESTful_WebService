@@ -129,6 +129,7 @@ public class TopTenLaddersService {
 		headers.add("Accept-Encoding",  "gzip deflate");
 		headers.add("Accept-Language",  "en-US en");
 		headers.add("Upgrade-Insecure-Requests",  "1");
+		headers.add("Cookie",  "__cfduid=d26f0e1ca08b926e10a926dcda9302cfa1546206260");
 		entity = new HttpEntity<String>("parameters", headers);
 	}
 
