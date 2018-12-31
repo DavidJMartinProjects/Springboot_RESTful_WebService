@@ -292,12 +292,19 @@ background-color: ingerit;
 }
 
 .card-body {
-	background-color: rgba(51, 51, 51, 0.5);
+    /* background-color: rgba(51, 51, 51, 0.5); */
+    padding: .5rem; 
+    padding-top: 0rem;
 }
 .tableHead {
 		background-color: #1C2F35;
 	color: white;
 	opacity: .9 !important;
+}
+
+.card-header {
+    padding: .0rem; 
+    padding-top: .1em;
 }
 
  
@@ -306,7 +313,6 @@ background-color: ingerit;
 	opacity: .9 !important;
 	font-size: .9em;
 	
-
     overflow-y: hidden !important;
     overflow-x: hidden !important;
 
@@ -385,7 +391,7 @@ background-color: ingerit;
 }
 
 .carousel-indicators {
- position: relative;
+ /* position: relative; */
 }
 
    

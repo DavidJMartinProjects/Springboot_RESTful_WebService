@@ -370,38 +370,47 @@ var populateToptenTable = function (results) {
 //	var tableTitle = document.createTextNode(" : " + leagueName);
 	console.log("content : "+leagueName);
 
+    var counter = 0;
+
+
     results.leagueStd.tableDataDelve
         .forEach(function (data) {
-            toonName = data.charName;
-            var accountLink = getPoeAccount(data.account)
-            var ascendancyIcon = getAscendancyIcon(data.ascendancy);
-            var classColor = getColor(data.ascendancy);
+            if (counter < 5) {
+                toonName = data.charName;
+                var accountLink = getPoeAccount(data.account)
+                var ascendancyIcon = getAscendancyIcon(data.ascendancy);
+                var classColor = getColor(data.ascendancy);
 
-            if (data.dead == true) {
-                $('#table1 tbody')
-                    .append(
-                        '<tr class = "deadChar">' +
-                        '<td>' + data.rank + '</td>' +
-                        '<td>' + toonName + "'<i id='deadStatus'>(dead)</i>'" + '</td>' +
-                        '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
-                        '<td>' + data.dept + '</td>' +
-                        '</tr>'
-                    );
-            } else {
-                $('#table1 tbody')
-                    .append(
-                        '<tr>' +
-                        '<td>' + data.rank + '</td>' +
-                        '<td>' + toonName + '</td>' +
-                        '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
-                        '<td>' + data.dept + '</td>' +
-                        '</tr>'
-                    );
+                if (data.dead == true) {
+                    $('#table1 tbody')
+                        .append(
+                            '<tr class = "deadChar">' +
+                            '<td>' + data.rank + '</td>' +
+                            '<td>' + toonName + "'<i id='deadStatus'>(dead)</i>'" + '</td>' +
+                            '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
+                            '<td>' + data.dept + '</td>' +
+                            '</tr>'
+                        );
+                } else {
+                    $('#table1 tbody')
+                        .append(
+                            '<tr>' +
+                            '<td>' + data.rank + '</td>' +
+                            '<td>' + toonName + '</td>' +
+                            '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
+                            '<td>' + data.dept + '</td>' +
+                            '</tr>'
+                        );
+
+                    counter++;
+                }
             }
         });
 
+    counter = 0;
     results.leagueHC.tableDataDelve
         .forEach(function (data) {
+             if (counter < 5) {
             toonName = data.charName;
             var accountLink = getPoeAccount(data.account)
             var ascendancyIcon = getAscendancyIcon(data.ascendancy);
@@ -429,11 +438,14 @@ var populateToptenTable = function (results) {
                         '</tr>'
                     );
             }
+            counter++;
+        }
         });
 
+        counter =0;
     results.leagueSFF.tableDataDelve
         .forEach(function (data) {
-
+ if (counter < 5) {
             toonName = data.charName;
             var accountLink = getPoeAccount(data.account)
             var ascendancyIcon = getAscendancyIcon(data.ascendancy);
@@ -460,10 +472,14 @@ var populateToptenTable = function (results) {
                         '</tr>'
                     );
             }
+            counter++;
+        }
         });
 
+        counter=0;
     results.leagueHCSFF.tableDataDelve
         .forEach(function (data) {
+             if (counter < 5) {
             toonName = data.charName;
             var accountLink = getPoeAccount(data.account)
             var ascendancyIcon = getAscendancyIcon(data.ascendancy);
@@ -491,6 +507,8 @@ var populateToptenTable = function (results) {
                         '</tr>'
                     );
             }
+            counter++;
+        }
         });
 
     results.leagueHC.tableDataUberLabTopTen

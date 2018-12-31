@@ -1,374 +1,360 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- PAGE settings -->
-  <link rel="icon" href="../images/favicon.ico">
-  <title>App Neon - Pingendo template</title>
-  <meta name="description" content="Path of Exile league tracking ladder tool.  Get all the latest updatest on the latest poe race!">
-  <meta name="keywords" content="pathofexile ladder poe racing path of exile poe-ladder race season league">
-  <!-- CSS dependencies -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="neon.css">
-  <!-- Script: Make my navbar transparent when the document is scrolled to top -->
-  <script src="js/navbar-ontop.js"></script>
-  <!-- Script: Animated entrance -->
-  <script src="js/animate-in.js"></script>
-<link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="css/fixedHeader.dataTables.min.css">
-<link rel="stylesheet" href="css/responsive.bootstrap.min.css">
-<link rel="stylesheet" href="css/font-awesome.min.css">
-<link rel="stylesheet" href="css/toastr.min.css">
-<script src='https://www.google.com/recaptcha/api.js?render=6LePPoQUAAAAALMHr7-ZxEcgCBq4-atgP4hAXYB_'></script>
-
-<link rel="stylesheet" href="/css/style_2.css">
-</head>
-
-<body class="img-responsive" style="	background-image: url(assets/styleguide/poe2.jpg);	background-position: top left;	background-size: 107%;	background-repeat: no-repeat; height:100%; width:100%;">
-
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark border-bottom border-info " >
-			<div class="col col-md-4 text-center" style="padding-left: 22%;">
-			      <a class="navbar-brand"  	href="/"  >
-				<img src="../images/logo2.png"></img><b>poe-ladder.com</b></a>
-			</div>
-			
-			<div class="col col-md-4 text-center">
-				 <div class="btn-group m-0" id="group2">
-		              <button class="btn dropdown-toggle text-body btn-info " data-toggle="dropdown" aria-expanded="false" id="mainDropdownBtn"> Select League&nbsp; &nbsp;&nbsp;</button>
-		              <div class="dropdown-menu" id="dropdownList" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);"> 
-			              <a class="dropdown-item" href="#" style="color:black;"><h6 style="color:black;"><b>Betrayal<b></h6></a>
-			              <div class="dropdown-divider"></div>
-			              <a class="dropdown-item" href="#" style="color:black;"><h6 style="color:black;"><b>Hardcore Betrayal<b></h6></a>
-			              <div class="dropdown-divider"></div><a class="dropdown-item" href="#" ><h6 style="color:black;"><b>SSF Betrayal<b></h6></a>
-			              <div class="dropdown-divider"></div><a class="dropdown-item" href="#" style="color:black;"><h6 style="color:black;"><b>SSF Betrayal HC</b></h6></a>
-	              </div>
-	            </div>
-			</div>
-  
-       
-<div class="col">
- 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> 
-			  <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent" style="padding-right:25%;">
-		        <ul class="navbar-nav">
-		
-		          <li class="nav-item m-0  mt-0">
-		             <a class="nav-link" href="#" id="feedback" >feedback <br></a> 
-		             
-		          </li>
-                   <li class="nav-item mx-1">
-		         <a class="nav-link" href="#" id="changelog">changelog </a>
-		          </li>
-		          <li class="nav-item mx-1">
-		            <a class="nav-link" href="#reviews">about <br></a> 
-		          </li>
-                   <li class="nav-item mx-1">
-		            <a class="nav-link" href="#reviews">support<br></a> 
-		          </li>
-		        </ul>
-		      </div>
-     	 </nav>
-</div>
-   <div class="py-2 " style="display: none;" id="leagueInfoTableContainer">
-      <div class="row border-0 d-flex justify-content-center border border-dark" id="tableSize">  
-          <div class="table-responsive" >
-				<table id="leagueInfoTable"	class="table table-striped table-bordered nowrap" cellspacing="0" style="width:100% !important; ">
-				
-				<thead>
-					<tr>
-						<th></th>
-						<th>Rank</th>						
-						<th>Account</th>
-						<th>Character</th>
-						<th>Level</th>
-						<th>Ascendancy</th>
-						<th>XP/Hour</th>
-						<th>Progress</th>
-						<th>Experience</th>
-<!-- 						<th>Delve S/G</th> -->
-						<th>Info</th>
-					</tr>
-				</thead>
-				<tbody></tbody>
-			</table>
-          </div>
-        </div>
-      </div>
-    </div>    
-    <!-- Updating League Modal -->
-	<div class="modal fade bottom" id="frameModalBottom" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="loadingModal">
-	    <!-- Add class .modal-frame and then add class .modal-bottom (or other classes from list above) to set a position to the modal -->
-	    <div class="modal-dialog loadingModal " role="document" >
-	      <div class="modal-content">
-	        <center><h6><b><div class="modal-body"></div></b></h6></center>
-	      </div>
-	    </div>
- 	 </div>
-  <!-- Frame Modal Bottom -->
-  <div class="container-fluid">
-<!-- Modal: Feedback Modal -->
-<div class="modal fade right feedbackModal" id="modalPoll-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true" data-backdrop="true">
-  <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
-    <div class="modal-content">
-      <!--Header-->
-      <div class="modal-header">
-           <h4 class="modal-title w-100 text-center" id="exampleModalLabel">feedback</h4>
-
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" class="white-text">×</span>
-        </button>
-      </div>
-      <!--Body-->
-      <div class="modal-body">
-        <div class="text-center">
-          <i class="far fa-file-alt fa-4x mb-3 animated rotateIn"></i>
-          <p>Have some ideas how to improve <strong>poe-ladder.com</strong>? <br />
-            <strong>Give us your feedback.</strong>
-          </p>
-        </div>
-
-        <hr>
-
-        <!-- Radio -->
-        <p class="text-center">
-          <strong>Rate your experience of poe-ladder.com</strong>
-        </p>
- 
-        <div class="form-check mb-2" style="padding-left:44%;">
-          <input class="form-check-input" name="group1" type="radio" id="radio-179" value="option1" checked>
-          <label class="form-check-label" for="radio-179">Very good</label>
-        </div>
-
-        <div class="form-check mb-2" style="padding-left:44%;">
-          <input class="form-check-input" name="group1" type="radio" id="radio-279" value="option2">
-          <label class="form-check-label" for="radio-279">Good</label>
-        </div>
-
-        <div class="form-check mb-2" style="padding-left:44%;">
-          <input class="form-check-input" name="group1" type="radio" id="radio-379" value="option3">
-          <label class="form-check-label" for="radio-379">Mediocre</label>
-        </div>
-        <div class="form-check mb-2" style="padding-left:44%;">
-          <input class="form-check-input" name="group1" type="radio" id="radio-479" value="option4">
-          <label class="form-check-label" for="radio-479">Bad</label>
-        </div>
-        <div class="form-check mb-2" style="padding-left:44%;">
-          <input class="form-check-input" name="group1" type="radio" id="radio-579" value="option5">
-          <label class="form-check-label" for="radio-579">Very bad</label>
-        </div>
-
-        <p class="text-center">
-          <strong>What could we improve?</strong>
-        </p>
-        <!--Basic textarea-->
-        <div class="form-group">
-          <textarea type="text" id="form79textarea" class=" form-control" rows="3" ></textarea>
-          
-          <!-- recaptcha -->
-        </div>
-			<span class="msg-error error"></span>
-			<div class="g-recaptcha"data-sitekey="6LcJPoQUAAAAABKLvZumtf7_4iV2rwLfyNgKdPv3" data-callback="enableBtn" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;">
-			</div>
-	    </div>
-
-      <!--Footer-->
-      <div class="modal-footer justify-content-center">
-        <a type="button" class="btn btn-primary bg-dark " id="btn-send" >Send
-          <i class="fa fa-paper-plane ml-1"></i>
-        </a>
-        <a type="button" class="btn btn-outline-primary bg-dark" data-dismiss="modal">Cancel</a>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-<!-- Modal: feedbackModal -->
-
-<!-- Modal: changeLogModal  -->
-  <div class="container-fluid">
-<div class="modal fade right changeLogModal" id="modalChangeLog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true" data-backdrop="true">
-  <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
-    <div class="modal-content">
-      <!--Header-->
-      <div class="modal-header">
-           <h4 class="modal-title w-100 text-center" id="exampleModalLabel">changelog</h4>
-
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" class="white-text">×</span>
-        </button>
-      </div>
-      <!--Body-->
-      <div class="modal-body">
-        <div class="alignChangelogModalText"><br>
-          <i class="far fa-file-alt fa-4x mb-3 animated rotateIn"></i> 
-          <p> Alpha Ver 0.2 ( Dec 2018 ) <br>
-          	<span class="innerLogs"> - Added new gui framework </span><br>
-          	<span class="innerLogs"> - Added dynamically loading datatable </span><br>
-          	<span class="innerLogs"> - Added modals for navbar links</span><br>
-          	<span class="innerLogs"> - Added loading league message </span><br>
-
-         <br> Alpha Ver 0.1 ( June 2018 )<br> 
-          <span class="innerLogs"> - Developed REST API for backend </span><br>
-          <span class="innerLogs"> - Optimised character data mapping </span><br>
-          <span class="innerLogs"> - Added xp per hour stat </span><br>
-          <span class="innerLogs"> - Added completed challenges stat </span><br>
-          	 </p>
-
-		  </div>
-		      </div>
-		      <br>
-		
-		      <!--Footer-->
-		      <div class="modal-footer justify-content-center">
-		        <a type="button" class="btn btn-outline-primary bg-dark" data-dismiss="modal">Close</a>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-		</div>
-		<!-- Modal: changeLogModal -->
-	
-	<!-- Modal: ranks updated modal -->	
-	<div class="modal fade bottom" id="ranksUpdatedModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	    <!-- Add class .modal-frame and then add class .modal-bottom (or other classes from list above) to set a position to the modal -->
-	    <div class="modal-dialog loadingModal " role="document" >
-	      <div class="modal-content">
-	        <center><h6><b><div class="modal-body"></div></b></h6></center>
-	      </div>
-	    </div>
- 	 </div>
- 	 
-<br>
-
-    <div class="container">
-        
-      <div class="row">
-        <div class="col-md-12">
-            
-          <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
-              
-            <span style="padding-top: 0%;   ">
-            
-            <ol class="carousel-indicators">
-                
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"> </li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"> </li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"> </li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="3"> </li>
-            </ol>
-            </span>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="card">
-                      <div class="card-header text-center" id="table1CardTitle"></div>
-                      <div class="card-body">
-                        <div class="table-responsive">
-                          <table class="table table-striped table-borderless tableStyling" id="table1">
-                            <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Character</th>
-                                <th scope="col">Asc</th>
-                                <th scope="col">Depth</th>
-                              </tr>
-                            </thead>
-                            <tbody></tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="card">
-                      <div class="card-header text-center" id="table2CardTitle"></div>
-                      <div class="card-body">
-                        <div class="table-responsive">
-                          <table class="table table-striped table-borderless tableStyling" id="table2">
-                            <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Character</th>
-                                <th scope="col">Asc</th>
-                                <th scope="col">Depth</th>
-                              </tr>
-                            </thead>
-                            <tbody></tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row"> <br></div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="card">
-                      <div class="card-header text-center" id="table4CardTitle"></div>
-                      <div class="card-body">
-                        <div class="table-responsive">
-                          <table class="table table-striped table-borderless tableStyling" id="table4">
-                            <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Character</th>
-                                <th scope="col">Asc</th>
-                                <th scope="col">Depth</th>
-                              </tr>
-                            </thead>
-                            <tbody></tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="card">
-                      <div class="card-header text-center" id="table5CardTitle"></div>
-                      <div class="card-body">
-                        <div class="table-responsive">
-                          <table class="table table-striped table-borderless tableStyling" id="table5">
-                            <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Character</th>
-                                <th scope="col">Asc</th>
-                                <th scope="col">Depth</th>
-                              </tr>
-                            </thead>
-                            <tbody></tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              </div>
-<br><br>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- PAGE settings -->
+      <link rel="icon" href="../images/favicon.ico">
+      <title>App Neon - Pingendo template</title>
+      <meta name="description" content="Path of Exile league tracking ladder tool.  Get all the latest updatest on the latest poe race!">
+      <meta name="keywords" content="pathofexile ladder poe racing path of exile poe-ladder race season league">
+      <!-- CSS dependencies -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+      <link rel="stylesheet" href="neon.css">
+      <!-- Script: Make my navbar transparent when the document is scrolled to top -->
+      <script src="js/navbar-ontop.js"></script>
+      <!-- Script: Animated entrance -->
+      <script src="js/animate-in.js"></script>
+      <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
+      <link rel="stylesheet" href="css/fixedHeader.dataTables.min.css">
+      <link rel="stylesheet" href="css/responsive.bootstrap.min.css">
+      <link rel="stylesheet" href="css/font-awesome.min.css">
+      <link rel="stylesheet" href="css/toastr.min.css">
+      <script src='https://www.google.com/recaptcha/api.js?render=6LePPoQUAAAAALMHr7-ZxEcgCBq4-atgP4hAXYB_'></script>
+      <link rel="stylesheet" href="/css/style_2.css">
+   </head>
+   <body class="img-responsive" style="	background-image: url(assets/styleguide/poe2.jpg);	background-position: top left;	background-size: 107%;	background-repeat: no-repeat; height:100%; width:100%;">
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark border-bottom border-info " >
+         <div class="col col-md-4 text-center" style="padding-left: 22%;">
+            <a class="navbar-brand"  	href="/"  >
+            <img src="../images/logo2.png"></img><b>poe-ladder.com</b></a>
+         </div>
+         <div class="col col-md-4 text-center">
+            <div class="btn-group m-0" id="group2">
+               <button class="btn dropdown-toggle text-body btn-info " data-toggle="dropdown" aria-expanded="false" id="mainDropdownBtn"> Select League&nbsp; &nbsp;&nbsp;</button>
+               <div class="dropdown-menu" id="dropdownList" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
+                  <a class="dropdown-item" href="#" style="color:black;">
+                     <h6 style="color:black;"><b>Betrayal<b></h6>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#" style="color:black;">
+                     <h6 style="color:black;"><b>Hardcore Betrayal<b></h6>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#" >
+                     <h6 style="color:black;"><b>SSF Betrayal<b></h6>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#" style="color:black;">
+                     <h6 style="color:black;"><b>SSF Betrayal HC</b></h6>
+                  </a>
+               </div>
             </div>
-          </div>
-        </div>
+         </div>
+         <div class="col">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> 
+            <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent" style="padding-right:25%;">
+               <ul class="navbar-nav">
+                  <li class="nav-item m-0  mt-0">
+                     <a class="nav-link" href="#" id="feedback" >feedback <br></a> 
+                  </li>
+                  <li class="nav-item mx-1">
+                     <a class="nav-link" href="#" id="changelog">changelog </a>
+                  </li>
+                  <li class="nav-item mx-1">
+                     <a class="nav-link" href="#reviews">about <br></a> 
+                  </li>
+                  <li class="nav-item mx-1">
+                     <a class="nav-link" href="#reviews">support<br></a> 
+                  </li>
+               </ul>
+            </div>
+      </nav>
       </div>
-
-
-  
-  	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script src='https://www.google.com/recaptcha/api.js'></script>
- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
- 	<script src="js/smooth-scroll.js"></script>
-	<script src="/javascript/jquery.dataTables.min.js"></script>
-	<script src="javascript/dataTables.fixedHeader.min.js"></script>
-	<script src="javascript/dataTables.bootstrap4.min.js"></script>
-	<script src="javascript/dataTables.responsive.min.js"></script>
-	<script src="javascript/toastr.min.js"></script>
-	<script src="javascript/dataTable-filtering.js"></script>	
-	<script src="/javascript/main.js"></script>
-  
-  </body>
+      <div class="py-2 " style="display: none;" id="leagueInfoTableContainer">
+         <div class="row border-0 d-flex justify-content-center border border-dark" id="tableSize">
+            <div class="table-responsive" >
+               <table id="leagueInfoTable"	class="table table-striped table-bordered nowrap" cellspacing="0" style="width:100% !important; ">
+                  <thead>
+                     <tr>
+                        <th></th>
+                        <th>Rank</th>
+                        <th>Account</th>
+                        <th>Character</th>
+                        <th>Level</th>
+                        <th>Ascendancy</th>
+                        <th>XP/Hour</th>
+                        <th>Progress</th>
+                        <th>Experience</th>
+                        <th>Info</th>
+                     </tr>
+                  </thead>
+                  <tbody></tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+      </div>    
+      <!-- Updating League Modal -->
+      <div class="modal fade bottom" id="frameModalBottom" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="loadingModal">
+         <!-- Add class .modal-frame and then add class .modal-bottom (or other classes from list above) to set a position to the modal -->
+         <div class="modal-dialog loadingModal " role="document" >
+            <div class="modal-content">
+               <center>
+                  <h6>
+                     <b>
+                        <div class="modal-body"></div>
+                     </b>
+                  </h6>
+               </center>
+            </div>
+         </div>
+      </div>
+      <!-- Frame Modal Bottom -->
+      <div class="container-fluid">
+         <!-- Modal: Feedback Modal -->
+         <div class="modal fade right feedbackModal" id="modalPoll-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" data-backdrop="true">
+            <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+               <div class="modal-content">
+                  <!--Header-->
+                  <div class="modal-header">
+                     <h4 class="modal-title w-100 text-center" id="exampleModalLabel">feedback</h4>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true" class="white-text">×</span>
+                     </button>
+                  </div>
+                  <!--Body-->
+                  <div class="modal-body">
+                     <div class="text-center">
+                        <i class="far fa-file-alt fa-4x mb-3 animated rotateIn"></i>
+                        <p>Have some ideas how to improve <strong>poe-ladder.com</strong>? <br />
+                           <strong>Give us your feedback.</strong>
+                        </p>
+                     </div>
+                     <hr>
+                     <!-- Radio -->
+                     <p class="text-center">
+                        <strong>Rate your experience of poe-ladder.com</strong>
+                     </p>
+                     <div class="form-check mb-2" style="padding-left:44%;">
+                        <input class="form-check-input" name="group1" type="radio" id="radio-179" value="option1" checked>
+                        <label class="form-check-label" for="radio-179">Very good</label>
+                     </div>
+                     <div class="form-check mb-2" style="padding-left:44%;">
+                        <input class="form-check-input" name="group1" type="radio" id="radio-279" value="option2">
+                        <label class="form-check-label" for="radio-279">Good</label>
+                     </div>
+                     <div class="form-check mb-2" style="padding-left:44%;">
+                        <input class="form-check-input" name="group1" type="radio" id="radio-379" value="option3">
+                        <label class="form-check-label" for="radio-379">Mediocre</label>
+                     </div>
+                     <div class="form-check mb-2" style="padding-left:44%;">
+                        <input class="form-check-input" name="group1" type="radio" id="radio-479" value="option4">
+                        <label class="form-check-label" for="radio-479">Bad</label>
+                     </div>
+                     <div class="form-check mb-2" style="padding-left:44%;">
+                        <input class="form-check-input" name="group1" type="radio" id="radio-579" value="option5">
+                        <label class="form-check-label" for="radio-579">Very bad</label>
+                     </div>
+                     <p class="text-center">
+                        <strong>What could we improve?</strong>
+                     </p>
+                     <!--Basic textarea-->
+                     <div class="form-group">
+                        <textarea type="text" id="form79textarea" class=" form-control" rows="3" ></textarea>
+                        <!-- recaptcha -->
+                     </div>
+                     <span class="msg-error error"></span>
+                     <div class="g-recaptcha"data-sitekey="6LcJPoQUAAAAABKLvZumtf7_4iV2rwLfyNgKdPv3" data-callback="enableBtn" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;">
+                     </div>
+                  </div>
+                  <!--Footer-->
+                  <div class="modal-footer justify-content-center">
+                     <a type="button" class="btn btn-primary bg-dark " id="btn-send" >Send
+                     <i class="fa fa-paper-plane ml-1"></i>
+                     </a>
+                     <a type="button" class="btn btn-outline-primary bg-dark" data-dismiss="modal">Cancel</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Modal: feedbackModal -->
+      <!-- Modal: changeLogModal  -->
+      <div class="container-fluid">
+         <div class="modal fade right changeLogModal" id="modalChangeLog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" data-backdrop="true">
+            <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+               <div class="modal-content">
+                  <!--Header-->
+                  <div class="modal-header">
+                     <h4 class="modal-title w-100 text-center" id="exampleModalLabel">changelog</h4>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true" class="white-text">×</span>
+                     </button>
+                  </div>
+                  <!--Body-->
+                  <div class="modal-body">
+                     <div class="alignChangelogModalText">
+                        <br>
+                        <i class="far fa-file-alt fa-4x mb-3 animated rotateIn"></i> 
+                        <p> Alpha Ver 0.2 ( Dec 2018 ) <br>
+                           <span class="innerLogs"> - Added new gui framework </span><br>
+                           <span class="innerLogs"> - Added dynamically loading datatable </span><br>
+                           <span class="innerLogs"> - Added modals for navbar links</span><br>
+                           <span class="innerLogs"> - Added loading league message </span><br>
+                           <br> Alpha Ver 0.1 ( June 2018 )<br> 
+                           <span class="innerLogs"> - Developed REST API for backend </span><br>
+                           <span class="innerLogs"> - Optimised character data mapping </span><br>
+                           <span class="innerLogs"> - Added xp per hour stat </span><br>
+                           <span class="innerLogs"> - Added completed challenges stat </span><br>
+                        </p>
+                     </div>
+                  </div>
+                  <br>
+                  <!--Footer-->
+                  <div class="modal-footer justify-content-center">
+                     <a type="button" class="btn btn-outline-primary bg-dark" data-dismiss="modal">Close</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Modal: changeLogModal -->
+      <!-- Modal: ranks updated modal -->	
+      <div class="modal fade bottom" id="ranksUpdatedModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+         <!-- Add class .modal-frame and then add class .modal-bottom (or other classes from list above) to set a position to the modal -->
+         <div class="modal-dialog loadingModal " role="document" >
+            <div class="modal-content">
+               <center>
+                  <h6>
+                     <b>
+                        <div class="modal-body"></div>
+                     </b>
+                  </h6>
+               </center>
+            </div>
+         </div>
+      </div>
+      <br>
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+                  <span style="padding-top: 0%;   ">
+                     <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"> </li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"> </li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"> </li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="3"> </li>
+                     </ol>
+                  </span>
+                  <div class="carousel-inner">
+                     <div class="carousel-item active">
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="card">
+                                 <div class="card-header text-center" id="table1CardTitle"></div>
+                                 <div class="card-body">
+                                    <div class="table-responsive">
+                                       <table class="table table-striped table-borderless tableStyling" id="table1">
+                                          <thead>
+                                             <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Character</th>
+                                                <th scope="col">Asc</th>
+                                                <th scope="col">Depth</th>
+                                             </tr>
+                                          </thead>
+                                          <tbody></tbody>
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="card">
+                                 <div class="card-header text-center" id="table2CardTitle"></div>
+                                 <div class="card-body">
+                                    <div class="table-responsive">
+                                       <table class="table table-striped table-borderless tableStyling" id="table2">
+                                          <thead>
+                                             <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Character</th>
+                                                <th scope="col">Asc</th>
+                                                <th scope="col">Depth</th>
+                                             </tr>
+                                          </thead>
+                                          <tbody></tbody>
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row"> <br></div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="card">
+                                 <div class="card-header text-center" id="table4CardTitle"></div>
+                                 <div class="card-body">
+                                    <div class="table-responsive">
+                                       <table class="table table-striped table-borderless tableStyling" id="table4">
+                                          <thead>
+                                             <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Character</th>
+                                                <th scope="col">Asc</th>
+                                                <th scope="col">Depth</th>
+                                             </tr>
+                                          </thead>
+                                          <tbody></tbody>
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="card">
+                                 <div class="card-header text-center" id="table5CardTitle"></div>
+                                 <div class="card-body">
+                                    <div class="table-responsive">
+                                       <table class="table table-striped table-borderless tableStyling" id="table5">
+                                          <thead>
+                                             <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Character</th>
+                                                <th scope="col">Asc</th>
+                                                <th scope="col">Depth</th>
+                                             </tr>
+                                          </thead>
+                                          <tbody></tbody>
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <br><br>
+               </div>
+            </div>
+         </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script src='https://www.google.com/recaptcha/api.js'></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+      <script src="js/smooth-scroll.js"></script>
+      <script src="/javascript/jquery.dataTables.min.js"></script>
+      <script src="javascript/dataTables.fixedHeader.min.js"></script>
+      <script src="javascript/dataTables.bootstrap4.min.js"></script>
+      <script src="javascript/dataTables.responsive.min.js"></script>
+      <script src="javascript/toastr.min.js"></script>
+      <script src="javascript/dataTable-filtering.js"></script>	
+      <script src="/javascript/main.js"></script>
+   </body>
 </html>
