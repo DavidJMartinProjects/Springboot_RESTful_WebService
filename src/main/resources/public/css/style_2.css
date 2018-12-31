@@ -148,7 +148,7 @@ table.dataTable tbody th, table.dataTable tbody td {
 }
 
 .feedbackModal {
-	top: 10%;
+
 }
 
 body.modal-open {
@@ -220,7 +220,6 @@ hr {
 }
 
 .changeLogModal {
-	top: 10%;
 
 }
 
