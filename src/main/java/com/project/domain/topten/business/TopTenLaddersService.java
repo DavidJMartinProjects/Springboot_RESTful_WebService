@@ -124,12 +124,17 @@ public class TopTenLaddersService {
 	}
 
 	private void setupHttpEntityHeaders() {
+		headers = new HttpHeaders();
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 		headers.add(USER_AGENT, USER_AGENT_PARAM);
 		headers.add("Accept-Encoding",  "gzip deflate");
 		headers.add("Accept-Language",  "en-US en");
 		headers.add("Upgrade-Insecure-Requests",  "1");
 		headers.add("Cookie",  "__cfduid=d26f0e1ca08b926e10a926dcda9302cfa1546206260");
+		headers.add("Cookie",  "POESESSID=3a4fa1c3e399804bf49bef466270e484");
+		headers.add("Cookie",  "cf_clearance=b32a2a1c3b51d4bfde7de0cbf7fbc5015de28b0d-1546218127-300-150");
+		headers.add("Cookie",  "_ga=GA1.2.1564561921.1546218143");
+		headers.add("Cookie",  "_gid=GA1.2.350283217.1546218143");
 		entity = new HttpEntity<String>("parameters", headers);
 	}
 
