@@ -121,7 +121,7 @@ table.dataTable thead th, table.dataTable thead td {
 }
 
 table.dataTable tbody th, table.dataTable tbody td {
-	padding: 3px 12px;
+	padding: 1px 12px;
 	border-bottom: 1px solid #111;
 }
 
@@ -384,11 +384,11 @@ background-color: ingerit;
   z-index: 2;
 }
 
-#body-tag {
-	
+.carousel-indicators {
+ position: relative;
 }
 
-
+   
 
 
 
