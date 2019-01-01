@@ -35,7 +35,7 @@ public class CustomLeagueRequestService {
 	private HttpEntity<String> entity;
 
 	public List<LadderTableEntry> getCustomLeagueData(String leagueId, String leagueName) throws InterruptedException {
-		String urlPostfix = leagueName + " " + leagueId;
+		String urlPostfix = leagueName + " " + "("+leagueId+")";
 		System.out.println("getCurrentDataset() urlPostfix : " + urlPostfix);
 		setupHttpEntityHeaders();		
 		String url = "http://www.pathofexile.com/api/ladders?offset=0&limit=200&id=" + urlPostfix;
@@ -103,13 +103,15 @@ public class CustomLeagueRequestService {
 	}
 	
 	public List<LadderTableEntry> getCurrentDataset(String leagueId, String leagueName) throws InterruptedException {
-		if(!parsedLeagues.containsKey(leagueId)) {
+		String trimmedLeagueId = leagueId.replace("(", "").replace(")", "").trim();
+		String trimmedLeagueName = leagueName.trim();
+		if(!parsedLeagues.containsKey(trimmedLeagueId)) {
 			System.out.println("League not already parsed : requesting league data from api");
-			getCustomLeagueData(leagueId, leagueName);
+			getCustomLeagueData(trimmedLeagueId, trimmedLeagueName);
 
 		} 
 		System.out.println("League already parsed : returning data");
-		return parsedLeagues.get(leagueId);
+		return parsedLeagues.get(trimmedLeagueId);
 	}
 
 }

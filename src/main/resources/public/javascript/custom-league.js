@@ -8,6 +8,7 @@ $(document).ready(function () {
 
 $("#createCustomLeagueBtn").click(function () {
     var customLeagueModal = $('#customLeagueModal');
+    $('#submitLeagueBtn').toggleClass('disable', true);
     customLeagueModal.modal('show');
 });
 
@@ -46,26 +47,16 @@ $("#submitLeagueBtn").click(function () {
     
 });
 
-$("#btn-send").click(function () {
-    
-    
-    var textAreaContent = $('#form79textarea').val();
-
-    $.ajax({
-        url: 'https://immense-headland-50105.herokuapp.com/' + 'mail/send',
-        type: 'POST',
-        dataType: "json",
-        data: {
-            userName: "Feedback Message : \n\n",
-            message: textAreaContent
-        },
-        success: function (msg) {
-            console.log("message sent successfully  : " + msg);
-        },
-        error: function (xhr, status, error) {}
+grecaptcha.ready(function () {
+    grecaptcha.execute('6LePPoQUAAAAALMHr7-ZxEcgCBq4-atgP4hAXYB_', {
+        action: 'homepage'
+    }).then(function (token) {
+        console.log("validated!");
     });
-
-    var mymodal1 = $('#modalPoll-1');
-    $('#form79textarea').val("");
-    mymodal1.modal('hide');
 });
+
+function enableBtn() {
+    console.log("enableBtn()");
+    $('#submitLeagueBtn').toggleClass('disable', false);
+
+}
