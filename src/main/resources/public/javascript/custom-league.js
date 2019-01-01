@@ -8,12 +8,12 @@ $(document).ready(function () {
 
 $("#createCustomLeagueBtn").click(function () {
     var customLeagueModal = $('#customLeagueModal');
-    $('#submitLeagueBtn').toggleClass('disable', true);
+//    $('#submitLeagueBtn').toggleClass('disable', true);
     customLeagueModal.modal('show');
 });
 
 $("#submitLeagueBtn").click(function () {
-	grecaptcha.reset(); // on lock of sed button
+//	grecaptcha.reset(); // on lock of sed button
 	console.log("attempting to get custom ladder data.");
 	// get user input
     var theLeagueId = $('#leagueId').val();
@@ -38,25 +38,99 @@ $("#submitLeagueBtn").click(function () {
         },
         success: function (results) {
             console.log("message sent successfully  : " + results.length + "ladder entries returned");
+            populateCustomLeagueTable(results);
+          $("#carouselContainer").css('display', 'none');
         },
         error: function (xhr, status, error) {
         	console.log("custom league not found.")
         }
     });
+
     
     
 });
 
-grecaptcha.ready(function () {
-    grecaptcha.execute('6LePPoQUAAAAALMHr7-ZxEcgCBq4-atgP4hAXYB_', {
-        action: 'homepage'
-    }).then(function (token) {
-        console.log("validated!");
+
+var populateCustomLeagueTable = function (results) {
+	console.log("inside populateCustomLeagueTable()");
+    $('#leagueInfoTable').dataTable().fnDestroy();
+    $("#leagueInfoTableContainer").css({
+        "display": "block"
     });
-});
+    results
+    .forEach(function (data) {
+    	
+        var twitchLink;
+        var twitchUrl = "https://www.twitch.tv/";
+        twitchUrl += data.twitch;
+        if (data.twitch != "") {
+            twitchLink = "<a href='" +
+                twitchUrl +
+                "' target='_blank'><img src='/images/twitch-logo.png' class='twitch-logo' title='" +
+                data.twitch +
+                "' style='width:18px;height:18px;border:0;'></a>";
+        } else {
+            twitchLink = "";
+        }
 
-function enableBtn() {
-    console.log("enableBtn()");
-    $('#submitLeagueBtn').toggleClass('disable', false);
+	    toonName = data.character;
+    	console.log("toonName : " + toonName);
+	    var accountLink = getPoeAccount(data.account)
+	    var ascendancyIcon = getAscendancyIcon(data.theClass);
+	    var classColor = getColor(data.theClass);
+
+	        $('#leagueInfoTable tbody').append(
+	                '<tr>' +
+		                '<td>' + data.rank + '</td>' +
+		                '<td>' + data.account + '</td>' +
+		                '<td>' + toonName + '</td>' +
+		                '<td>' + data.level + '</td>' +
+		                '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
+		                '<td>' + "0" + '</td>' +
+		                '<td>' + twitchLink + '</td>' +
+	                '</tr>'
+	            );
+	        
+    });   
+	    var table = $("#leagueInfoTable").dataTable({
+	        "iDisplayLength": 100,
+	        responsive: true,
+	        "pagingType": "full_numbers",
+	        "order": [
+	            [0, "asc"]
+	        ],
+	        stateSave: true,
+	        "columnDefs": [{
+	            "targets": [0], // column or columns numbers
+	            type: 'formatted-num',
+	        }],
+	        deferRender: true,
+	        "deferLoading": 400,
+	        "columnDefs": [{
+	            type: 'formatted-num',
+	            targets: [6]
+	        }],
+
+});
+    
+    $("#leagueInfoTableContainer").css({
+        "display": "block"
+    });
+	    
+    new $.fn.dataTable.FixedHeader(table);
 
 }
+
+//grecaptcha.ready(function () {
+//    grecaptcha.execute('6LePPoQUAAAAALMHr7-ZxEcgCBq4-atgP4hAXYB_', {
+//        action: 'homepage'
+//    }).then(function (token) {
+//        console.log("validated!");
+//    });
+//});
+//
+//function enableBtn() {
+//    console.log("enableBtn()");
+//    $('#submitLeagueBtn').toggleClass('disable', false);
+//
+//}

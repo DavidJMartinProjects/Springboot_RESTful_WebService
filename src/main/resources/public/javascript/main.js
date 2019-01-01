@@ -342,7 +342,7 @@ var populateLeagueTable = function (results) {
     $('#lastUpdatedMsg').text("ranks last updated : " + timeStamp + ".");
     $("#frameModalBottom").modal("hide");
     $("#ranksUpdatedModal").modal("hide");
-    $("#carouselContainer").css('display', 'none');
+//    $("#carouselContainer").css('display', 'none');
 
 };
 
@@ -684,7 +684,7 @@ var drawLevelChart = function (selectedLeague) {
 
             loadingModalAnimation();
             populateLevelChart(results);
-            $("#carouselContainer").css('display', 'none');
+//            $("#carouselContainer").css('display', 'none');
         },
         error: function (error) {
             console.log("getLeagueData error : " + error.responseJSON.message,
@@ -956,23 +956,23 @@ $("#changelog").click(function () {
     mymodal1.modal('show');
 });
 
-grecaptcha.ready(function () {
-    grecaptcha.execute('6LePPoQUAAAAALMHr7-ZxEcgCBq4-atgP4hAXYB_', {
-        action: 'homepage'
-    }).then(function (token) {
-        console.log("validated!");
-    });
-});
+//grecaptcha.ready(function () {
+//    grecaptcha.execute('6LePPoQUAAAAALMHr7-ZxEcgCBq4-atgP4hAXYB_', {
+//        action: 'homepage'
+//    }).then(function (token) {
+//        console.log("validated!");
+//    });
+//});
 
 
-function enableBtn() {
-    console.log("enableBtn()");
-    $('#btn-send').toggleClass('disable', false);
-
-}
+//function enableBtn() {
+//    console.log("enableBtn()");
+//    $('#btn-send').toggleClass('disable', false);
+//
+//}
 
 $("#btn-send").click(function () {
-    grecaptcha.reset(); // on lock of sed button
+//    grecaptcha.reset(); // on lock of sed button
     console.log("message sent!");
     var textAreaContent = $('#form79textarea').val();
 
