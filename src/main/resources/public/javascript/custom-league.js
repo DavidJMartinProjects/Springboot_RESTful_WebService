@@ -1,6 +1,6 @@
  theLocalhostUrl = 'http://localhost:8080';
- theHostedSiteUrl = 'https://immense-headland-50105.herokuapp.com/ladders';
- url = theLocalhostUrl;
+ theHostedSiteUrl = 'https://immense-headland-50105.herokuapp.com';
+ url = theHostedSiteUrl;
 
 $(document).ready(function () {
     console.log("custom-league.js loaded.")
