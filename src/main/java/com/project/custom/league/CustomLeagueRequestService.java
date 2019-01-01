@@ -44,15 +44,17 @@ public class CustomLeagueRequestService {
 		System.out.println("response size : " + response.getBody().getEntries().length);
 		Ladder ladders =  response.getBody();
 		List<Entries> entires = Arrays.asList(ladders.getEntries());
+		customLeagueEntries.clear();
 		entires.stream()		
 			.forEach(e -> mapResponseToEntity(e));
 		Thread.sleep(500);
 		isCurrentDatasetEmpty();
 		newDataset = customLeagueEntries;
 		if(parsedLeagues.containsKey(leagueId)) {
-			parsedLeagues.replace(leagueId, newDataset);
+			parsedLeagues.remove(leagueId);
+			parsedLeagues.put(leagueId, new ArrayList<LadderTableEntry>(customLeagueEntries));
 		} else {
-			parsedLeagues.put(leagueId, newDataset);
+			parsedLeagues.put(leagueId, new ArrayList<LadderTableEntry>(customLeagueEntries));
 		}
 		
 		return newDataset;
@@ -106,11 +108,12 @@ public class CustomLeagueRequestService {
 		String trimmedLeagueId = leagueId.replace("(", "").replace(")", "").trim();
 		String trimmedLeagueName = leagueName.trim();
 		if(!parsedLeagues.containsKey(trimmedLeagueId)) {
-			System.out.println("League not already parsed : requesting league data from api");
+			System.out.println("League not parsed previously : requesting league data from api");
 			getCustomLeagueData(trimmedLeagueId, trimmedLeagueName);
 
 		} 
-		System.out.println("League already parsed : returning data");
+		System.out.println("League already parsed : returning "+trimmedLeagueId+" data");
+		System.out.println("parsedLeagues " +parsedLeagues.keySet());
 		return parsedLeagues.get(trimmedLeagueId);
 	}
 

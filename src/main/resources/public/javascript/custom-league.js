@@ -1,6 +1,6 @@
  theLocalhostUrl = 'http://localhost:8080';
  theHostedSiteUrl = 'https://immense-headland-50105.herokuapp.com';
- url = theHostedSiteUrl;
+ url = theLocalhostUrl;
 
 $(document).ready(function () {
     console.log("custom-league.js loaded.")
@@ -15,9 +15,16 @@ $("#createCustomLeagueBtn").click(function () {
 $("#submitLeagueBtn").click(function () {
 //	grecaptcha.reset(); // on lock of sed button
 	console.log("attempting to get custom ladder data.");
+	
+    $('#leagueInfoTable').dataTable().fnDestroy();
+    $("#leagueInfoTable tbody").empty();
+    $("#leagueInfoTableContainer").css({
+        "display": "block"
+    });
+    
 	// get user input
-    var theLeagueId = $('#leagueId').val();
-    var theLeagueName = $('#leagueName').val();
+    theLeagueId = $('#leagueId').val();
+    theLeagueName = $('#leagueName').val();
     console.log(" leagueId : " +theLeagueId+ "leagueName : " +theLeagueName);
     // close modal
     var customLeagueModal = $('#customLeagueModal');
@@ -54,6 +61,7 @@ $("#submitLeagueBtn").click(function () {
 var populateCustomLeagueTable = function (results) {
 	console.log("inside populateCustomLeagueTable()");
     $('#leagueInfoTable').dataTable().fnDestroy();
+    $("#leagueInfoTable tbody").empty();
     $("#leagueInfoTableContainer").css({
         "display": "block"
     });
