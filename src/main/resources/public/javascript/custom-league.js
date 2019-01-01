@@ -37,7 +37,7 @@ $("#submitLeagueBtn").click(function () {
             leagueName: theLeagueName
         },
         success: function (results) {
-            console.log("message sent successfully  : " + results);
+            console.log("message sent successfully  : " + results.length + "ladder entries returned");
         },
         error: function (xhr, status, error) {
         	console.log("custom league not found.")
