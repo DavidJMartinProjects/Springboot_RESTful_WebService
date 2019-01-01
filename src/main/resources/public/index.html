@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="/css/style_2.css">
 </head>
 
-<body class="img-responsive" style="	background-image: url(assets/styleguide/poe2.jpg);	background-position: top left;	background-size: 107%;	background-repeat: no-repeat; height:100%; width:100%;">
+<body class="img-responsive" style="background-image: url(assets/styleguide/starting-zone1.jpg); background-position: top;		background-repeat: no-repeat; height:100%; width:100%;">
 
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark border-bottom border-info " >
 			<div class="col col-md-4 text-center" style="padding-left: 22%;">
@@ -35,16 +35,18 @@
 			</div>
 			
 			<div class="col col-md-4 text-center">
-				 <div class="btn-group m-0" id="group2">
-		              <button class="btn dropdown-toggle text-body btn-info " data-toggle="dropdown" aria-expanded="false" id="mainDropdownBtn"> Create Custom League Ladder&nbsp; &nbsp;&nbsp;</button>
-		              <div class="dropdown-menu" id="dropdownList" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);"> 
-			              <a class="dropdown-item" href="#" style="color:black;"><h6 style="color:black;"><b>Betrayal<b></h6></a>
-			              <div class="dropdown-divider"></div>
-			              <a class="dropdown-item" href="#" style="color:black;"><h6 style="color:black;"><b>Hardcore Betrayal<b></h6></a>
-			              <div class="dropdown-divider"></div><a class="dropdown-item" href="#" ><h6 style="color:black;"><b>SSF Betrayal<b></h6></a>
-			              <div class="dropdown-divider"></div><a class="dropdown-item" href="#" style="color:black;"><h6 style="color:black;"><b>SSF Betrayal HC</b></h6></a>
-	              </div>
-	            </div>
+<!-- 				 <div class="btn-group m-0" id="group2"> -->
+<!-- 		              <button class="btn dropdown-toggle text-body btn-info " data-toggle="dropdown" aria-expanded="false" id="mainDropdownBtn"> Create Custom League Ladder&nbsp; &nbsp;&nbsp;</button> -->
+<!-- 		              <div class="dropdown-menu" id="dropdownList" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">  -->
+<!-- 			              <a class="dropdown-item" href="#" style="color:black;"><h6 style="color:black;"><b>Betrayal<b></h6></a> -->
+<!-- 			              <div class="dropdown-divider"></div> -->
+<!-- 			              <a class="dropdown-item" href="#" style="color:black;"><h6 style="color:black;"><b>Hardcore Betrayal<b></h6></a> -->
+<!-- 			              <div class="dropdown-divider"></div><a class="dropdown-item" href="#" ><h6 style="color:black;"><b>SSF Betrayal<b></h6></a> -->
+<!-- 			              <div class="dropdown-divider"></div><a class="dropdown-item" href="#" style="color:black;"><h6 style="color:black;"><b>SSF Betrayal HC</b></h6></a> -->
+<!-- 	              </div> -->
+<!-- 	            </div> -->
+<div class="container-fluid">
+<button class="btn text-body btn-info " aria-expanded="false" id="createCustomLeagueBtn"> Create Custom League Ladder</button></div>
 			</div>
   
        
@@ -69,6 +71,7 @@
 		        </ul>
 		      </div>
      	 </nav>
+     	 <br><br>
 </div>
    <div class="py-2 " style="display: none;" id="leagueInfoTableContainer">
       <div class="row border-0 d-flex justify-content-center border border-dark" id="tableSize">  
@@ -241,6 +244,55 @@
 	    </div>
  	 </div>
  	 
+ 	  <div class="container-fluid">
+<!-- Modal: Feedback Modal -->
+<div class="modal fade right feedbackModal" id="customLeagueModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true" data-backdrop="true">
+  <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+           <h4 class="modal-title w-100 text-center" id="exampleModalLabel">create custom league ladder</h4>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">×</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+		<form>
+			<div class="form-group">
+				<label >Enter custom league id</label> 
+				<input type="text" class="form-control"	placeholder="league id" id="leagueId">
+			</div>
+			<div class="form-group">
+				<label >Enter custom league name</label> 
+				<h5><input type="text" class="form-control"	placeholder="league name" id="leagueName"><h6></h6>
+			</div>
+		</form>
+
+        <div class="form-group">
+          
+          <!-- recaptcha -->
+        </div>
+			<span class="msg-error error"></span>
+			<div class="g-recaptcha"data-sitekey="6LcJPoQUAAAAABKLvZumtf7_4iV2rwLfyNgKdPv3" data-callback="enableBtn" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;">
+			</div>
+	    </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a type="button" class="btn btn-primary bg-dark " id="submitLeagueBtn" >Submit
+          
+        </a>
+        <a type="button" class="btn btn-outline-primary bg-dark" data-dismiss="modal">Cancel</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Modal: feedbackModal -->
+ 	 
 <br>
 
     <div class="container" id="carouselContainer">
@@ -369,6 +421,8 @@
 	<script src="javascript/toastr.min.js"></script>
 	<script src="javascript/dataTable-filtering.js"></script>	
 	<script src="/javascript/main.js"></script>
+	<script src="/javascript/custom-league.js"></script>
+	
   
   </body>
 </html>

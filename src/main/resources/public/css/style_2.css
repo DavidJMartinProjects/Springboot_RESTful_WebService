@@ -26,6 +26,7 @@ body {
         -moz-background-size: cover;
         -o-background-size: cover;
         height:100%;
+        color: white;
 
 }
 
@@ -167,7 +168,7 @@ body.modal-open {
 	margin: 0 !important;
 	padding: 0 !important;
 	border: 0 !important;
-	opacity: 0.9 !important;
+	opacity: 1.0 !important;
 }
 
 .modal-body {
@@ -189,14 +190,14 @@ vertical>.btn {
 }
 
 .dropdown-toggle {
-	width: 180px;
+
 }
 
 .btn-info {
 	color: #1C2F35;
 	background-color: #1C2F35;
     border-color: black;
-    width: 100%;
+
 }
 
 .border-info {
@@ -392,6 +393,20 @@ background-color: ingerit;
 
 .carousel-indicators {
  /* position: relative; */
+}
+
+#leagueId {
+
+	color: black;
+	opacity: 1;
+	font-weight: bold !important;
+}
+
+#leagueName {
+
+	color: black;
+	opacity: 1;
+	font-weight: bold !important;
 }
 
    

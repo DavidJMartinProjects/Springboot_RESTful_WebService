@@ -994,3 +994,4 @@ $("#btn-send").click(function () {
     $('#form79textarea').val("");
     mymodal1.modal('hide');
 });
+
