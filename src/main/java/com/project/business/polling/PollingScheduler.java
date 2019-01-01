@@ -34,7 +34,7 @@ class PollingScheduler {
 			System.out.println("****************************************");
 			System.out.println("======== Poll Request Recieved. ========");
 //			DatasetService.calculateDataSet();
-//			topTenApiRequestService.getTopTenLadderData();
+			topTenApiRequestService.getTopTenLadderData();
 			Date date2 = new Date();
 			computeDiff(date1, date2);
 			System.out.println("======== Poll Request Complete. ========");
