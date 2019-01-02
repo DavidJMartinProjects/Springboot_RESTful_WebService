@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -25,6 +26,9 @@ import com.project.domain.ladder.Ladder;
 @Component
 public class CustomLeagueRequestService {
 	
+	@Autowired
+	ActiveLeagueService activeLeagueService;
+
 	Map<String, List<LadderTableEntry>> parsedLeagues = new HashMap<>();
 	private List<LadderTableEntry> newDataset = new ArrayList<>();
 	private List<LadderTableEntry> currentDataset = new ArrayList<>();
@@ -107,12 +111,13 @@ public class CustomLeagueRequestService {
 	public List<LadderTableEntry> getCurrentDataset(String leagueId, String leagueName) throws InterruptedException {
 		String trimmedLeagueId = leagueId.replace("(", "").replace(")", "").trim();
 		String trimmedLeagueName = leagueName.trim();
+		activeLeagueService.addLeagueRequest(trimmedLeagueId, trimmedLeagueName);
 		if(!parsedLeagues.containsKey(trimmedLeagueId)) {
 			System.out.println("League not parsed previously : requesting league data from api");
 			getCustomLeagueData(trimmedLeagueId, trimmedLeagueName);
 
 		} 
-		System.out.println("League already parsed : returning "+trimmedLeagueId+" data");
+		System.out.println("Sucessfully parsed league : returning "+trimmedLeagueId+" data");
 		System.out.println("parsedLeagues " +parsedLeagues.keySet());
 		return parsedLeagues.get(trimmedLeagueId);
 	}
