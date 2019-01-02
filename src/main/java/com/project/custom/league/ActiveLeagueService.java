@@ -15,6 +15,7 @@ public class ActiveLeagueService {
 	public void addLeagueRequest(String leagueId, String leagueName) {
 		System.out.println("League Id : " +leagueId+ " added to active leagues map.");
 		activeLeagueRequests.put(leagueId, leagueName);
+		System.out.println("activeLeagueRequests : " + activeLeagueRequests);
 	}
 	
 	// polled every 10 mins

@@ -2,6 +2,8 @@ package com.project.domain.datatable;
 
 public class LadderTableEntry {
 
+	private String leagueId;
+	private String leagueName;
 	private String rank;
 	private String rankDifference;
 	private String character;
@@ -140,14 +142,31 @@ public class LadderTableEntry {
 	public void setLevelProgressBar(String levelProgressBar) {
 		this.levelProgressBar = levelProgressBar;
 	}
+	
+	public String getLeagueId() {
+		return leagueId;
+	}
+
+	public void setLeagueId(String leagueId) {
+		this.leagueId = leagueId;
+	}
+
+	public String getLeagueName() {
+		return leagueName;
+	}
+
+	public void setLeagueName(String leagueName) {
+		this.leagueName = leagueName;
+	}
 
 	@Override
 	public String toString() {
-		return "LadderTableEntry [rank=" + rank + ", rankDifference=" + rankDifference + ", character=" + character
-				+ ", dead=" + dead + ", account=" + account + ", level=" + level + ", theClass=" + theClass
-				+ ", experience=" + experience + ", challenges=" + challenges + ", online=" + online + ", twitch="
-				+ twitch + ", xph=" + xph + ", xphDifference=" + xphDifference + ", levelProgressBar="
-				+ levelProgressBar + ", timeStamp=" + timeStamp + "]";
-	}	
+		return "LadderTableEntry [leagueId=" + leagueId + ", leagueName=" + leagueName + ", rank=" + rank
+				+ ", rankDifference=" + rankDifference + ", character=" + character + ", dead=" + dead + ", account="
+				+ account + ", level=" + level + ", theClass=" + theClass + ", experience=" + experience
+				+ ", challenges=" + challenges + ", online=" + online + ", twitch=" + twitch + ", xph=" + xph
+				+ ", xphDifference=" + xphDifference + ", levelProgressBar=" + levelProgressBar + ", timeStamp="
+				+ timeStamp + "]";
+	}
 		
 }

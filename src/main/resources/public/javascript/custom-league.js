@@ -52,8 +52,6 @@ $("#submitLeagueBtn").click(function () {
         	console.log("custom league not found.")
         }
     });
-
-    
     
 });
 
