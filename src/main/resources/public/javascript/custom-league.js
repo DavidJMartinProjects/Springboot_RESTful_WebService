@@ -20,7 +20,7 @@ $("#submitLeagueBtn").click(function () {
     theLeagueName = $('#leagueName').val();
     
     var mymodal = $('#frameModalBottom');
-    mymodal.find('.modal-body').text('building ladder for league ' + theLeagueId + '.');
+    mymodal.find('.modal-body').text('building ladder for custom league id : ' + theLeagueId + '.');
     mymodal.modal('show');
 	
     $('#leagueInfoTable').dataTable().fnDestroy();
