@@ -19,14 +19,20 @@ body {
 
 	
 	background-image: url(../assets/styleguide/poe2.jpg);	
-	       background-position: center;
-        background-repeat: no-repeat;
         background-size: cover;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         height:100%;
         color: white;
+        
+          height: 500px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
 }
 
