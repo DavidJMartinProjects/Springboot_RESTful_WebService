@@ -127,7 +127,7 @@ var populateCustomLeagueTable = function (results) {
 		                '<td><a href=' + accountLink +' target="_blank">' + account +'</a></td>' +
                         '<td>' + challenge_icon + "  " + character +'</td>' +
 		                '<td>' + data.level + '</td>' +
-		                '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
+		                '<td><font color="' + classColor + '">' + ascendancyIcon + "  " + data.theClass +'</font></td>' +
 		                '<td class="' +xphColor +'">' + exp +'</td>' +
 					    '<td>' + '<div class="progress">' +
 								   '<div class="progress-bar bg-dark" style="width:' + data.levelProgressBar + '%">' + 
