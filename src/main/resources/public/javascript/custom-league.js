@@ -78,21 +78,64 @@ var populateCustomLeagueTable = function (results) {
         } else {
             twitchLink = "";
         }
+        
+        exp = "";
+        if (data.xph == 0 || data.xph == null || data.xph == "null") {
+            exp = "-";
+        } else {
+            exp = data.xph;
+        }
 
-	    toonName = data.character;
-    	console.log("toonName : " + toonName);
+        var xphColor = getXphColor(exp);
+        
+        var account = "";
+        if (data.online == "true") {
+            account = "<img class='img-valign' src='/images/green-icon.png' title='online' />   " +
+                data.account;
+        } else {
+            account = "<img class='img-valign' src='/images/red-icon.png' title='offline' />   " +
+                data.account;
+        }
+        
+        var theRankDifference = "";
+        var rankDifference = data.rankDifference;
+
+        if (rankDifference < 0) {
+            theRankDifference = "<span class='arrow-down'></span>&ensp;(" +
+                data.rankDifference + ")";
+        } else if (rankDifference >= 0 && rankDifference < 1) {
+            theRankDifference = "";
+        } else if (rankDifference >= 1) {
+            theRankDifference = "<span class='arrow-up'></span>&ensp;(+" +
+                data.rankDifference + ")";
+        }
+
+	    var character = data.character;
 	    var accountLink = getPoeAccount(data.account)
 	    var ascendancyIcon = getAscendancyIcon(data.theClass);
 	    var classColor = getColor(data.theClass);
+        var challenge_icon = getChallengeIcon(data.challenges);
+
+        if (data.dead == "true") {
+            character += " <i id='deadStatus'>(dead)</i>";
+        }
 
 	        $('#leagueInfoTable tbody').append(
 	                '<tr>' +
+	                	'<td>' + theRankDifference + '</td>' +
 		                '<td>' + data.rank + '</td>' +
-		                '<td>' + data.account + '</td>' +
-		                '<td>' + toonName + '</td>' +
+		                '<td><a href=' + accountLink +' target="_blank">' + account +'</a></td>' +
+                        '<td>' + challenge_icon + "  " + character +'</td>' +
 		                '<td>' + data.level + '</td>' +
 		                '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
-		                '<td>' + "0" + '</td>' +
+		                '<td class="' +xphColor +'">' + exp +'</td>' +
+					    '<td>' + '<div class="progress">' +
+								   '<div class="progress-bar bg-dark" style="width:' + 
+								    	data.levelProgressBar + '%">' + 
+								   '</div>' + 
+								 '</div>'+ 
+						'</td>' +
+		                '<td>' + data.experience+ '</td>' +
 		                '<td>' + twitchLink + '</td>' +
 	                '</tr>'
 	            );
@@ -103,7 +146,7 @@ var populateCustomLeagueTable = function (results) {
 	        responsive: true,
 	        "pagingType": "full_numbers",
 	        "order": [
-	            [0, "asc"]
+	            [1, "asc"]
 	        ],
 	        stateSave: true,
 	        "columnDefs": [{
@@ -125,6 +168,25 @@ var populateCustomLeagueTable = function (results) {
 	    
     new $.fn.dataTable.FixedHeader(table);
 
+}
+
+var getChallengeIcon = function (numberOfChallenges) {
+    return "<img class='icon' src='/challenge_images/" + numberOfChallenges +
+        ".png' title='" + numberOfChallenges +
+        " challenges completed' />";
+}
+
+var getXphColor = function (xph) {
+    var xpPerHour = xph;
+    if (xpPerHour < "0" && xpPerHour != "-") {
+        formatXph(xpPerHour);
+        return "xp-per-hour-red";
+    } else if (xpPerHour >= "0") {
+        formatXph(xpPerHour);
+        return "xp-per-hour-green";
+    } else {
+        return "";
+    }
 }
 
 //grecaptcha.ready(function () {
