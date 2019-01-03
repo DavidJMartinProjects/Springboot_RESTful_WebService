@@ -130,8 +130,7 @@ var populateCustomLeagueTable = function (results) {
 		                '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
 		                '<td class="' +xphColor +'">' + exp +'</td>' +
 					    '<td>' + '<div class="progress">' +
-								   '<div class="progress-bar bg-dark" style="width:' + 
-								    	data.levelProgressBar + '%">' + 
+								   '<div class="progress-bar bg-dark" style="width:' + data.levelProgressBar + '%">' + 
 								   '</div>' + 
 								 '</div>'+ 
 						'</td>' +

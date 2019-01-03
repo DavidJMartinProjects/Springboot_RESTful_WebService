@@ -416,6 +416,30 @@ background-color: ingerit;
 }
 
    
+   .progress-bar {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #000000;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #008080;
+    transition: width .6s ease;
+
+}
+
+.progress .sr-only { position: absolute; }
+
+.progress {height: 8px;
+width : 90%;
+background-color: #999;
+margin: auto;
+}
+
+
 
 
 
