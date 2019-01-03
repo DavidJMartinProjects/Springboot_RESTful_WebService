@@ -18,9 +18,6 @@ $("#submitLeagueBtn").click(function () {
 	
     $('#leagueInfoTable').dataTable().fnDestroy();
     $("#leagueInfoTable tbody").empty();
-    $("#leagueInfoTableContainer").css({
-        "display": "block"
-    });
     
 	// get user input
     theLeagueId = $('#leagueId').val();
@@ -60,12 +57,13 @@ var populateCustomLeagueTable = function (results) {
 	console.log("inside populateCustomLeagueTable()");
     $('#leagueInfoTable').dataTable().fnDestroy();
     $("#leagueInfoTable tbody").empty();
-    $("#leagueInfoTableContainer").css({
-        "display": "block"
-    });
+    
+ 
+    var timestamp;
     results
     .forEach(function (data) {
-    	
+    	timestamp = data.timeStamp;
+    	console.log("timestamp : " + timestamp);
         var twitchLink;
         var twitchUrl = "https://www.twitch.tv/";
         twitchUrl += data.twitch;
@@ -115,7 +113,7 @@ var populateCustomLeagueTable = function (results) {
 	    var ascendancyIcon = getAscendancyIcon(data.theClass);
 	    var classColor = getColor(data.theClass);
         var challenge_icon = getChallengeIcon(data.challenges);
-
+        
         if (data.dead == "true") {
             character += " <i id='deadStatus'>(dead)</i>";
         }
@@ -160,10 +158,15 @@ var populateCustomLeagueTable = function (results) {
 	        }],
 
 });
+	    
+	    $("#leagueInfoTable_wrapper").prepend('<span id="lastUpdatedMsg"></span>');
+	    $('#lastUpdatedMsg').text("ranks last updated : " + timestamp + ".");
     
     $("#leagueInfoTableContainer").css({
         "display": "block"
     });
+    
+    
 	    
     new $.fn.dataTable.FixedHeader(table);
 
