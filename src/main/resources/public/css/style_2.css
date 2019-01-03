@@ -325,6 +325,14 @@ background-color: ingerit;
 
 }
 
+.customLeagueTableStyling {
+	background-color: black;
+	font-size: 1.0em;
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+
+}
+
 #topTenRankings {
 	font-size: .9em;
 }
