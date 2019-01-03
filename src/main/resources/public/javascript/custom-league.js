@@ -174,7 +174,7 @@ var populateCustomLeagueTable = function (results) {
 
 var getChallengeIcon = function (numberOfChallenges) {
     return "<img class='icon' src='/challenge_images/" + numberOfChallenges +
-        ".png' title='" + numberOfChallenges +
+        ".png' title='" + numberOfChallenges + 
         " challenges completed' />";
 }
 

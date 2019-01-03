@@ -474,6 +474,12 @@ margin: auto;
 		outline: 0;
 }
 
+.ascendancy-icon {
+	width: 36px;
+	height: 31px;
+	border : 2px black solid;
+}
+
 
 
 
