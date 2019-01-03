@@ -364,7 +364,7 @@ background-color: ingerit;
 }
 
 .table-striped tbody tr:nth-of-type(even) {
-	background-color: hsla(0, 0%, 100%, .07);
+	background-color: hsla(0, 0%, 100%, .03);
 }
 
 .deadChar {
