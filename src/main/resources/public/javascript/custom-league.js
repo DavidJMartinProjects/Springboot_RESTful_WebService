@@ -16,12 +16,18 @@ $("#submitLeagueBtn").click(function () {
 //	grecaptcha.reset(); // on lock of sed button
 	console.log("attempting to get custom ladder data.");
 	
+    theLeagueId = $('#leagueId').val();
+    theLeagueName = $('#leagueName').val();
+    
+    var mymodal = $('#frameModalBottom');
+    mymodal.find('.modal-body').text('building ladder for league ' + theLeagueId + '.');
+    mymodal.modal('show');
+	
     $('#leagueInfoTable').dataTable().fnDestroy();
     $("#leagueInfoTable tbody").empty();
     
 	// get user input
-    theLeagueId = $('#leagueId').val();
-    theLeagueName = $('#leagueName').val();
+
     console.log(" leagueId : " +theLeagueId+ "leagueName : " +theLeagueName);
     // close modal
     var customLeagueModal = $('#customLeagueModal');
@@ -43,10 +49,15 @@ $("#submitLeagueBtn").click(function () {
         success: function (results) {
             console.log("message sent successfully  : " + results.length + "ladder entries returned");
             populateCustomLeagueTable(results);
+            mymodal.modal('hide');
           $("#carouselContainer").css('display', 'none');
         },
         error: function (xhr, status, error) {
         	console.log("custom league not found.")
+            var mymodal = $('#frameModalBottom');
+        	var text = "custom league not found.";
+            mymodal.find('.modal-body').text(text);
+            mymodal.modal('show');
         }
     });
     
