@@ -70,7 +70,7 @@ var showStatsBtn = function () {
 
 var getleagueTable = function (selectedleague) {
     getLeagueDataTable(selectedleague);
-    $.fn.dataTable.ext.classes.sPageButton = 'button primary_button';
+//    $.fn.dataTable.ext.classes.sPageButton = 'button primary_button';
 }
 
 $("#showStatsButton").click(function () {
@@ -308,6 +308,7 @@ var populateLeagueTable = function (results) {
 
     $('#lastUpdatedMsg').text("updated : " + timeStamp + "");
     console.log("timestamp : " + timeStamp);
+    
     var table = $('#leagueInfoTable').dataTable({
         "iDisplayLength": 100,
         responsive: true,

@@ -7,6 +7,8 @@
 #leagueInfoTableContainer {
 	width: 100%;
 	border: 0px;
+	background-color: black;
+
 }
 
 thead {
@@ -24,7 +26,7 @@ body {
         -moz-background-size: cover;
         -o-background-size: cover;
         height:100%;
-        color: white;
+
         
           height: 500px; 
 
@@ -33,6 +35,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  color: white;
 
 }
 
@@ -326,10 +329,12 @@ background-color: ingerit;
 }
 
 .customLeagueTableStyling {
-	background-color: black;
 	font-size: 1.0em;
     overflow-y: hidden !important;
     overflow-x: hidden !important;
+    	opacity: 1 !important;
+    		background-color: black !important;
+
 
 }
 
@@ -355,11 +360,11 @@ background-color: ingerit;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-	background-color: hsla(0, 0%, 100%, .02);
+	background-color: hsla(0, 0%, 100%, 0);
 }
 
 .table-striped tbody tr:nth-of-type(even) {
-	background-color: hsla(0, 0%, 100%, 0);
+	background-color: hsla(0, 0%, 100%, .07);
 }
 
 .deadChar {
@@ -446,6 +451,30 @@ width : 90%;
 background-color: #999;
 margin: auto;
 }
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+	background: none;
+	color: black !important; /*change the hover text color*/
+}
+
+/*below block of css for change style when active*/
+.dataTables_wrapper .dataTables_paginate .paginate_button:active {
+	background: black;
+	color: black !important;
+}
+
+.pagination>li.active>a, .pagination>li.active>span {
+	color: black;
+	background-color: #c0c0c0;
+		outline: 0;
+}
+
+.pagination>li.hover>a, .pagination>li.hover>span {
+	color: black;
+		outline: 0;
+}
+
+
 
 
 

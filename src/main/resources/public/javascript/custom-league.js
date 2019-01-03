@@ -140,7 +140,7 @@ var populateCustomLeagueTable = function (results) {
 	            );
 	        
     });   
-	    var table = $("#leagueInfoTable").dataTable({
+	    var table = $("#leagueInfoTable").DataTable({
 	        "iDisplayLength": 100,
 	        responsive: true,
 	        "pagingType": "full_numbers",
