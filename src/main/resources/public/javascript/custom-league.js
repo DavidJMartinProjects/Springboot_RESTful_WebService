@@ -60,15 +60,12 @@ $("#submitLeagueBtn").click(function () {
             mymodal.modal('show');
         }
     });
-    
 });
-
 
 var populateCustomLeagueTable = function (results) {
 	console.log("inside populateCustomLeagueTable()");
     $('#leagueInfoTable').dataTable().fnDestroy();
     $("#leagueInfoTable tbody").empty();
-    
  
     var timestamp;
     results
@@ -129,56 +126,58 @@ var populateCustomLeagueTable = function (results) {
             character += " <i id='deadStatus'>(dead)</i>";
         }
 
-	        $('#leagueInfoTable tbody').append(
-	                '<tr>' +
-	                	'<td>' + theRankDifference + '</td>' +
-		                '<td>' + data.rank + '</td>' +
-		                '<td><a href=' + accountLink +' target="_blank">' + account +'</a></td>' +
-                        '<td>' + challenge_icon + "  " + character +'</td>' +
-		                '<td>' + data.level + '</td>' +
-		                '<td><font color="' + classColor + '">' + ascendancyIcon + "  " + data.theClass +'</font></td>' +
-		                '<td class="' +xphColor +'">' + exp +'</td>' +
-					    '<td>' + '<div class="progress">' +
-								   '<div class="progress-bar bg-dark" style="width:' + data.levelProgressBar + '%">' + 
-								   '</div>' + 
-								 '</div>'+ 
-						'</td>' +
-		                '<td>' + data.experience+ '</td>' +
-		                '<td>' + twitchLink + '</td>' +
-	                '</tr>'
-	            );
+        var rowDiv 
+        if(data.dead == "true") {
+        	rowDiv = '<tr class = "deadChar">';
+        } else {
+        	rowDiv = '<tr>';
+        }
+        $('#leagueInfoTable tbody').append(        		
+    		rowDiv +
+            	'<td>' + theRankDifference + '</td>' +
+                '<td>' + data.rank + '</td>' +
+                '<td><a href=' + accountLink +' target="_blank">' + account +'</a></td>' +
+                '<td>' + challenge_icon + "  " + character +'</td>' +
+                '<td>' + data.level + '</td>' +
+                '<td><font color="' + classColor + '">' + ascendancyIcon + "  " + data.theClass +'</font></td>' +
+                '<td class="' +xphColor +'">' + exp +'</td>' +
+			    '<td>' + '<div class="progress">' +
+						   '<div class="progress-bar bg-dark" style="width:' + data.levelProgressBar + '%">' + 
+						   '</div>' + 
+						 '</div>'+ 
+				'</td>' +
+                '<td>' + data.experience+ '</td>' +
+                '<td>' + twitchLink + '</td>' +
+            '</tr>'
+         );
 	        
     });   
-	    var table = $("#leagueInfoTable").DataTable({
-	        "iDisplayLength": 100,
-	        responsive: true,
-	        "pagingType": "full_numbers",
-	        "order": [
-	            [1, "asc"]
-	        ],
-	        stateSave: true,
-	        "columnDefs": [{
-	            "targets": [0], // column or columns numbers
-	            type: 'formatted-num',
-	        }],
-	        deferRender: true,
-	        "deferLoading": 400,
-	        "columnDefs": [{
-	            type: 'formatted-num',
-	            targets: [6]
-	        }],
 
-});
+    var table = $("#leagueInfoTable").DataTable({
+		"iDisplayLength" : 100,
+		responsive : true,
+		"pagingType" : "full_numbers",
+		"order" : [ [ 1, "asc" ] ],
+		stateSave : true,
+		"columnDefs" : [ {
+			"targets" : [ 0 ], // column or columns numbers
+			type : 'formatted-num',
+		} ],
+		deferRender : true,
+		"deferLoading" : 400,
+		"columnDefs" : [ {
+			type : 'formatted-num',
+			targets : [ 6 ]
+		} ],
+
+	});
 	    
-	    $("#leagueInfoTable_wrapper").prepend('<span id="lastUpdatedMsg"></span>');
-	    $('#lastUpdatedMsg').text("ranks last updated : " + timestamp + ".");
+    $("#leagueInfoTable_wrapper").prepend('<span id="lastUpdatedMsg"></span>');
+    $('#lastUpdatedMsg').text("ranks last updated : " + timestamp + ".");
     
     $("#leagueInfoTableContainer").css({
         "display": "block"
     });
-    
-    
-	    
     new $.fn.dataTable.FixedHeader(table);
 
 }

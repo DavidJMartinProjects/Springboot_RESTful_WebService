@@ -368,9 +368,8 @@ background-color: ingerit;
 }
 
 .deadChar {
-	color: #808080!important;
+	color: #A9A9A7 !important;
 }
-
 .mystyle.ui-datatable .ui-datatable-scrollable-body{
     overflow-y: scroll !important;
     overflow-x: hidden !important;
