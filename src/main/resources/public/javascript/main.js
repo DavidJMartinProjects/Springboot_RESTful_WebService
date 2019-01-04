@@ -16,8 +16,8 @@ var isDead = "false";
 
 $(document).ready(function () {
     console.log("index.html loaded.")
-    $('#carouselExampleCaptions').carousel({
-    	interval: 10000
+    $('#carouselExampleIndicators').carousel({
+    	interval: 12000
     });
     
     $('#carouselExampleCaptions').on('slid.bs.carousel', function (event) {
@@ -506,129 +506,277 @@ var populateToptenTable = function (results) {
             }
         }
         });
-
-    results.leagueHC.tableDataUberLabTopTen
-        .forEach(function (data) {
-            toonName = data.charName;
+    
+    
+    
+    counter = 1;
+    results.leagueStd.tableDataUberLabTopTen
+    .forEach(function (data) {
+        if (counter <= 5) {
             toonName = data.character;
             var accountLink = getPoeAccount(data.account)
             var ascendancyIcon = getAscendancyIcon(data.theClass);
             var classColor = getColor(data.theClass);
-            // set card-title to league ladder name 
+
             if (data.dead == true) {
                 $('#table6 tbody')
                     .append(
                         '<tr class = "deadChar">' +
-                        '<td>' + data.rank + '</td>' +
+                        '<td>' + counter++ + '</td>' +
                         '<td>' + toonName + "'<i id='deadStatus'>(dead)</i>'" + '</td>' +
                         '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
-                        '<td>' + data.time + '</td>' +
+                        '<td>' + data.labTime + '</td>' +
                         '</tr>'
                     );
             } else {
                 $('#table6 tbody')
                     .append(
                         '<tr>' +
-                        '<td>' + data.rank + '</td>' +
+                        '<td>' + counter++ + '</td>' +
                         '<td>' + toonName + '</td>' +
                         '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
-                        '<td>' + data.time + '</td>' +
+                        '<td>' + data.labTime + '</td>' +
                         '</tr>'
                     );
             }
-        });
+        }
+    });
 
-    results.leagueSFF.tableDataDelve
-        .forEach(function (data) {
+	counter = 1;
+	results.leagueHC.tableDataUberLabTopTen
+    .forEach(function (data) {
+         if (counter <= 5) {
+             toonName = data.character;
+             var accountLink = getPoeAccount(data.account)
+             var ascendancyIcon = getAscendancyIcon(data.theClass);
+             var classColor = getColor(data.theClass);
 
-            toonName = data.character;
-            var accountLink = getPoeAccount(data.account)
-            var ascendancyIcon = getAscendancyIcon(data.theClass);
-            var classColor = getColor(data.theClass);
-            if (data.dead == true) {
-                $('#table7 tbody')
-                    .append(
-                        '<tr class = "deadChar">' +
-                        '<td>' + data.rank + '</td>' +
-                        '<td>' + toonName + "'<i id='deadStatus'>(dead)</i>'" + '</td>' +
-                        '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
-                        '<td>' + data.dept + '</td>' +
-                        '</tr>'
-                    );
-            } else {
-                $('#table7 tbody')
-                    .append(
-                        '<tr>' +
-                        '<td>' + data.rank + '</td>' +
-                        '<td>' + toonName + '</td>' +
-                        '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
-                        '<td>' + data.dept + '</td>' +
-                        '</tr>'
-                    );
-            }
-        });
+        // set card-title to league ladder name 
+        if (data.dead == true) {
+            $('#table72 tbody')
+                .append(
+                    '<tr class = "deadChar">' +
+                    '<td>' + counter++ + '</td>' +
+                    '<td>' + toonName + "'<i id='deadStatus'>(dead)</i>'" + '</td>' +
+                    '<td><font color="' + classColor + '">' + ascendancyIcon +'</font></td>' +
+                    '<td>' + data.labTime + '</td>' +
+                    '</tr>'
+                );
+        } else {
+            $('#table7 tbody')
+                .append(
+                    '<tr>' +
+                    '<td>' + counter++ + '</td>' +
+                    '<td>' + toonName + '</td>' +
+                    '<td><font color="' + classColor + '">' + ascendancyIcon +'</font></td>' +
+                    '<td>' + data.labTime + '</td>' +
+                    '</tr>'
+                );
+        }
+    }
+    });
 
-    results.leagueSFF.tableDataRaceTo100
-        .forEach(function (data) {
-            toonName = data.charName;
-            var accountLink = getPoeAccount(data.account)
-            var ascendancyIcon = getAscendancyIcon(data.ascendancy);
-            var classColor = getColor(data.ascendancy);
+    counter =1;
+	results.leagueSFF.tableDataUberLabTopTen
+	    .forEach(function (data) {
+	if (counter <= 5) {
+	 toonName = data.character;
+	 var accountLink = getPoeAccount(data.account)
+	 var ascendancyIcon = getAscendancyIcon(data.theClass);
+	 var classColor = getColor(data.theClass);
 
-            // set card-title to league ladder name 
-            if (data.dead == true) {
-                $('#table8 tbody')
-                    .append(
-                        '<tr class = "deadChar">' +
-                        '<td>' + data.rank + '</td>' +
-                        '<td>' + toonName + "'<i id='deadStatus'>(dead)</i>'" + '</td>' +
-                        '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
-                        '<td>' + data.level + '</td>' +
-                        '</tr>'
-                    );
-            } else {
-                $('#table8 tbody')
-                    .append(
-                        '<tr>' +
-                        '<td>' + data.rank + '</td>' +
-                        '<td>' + toonName + '</td>' +
-                        '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
-                        '<td>' + data.level + '</td>' +
-                        '</tr>'
-                    );
-            }
-        });
+        if (data.dead == true) {
+            $('#table8 tbody')
+                .append(
+                    '<tr class = "deadChar">' +
+                    '<td>' + counter++ + '</td>' +
+                    '<td>' + toonName + "'<i id='deadStatus'>(dead)</i>'" + '</td>' +
+                    '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
+                    '<td>' + data.labTime + '</td>' +
+                    '</tr>'
+                );
+        } else {
+            $('#table8 tbody')
+                .append(
+                    '<tr>' +
+                    '<td>' + counter++ + '</td>' +
+                    '<td>' + toonName + '</td>' +
+                    '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
+                    '<td>' + data.labTime + '</td>' +
+                    '</tr>'
+                );
+        }
+    }
+    });
 
-    results.leagueSFF.tableDataUberLabTopTen
-        .forEach(function (data) {
-            toonName = data.charName;
-            var accountLink = getPoeAccount(data.account)
-            var ascendancyIcon = getAscendancyIcon(data.ascendancy);
-            var classColor = getColor(data.ascendancy);
+    counter=1;
+    results.leagueHCSFF.tableDataUberLabTopTen
+    .forEach(function (data) {
+         if (counter <= 5) {
+             toonName = data.character;
+             var accountLink = getPoeAccount(data.account)
+             var ascendancyIcon = getAscendancyIcon(data.theClass);
+             var classColor = getColor(data.theClass);
 
-            // set card-title to league ladder name 
-            if (data.dead == true) {
-                $('#table9 tbody')
-                    .append(
-                        '<tr class = "deadChar">' +
-                        '<td>' + data.rank + '</td>' +
-                        '<td>' + toonName + "'<i id='deadStatus'>(dead)</i>'" + '</td>' +
-                        '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
-                        '<td>' + data.time + '</td>' +
-                        '</tr>'
-                    );
-            } else {
-                $('#table9 tbody')
-                    .append(
-                        '<tr>' +
-                        '<td>' + data.rank + '</td>' +
-                        '<td>' + toonName + '</td>' +
-                        '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
-                        '<td>' + data.time + '</td>' +
-                        '</tr>'
-                    );
-            }
-        });
+        // set card-title to league ladder name 
+        if (data.dead == true) {
+            $('#table9 tbody')
+                .append(
+                    '<tr class = "deadChar">' +
+                    '<td>' + counter++ + '</td>' +
+                    '<td>' + toonName + "'<i id='deadStatus'>(dead)</i>'" + '</td>' +
+                    '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
+                    '<td>' + data.labTime + '</td>' +
+                    '</tr>'
+                );
+        } else {
+            $('#table9 tbody')
+                .append(
+                    '<tr>' +
+                    '<td>' + counter++ + '</td>' +
+                    '<td>' + toonName + '</td>' +
+                    '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
+                    '<td>' + data.labTime + '</td>' +
+                    '</tr>'
+                );
+        }
+    }
+    });
+
+
+	counter = 1;
+	results.leagueStd.tableDataRaceTo100
+	.forEach(function (data) {
+	    if (counter <= 5) {
+	        toonName = data.character;
+	        var accountLink = getPoeAccount(data.account)
+	        var ascendancyIcon = getAscendancyIcon(data.theClass);
+	        var classColor = getColor(data.theClass);
+	
+	        if (data.dead == true) {
+	            $('#table10 tbody')
+	                .append(
+	                    '<tr class = "deadChar">' +
+	                    '<td>' + counter++ + '</td>' +
+	                    '<td>' + toonName + "'<i id='deadStatus'>(dead)</i>'" + '</td>' +
+	                    '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
+	                    '<td>' + data.level + '</td>' +
+	                    '</tr>'
+	                );
+	        } else {
+	            $('#table10 tbody')
+	                .append(
+	                    '<tr>' +
+	                    '<td>' + counter++ + '</td>' +
+	                    '<td>' + toonName + '</td>' +
+	                    '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
+	                    '<td>' + data.level + '</td>' +
+	                    '</tr>'
+	                );
+	        }
+	    }
+	});
+	
+	counter = 1;
+	results.leagueHC.tableDataRaceTo100
+	.forEach(function (data) {
+	     if (counter <= 5) {
+	         toonName = data.character;
+	         var accountLink = getPoeAccount(data.account)
+	         var ascendancyIcon = getAscendancyIcon(data.theClass);
+	         var classColor = getColor(data.theClass);
+	
+	    // set card-title to league ladder name 
+	    if (data.dead == true) {
+	        $('#table11 tbody')
+	            .append(
+	                '<tr class = "deadChar">' +
+	                '<td>' + counter++ + '</td>' +
+	                '<td>' + toonName + "'<i id='deadStatus'>(dead)</i>'" + '</td>' +
+	                '<td><font color="' + classColor + '">' + ascendancyIcon +'</font></td>' +
+	                '<td>' + data.level + '</td>' +
+	                '</tr>'
+	            );
+	    } else {
+	        $('#table11 tbody')
+	            .append(
+	                '<tr>' +
+	                '<td>' + counter++ + '</td>' +
+	                '<td>' + toonName + '</td>' +
+	                '<td><font color="' + classColor + '">' + ascendancyIcon +'</font></td>' +
+	                '<td>' + data.level + '</td>' +
+	                '</tr>'
+	            );
+	    }
+	}
+	});
+	
+	counter =1;
+	results.leagueSFF.tableDataRaceTo100
+	.forEach(function (data) {
+	if (counter <= 5) {
+	toonName = data.character;
+	var accountLink = getPoeAccount(data.account)
+	var ascendancyIcon = getAscendancyIcon(data.theClass);
+	var classColor = getColor(data.theClass);
+	
+	    if (data.dead == true) {
+	        $('#table12 tbody')
+	            .append(
+	                '<tr class = "deadChar">' +
+	                '<td>' + counter++ + '</td>' +
+	                '<td>' + toonName + "'<i id='deadStatus'>(dead)</i>'" + '</td>' +
+	                '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
+	                '<td>' + data.level + '</td>' +
+	                '</tr>'
+	            );
+	    } else {
+	        $('#table12 tbody')
+	            .append(
+	                '<tr>' +
+	                '<td>' + counter++ + '</td>' +
+	                '<td>' + toonName + '</td>' +
+	                '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
+	                '<td>' + data.level + '</td>' +
+	                '</tr>'
+	            );
+	    }
+	}
+	});
+	
+	counter=1;
+	results.leagueHCSFF.tableDataRaceTo100
+	.forEach(function (data) {
+	     if (counter <= 5) {
+	         toonName = data.character;
+	         var accountLink = getPoeAccount(data.account)
+	         var ascendancyIcon = getAscendancyIcon(data.theClass);
+	         var classColor = getColor(data.theClass);
+	
+	    // set card-title to league ladder name 
+	    if (data.dead == true) {
+	        $('#table13 tbody')
+	            .append(
+	                '<tr class = "deadChar">' +
+	                '<td>' + counter++ + '</td>' +
+	                '<td>' + toonName + "'<i id='deadStatus'>(dead)</i>'" + '</td>' +
+	                '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
+	                '<td>' + data.level + '</td>' +
+	                '</tr>'
+	            );
+	    } else {
+	        $('#table13 tbody')
+	            .append(
+	                '<tr>' +
+	                '<td>' + counter++ + '</td>' +
+	                '<td>' + toonName + '</td>' +
+	                '<td><font color="' + classColor + '">' + ascendancyIcon + '</font></td>' +
+	                '<td>' + data.level + '</td>' +
+	                '</tr>'
+	            );
+	    }
+	}
+	});
 
     // load landing page tables
     console.log("loading top-ten results table. \n")
@@ -643,24 +791,20 @@ var populateToptenTable = function (results) {
         "info": false,
         "searching": false
     });
-    
    
 	$("#table1CardTitle").append(results.leagueStd.tableDataDelve[0].leagueDifficulty);
 	$("#table2CardTitle").append(results.leagueHC.tableDataDelve[0].leagueDifficulty);
 	$("#table4CardTitle").append(results.leagueSFF.tableDataDelve[0].leagueDifficulty);
     $("#table5CardTitle").append(results.leagueHCSFF.tableDataDelve[0].leagueDifficulty);
+	$("#table6CardTitle").append(results.leagueStd.tableDataUberLabTopTen[0].leagueDifficulty);
+	$("#table7CardTitle").append(results.leagueHC.tableDataUberLabTopTen[0].leagueDifficulty);
+	$("#table8CardTitle").append(results.leagueSFF.tableDataUberLabTopTen[0].leagueDifficulty);
+    $("#table9CardTitle").append(results.leagueHCSFF.tableDataUberLabTopTen[0].leagueDifficulty);
+	$("#table10CardTitle").append(results.leagueStd.tableDataRaceTo100[0].leagueDifficulty);
+	$("#table11CardTitle").append(results.leagueHC.tableDataRaceTo100[0].leagueDifficulty);
+	$("#table12CardTitle").append(results.leagueSFF.tableDataRaceTo100[0].leagueDifficulty);
+    $("#table13CardTitle").append(results.leagueHCSFF.tableDataRaceTo100[0].leagueDifficulty);
     
-	// $("#table5CardTitle").append(" : " + leagueName);
-	// $("#table6CardTitle").append(" : " + leagueName);
-	
-    // leagueName = results.leagueSFF.tableDataDelve[0].league;
-	// tableTitle = document.createTextNode(" : " + leagueName);
-	
-	// $("#table7CardTitle").append(" : " + leagueName);
-	// $("#table8CardTitle").append(" : " + leagueName);
-	// $("#table9CardTitle").append(" : " + leagueName);
-
-
     $("#carouselContainer").css('display', 'block');
 }
 
