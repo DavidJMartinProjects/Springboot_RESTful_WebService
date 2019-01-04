@@ -1,6 +1,8 @@
  theLocalhostUrl = 'http://localhost:8080';
  theHostedSiteUrl = 'https://immense-headland-50105.herokuapp.com';
  url = theHostedSiteUrl;
+ theLeagueId = "";
+ theLeagueName = "";
 
 $(document).ready(function () {
     console.log("custom-league.js loaded.")
@@ -37,30 +39,36 @@ $("#submitLeagueBtn").click(function () {
     $('#leagueName').val("");
     //make ajax call
     var textAreaContent = $('#form79textarea').val();
-
-    $.ajax({
-        url: url + '/custom-league',
-        type: 'GET',
-        dataType: "json",
-        data: {
-            leagueId: theLeagueId,
-            leagueName: theLeagueName
-        },
-        success: function (results) {
-            console.log("message sent successfully  : " + results.length + "ladder entries returned");
-            populateCustomLeagueTable(results);
-            mymodal.modal('hide');
-          $("#carouselContainer").css('display', 'none');
-        },
-        error: function (xhr, status, error) {
-        	console.log("custom league not found.")
-            var mymodal = $('#frameModalBottom');
-        	var text = "custom league not found.";
-            mymodal.find('.modal-body').text(text);
-            mymodal.modal('show');
-        }
-    });
+    getLeagueDataTable(theLeagueId, theLeagueName);
+ 
 });
+
+var getLeagueDataTable = function (theLeagueId, theLeagueName) {
+	   $.ajax({
+	        url: url + '/custom-league',
+	        type: 'GET',
+	        dataType: "json",
+	        data: {
+	            leagueId: theLeagueId,
+	            leagueName: theLeagueName
+	        },
+	        success: function (results) {
+	            console.log("message sent successfully  : " + results.length + "ladder entries returned");
+	            populateCustomLeagueTable(results);
+	            var mymodal = $('#frameModalBottom');
+	            mymodal.find('.modal-body').text('building ladder for custom league id : ' + theLeagueId + '.');
+	            mymodal.modal('hide');
+	          $("#carouselContainer").css('display', 'none');
+	        },
+	        error: function (xhr, status, error) {
+	        	console.log("custom league not found.")
+	            var mymodal = $('#frameModalBottom');
+	        	var text = "custom league not found.";
+	            mymodal.find('.modal-body').text(text);
+	            mymodal.modal('show');
+	        }
+	    });
+}
 
 var populateCustomLeagueTable = function (results) {
 	console.log("inside populateCustomLeagueTable()");
@@ -175,11 +183,33 @@ var populateCustomLeagueTable = function (results) {
     $("#leagueInfoTable_wrapper").prepend('<span id="lastUpdatedMsg"></span>');
     $('#lastUpdatedMsg').text("ranks last updated : " + timestamp + ".");
     
+    hideUpdatedMessage();
     $("#leagueInfoTableContainer").css({
         "display": "block"
     });
     new $.fn.dataTable.FixedHeader(table);
+    
+    setTimeout(function () {
+    	showUpdatedMessage();
+    	
+        getLeagueDataTable(theLeagueId, theLeagueName);
+//        hideUpdatedMessage();
+//        $('#lastUpdatedMsg').text("ranks last updated : " + timeStamp + ".");
 
+    }, 5 * 60 * 1000);
+//    	 }, 1 * 30 * 1000);
+
+}
+
+var showUpdatedMessage = function () {
+    var mymodal = $('#ranksUpdatedModal');
+    mymodal.find('.modal-body').text('updating ladder ranks.');
+    mymodal.modal('show');
+}
+
+var hideUpdatedMessage = function () {
+    var mymodal = $('#ranksUpdatedModal');
+    mymodal.modal('hide');
 }
 
 var getChallengeIcon = function (numberOfChallenges) {
