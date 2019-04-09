@@ -11,10 +11,10 @@ public class CurrentLeagueService {
 	}
 
 	public List getLeagues() {
-		leagues.add("Betrayal");
-		leagues.add("Hardcore Betrayal");
-		leagues.add("SSF Betrayal");
-		leagues.add("SSF Betrayal HC");		
+		leagues.add("Synthesis");
+		leagues.add("Synthesis Betrayal");
+		leagues.add("SSF Synthesis");
+		leagues.add("SSF Synthesis HC");		
 		return leagues;
 	}
  

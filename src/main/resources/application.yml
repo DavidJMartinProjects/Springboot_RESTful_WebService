@@ -3,8 +3,8 @@ employee-service:
    filter:
      resource:
        properties:
-         LEAGUE1: Betrayal
-         LEAGUE2: Hardcore Betrayal
-         LEAGUE3: SSF Betrayal
-         LEAGUE4: SSF Betrayal HC
+         LEAGUE1: Synthesis
+         LEAGUE2: Hardcore Synthesis
+         LEAGUE3: SSF Synthesis
+         LEAGUE4: SSF Synthesis HC
         
